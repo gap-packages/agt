@@ -1,6 +1,12 @@
-#
-# srgs: A library of small strongly regular graphs and related functions
-#
-# Reading the implementation part of the package.
-#
-ReadPackage( "srgs", "gap/srgs.gi");
+#############################################################################
+##
+#W    read.g                 The srgs package
+##
+
+#############################################################################
+##
+#R  Read the install files.
+##
+ReadPackage( "srgs", "lib/srgs.gi");
+
+#E  read.g . . . . . . . . . . . . . . . . . . . . . . . . . . . .  ends here

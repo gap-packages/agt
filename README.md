@@ -1,17 +1,28 @@
 # The GAP package srgs
 
-TODO: add a description of your package; perhaps also instructions how how to
-install and use it, resp. where to find out more
+The srgs package provides a library of strongly regular graphs on
+at most 40 vertices. It also provides functions to analyse strongly
+regular and other kinds of graphs.
+
+## Documentation
+
+Full information and documentation can be found in the manual, available
+as PDF `doc/manual.pdf` or as HTML `doc/chap0.html`, or on the package
+homepage at
+
+  <https://github.com/rhysje00/srgs/>
 
 
-## Contact
+## Bug reports and feature requests
 
-TODO: add info on how to contact you and/or how to report issues with your
-package
+Please submit bug reports and feature requests via our GitHub issue tracker:
 
-## License
+  <https://github.com/rhysje00/srgs/issues>
 
-TODO: Provide information on the license of your package. A license is
-important as it determines who has a right to distribute your package. The
-"default" license to consider is GNU General Public License v2 or later, as
-that is the license of GAP itself.
+
+# License
+
+srgs is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
+Free Software Foundation. For details see the LICENSE file.
+

@@ -1,0 +1,51 @@
+<Chapter Label="regprop">
+<Heading>Regularity properties of graphs</Heading>
+
+<Section Label="Inspecting properties of graphs">
+<Heading>Inspecting regularity of graphs</Heading>
+
+<#Include Label="EdgeRegularGraphParameters">
+
+<#Include Label="IsEdgeRegularGraph">
+
+<#Include Label="StronglyRegularGraphParameters">
+
+<#Include Label="IsStronglyRegularGraph">
+
+<#Include Label="SmallestEigenvalueInterval">
+
+<#Include Label="LargestEigenvalueInterval">
+
+</Section>
+<Section Label="Functions on parameters sets">
+<Heading>Functions on parameter sets</Heading>
+
+<#Include Label="FeasibleSRGParameterTuples">
+
+<#Include Label="IsFeasibleSRGParameterTuple">
+
+<#Include Label="KreinParameters">
+
+<#Include Label="KreinConditionsCheck">
+
+<#Include Label="AbsoluteBoundCheck">
+
+<#Include Label="SRGToGlobalParameters">
+
+<#Include Label="GlobalToSRGParameters">
+
+<#Include Label="SmallestEigenvalueIntervalFromSRGParameters">
+
+<#Include Label="LargestEigenvalueIntervalFromSRGParameters">
+
+<#Include Label="SmallestEigenvalueFromSRGParameters">
+
+<#Include Label="LargestEigenvalueFromSRGParameters">
+
+<#Include Label="SmallestEigenvalueMultiplicityFromSRGParameters">
+
+<#Include Label="LargestEigenvalueMultiplicityFromSRGParameters">
+
+</Section>
+
+</Chapter>

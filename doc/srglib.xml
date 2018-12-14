@@ -1,0 +1,43 @@
+<Chapter Label="srglib">
+<Heading>A library of Strongly Regular graphs</Heading>
+
+<Section Label="A library of strongly regular graphs">
+<Heading>A library of strongly regular graphs</Heading>
+
+<#Include Label="StronglyRegularGraph">
+
+<#Include Label="NrStronglyRegularGraphs">
+
+<#Include Label="OneStronglyRegularGraph">
+
+<#Include Label="AllStronglyRegularGraphs">
+
+<#Include Label="StronglyRegularGraphIterator">
+
+<#Include Label="SmallFeasibleSRGParameterTuples">
+
+<#Include Label="IsEnumeratedSRGParameterTuple">
+
+<#Include Label="IsKnownSRGParameterTuple">
+
+</Section>
+<Section Label="Families of Strongly regular graphs">
+<Heading>Families of Strongly Regular graphs</Heading>
+
+<#Include Label="CompleteMultipartiteGraph">
+
+<#Include Label="TriangularGraph">
+
+<#Include Label="SquareLatticeGraph">
+
+<#Include Label="HoffmanSingletonGraph">
+
+<#Include Label="HigmanSimsGraph">
+
+<#Include Label="SimsGerwitzGraph">
+
+<#Include Label="AffinePolarGraph">
+
+</Section>
+
+</Chapter>

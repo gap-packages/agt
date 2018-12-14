@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Book SYSTEM "gapdoc.dtd"
+   [ <!ENTITY SRGs "<Package>SRGs</Package>">
+     <#Include Label="PKGVERSIONDATA">
+   ]>
+
+<Book Name="SRGs"> 
+
+<TitlePage>
+  <Title>&SRGs;</Title>
+  <Subtitle>&GAP; A library of small strongly regular graphs</Subtitle>
+  <Version>Version &VERSION;</Version>
+  <Date>&RELEASEDATE;</Date>
+  <Author> Rhys John Evans
+    <Email>r.evans@qmul.ac.uk</Email>
+    <Homepage>https://www.qmul.ac.uk/maths/profiles/evansr.html</Homepage>
+  </Author>
+    <Copyright> 
+    <Index>License</Index>
+    &copyright; 2018 by Rhys Evans   TODO<P/>
+    &SRGs; package is free software; 
+    you can redistribute it and/or modify it under the terms of the 
+    <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL> 
+    as published by the Free Software Foundation.
+  </Copyright>
+  <Acknowledgements>
+    TODO in main.xml *************************
+  </Acknowledgements>
+</TitlePage>
+
+<TableOfContents/>
+
+<Body>
+
+<#Include SYSTEM "srglib.xml">
+
+<#Include SYSTEM "regprop.xml">
+
+<#Include SYSTEM "regsub.xml">
+
+</Body>
+
+<TheIndex/>
+
+</Book>
+
+<!-- ==================================================================== -->
+

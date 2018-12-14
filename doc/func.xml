@@ -1,0 +1,81 @@
+<Chapter Label="func">
+<Heading>Functions for regular graphs</Heading>
+
+<Section Label="Functions for regular graphs">
+<Heading>Functions for regular graphs</Heading>
+
+<#Include Label="EdgeRegularGraphParameters">
+
+<#Include Label="IsEdgeRegularGraph">
+
+<#Include Label="StronglyRegularGraphParameters">
+
+<#Include Label="IsStronglyRegularGraph">
+
+<#Include Label="FeasibleSRGParameterSets">
+
+<#Include Label="IsFeasibleSRGParameterSet">
+
+<#Include Label="KreinParameters">
+
+<#Include Label="KreinConditionsCheck">
+
+<#Include Label="AbsoluteBoundCheck">
+
+<#Include Label="SRGToGlobalParameters">
+
+<#Include Label="GlobalToSRGParameters">
+
+<#Include Label="SmallestEigenvalueInterval">
+
+<#Include Label="LargestEigenvalueInterval">
+
+<#Include Label="SmallestEigenvalueIntervalFromSRGParameters">
+
+<#Include Label="LargestEigenvalueIntervalFromSRGParameters">
+
+<#Include Label="SmallestEigenvalueFromSRGParameters">
+
+<#Include Label="LargestEigenvalueFromSRGParameters">
+
+<#Include Label="SmallestEigenvalueMultiplicityFromSRGParameters">
+
+<#Include Label="LargestEigenvalueMultiplicityFromSRGParameters">
+
+<#Include Label="HoffmanCocliqueBound">
+
+<#Include Label="HoffmanCliqueBound">
+
+<#Include Label="DelsarteCliqueBound">
+
+<#Include Label="HoffmanCocliqueBoundFromSRGParameters">
+
+<#Include Label="HoffmanCliqueBoundFromSRGParameters">
+
+<#Include Label="DelsarteCliqueBoundFromSRGParameters">
+
+<#Include Label="CliqueAdjacencyPolynomial">
+
+<#Include Label="CliqueAdjacencyBound">
+
+<#Include Label="IsFeasibleRegularCliqueERGParameters">
+
+<#Include Label="IsFeasibleQuasiRegularCliqueERGParameters">
+
+<#Include Label="RegularAdjacencyPolynomial">
+
+<#Include Label="RegularAdjacencyBounds">
+
+<#Include Label="IsFeasibleRegularSetSRGParameters">
+
+<#Include Label="IsFeasibleQuasiRegularSetSRGParameters">
+
+<#Include Label="BasicEdgeSwitching">
+
+<#Include Label="GodsilMcKaySwitching">
+
+<#Include Label="IsGodsilMcKayPartition">
+
+</Section>
+
+</Chapter>
