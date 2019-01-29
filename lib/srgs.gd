@@ -47,6 +47,33 @@ DeclareGlobalFunction( "IsEdgeRegularGraph" );
 
 #############################################################################
 ##
+#F  IsFeasibleERGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+##  
+##  <#GAPDoc Label="IsFeasibleERGParameters">
+##  <ManSection>
+##  <Func Name="IsFeasibleERGParameters"
+##   Arg='[ v, k, lambda ]'/>
+##
+##  <Description>
+##  This function returns true if <M>( v, k, \lambda )</M> is a feasible
+##  parameter tuple for a edge-regular graph, according to the following 
+##  well known necessary conditions;
+##  <List>
+##  <Item><M>v,k,\lambda</M> are integers.</Item> 
+##  <Item><M>v>k>\lambda\geq 0</M></Item>
+##  <Item><M>2</M> divides <M>vk</M> and <M>k\lambda</M>, and <M>6</M> 
+##        divides <M>vk\lambda</M>.</Item>
+##  <Item><M>v-2k+\lambda \geq 0</M></Item>
+##  </List> 
+##  Otherwise, it returns false. TODO reference etc.
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "IsFeasibleERGParameters" );
+
+#############################################################################
+##
 #F  StronglyRegularGraphParameters( <gamma> )
 ##  
 ##  <#GAPDoc Label="StronglyRegularGraphParameters">
@@ -84,11 +111,11 @@ DeclareGlobalFunction( "IsStronglyRegularGraph" );
 
 #############################################################################
 ##
-#F  FeasibleSRGParameterTuples( [ <v>, <k>, <lambda>, <mu> ] )
+#F  FeasibleSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="FeasibleSRGParameterTuples">
+##  <#GAPDoc Label="FeasibleSRGParameters">
 ##  <ManSection>
-##  <Func Name="FeasibleSRGParameterTuples"
+##  <Func Name="FeasibleSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>TODO
@@ -98,15 +125,15 @@ DeclareGlobalFunction( "IsStronglyRegularGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "FeasibleSRGParameterTuples" );
+DeclareGlobalFunction( "FeasibleSRGParameters" );
 
 #############################################################################
 ##
-#F  IsFeasibleSRGParameterTuple( [ <v>, <k>, <lambda>, <mu> ] )
+#F  IsFeasibleSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="IsFeasibleSRGParameterTuple">
+##  <#GAPDoc Label="IsFeasibleSRGParameters">
 ##  <ManSection>
-##  <Func Name="IsFeasibleSRGParameterTuple"
+##  <Func Name="IsFeasibleSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
@@ -128,61 +155,87 @@ DeclareGlobalFunction( "FeasibleSRGParameterTuples" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "IsFeasibleSRGParameterTuple" );
+DeclareOperation( "IsFeasibleSRGParameters" , [IsList] );
 
 #############################################################################
 ##
-#F  KreinParameters( TODO )
+#F  IsTypeIParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="KreinParameters">
+##  <#GAPDoc Label="IsTypeIParameters">
 ##  <ManSection>
-##  <Func Name="KreinParameters"
-##   Arg='TODO'/>
+##  <Func Name="IsTypeIParameters"
+##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will return the Krein parameters. 
-##  Input graph/parameters? DRG? SRG? how to calculate.TODO
+##  This function returns true if <M>( v, k, \lambda, \mu )</M> is a feasible
+##  parameter tuple for a strongly regular graph, according to the following 
+##  well known necessary conditions;
+##  <List>
+##  <Item><M>v,k,\lambda,\mu</M> are integers.</Item> 
+##  <Item><M>v>k>\lambda\geq 0,k\geq\mu</M></Item>
+##  <Item><M>2</M> divides <M>vk</M> and <M>k\lambda</M>, and <M>6</M> 
+##        divides <M>vk\lambda</M>.</Item>
+##  <Item><M>(v-k-1)\mu = k(k-\lambda -1).</M></Item>
+##  <Item><M>v-2k+\lambda \geq 0</M> and <M>v-2-2k+\mu \geq 0</M>.</Item>
+##  <Item>The formulae for the multiplicities of the eigenvalues of a strongly
+##        regular graph with these parameters must be integer.</Item>
+##  </List> 
+##  Otherwise, it returns false. TODO reference etc.
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "KreinParameters" );
+DeclareGlobalFunction( "IsTypeIParameters" );
 
 #############################################################################
 ##
-#F  KreinConditionsCheck( TODO )
+#F  IsTypeIIParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="KreinConditionsCheck">
+##  <#GAPDoc Label="IsTypeIIParameters">
 ##  <ManSection>
-##  <Func Name="KreinConditionsCheck"
-##   Arg='TODO'/>
+##  <Func Name="IsTypeIIParameters"
+##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will check the Krein conditions. 
-##  Input graph/parameters? DRG? SRG? how to calculate.TODO
+##  This function returns true if <M>( v, k, \lambda, \mu )</M> is a feasible
+##  parameter tuple for a strongly regular graph, according to the following 
+##  well known necessary conditions;
+##  <List>
+##  <Item><M>v,k,\lambda,\mu</M> are integers.</Item> 
+##  <Item><M>v>k>\lambda\geq 0,k\geq\mu</M></Item>
+##  <Item><M>2</M> divides <M>vk</M> and <M>k\lambda</M>, and <M>6</M> 
+##        divides <M>vk\lambda</M>.</Item>
+##  <Item><M>(v-k-1)\mu = k(k-\lambda -1).</M></Item>
+##  <Item><M>v-2k+\lambda \geq 0</M> and <M>v-2-2k+\mu \geq 0</M>.</Item>
+##  <Item>The formulae for the multiplicities of the eigenvalues of a strongly
+##        regular graph with these parameters must be integer.</Item>
+##  </List> 
+##  Otherwise, it returns false. TODO reference etc.
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "KreinConditionsCheck" );
+DeclareGlobalFunction( "IsTypeIIParameters" );
 
 #############################################################################
 ##
-#F  AbsoluteBoundCheck( TODO )
+#F  ComplementParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="AbsoluteBoundCheck">
+##  <#GAPDoc Label="ComplementParameters">
 ##  <ManSection>
-##  <Func Name="AbsoluteBoundCheck"
-##   Arg='TODO'/>
+##  <Func Name="ComplementParameters"
+##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will check the Absolute Bound. 
-##  Input graph/parameters? DRG? SRG? how to calculate.TODO
+##  TODO If <M>( v, k, \lambda, \mu )</M> is the strongly regular parameters 
+##  of a graph, this function
+##  returns the strongly regular graph parameters of the complement
+##  of the graph (see [REF] TODO).
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "AbsoluteBoundCheck" );
+DeclareGlobalFunction( "ComplementParameters" );
 
 #############################################################################
 ##
@@ -224,153 +277,207 @@ DeclareGlobalFunction( "GlobalToSRGParameters" );
 
 #############################################################################
 ##
-#F  SmallestEigenvalueInterval( <gamma> )
+#O  LeastEigenvalueInterval( <gamma> , <eps> )
 ##  
-##  <#GAPDoc Label="SmallestEigenvalueInterval">
+##  <#GAPDoc Label="LeastEigenvalueInterval">
 ##  <ManSection>
-##  <Func Name="SmallestEigenvalueInterval"
+##  <Func Name="LeastEigenvalueInterval"
 ##   Arg='gamma'/>
 ##
 ##  <Description>
-##  TODO This function will calculate an interval containing the smallest
+##  TODO This function will calculate an interval containing the Least
 ##  eigenvalue of a graph.
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "SmallestEigenvalueInterval" );
+DeclareOperation( "LeastEigenvalueInterval", [IsRecord, IsRat] );
 
 #############################################################################
 ##
-#F  LargestEigenvalueInterval( <gamma> )
+#O  LeastEigenvalueInterval( [ <v>, <k>, <lambda>, <mu> ] , <eps> )
 ##  
-##  <#GAPDoc Label="LargestEigenvalueInterval">
+##  <#GAPDoc Label="LeastEigenvalueIntervalFromSRGParameters">
 ##  <ManSection>
-##  <Func Name="LargestEigenvalueInterval"
-##   Arg='gamma'/>
-##
-##  <Description>
-##  TODO This function will calculate an interval containing the second largest
-##  eigenvalue of a graph.
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "LargestEigenvalueInterval" );
-
-#############################################################################
-##
-#F  SmallestEigenvalueIntervalFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
-##  
-##  <#GAPDoc Label="SmallestEigenvalueIntervalFromSRGParameters">
-##  <ManSection>
-##  <Func Name="SmallestEigenvalueIntervalFromSRGParameters"
+##  <Func Name="LeastEigenvalueIntervalFromSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will calculate an interval containing the smallest
+##  TODO This function will calculate an interval containing the Least
 ##  eigenvalue of a graph with SRG parameters given.TODO
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "SmallestEigenvalueIntervalFromSRGParameters" );
+DeclareOperation( "LeastEigenvalueInterval",  [IsList, IsRat]  );
 
 #############################################################################
 ##
-#F  LargestEigenvalueIntervalFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#O  SecondEigenvalueInterval( <gamma> )
 ##  
-##  <#GAPDoc Label="LargestEigenvalueIntervalFromSRGParameters">
+##  <#GAPDoc Label="SecondEigenvalueInterval">
 ##  <ManSection>
-##  <Func Name="LargestEigenvalueIntervalFromSRGParameters"
+##  <Func Name="SecondEigenvalueInterval"
+##   Arg='gamma'/>
+##
+##  <Description>
+##  TODO This function will calculate an interval containing the second Second
+##  eigenvalue of a graph.
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareOperation( "SecondEigenvalueInterval" , [IsRecord, IsRat]);
+
+#############################################################################
+##
+#O  SecondEigenvalueInterval( [ <v>, <k>, <lambda>, <mu> ] )
+##  
+##  <#GAPDoc Label="SecondEigenvalueIntervalFromSRGParameters">
+##  <ManSection>
+##  <Func Name="SecondEigenvalueIntervalFromSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
 ##  TODO This function will calculate an interval containing the second
-##  largest eigenvalue of a graph with SRG parameters given.TODO
+##  Second eigenvalue of a graph with SRG parameters given.TODO
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "LargestEigenvalueIntervalFromSRGParameters" );
+DeclareOperation( "SecondEigenvalueInterval" , [IsList, IsRat] );
 
 #############################################################################
 ##
-#F  SmallestEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  LeastEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="SmallestEigenvalueFromSRGParameters">
+##  <#GAPDoc Label="LeastEigenvalueFromSRGParameters">
 ##  <ManSection>
-##  <Func Name="SmallestEigenvalueFromSRGParameters"
+##  <Func Name="LeastEigenvalueFromSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will possibly calculate the smallest eigenvalue of
+##  TODO This function will possibly calculate the Least eigenvalue of
 ##  a graph with SRG parameters given. May return a member of field ext. or
 ##  normal float approximation TODO
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "SmallestEigenvalueFromSRGParameters" );
+DeclareGlobalFunction( "LeastEigenvalueFromSRGParameters" );
 
 #############################################################################
 ##
-#F  LargestEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="LargestEigenvalueFromSRGParameters">
+##  <#GAPDoc Label="SecondEigenvalueFromSRGParameters">
 ##  <ManSection>
-##  <Func Name="LargestEigenvalueFromSRGParameters"
+##  <Func Name="SecondEigenvalueFromSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will possibly calculate the second largest eigenvalue of
+##  TODO This function will possibly calculate the second Second eigenvalue of
 ##  a graph with SRG parameters given. May return a member of field ext. or
 ##  normal float approximation TODO
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "LargestEigenvalueFromSRGParameters" );
+DeclareGlobalFunction( "SecondEigenvalueFromSRGParameters" );
 
 #############################################################################
 ##
-#F  SmallestEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  LeastEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="SmallestEigenvalueMultiplicityFromSRGParameters">
+##  <#GAPDoc Label="LeastEigenvalueMultiplicityFromSRGParameters">
 ##  <ManSection>
-##  <Func Name="SmallestEigenvalueMultiplicityFromSRGParameters"
+##  <Func Name="LeastEigenvalueMultiplicityFromSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will calculate the multiplicity of the smallest eigenvalue of
+##  TODO This function will calculate the multiplicity of the Least eigenvalue of
 ##  a graph with SRG parameters given. TODO
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "SmallestEigenvalueMultiplicityFromSRGParameters" );
+DeclareGlobalFunction( "LeastEigenvalueMultiplicityFromSRGParameters" );
 
 #############################################################################
 ##
-#F  LargestEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-##  <#GAPDoc Label="LargestEigenvalueMultiplicityFromSRGParameters">
+##  <#GAPDoc Label="SecondEigenvalueMultiplicityFromSRGParameters">
 ##  <ManSection>
-##  <Func Name="LargestEigenvalueMultiplicityFromSRGParameters"
+##  <Func Name="SecondEigenvalueMultiplicityFromSRGParameters"
 ##   Arg='[ v, k, lambda, mu ]'/>
 ##
 ##  <Description>
-##  TODO This function will calculate the multiplicity of the second largest eigenvalue of
+##  TODO This function will calculate the multiplicity of the second Second eigenvalue of
 ##  a graph with SRG parameters given. 
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "LargestEigenvalueMultiplicityFromSRGParameters" );
+DeclareGlobalFunction( "SecondEigenvalueMultiplicityFromSRGParameters" );
 
 #############################################################################
 ##
-#F  HoffmanCocliqueBound( <gamma> )
+#F  KreinParameters( parms )
+##  
+##  <#GAPDoc Label="KreinParameters">
+##  <ManSection>
+##  <Func Name="KreinParameters"
+##   Arg='[ <v>, <k>, <lamda>, <mu>]'/>
+##
+##  <Description>
+##  TODO This function will return the Krein parameters. 
+##  Input graph/parameters? DRG? SRG? how to calculate.TODO
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "KreinParameters" );
+
+#############################################################################
+##
+#F  KreinConditionsCheck( TODO )
+##  
+##  <#GAPDoc Label="KreinConditionsCheck">
+##  <ManSection>
+##  <Func Name="KreinConditionsCheck"
+##   Arg='TODO'/>
+##
+##  <Description>
+##  TODO This function will check the Krein conditions. 
+##  Input graph/parameters? DRG? SRG? how to calculate.TODO
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "KreinConditionsCheck" );
+
+#############################################################################
+##
+#F  AbsoluteBoundCheck( [ v, k, l, m ] )
+##  
+##  <#GAPDoc Label="AbsoluteBoundCheck">
+##  <ManSection>
+##  <Func Name="AbsoluteBoundCheck"
+##   Arg='[ v, k, l, m ]'/>
+##
+##  <Description>
+##  TODO This function will check the Absolute Bound. 
+##  Input graph/parameters? DRG? SRG? how to calculate.TODO
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "AbsoluteBoundCheck" );
+
+#############################################################################
+##
+#O  HoffmanCocliqueBound( <gamma> )
 ##  
 ##  <#GAPDoc Label="HoffmanCocliqueBound">
 ##  <ManSection>
@@ -384,48 +491,11 @@ DeclareGlobalFunction( "LargestEigenvalueMultiplicityFromSRGParameters" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "HoffmanCocliqueBound" );
+DeclareOperation( "HoffmanCocliqueBound" , [IsRecord] );
 
 #############################################################################
 ##
-#F  HoffmanCliqueBound( <gamma> )
-##  
-##  <#GAPDoc Label="HoffmanCliqueBound">
-##  <ManSection>
-##  <Func Name="HoffmanCliqueBound"
-##   Arg='gamma'/>
-##
-##  <Description>
-##  TODO This function will calculate the Hoffman clique bound of a graph
-##  blah de blah TODO
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "HoffmanCliqueBound" );
-
-#############################################################################
-##
-#F  DelsarteCliqueBound( <gamma> )
-##  
-##  <#GAPDoc Label="DelsarteCliqueBound">
-##  <ManSection>
-##  <Func Name="DelsarteCliqueBound"
-##   Arg='gamma'/>
-##
-##  <Description>
-##  TODO This function will calculate the Delsarte clique bound of a graph
-##  TODO
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "DelsarteCliqueBound" );
-
-
-#############################################################################
-##
-#F  HoffmanCocliqueBoundFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#O  HoffmanCocliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
 ##  <#GAPDoc Label="HoffmanCocliqueBoundFromSRGParameters">
 ##  <ManSection>
@@ -439,11 +509,29 @@ DeclareGlobalFunction( "DelsarteCliqueBound" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "HoffmanCocliqueBoundFromSRGParameters" );
+DeclareOperation( "HoffmanCocliqueBound" , [IsList] );
 
 #############################################################################
 ##
-#F  HoffmanCliqueBoundFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#O  HoffmanCliqueBound( <gamma> )
+##  
+##  <#GAPDoc Label="HoffmanCliqueBound">
+##  <ManSection>
+##  <Func Name="HoffmanCliqueBound"
+##   Arg='gamma'/>
+##
+##  <Description>
+##  TODO This function will calculate the Hoffman clique bound of a graph
+##  blah de blah TODO
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareOperation( "HoffmanCliqueBound" , [IsRecord] );
+
+#############################################################################
+##
+#O  HoffmanCliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
 ##  <#GAPDoc Label="HoffmanCliqueBoundFromSRGParameters">
 ##  <ManSection>
@@ -457,11 +545,29 @@ DeclareGlobalFunction( "HoffmanCocliqueBoundFromSRGParameters" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "HoffmanCliqueBoundFromSRGParameters" );
+DeclareOperation( "HoffmanCliqueBound" , [IsList] );
 
 #############################################################################
 ##
-#F  DelsarteCliqueBoundFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#O  DelsarteCliqueBound( <gamma> )
+##  
+##  <#GAPDoc Label="DelsarteCliqueBound">
+##  <ManSection>
+##  <Func Name="DelsarteCliqueBound"
+##   Arg='gamma'/>
+##
+##  <Description>
+##  TODO This function will calculate the Delsarte clique bound of a graph
+##  TODO
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareOperation( "DelsarteCliqueBound" , [IsRecord] );
+
+#############################################################################
+##
+#O  DelsarteCliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
 ##  <#GAPDoc Label="DelsarteCliqueBoundFromSRGParameters">
 ##  <ManSection>
@@ -475,7 +581,11 @@ DeclareGlobalFunction( "HoffmanCliqueBoundFromSRGParameters" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "DelsarteCliqueBoundFromSRGParameters" );
+DeclareOperation( "DelsarteCliqueBound" , [IsList] );
+
+DeclareSynonym( "HoffmanColouringBound" , DelsarteCliqueBound);
+DeclareSynonym( "HoffmanColoringBound" , DelsarteCliqueBound);
+
 
 #############################################################################
 ##
@@ -512,6 +622,24 @@ DeclareGlobalFunction( "CliqueAdjacencyPolynomial" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "CliqueAdjacencyBound" );
+
+#############################################################################
+##
+#F  RegularCliqueERGParameters( [ <v>, <k>, <lambda> ])
+##  
+##  <#GAPDoc Label="RegularCliqueERGParameters">
+##  <ManSection>
+##  <Func Name="RegularCliqueERGParameters"
+##   Arg='[ v, k, lambda ]'/>
+##
+##  <Description>
+##  TODO This function will return size of a regular clique 
+##  if an ERG with these parameters permits one, false otherwise
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "RegularCliqueERGParameters" );
 
 #############################################################################
 ##
@@ -902,7 +1030,8 @@ DeclareGlobalFunction( "OneStronglyRegularGraph" );
 ##
 ##  <Description>
 ##  TODO This function will return a list of all strongly regular graphs 
-##  with parameters <A>parms</A>. It may accept subsets of fixed parms.TODO
+##  (up to isomorphism) with parameters <A>parms</A>.
+##  It may accept subsets of fixed parms.TODO
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>

@@ -17,7 +17,7 @@
 <#Include Label="LargestEigenvalueInterval">
 
 </Section>
-<Section Label="Functions on parameters sets">
+<Section Label="Functions on parameters tuples">
 <Heading>Functions on parameter sets</Heading>
 
 <#Include Label="FeasibleSRGParameterTuples">
@@ -29,6 +29,8 @@
 <#Include Label="KreinConditionsCheck">
 
 <#Include Label="AbsoluteBoundCheck">
+
+<#Include Label="ComplementParameters">
 
 <#Include Label="SRGToGlobalParameters">
 

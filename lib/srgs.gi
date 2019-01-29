@@ -12,51 +12,59 @@
 ##  
 InstallGlobalFunction( EdgeRegularGraphParameters,
 function(gamma)
-  local orbs,orbnum,reps,next,x,y,vtxset,adjx,adjy,v,k,lambda;
+  local v,edges,orbs,reps,e,x,y,adjx,adjy,k,lambda;
   
   if not IsGraph(gamma) then 
     Error("usage: EdgeRegularGraphParameters( <Graph> )");
   fi;
 
   v:=gamma.order;
+
+  # The empty graph is not edge-regular
   if v=0 then
-    return [];
+    return false;
   fi;
 
   if not IsSimpleGraph(gamma) then
-    Error("<gamma> not a simple graph");
+    return false;
   fi;
 
   if not IsRegularGraph(gamma) then
     return false;
   fi;  
 
+  edges := UndirectedEdges(gamma);
+
+  # Null graphs are not edge-regular
+  if edges=[] then
+    return false;
+  fi;  
+
   if IsBound(gamma.autGroup) then
-    orbs:=GRAPE_OrbitNumbers(gamma.autGroup,v);
+    orbs:=Orbits(gamma.autGroup,edges,OnSets);
   else
-    orbs:=GRAPE_OrbitNumbers(gamma.group,v);
+    orbs:=Orbits(gamma.group,edges,OnSets);
   fi;
 
-  vtxset := [1..v];
-  orbnum:=orbs.orbitNumbers;
-  reps:=orbs.representatives;
+  reps:=orbs{[1..Length(orbs)]}[1];
 
-  adjx := Adjacency(gamma,reps[1]);
+  x := reps[1][1];
+  adjx := Adjacency(gamma,x);
   k:=Length(adjx);
 
-  adjy := Adjacency(gamma,adjx[1]);
+  y := reps[1][2];
+  adjy := Adjacency(gamma,y);
   lambda := Length(Intersection(adjx,adjy));
 
-  for x in [1..Length(reps)] do
-    adjx := Adjacency(gamma,reps[x]);
-    
-    for y in Intersection(adjx,vtxset) do
-      adjy := Adjacency(gamma,y);
+  for e in reps do
+    x:=e[1];
+    y:=e[2];
+    adjx := Adjacency(gamma,x);
+    adjy := Adjacency(gamma,y);
 
-      if not Length(Intersection(adjx,adjy)) = lambda then
+    if not Length(Intersection(adjx,adjy)) = lambda then
         return false;
-      fi;
-    od;
+    fi;
   od;
 
   return [v,k,lambda];
@@ -76,75 +84,84 @@ end );
 
 #############################################################################
 ##
+#F  IsFeasibleERGParameters( [ <v>, <k>, <lambda> ] )
+##  
+InstallGlobalFunction( IsFeasibleERGParameters,
+function( parms )
+  local v,k,lambda;
+
+  # Length exactly 3
+  if not Length(parms)=3 then
+    return false;
+  fi;
+ 
+  v:=parms[1]; 
+  k:=parms[2];
+  lambda:= parms[3];
+
+  # Parameters are always integer
+  if not (IsInt(v) and IsInt(k) and IsInt(lambda)) then
+    return false;
+  fi;
+
+  # No graphs without vertices or edges
+  if v=0 or k=0 then
+    return false;
+  fi;
+
+  # Basic bounds relating the parameters
+  if not (lambda >=0 and k>lambda and v>k) then
+    return false;
+  fi;
+
+  # Divisibility conditions
+  if not (2 in DivisorsInt(v*k)) then 
+    return false;    
+  fi;
+  
+  if not lambda=0 then
+    if not (2 in DivisorsInt(k*lambda) and 6 in DivisorsInt(v*k*lambda)) then
+      return false;
+    fi;
+  fi;
+
+  # Simple counting argument force the following inequality
+  if not (v-2*k+lambda>=0) then
+   return false;    
+  fi;
+
+  return true;
+
+end );
+
+#############################################################################
+##
 #F  StronglyRegularGraphParameters( <gamma> )
 ##  
 InstallGlobalFunction( StronglyRegularGraphParameters,
 function(gamma)
-local orbs,orbnum,reps,next,i,x,y,z,vtxset,adjx,adjy,adjz,notadjx, v,k,lambda,mu;
+local v,k,lambda,mu,eparms,cparms;
 
   v:=gamma.order;
   if not IsGraph(gamma) then 
     Error("usage: StronglyRegularGraphParameters( <Graph> )");
   fi;
 
-  if gamma.order=0 then
-    return [];
-  fi;
-
-  if not IsSimpleGraph(gamma) then
-    Error("<gamma> not a simple graph");
-  fi;
-
-  if not IsRegularGraph(gamma) then
+  eparms := EdgeRegularGraphParameters(gamma);
+  
+  if eparms=false then
     return false;
-  fi;  
-
-  if IsBound(gamma.autGroup) then
-    orbs:=GRAPE_OrbitNumbers(gamma.autGroup,gamma.order);
-  else
-    orbs:=GRAPE_OrbitNumbers(gamma.group,gamma.order);
   fi;
 
-  vtxset := [1..v];
-  orbnum:=orbs.orbitNumbers;
-  reps:=orbs.representatives;
+  cparms := EdgeRegularGraphParameters(ComplementGraph(gamma));
 
-  x := reps[1];
-  adjx := Adjacency(gamma,x);
-  k:=Length(adjx);
-  notadjx := Filtered(vtxset,a->(not a in adjx) and  a<>x);
+  if cparms=false then
+    return false;
+  fi;
 
-  y:= adjx[1];
-  adjy := Adjacency(gamma,y);
-  lambda := Length(Intersection(adjx,adjy));
+  Add(eparms,v-2*cparms[2]+cparms[3]);
 
-  z := notadjx[1];
-  adjz := Adjacency(gamma,z);
-  mu := Length(Intersection(adjx,adjz));
-
-  for i in [1..Length(reps)] do
-    x:=reps[i];
-    adjx := Adjacency(gamma,x);
-    notadjx := Filtered(vtxset,a->(not a in adjx) and  a<>x);
-    
-    for y in adjx do
-      adjy := Adjacency(gamma,y);
-
-      if not Length(Intersection(adjx,adjy)) = lambda then
-        return false;
-      fi;
-    od;
-
-    for z in notadjx do
-      adjz := Adjacency(gamma,z);
-
-      if not Length(Intersection(adjx,adjz)) = mu then
-        return false;
-      fi;
-    od;
-  od;
-
-  return [v,k,lambda,mu];
+  return eparms;
 end );
 
 #############################################################################
@@ -159,11 +176,16 @@ function(gamma)
   return false;
 end );
 
+
+
+
+
+TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
 #############################################################################
 ##
-#F  FeasibleSRGParameterTuples( [ <v>, <k>, <lambda>, <mu> ] )
+#F  FeasibleSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( FeasibleSRGParameterTuples, 
+InstallGlobalFunction( FeasibleSRGParameters, 
 function( str )
     local   pieces,  start,  i;
 
@@ -171,13 +193,21 @@ function( str )
     return pieces;
 end );
 
+
+
+
 #############################################################################
 ##
-#F  IsFeasibleSRGParameterTuple( [ <v>, <k>, <lambda>, <mu> ] )
+#F  IsFeasibleSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( IsFeasibleSRGParameterTuple,
+InstallMethod( IsFeasibleSRGParameters, "list", [IsList],
 function( parms )
   local v,k,lambda,mu,disc,sqrt,m1;
+
+  # Length exactly 4
+  if not Length(parms)=4 then
+    return false;
+  fi;
  
   v:=parms[1]; 
   k:=parms[2];
@@ -210,12 +240,12 @@ function( parms )
     fi;
   fi;
 
-  # Simple counting arguments forces the following equality
+  # Simple counting arguments force the following equality
   if not (v-k-1)*mu=k*(k-lambda-1) then
    return false;    
   fi;
 
-  # Simple counting arguments forces the following inequalities
+  # Simple counting arguments force the following inequalities
   if not (v-2*k+lambda>=0 and v-2-2*k+mu>=0) then
    return false;    
   fi;
@@ -238,9 +268,9 @@ end );
 
 #############################################################################
 ##
-#F  KreinParameters( TODO )
+#F  IsTypeIParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( KreinParameters, 
+InstallGlobalFunction( IsTypeIParameters, 
 function( str )
     local   pieces,  start,  i;
 
@@ -250,9 +280,9 @@ end );
 
 #############################################################################
 ##
-#F  KreinConditionsCheck( TODO )
+#F  IsTypeIIParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( KreinConditionsCheck, 
+InstallGlobalFunction( IsTypeIIParameters, 
 function( str )
     local   pieces,  start,  i;
 
@@ -262,14 +292,19 @@ end );
 
 #############################################################################
 ##
-#F  AbsoluteBoundCheck( TODO )
+#F  ComplementParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( AbsoluteBoundCheck, 
-function( str )
-    local   pieces,  start,  i;
+InstallGlobalFunction( ComplementParameters, 
+function( parms )
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[<v>,<k>,<lambda>,<mu>] is not a feasible parameter tuple");
+  fi;    
+
+  return [parms[1],
+          parms[1]-parms[2]-1,
+          parms[1]-2-2*parms[2]+parms[4],
+          parms[1]-2*parms[2]+parms[3]];
 end );
 
 #############################################################################
@@ -278,7 +313,7 @@ end );
 ##  
 InstallGlobalFunction( SRGToGlobalParameters, 
 function( parms )
-  if not IsFeasibleSRGParameterTuple(parms) then
+  if not IsFeasibleSRGParameters(parms) then
     return false;
   fi;
   return [[0,0,parms[2]],
@@ -294,10 +329,8 @@ InstallGlobalFunction( GlobalToSRGParameters,
 function( parms )
   local v,k,lambda,mu;  
 
-  if not Length(parms) = 3 then
+  if (not Length(parms) = 3) or ForAny(parms, x-> -1 in x) then
     return false;
-  elif ForAny(parms, x-> -1 in x) then
-    return false;   
   fi;
   
   k:=parms[1][3];
@@ -310,170 +343,404 @@ end );
 
 #############################################################################
 ##
-#F  SmallestEigenvalueInterval( <gamma> )
+#O  LeastEigenvalueInterval( <gamma> , <eps> )
 ##  
-InstallGlobalFunction( SmallestEigenvalueInterval, 
-function( str )
-    local   pieces,  start,  i;
+InstallMethod( LeastEigenvalueInterval, "graph", [IsRecord,IsRat],
+function( gamma , eps )
+  local k,chi,sigma,G,sze;
 
-    pieces := [];    
-    return pieces;
+  if not IsGraph(gamma) then
+    #Error("<gamma> must be a grape graph");
+    TryNextMethod();
+  fi;
+
+  sigma := [];
+  sze := gamma.order;
+  G := AutGroupGraph(gamma);
+
+  k := Maximum(List([1..sze],x->VertexDegree(gamma,x)));
+
+  if IsTransitive(G,[1..sze]) then
+    chi := CharacteristicPolynomial(CollapsedAdjacencyMat(Stabilizer(G,1),gamma));
+  else
+    chi := CharacteristicPolynomial(CollapsedAdjacencyMat(Group(()),gamma));
+  fi;
+
+  sigma:=DESIGN_IntervalForLeastRealZero(chi,-k,k,eps);
+
+  return sigma;
+
 end );
 
 #############################################################################
 ##
-#F  LargestEigenvalueInterval( <gamma> )
+#O  LeastEigenvalueInterval( [ <v>, <k>, <lambda>, <mu> ] , <eps> )
 ##  
-InstallGlobalFunction( LargestEigenvalueInterval, 
-function( str )
-    local   pieces,  start,  i;
+InstallMethod( LeastEigenvalueInterval, "tuple", [IsList,IsRat], 
+function( parms , eps )
+  local k,chi,sigma,x;
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    #Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    TryNextMethod();
+  fi;
+
+  sigma := [];
+  k:=parms[2];
+  x:=Indeterminate(Rationals,"x");
+
+  chi:=x*x+(parms[4]-parms[3])*x+parms[4]-k;
+
+  sigma:=DESIGN_IntervalForLeastRealZero(chi,-k,k,eps);
+
+  return sigma;
 end );
 
 #############################################################################
 ##
-#F  SmallestEigenvalueIntervalFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#O  SecondEigenvalueInterval( <gamma> , <eps> )
 ##  
-InstallGlobalFunction( SmallestEigenvalueIntervalFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+InstallMethod( SecondEigenvalueInterval, "regular graph", [IsRecord, IsRat],
+function( gamma , eps )
 
-    pieces := [];    
-    return pieces;
+  if not IsRegularGraph(gamma) then
+    #Error("<gamma> must be a grape graph");
+    TryNextMethod();
+  fi;
+  
+  return -1-Reversed(LeastEigenvalueInterval(ComplementGraph(gamma),eps));
 end );
 
 #############################################################################
 ##
-#F  LargestEigenvalueIntervalFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueInterval( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( LargestEigenvalueIntervalFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
+InstallMethod( SecondEigenvalueInterval, "tuple", [IsList, IsRat], 
+function( parms, eps )
+  if not IsFeasibleSRGParameters(parms) then
+    #Error("<gamma> must be a grape graph");
+    TryNextMethod();
+  fi;
+  
+  return -1-Reversed(LeastEigenvalueInterval(ComplementParameters(parms),eps));
 end );
 
 #############################################################################
 ##
-#F  SmallestEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  LeastEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( SmallestEigenvalueFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+InstallGlobalFunction( LeastEigenvalueFromSRGParameters, 
+function( parms )
+  local v,k,l,m,disc,sqrt,s;
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    #TryNextMethod();
+  fi;
+
+  v:=parms[1];
+  k:=parms[2];
+  l:=parms[3];
+  m:=parms[4];
+
+  disc:=(l-m)*(l-m)+4*(k-m);
+  sqrt:=Sqrt(disc);
+  
+  s:=(l-m-sqrt)/2;  
+
+  return s;
 end );
 
 #############################################################################
 ##
-#F  LargestEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( LargestEigenvalueFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+InstallGlobalFunction( SecondEigenvalueFromSRGParameters, 
+function( parms )
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    #TryNextMethod();
+  fi;
 
-    pieces := [];    
-    return pieces;
+  return parms[3]-parms[4]-LeastEigenvalueFromSRGParameters(parms);
 end );
 
 #############################################################################
 ##
-#F  SmallestEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  LeastEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( SmallestEigenvalueMultiplicityFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+InstallGlobalFunction( LeastEigenvalueMultiplicityFromSRGParameters, 
+function( parms )
+  local v,k,l,m,disc,sqrt,f;
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    #TryNextMethod();
+  fi;
+
+  v:=parms[1];
+  k:=parms[2];
+  l:=parms[3];
+  m:=parms[4];
+
+  disc:=(l-m)*(l-m)+4*(k-m);
+  sqrt:=Sqrt(disc);
+  
+  f:= (v-1+((v-1)*(l-m)+2*k)/sqrt)/2;
+
+  return f;  
 end );
 
 #############################################################################
 ##
-#F  LargestEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( LargestEigenvalueMultiplicityFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+InstallGlobalFunction( SecondEigenvalueMultiplicityFromSRGParameters, 
+function( parms )
+  local v,k,l,m,disc,sqrt,f;
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    #TryNextMethod();
+  fi;
+
+  v:=parms[1];
+  k:=parms[2];
+  l:=parms[3];
+  m:=parms[4];
+
+  disc:=(l-m)*(l-m)+4*(k-m);
+  sqrt:=Sqrt(disc);
+  
+  f:= (v-1-((v-1)*(l-m)+2*k)/sqrt)/2;
+
+  return f;
 end );
 
 #############################################################################
 ##
-#F  HoffmanCocliqueBound( <gamma> )
+#F  KreinParameters( [ <v>, <k>, <lamda>, <mu>] )
 ##  
-InstallGlobalFunction( HoffmanCocliqueBound, 
-function( str )
-    local   pieces,  start,  i;
+InstallGlobalFunction( KreinParameters, 
+function( parms )
+  local k,r,s,K;
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    #TryNextMethod();
+  fi;
+
+  K:=[];
+  k:=parms[2];
+  s:=LeastEigenvalueFromSRGParameters(parms);
+  r:=SecondEigenvalueFromSRGParameters(parms);
+
+  K[1]:=(k+r)*(s+1)*(s+1)-(r+1)*(k+r+2*r*s);
+  K[2]:=(k+s)*(r+1)*(r+1)-(s+1)*(k+s+2*r*s);
+
+  return K;
+end );
+
+#############################################################################
+##
+#F  KreinConditionsCheck( parms )
+##  
+InstallGlobalFunction( KreinConditionsCheck, 
+function( parms )
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    #TryNextMethod();
+  fi;
+  ##################Type check???????????????
+  return ForAll(KreinParameters(parms),x->x>=0);
+end );
+
+#############################################################################
+##
+#F  AbsoluteBoundCheck( [ v, k, l, m ] )
+##  
+InstallGlobalFunction( AbsoluteBoundCheck, 
+function( parms )
+  local v,f,g;
+
+  if not IsFeasibleSRGParameters(parms) then
+    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
+    #TryNextMethod();
+  fi;
+
+  v := parms[1];
+  f := LeastEigenvalueMultiplicityFromSRGParameters(parms);
+  g := SecondEigenvalueMultiplicityFromSRGParameters(parms);
+
+  return 2*v <= f*(f+3) and 2*v <= g*(g+3);
+end );
+
+
+
+#############################################################################
+##
+#O  HoffmanCocliqueBound( <gamma> )
+##  
+InstallMethod( HoffmanCocliqueBound, [IsRecord], 
+function( gamma )
+  local sigma,a,b,v,k,sig1,sig2,eps;
+
+  if not IsGraph(gamma) then
+    TryNextMethod();
+  fi;
+
+  if IsNullGraph(gamma) or not IsRegularGraph(gamma) then
+    Error("Gamma must be a non-empty regular graph");
+  fi;
+
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
+
+  repeat 
+
+  sigma:=LeastEigenvalueInterval(gamma,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
+
+  v:= gamma.order;
+  k:= VertexDegree(gamma,1);
+  a:=v*(-sig2)/(k-sig2);
+  b:=v*(-sig1)/(k-sig1);
+
+  eps:=eps/2;
+
+  until Int(a)=Int(b);
+
+  return Int(a);
+end );
+
+#############################################################################
+##
+#O  HoffmanCocliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
+##  
+InstallMethod( HoffmanCocliqueBound, [IsList],
+function( parms )
+  local sigma,a,b,v,k,sig1,sig2,eps;
+  
+  if not IsFeasibleSRGParameters(parms) then
+    TryNextMethod();
+  fi;
+
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
+
+  repeat 
+
+  sigma:=LeastEigenvalueInterval(parms,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
+
+  v:= parms[1];
+  k:= parms[2];
+  a:=v*(-sig2)/(k-sig2);
+  b:=v*(-sig1)/(k-sig1);
+
+  eps:=eps/2;
+
+  until Int(a)=Int(b);
+
+  return Int(a);
 end );
 
 #############################################################################
 ##
 #F  HoffmanCliqueBound( <gamma> )
 ##  
-InstallGlobalFunction( HoffmanCliqueBound, 
-function( str )
-    local   pieces,  start,  i;
+InstallMethod( HoffmanCliqueBound, [IsRecord], 
+function( gamma )
+  return HoffmanCocliqueBound(ComplementGraph(gamma));
+end );
 
-    pieces := [];    
-    return pieces;
+#############################################################################
+##
+#F  HoffmanCliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
+##  
+InstallMethod( HoffmanCliqueBound, [IsList],
+function( parms )
+  return HoffmanCocliqueBound(ComplementParameters(parms));
 end );
 
 #############################################################################
 ##
 #F  DelsarteCliqueBound( <gamma> )
 ##  
-InstallGlobalFunction( DelsarteCliqueBound, 
-function( str )
-    local   pieces,  start,  i;
+InstallMethod( DelsarteCliqueBound, [IsRecord],
+function( gamma )
+  local sigma,a,b,v,k,sig1,sig2,eps;
 
-    pieces := [];    
-    return pieces;
+  if not IsGraph(gamma) then
+    TryNextMethod();
+  fi;
+
+  if IsNullGraph(gamma) or not IsRegularGraph(gamma) then
+    Error("Gamma must be a non-empty regular graph");
+  fi;
+
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
+
+  repeat 
+
+  sigma:=LeastEigenvalueInterval(gamma,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
+
+  v:= gamma.order;
+  k:= VertexDegree(gamma,1);
+  a:=1-k/sig2;
+  b:=1-k/sig1;
+
+  eps:=eps/2;
+
+  until Int(a)=Int(b);
+
+  return Int(a);
 end );
 
 #############################################################################
 ##
-#F  HoffmanCocliqueBoundFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  DelsarteCliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
-InstallGlobalFunction( HoffmanCocliqueBoundFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+InstallMethod( DelsarteCliqueBound, [IsList],
+function( parms )
+  local sigma,a,b,v,k,sig1,sig2,eps;
+  
+  if not IsFeasibleSRGParameters(parms) then
+    TryNextMethod();
+  fi;
 
-    pieces := [];    
-    return pieces;
-end );
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
 
-#############################################################################
-##
-#F  HoffmanCliqueBoundFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
-##  
-InstallGlobalFunction( HoffmanCliqueBoundFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+  repeat 
 
-    pieces := [];    
-    return pieces;
-end );
+  sigma:=LeastEigenvalueInterval(parms,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
 
-#############################################################################
-##
-#F  DelsarteCliqueBoundFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
-##  
-InstallGlobalFunction( DelsarteCliqueBoundFromSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+  v:= parms[1];
+  k:= parms[2];
+  a:=1-k/sig2;
+  b:=1-k/sig1;
 
-    pieces := [];    
-    return pieces;
+  eps:=eps/2;
+
+  until Int(a)=Int(b);
+
+  return Int(a);
 end );
 
 #############################################################################
@@ -481,11 +748,26 @@ end );
 #F  CliqueAdjacencyPolynomial( [ <v>, <k>, <lambda> ] )
 ##  
 InstallGlobalFunction( CliqueAdjacencyPolynomial, 
-function( str )
-    local   pieces,  start,  i;
+function( parms )
+  local v,k,l,x,y;
 
-    pieces := [];    
-    return pieces;
+  if not (Length(parms)=3 and ForAll(parms, IsInt))  then
+    Error("usage: CliqueAdjacencyBound( [<Int>, <Int>, <Int>])");
+  fi;
+
+  v:=parms[1]; 
+  k:=parms[2];
+  l:=parms[3]; 
+
+  if not (l >= 0 and l < k and k < v) then
+    Error("Input (v,k,lambda) must satisfy 0 <= lambda < k < v"); 
+  fi;
+
+  x:=Indeterminate(Rationals,"x");
+  y:=Indeterminate(Rationals,"y");
+
+  return (v-y)*x*(x+1) - 2*y*(k-y+1) + y*(y-1)*(l-y+2);
+
 end );
 
 #############################################################################
@@ -493,11 +775,117 @@ end );
 #F  CliqueAdjacencyBound( [ <v>, <k>, <lambda> ] )
 ##  
 InstallGlobalFunction( CliqueAdjacencyBound, 
-function( str )
-    local   pieces,  start,  i;
+function( parms )
+    local v,k,l,a,b,c,disc,s,m,lambdas,firstbnd;
 
-    pieces := [];    
-    return pieces;
+  if not (Length(parms)=3 and ForAll(parms, IsInt))  then
+    Error("usage: CliqueAdjacencyBound( [<Int>, <Int>, <Int>])");
+  fi;
+
+  v:=parms[1]; 
+  k:=parms[2];
+  l:=parms[3]; 
+
+  if not (l >= 0 and l < k and k < v) then
+    Error("Input (v,k,lambda) must satisfy 0 <= lambda < k < v"); 
+  fi;
+
+  m := [0,0];
+
+  firstbnd := l+2;
+
+  for s in [2..firstbnd] do
+
+    m[s+1] := 0;  # For future use we always update m. 
+
+    # Calculating the discriminant of the Block Intersection Polynomial
+    a := v-s;
+    b := a-2*s*(k-s+1);
+    c := s*(s-1)*(l-s+2);
+    disc := b*b-4*a*c;
+
+    # If it attains no negative value, we leave this s 
+    if disc <= 0 then
+      continue;
+    fi;
+
+    # Here we use a costly function to find if there is an integer
+    # evaluating to a negative number under the polynomial
+    # May be able to improve on this for the specific case of quadratic
+    lambdas := [ v - s , k - s + 1, l - s + 2 ];
+ 
+    if not BlockIntersectionPolynomialCheck(m,lambdas) then
+      return s-1;
+    fi;
+  od;
+
+  return firstbnd;
+
+end );
+
+#############################################################################
+##
+#F  RegularCliqueERGParameters( [ <v>, <k>, <lambda> ] )
+##  
+InstallGlobalFunction( RegularCliqueERGParameters, 
+function( parms )
+  local v,k,l,b,a,c,disc,s,m,sqrt;
+
+
+  ############# Make feasible ERGs function?
+  if not (IsInt(v) and IsInt(k) and IsInt(l)) then
+    Error("usage: RegularCliqueFeasabilityList( <Int>, <Int>, <Int>)");
+  fi;
+
+  if not (l >= 0 and l < k and k < v) then
+    Error("Input (v,k,lambda) must satisfy 0 <= lambda < k < v"); 
+  fi;
+
+  v := parms[1];
+  k := parms[2];
+  l := parms[3];
+
+  a := v-2*k+l;
+  b := k*k+3*k-l-v*(l+2);
+  c := v*(l+1-k);
+
+  if a=0 then
+    if b=0 then
+    ###############Fill in depending on ERG feasability checking
+    fi;
+  fi;
+
+  disc := b*b-4*a*c;
+
+  if disc < 0 then
+    return false;
+  fi;
+
+  sqrt := Sqrt(disc);
+  s := (-b+sqrt)/(2*a);
+
+  if not IsInt(s) then
+    return false;
+  fi;
+
+  a := v-s;
+  b := -a;
+  c := -s*(s-1)*(l-s+2);
+
+  disc := b*b-4*a*c;
+
+  if disc < 0 then
+    return false;
+  fi;
+
+  sqrt := Sqrt(disc);
+  m := (-b+sqrt)/(2*a);
+
+  if not IsInt(m) then
+    return false;
+  fi;
+ 
+  return [s,m];
 end );
 
 #############################################################################
@@ -562,7 +950,7 @@ end );
 
 #############################################################################
 ##
-#F  IsFeasibleQuasiRegularCliqueSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  IsFeasibleQuasiRegularSetSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
 InstallGlobalFunction( IsFeasibleQuasiRegularSetSRGParameters, 
 function( str )
