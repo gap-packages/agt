@@ -10,12 +10,6 @@
 
 <#Include Label="DelsarteCliqueBound">
 
-<#Include Label="HoffmanCocliqueBoundFromSRGParameters">
-
-<#Include Label="HoffmanCliqueBoundFromSRGParameters">
-
-<#Include Label="DelsarteCliqueBoundFromSRGParameters">
-
 <#Include Label="BasicEdgeSwitching">
 
 <#Include Label="GodsilMcKaySwitching">
@@ -29,6 +23,8 @@
 <#Include Label="CliqueAdjacencyPolynomial">
 
 <#Include Label="CliqueAdjacencyBound">
+
+<#Include Label="RegularCliqueERGParameters">
 
 <#Include Label="IsFeasibleRegularCliqueERGParameters">
 

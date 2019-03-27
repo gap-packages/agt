@@ -1,34 +1,26 @@
 <Chapter Label="regprop">
 <Heading>Regularity properties of graphs</Heading>
 
-<Section Label="Inspecting properties of graphs">
-<Heading>Inspecting regularity of graphs</Heading>
+<Section Label="Parameters of graphs">
+<Heading>Parameters of graphs</Heading>
 
 <#Include Label="EdgeRegularGraphParameters">
 
 <#Include Label="IsEdgeRegularGraph">
 
+<#Include Label="IsFeasibleERGParameters">
+
 <#Include Label="StronglyRegularGraphParameters">
 
 <#Include Label="IsStronglyRegularGraph">
 
-<#Include Label="SmallestEigenvalueInterval">
+<#Include Label="IsFeasibleSRGParameters">
 
-<#Include Label="LargestEigenvalueInterval">
+<#Include Label="IsPrimitiveSRGParameters">
 
-</Section>
-<Section Label="Functions on parameters tuples">
-<Heading>Functions on parameter sets</Heading>
+<#Include Label="IsTypeIParameters">
 
-<#Include Label="FeasibleSRGParameterTuples">
-
-<#Include Label="IsFeasibleSRGParameterTuple">
-
-<#Include Label="KreinParameters">
-
-<#Include Label="KreinConditionsCheck">
-
-<#Include Label="AbsoluteBoundCheck">
+<#Include Label="IsTypeIIParameters">
 
 <#Include Label="ComplementParameters">
 
@@ -36,17 +28,28 @@
 
 <#Include Label="GlobalToSRGParameters">
 
-<#Include Label="SmallestEigenvalueIntervalFromSRGParameters">
+</Section>
 
-<#Include Label="LargestEigenvalueIntervalFromSRGParameters">
+<Section Label="Inspecting regular graphs and their parameters">
+<Heading>Inspecting regular graphs and their parameters</Heading>
 
-<#Include Label="SmallestEigenvalueFromSRGParameters">
+<#Include Label="KreinParameters">
 
-<#Include Label="LargestEigenvalueFromSRGParameters">
+<#Include Label="KreinConditionsCheck">
 
-<#Include Label="SmallestEigenvalueMultiplicityFromSRGParameters">
+<#Include Label="AbsoluteBoundCheck">
 
-<#Include Label="LargestEigenvalueMultiplicityFromSRGParameters">
+<#Include Label="LeastEigenvalueInterval">
+
+<#Include Label="SecondEigenvalueInterval">
+
+<#Include Label="LeastEigenvalueFromSRGParameters">
+
+<#Include Label="SecondEigenvalueFromSRGParameters">
+
+<#Include Label="LeastEigenvalueMultiplicityFromSRGParameters">
+
+<#Include Label="SecondEigenvalueMultiplicityFromSRGParameters">
 
 </Section>
 

@@ -11,7 +11,7 @@
 #F  EdgeRegularGraphParameters( <gamma> )
 ##  
 InstallGlobalFunction( EdgeRegularGraphParameters,
-function(gamma)
+function( gamma )
   local v,edges,orbs,reps,e,x,y,adjx,adjy,k,lambda;
   
   if not IsGraph(gamma) then 
@@ -84,11 +84,15 @@ end );
 
 #############################################################################
 ##
-#F  IsFeasibleERGParameters( [ <v>, <k>, <lambda> ] )
+#F  IsFeasibleERGParameters( [ <v>, <k>, <l> ] )
 ##  
 InstallGlobalFunction( IsFeasibleERGParameters,
 function( parms )
-  local v,k,lambda;
+  local v,k,l;
+
+  if not IsList(parms) then
+    return false;
+  fi;  
 
   # Length exactly 3
   if not Length(parms)=3 then
@@ -97,10 +101,10 @@ function( parms )
  
   v:=parms[1]; 
   k:=parms[2];
-  lambda:= parms[3];
+  l:= parms[3];
 
   # Parameters are always integer
-  if not (IsInt(v) and IsInt(k) and IsInt(lambda)) then
+  if not (IsInt(v) and IsInt(k) and IsInt(l)) then
     return false;
   fi;
 
@@ -110,7 +114,7 @@ function( parms )
   fi;
 
   # Basic bounds relating the parameters
-  if not (lambda >=0 and k>lambda and v>k) then
+  if not (l >=0 and k>l and v>k) then
     return false;
   fi;
 
@@ -119,14 +123,14 @@ function( parms )
     return false;    
   fi;
   
-  if not lambda=0 then
-    if not (2 in DivisorsInt(k*lambda) and 6 in DivisorsInt(v*k*lambda)) then
+  if not l=0 then
+    if not (2 in DivisorsInt(k*l) and 6 in DivisorsInt(v*k*l)) then
       return false;
     fi;
   fi;
 
   # Simple counting argument force the following inequality
-  if not (v-2*k+lambda>=0) then
+  if not (v-2*k+l>=0) then
    return false;    
   fi;
 
@@ -139,7 +143,7 @@ end );
 #F  StronglyRegularGraphParameters( <gamma> )
 ##  
 InstallGlobalFunction( StronglyRegularGraphParameters,
-function(gamma)
+function( gamma )
 local v,k,lambda,mu,eparms,cparms;
 
   v:=gamma.order;
@@ -169,53 +173,37 @@ end );
 #F  IsStronglyRegularGraph( <gamma> )
 ##  
 InstallGlobalFunction( IsStronglyRegularGraph,
-function(gamma)
+function( gamma )
   if not StronglyRegularGraphParameters(gamma)=false then
     return true;
   fi;
   return false;
 end );
 
-
-
-
-
-TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
 #############################################################################
 ##
-#F  FeasibleSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  IsFeasibleSRGParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
-InstallGlobalFunction( FeasibleSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-
-
-
-#############################################################################
-##
-#F  IsFeasibleSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
-##  
-InstallMethod( IsFeasibleSRGParameters, "list", [IsList],
+InstallGlobalFunction( IsFeasibleSRGParameters,
 function( parms )
-  local v,k,lambda,mu,disc,sqrt,m1;
+  local v,k,l,m,disc,sqrt,m1;
 
-  # Length exactly 4
+  if not IsList(parms) then
+    return false;
+  fi;  
+
+  # List of length exactly 4
   if not Length(parms)=4 then
     return false;
   fi;
  
   v:=parms[1]; 
   k:=parms[2];
-  lambda:= parms[3];
-  mu:=parms[4];
+  l:=parms[3];
+  m:=parms[4];
 
   # Parameters are always integer
-  if not (IsInt(v) and IsInt(k) and IsInt(lambda) and IsInt(mu)) then
+  if not (IsInt(v) and IsInt(k) and IsInt(l) and IsInt(m)) then
     return false;
   fi;
 
@@ -225,7 +213,7 @@ function( parms )
   fi;
 
   # Basic bounds relating the parameters
-  if not (lambda >=0 and k>lambda and v>k and k>=mu) then
+  if not (l>=0 and k>l and v>k and k>=m) then
     return false;
   fi;
 
@@ -234,30 +222,30 @@ function( parms )
     return false;    
   fi;
   
-  if not lambda=0 then
-    if not (2 in DivisorsInt(k*lambda) and 6 in DivisorsInt(v*k*lambda)) then
+  if not l=0 then
+    if not (2 in DivisorsInt(k*l) and 6 in DivisorsInt(v*k*l)) then
       return false;
     fi;
   fi;
 
   # Simple counting arguments force the following equality
-  if not (v-k-1)*mu=k*(k-lambda-1) then
+  if not (v-k-1)*m=k*(k-l-1) then
    return false;    
   fi;
 
   # Simple counting arguments force the following inequalities
-  if not (v-2*k+lambda>=0 and v-2-2*k+mu>=0) then
+  if not (v-2*k+l>=0 and v-2-2*k+m>=0) then
    return false;    
   fi;
 
   # Integrality of eigenvalue multiplicities
-  disc:=(lambda-mu)*(lambda-mu)+4*(k-mu);
+  disc:=(l-m)*(l-m)+4*(k-m);
   sqrt:=RootInt(disc);
-  if not (disc=sqrt*sqrt or 2*k+(v-1)*(lambda-mu)=0) then
+  if not (disc=sqrt*sqrt or 2*k+(v-1)*(l-m)=0) then
     return false;
   fi;
   
-  m1:=((v-1)+((2*k+(v-1)*(lambda-mu))/sqrt))/2;
+  m1:=((v-1)+((2*k+(v-1)*(l-m))/sqrt))/2;
   if not IsInt(m1) then
     return false;
   fi;
@@ -268,37 +256,60 @@ end );
 
 #############################################################################
 ##
-#F  IsTypeIParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  IsPrimitiveSRGParameters( [ <v>, <k>, <l>, <m> ] )
+##  
+InstallGlobalFunction( IsPrimitiveSRGParameters,
+function( parms )
+  if not IsFeasibleSRGParameters(parms) then
+    return false;
+  fi;
+  return not (parms[4]=0 or ComplementParameters(parms)[4]=0);
+end );
+
+#############################################################################
+##
+#F  IsTypeIParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( IsTypeIParameters, 
-function( str )
-    local   pieces,  start,  i;
+function( parms )
+  local t,ist1;
+  
+  if not IsFeasibleSRGParameters(parms) then
+    return false;
+  fi;
 
-    pieces := [];    
-    return pieces;
+  ist1:=true;
+  t:=parms[4];
+  
+  ist1:=ist1 and t>0;
+  ist1:=ist1 and parms[1]=4*t+1;
+  ist1:=ist1 and parms[2]=2*t;
+  ist1:=ist1 and parms[3]=t-1;
+
+  return ist1;
 end );
 
 #############################################################################
 ##
-#F  IsTypeIIParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  IsTypeIIParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( IsTypeIIParameters, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
+function( parms )
+  if not IsFeasibleSRGParameters(parms) then
+    return false;
+  fi;
+  return IsInt(LeastEigenvalueFromSRGParameters(parms));
 end );
 
 #############################################################################
 ##
-#F  ComplementParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  ComplementParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( ComplementParameters, 
 function( parms )
 
   if not IsFeasibleSRGParameters(parms) then
-    Error("[<v>,<k>,<lambda>,<mu>] is not a feasible parameter tuple");
+    return false;
   fi;    
 
   return [parms[1],
@@ -309,7 +320,7 @@ end );
 
 #############################################################################
 ##
-#F  SRGToGlobalParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SRGToGlobalParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( SRGToGlobalParameters, 
 function( parms )
@@ -327,18 +338,27 @@ end );
 ##  
 InstallGlobalFunction( GlobalToSRGParameters, 
 function( parms )
-  local v,k,lambda,mu;  
+  local v,k,l,m;  
 
   if (not Length(parms) = 3) or ForAny(parms, x-> -1 in x) then
     return false;
   fi;
   
   k:=parms[1][3];
-  lambda:=parms[2][2];
-  mu:=parms[3][1];
-  v:=k+1+k*(k-lambda-1)/mu;
+  l:=parms[2][2];
+  m:=parms[3][1];
 
-  return [ v, k, lambda, mu ];
+  if m=0 then
+    return false;
+  fi;    
+
+  v:=k+1+k*(k-l-1)/m;
+
+  if not IsFeasibleSRGParameters([v,k,l,m]) then
+    return false;
+  fi;
+
+  return [ v, k, l, m ];
 end );
 
 #############################################################################
@@ -374,14 +394,13 @@ end );
 
 #############################################################################
 ##
-#O  LeastEigenvalueInterval( [ <v>, <k>, <lambda>, <mu> ] , <eps> )
+#O  LeastEigenvalueInterval( [ <v>, <k>, <l>, <m> ] , <eps> )
 ##  
-InstallMethod( LeastEigenvalueInterval, "tuple", [IsList,IsRat], 
+InstallMethod( LeastEigenvalueInterval, "SRG parameter tuple", [IsList,IsRat], 
 function( parms , eps )
   local k,chi,sigma,x;
 
   if not IsFeasibleSRGParameters(parms) then
-    #Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
     TryNextMethod();
   fi;
 
@@ -402,18 +421,25 @@ end );
 ##  
 InstallMethod( SecondEigenvalueInterval, "regular graph", [IsRecord, IsRat],
 function( gamma , eps )
+  local k;
 
   if not IsRegularGraph(gamma) then
     #Error("<gamma> must be a grape graph");
     TryNextMethod();
   fi;
   
+  k:=Length(Adjacency(gamma,1));
+  
+  if not IsConnectedGraph(gamma) then
+    return [k,k]; 
+  fi;
+
   return -1-Reversed(LeastEigenvalueInterval(ComplementGraph(gamma),eps));
 end );
 
 #############################################################################
 ##
-#F  SecondEigenvalueInterval( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueInterval( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallMethod( SecondEigenvalueInterval, "tuple", [IsList, IsRat], 
 function( parms, eps )
@@ -421,21 +447,24 @@ function( parms, eps )
     #Error("<gamma> must be a grape graph");
     TryNextMethod();
   fi;
+
+  if parms[4]=0 then
+    return [parms[2],parms[2]];
+  fi;
   
   return -1-Reversed(LeastEigenvalueInterval(ComplementParameters(parms),eps));
 end );
 
 #############################################################################
 ##
-#F  LeastEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  LeastEigenvalueFromSRGParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( LeastEigenvalueFromSRGParameters, 
 function( parms )
   local v,k,l,m,disc,sqrt,s;
 
   if not IsFeasibleSRGParameters(parms) then
-    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
-    #TryNextMethod();
+    return false;
   fi;
 
   v:=parms[1];
@@ -453,13 +482,12 @@ end );
 
 #############################################################################
 ##
-#F  SecondEigenvalueFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueFromSRGParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( SecondEigenvalueFromSRGParameters, 
 function( parms )
   if not IsFeasibleSRGParameters(parms) then
-    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
-    #TryNextMethod();
+    return false;
   fi;
 
   return parms[3]-parms[4]-LeastEigenvalueFromSRGParameters(parms);
@@ -467,15 +495,14 @@ end );
 
 #############################################################################
 ##
-#F  LeastEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  LeastEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( LeastEigenvalueMultiplicityFromSRGParameters, 
 function( parms )
   local v,k,l,m,disc,sqrt,f;
 
   if not IsFeasibleSRGParameters(parms) then
-    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
-    #TryNextMethod();
+    return false;
   fi;
 
   v:=parms[1];
@@ -493,15 +520,14 @@ end );
 
 #############################################################################
 ##
-#F  SecondEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
+#F  SecondEigenvalueMultiplicityFromSRGParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( SecondEigenvalueMultiplicityFromSRGParameters, 
 function( parms )
   local v,k,l,m,disc,sqrt,f;
 
   if not IsFeasibleSRGParameters(parms) then
-    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
-    #TryNextMethod();
+    return false;
   fi;
 
   v:=parms[1];
@@ -519,15 +545,14 @@ end );
 
 #############################################################################
 ##
-#F  KreinParameters( [ <v>, <k>, <lamda>, <mu>] )
+#F  KreinParameters( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( KreinParameters, 
 function( parms )
   local k,r,s,K;
 
   if not IsFeasibleSRGParameters(parms) then
-    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
-    #TryNextMethod();
+    return false;
   fi;
 
   K:=[];
@@ -543,15 +568,18 @@ end );
 
 #############################################################################
 ##
-#F  KreinConditionsCheck( parms )
+#F  KreinConditionsCheck( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallGlobalFunction( KreinConditionsCheck, 
 function( parms )
   if not IsFeasibleSRGParameters(parms) then
-    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
-    #TryNextMethod();
+    return false;
   fi;
-  ##################Type check???????????????
+  
+  if IsTypeIParameters(parms) then
+    return true;
+  fi;
+
   return ForAll(KreinParameters(parms),x->x>=0);
 end );
 
@@ -564,8 +592,7 @@ function( parms )
   local v,f,g;
 
   if not IsFeasibleSRGParameters(parms) then
-    Error("[ <v>, <k>, <lambda>, <mu> ] must be a feasible SRG parameter set");
-    #TryNextMethod();
+    return false;
   fi;
 
   v := parms[1];
@@ -574,8 +601,6 @@ function( parms )
 
   return 2*v <= f*(f+3) and 2*v <= g*(g+3);
 end );
-
-
 
 #############################################################################
 ##
@@ -618,7 +643,7 @@ end );
 
 #############################################################################
 ##
-#O  HoffmanCocliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
+#O  HoffmanCocliqueBound( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallMethod( HoffmanCocliqueBound, [IsList],
 function( parms )
@@ -662,7 +687,7 @@ end );
 
 #############################################################################
 ##
-#F  HoffmanCliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
+#F  HoffmanCliqueBound( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallMethod( HoffmanCliqueBound, [IsList],
 function( parms )
