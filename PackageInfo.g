@@ -1,6 +1,6 @@
 #############################################################################
 #
-# PackageInfo.g for the package 'srgs'                          Rhys J. Evans
+# PackageInfo.g for the package 'agt'                          Rhys J. Evans
 #
 # (created from the template file in the `Example' package)
 #
@@ -8,7 +8,7 @@ SetPackageInfo( rec(
 
 ##  This is case sensitive, use your preferred spelling.
 ##
-PackageName := "srgs",
+PackageName := "agt",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
@@ -29,7 +29,7 @@ Date := "12/11/2018",
 ##  <!ENTITY RELEASEDATE "12 November 2018">
 ##  <#/GAPDoc>
 
-PackageWWWHome  := "https://rhysje00.github.io/srgs/",
+PackageWWWHome  := "https://rhysje00.github.io/agt/",
 ##PackageWWWHome :=
 ##  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
 
@@ -51,7 +51,7 @@ PackageWWWHome  := "https://rhysje00.github.io/srgs/",
 # SupportEmail := "",
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/rhysje00/srgs",
+    URL := "https://github.com/rhysje00/agt",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 SupportEmail := "r.evans@qmul.ac.uk",
@@ -203,7 +203,7 @@ PackageInfoURL :=
 # computing the Smith normal form of integer matrices and some related \
 # utilities.",
 AbstractHTML   :=  
-  "The <span class=\"pkgname\">srgs</span> package provides a library \
+  "The <span class=\"pkgname\">agt</span> package provides a library \
   of strongly regular graphs on at most 40 vertices. It also provides  \
   functions to analyse strongly regular and other kinds of graphs",
 
@@ -233,7 +233,7 @@ AbstractHTML   :=
 ##  
 # in case of several help books give a list of such records here:
 PackageDoc := rec(
-  BookName  := "srgs",
+  BookName  := "agt",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
@@ -306,12 +306,12 @@ AvailabilityTest := ReturnTrue,
 ##  shown and when it is not shown (note the ~-syntax in this example).
 ##BannerString := Concatenation( 
 ##    "----------------------------------------------------------------\n",
-##    "Loading  srgs ", ~.Version, "\n",
+##    "Loading  agt ", ~.Version, "\n",
 ##    "by ",
 ##    JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
 ##                                    r -> Concatenation(
 ##        r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
-##    "For help, type: ?srgs package \n",
+##    "For help, type: ?agt package \n",
 ##    "----------------------------------------------------------------\n" ),
 
 

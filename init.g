@@ -7,9 +7,9 @@
 ##
 #R  Read the declaration files.
 ##
-ReadPackage( "srgs", "lib/utils.gd" );
-ReadPackage( "srgs", "lib/srgs.gd" );
-ReadPackage( "srgs", "lib/srglib.gd" );
+ReadPackage( "agt", "lib/utils.gd" );
+ReadPackage( "agt", "lib/srgs.gd" );
+ReadPackage( "agt", "lib/srglib.gd" );
 
 #############################################################################
 ##
