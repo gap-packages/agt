@@ -1,20 +1,14 @@
 <Chapter Label="regsub">
-<Heading>Regular subgraphs of regular graphs</Heading>
+<Heading>Subgraphs of graphs</Heading>
 
-<Section Label="Regular subgraphs related to eigenvalues">
-<Heading>Regular subgraphs related to eigenvalues</Heading>
+<Section Label="Subgraph bounds related to eigenvalues">
+<Heading>Subgraph bounds related to eigenvalues</Heading>
 
 <#Include Label="HoffmanCocliqueBound">
 
 <#Include Label="HoffmanCliqueBound">
 
 <#Include Label="DelsarteCliqueBound">
-
-<#Include Label="BasicEdgeSwitching">
-
-<#Include Label="GodsilMcKaySwitching">
-
-<#Include Label="IsGodsilMcKayPartition">
 
 </Section>
 <Section Label="Block intersection polynomials">
@@ -28,16 +22,11 @@
 
 <#Include Label="IsFeasibleRegularCliqueERGParameters">
 
-<#Include Label="IsFeasibleQuasiRegularCliqueERGParameters">
-
 <#Include Label="RegularAdjacencyPolynomial">
 
 <#Include Label="RegularAdjacencyBounds">
 
 <#Include Label="IsFeasibleRegularSetSRGParameters">
-
-<#Include Label="IsFeasibleQuasiRegularSetSRGParameters">
-
 
 </Section>
 

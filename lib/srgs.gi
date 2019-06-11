@@ -1,21 +1,26 @@
 #############################################################################
 ##
-#W  srgs.gd           Strongly Regular graph library               Rhys Evans
+#W  srgs.gi           Strongly Regular graph library               Rhys Evans
 ##
 ##
 ##  This file contains the routines for the strongly regular graphs library
 ##
 
+######################
+## GLOBAL FUNCTIONS ##
+######################
+##---------------------------------------------------------------------------------------------
+
 #############################################################################
 ##
-#F  EdgeRegularGraphParameters( <gamma> )
+#F  ERGParameters( <gamma> )
 ##  
-InstallGlobalFunction( EdgeRegularGraphParameters,
+InstallGlobalFunction( ERGParameters,
 function( gamma )
   local v,edges,orbs,reps,e,x,y,adjx,adjy,k,lambda;
   
   if not IsGraph(gamma) then 
-    Error("usage: EdgeRegularGraphParameters( <Graph> )");
+    Error("usage: ERGParameters( <Graph> )");
   fi;
 
   v:=gamma.order;
@@ -72,11 +77,11 @@ end );
 
 #############################################################################
 ##
-#F  IsEdgeRegularGraph( <gamma> )
+#F  IsERG( <gamma> )
 ##  
-InstallGlobalFunction( IsEdgeRegularGraph,
+InstallGlobalFunction( IsERG,
 function(gamma)
-  if not EdgeRegularGraphParameters(gamma)=false then
+  if not ERGParameters(gamma)=false then
     return true;
   fi;
   return false;
@@ -140,24 +145,24 @@ end );
 
 #############################################################################
 ##
-#F  StronglyRegularGraphParameters( <gamma> )
+#F  SRGParameters( <gamma> )
 ##  
-InstallGlobalFunction( StronglyRegularGraphParameters,
+InstallGlobalFunction( SRGParameters,
 function( gamma )
 local v,k,lambda,mu,eparms,cparms;
 
   v:=gamma.order;
   if not IsGraph(gamma) then 
-    Error("usage: StronglyRegularGraphParameters( <Graph> )");
+    Error("usage: SRGParameters( <Graph> )");
   fi;
 
-  eparms := EdgeRegularGraphParameters(gamma);
+  eparms := ERGParameters(gamma);
   
   if eparms=false then
     return false;
   fi;
 
-  cparms := EdgeRegularGraphParameters(ComplementGraph(gamma));
+  cparms := ERGParameters(ComplementGraph(gamma));
 
   if cparms=false then
     return false;
@@ -170,11 +175,11 @@ end );
 
 #############################################################################
 ##
-#F  IsStronglyRegularGraph( <gamma> )
+#F  IsSRG( <gamma> )
 ##  
-InstallGlobalFunction( IsStronglyRegularGraph,
+InstallGlobalFunction( IsSRG,
 function( gamma )
-  if not StronglyRegularGraphParameters(gamma)=false then
+  if not SRGParameters(gamma)=false then
     return true;
   fi;
   return false;
@@ -564,6 +569,7 @@ function( parms )
   K[2]:=(k+s)*(r+1)*(r+1)-(s+1)*(k+s+2*r*s);
 
   return K;
+
 end );
 
 #############################################################################
@@ -678,7 +684,7 @@ end );
 
 #############################################################################
 ##
-#F  HoffmanCliqueBound( <gamma> )
+#O  HoffmanCliqueBound( <gamma> )
 ##  
 InstallMethod( HoffmanCliqueBound, [IsRecord], 
 function( gamma )
@@ -687,7 +693,7 @@ end );
 
 #############################################################################
 ##
-#F  HoffmanCliqueBound( [ <v>, <k>, <l>, <m> ] )
+#O  HoffmanCliqueBound( [ <v>, <k>, <l>, <m> ] )
 ##  
 InstallMethod( HoffmanCliqueBound, [IsList],
 function( parms )
@@ -696,7 +702,7 @@ end );
 
 #############################################################################
 ##
-#F  DelsarteCliqueBound( <gamma> )
+#O  DelsarteCliqueBound( <gamma> )
 ##  
 InstallMethod( DelsarteCliqueBound, [IsRecord],
 function( gamma )
@@ -735,7 +741,7 @@ end );
 
 #############################################################################
 ##
-#F  DelsarteCliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
+#O  DelsarteCliqueBound( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
 InstallMethod( DelsarteCliqueBound, [IsList],
 function( parms )
@@ -770,10 +776,10 @@ end );
 
 #############################################################################
 ##
-#F  CliqueAdjacencyPolynomial( [ <v>, <k>, <lambda> ] )
+#F  CliqueAdjacencyPolynomial( [ <v>, <k>, <l> ], x, y )
 ##  
 InstallGlobalFunction( CliqueAdjacencyPolynomial, 
-function( parms )
+function( parms, xn, yn )
   local v,k,l,x,y;
 
   if not (Length(parms)=3 and ForAll(parms, IsInt))  then
@@ -788,8 +794,8 @@ function( parms )
     Error("Input (v,k,lambda) must satisfy 0 <= lambda < k < v"); 
   fi;
 
-  x:=Indeterminate(Rationals,"x");
-  y:=Indeterminate(Rationals,"y");
+  x:=Indeterminate(Rationals,xn);
+  y:=Indeterminate(Rationals,yn);
 
   return (v-y)*x*(x+1) - 2*y*(k-y+1) + y*(y-1)*(l-y+2);
 
@@ -848,36 +854,48 @@ function( parms )
 
 end );
 
+##TODO check this over
 #############################################################################
 ##
 #F  RegularCliqueERGParameters( [ <v>, <k>, <lambda> ] )
 ##  
 InstallGlobalFunction( RegularCliqueERGParameters, 
 function( parms )
-  local v,k,l,b,a,c,disc,s,m,sqrt;
+  local v,k,l,b,a,c,disc,s,m,sqrt,t;
 
-
-  ############# Make feasible ERGs function?
-  if not (IsInt(v) and IsInt(k) and IsInt(l)) then
-    Error("usage: RegularCliqueFeasabilityList( <Int>, <Int>, <Int>)");
-  fi;
-
-  if not (l >= 0 and l < k and k < v) then
-    Error("Input (v,k,lambda) must satisfy 0 <= lambda < k < v"); 
-  fi;
+  if not Length(parms)=3 then
+    Error("usage: RegularCliqueERGParameters( [<Int>, <Int>, <Int>] )");
+  fi;  
 
   v := parms[1];
   k := parms[2];
   l := parms[3];
 
+  if not (IsInt(v) and IsInt(k) and IsInt(l)) then
+    Error("usage: RegularCliqueERGParameters( [<Int>, <Int>, <Int>] )");
+  fi;
+
+  if not (l >= 0 and l < k and k < v) then
+    Error("Input [v,k,lambda] must satisfy 0 <= lambda < k < v"); 
+  fi;
+
   a := v-2*k+l;
   b := k*k+3*k-l-v*(l+2);
   c := v*(l+1-k);
 
+  # Complete multipartite case
   if a=0 then
-    if b=0 then
-    ###############Fill in depending on ERG feasability checking
+    t:=v-k;
+    s:=v/t;
+    if not (IsInt(s) and s > 0) then
+      return false;
     fi;
+
+    if l=k-1  then
+      # Parameters of a complete graph
+      return List([1..(v-1)],x->[x,x]);
+    fi;
+    return [s,s-1];
   fi;
 
   disc := b*b-4*a*c;
@@ -913,52 +931,108 @@ function( parms )
   return [s,m];
 end );
 
+
 #############################################################################
 ##
-#F  IsFeasibleRegularCliqueERGParameters( [ <v>, <k>, <lambda> ] )
+#F  IsFeasibleRegularCliqueERGParameters( [ <v>, <k>, <l> ] )
 ##  
 InstallGlobalFunction( IsFeasibleRegularCliqueERGParameters, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
+function( parms )
+  if RegularCliqueERGParameters(parms)=false then
+    return false;
+  fi;
+  return true;
 end );
 
 #############################################################################
 ##
-#F  IsFeasibleQuasiRegularCliqueERGParameters( [ <v>, <k>, <lambda> ] )
-##  
-InstallGlobalFunction( IsFeasibleQuasiRegularCliqueERGParameters, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  RegularAdjacencyPolynomial( [ <v>, <k>, <lambda>, <mu> ] )
+#F  RegularAdjacencyPolynomial( [ <v>, <k>, <lambda>, <mu> ], x, y, d )
 ##  
 InstallGlobalFunction( RegularAdjacencyPolynomial, 
-function( str )
-    local   pieces,  start,  i;
+function( parms, xn, yn, dn )
+   local v,k,l,m,x,y,d;
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    Error("Input (v,k,lambda) must satisfy 0 <= lambda < k < v"); 
+  fi;
+
+  v:=parms[1]; 
+  k:=parms[2];
+  l:=parms[3]; 
+  m:=parms[4];
+  
+  x:=Indeterminate(Rationals,xn);
+  y:=Indeterminate(Rationals,yn);
+  d:=Indeterminate(Rationals,dn);
+
+  return (v-y)*x*(x+1) - 2*x*k + (2*x+l-m+1)*y*d + y*(y-1)*m - y*d*d;
+
 end );
 
 #############################################################################
 ##
-#F  RegularAdjacencyBounds( [ <v>, <k>, <lambda>, <mu> ] )
+#F  RegularAdjacencyBounds( [ <v>, <k>, <lambda>, <mu> ], d )
 ##  
 InstallGlobalFunction( RegularAdjacencyBounds, 
-function( str )
-    local   pieces,  start,  i;
+function( parms , d )
+    local v,k,l,mu,s,m,lambdas,flbnd,fubnd,lam2;
 
-    pieces := [];    
-    return pieces;
+  if not IsFeasibleSRGParameters(parms) then
+    Error("usage: RegularAdjacencyBounds( [<Int>, <Int>, <Int>, <Int>] , <Int>)");
+  fi;
+
+  v:=parms[1]; 
+  k:=parms[2];
+  l:=parms[3]; 
+  mu:=parms[4];
+
+  m := [0,0];
+
+  flbnd:=d+1;
+  fubnd:=v;
+
+  for s in [2..v] do
+
+    m[s+1] := 0;  # For future use we always update m. 
+
+    lam2 := mu + (((l - mu + 1) - d)*d)/(s-1);
+    if lam2 < 0 then
+      continue;
+    fi;
+
+    # Here we use a costly function to find if there is an integer
+    # evaluating to a negative number under the polynomial
+    # May be able to improve on this for the specific case of quadratic
+    lambdas := [ v - s , k - d, lam2 ];
+ 
+    if BlockIntersectionPolynomialCheck(m,lambdas) then
+      flbnd:= s;
+      break;
+    fi;
+  od;
+
+  for s in Reversed([2..v]) do
+
+    m:=ListWithIdenticalEntries(s+1,0);  # For future use we always update m. 
+
+    lam2 := mu + (((l - mu + 1) - d)*d)/(s-1);
+    if lam2 < 0 then
+      continue;
+    fi;
+
+    # Here we use a costly function to find if there is an integer
+    # evaluating to a negative number under the polynomial
+    # May be able to improve on this for the specific case of quadratic
+    lambdas := [ v - s , k - d, lam2 ];
+ 
+    if BlockIntersectionPolynomialCheck(m,lambdas) then
+      fubnd:= s;
+      break;
+    fi;
+  od;
+
+  return [flbnd,fubnd];
+
 end );
 
 #############################################################################
@@ -966,330 +1040,51 @@ end );
 #F  IsFeasibleRegularSetSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
 ##  
 InstallGlobalFunction( IsFeasibleRegularSetSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+function( parms, d )
+   local b,a,c,disc,v,k,l,mu,s,m,firstbnd,mslist,sqrt,roots;
 
-    pieces := [];    
-    return pieces;
-end );
+  if not IsFeasibleSRGParameters(parms) then
+    Error("usage: IsFeasibleRegularSetSRGParameters([ <Int>, <Int>, <Int>, <Int>] , d)");
+  fi;
 
-#############################################################################
-##
-#F  IsFeasibleQuasiRegularSetSRGParameters( [ <v>, <k>, <lambda>, <mu> ] )
-##  
-InstallGlobalFunction( IsFeasibleQuasiRegularSetSRGParameters, 
-function( str )
-    local   pieces,  start,  i;
+  v:=parms[1];
+  k:=parms[2];
+  l:=parms[3];
+  mu:=parms[4];
 
-    pieces := [];    
-    return pieces;
-end );
+  if not (d >= 0 and d <= k) then
+    Error("Input (v,k,lambda,mu,d) must satisfy 0 <= lambda < k < v, 0 <= d <= k "); 
+  fi;
 
-#############################################################################
-##
-#F  BasicEdgeSwitching( <gamma> , <list1> , <list2> )
-##  
-InstallGlobalFunction( BasicEdgeSwitching, 
-function( str )
-    local   pieces,  start,  i;
+  mslist:=[];
 
-    pieces := [];    
-    return pieces;
-end );
+  for s in [2..v] do
 
-#############################################################################
-##
-#F  GodsilMcKaySwitching( <gamma> , <partition> )
-##  
-InstallGlobalFunction( GodsilMcKaySwitching, 
-function( str )
-    local   pieces,  start,  i;
+    # Calculating the discriminant of the Block Intersection Polynomial
+    a := v-s;
+    b := a-2*s*(k-d);
+    c := s*((s-1)*mu + (l-mu+1)*d - d*d);
+    disc := b*b-4*a*c;
 
-    pieces := [];    
-    return pieces;
-end );
+    if (disc > 0) then
 
-#############################################################################
-##
-#F  IsGodsilMcKayPartition( <gamma> , <partition> )
-##  
-InstallGlobalFunction( IsGodsilMcKayPartition, 
-function( str )
-    local   pieces,  start,  i;
+      sqrt := RootInt(disc);
+     
+      # We need 2 integer zeros which differ by exactly 1
+      if (not a = 0) and (disc = sqrt*sqrt) and (sqrt = a) then
+      
+        roots := [(-b+sqrt)/(2*a),(-b-sqrt)/(2*a)];
+        Sort(roots);    
 
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  DisjointUnionOfCliques( <n1> , <n2>, ... )
-##  
-InstallGlobalFunction( DisjointUnionOfCliques, 
-function( arg... )
-    local   sum, Grs, Grp,  i, fedg, gamma;
-
-    sum := 0;
-    Grs := [];
-    fedg := [];
-
-    for i in arg do
-      sum := sum + i;
-      if i>1 then
-        Add(fedg,[sum-i+1,sum-i+2]);
-        Add(Grs,SymmetricGroup([sum-i+1..sum]));
+        if (IsInt(roots[1])) and (roots[1]>=0) then
+          Add(mslist,[s,roots[2]]);;
+        fi;
       fi;
-    od;      
-
-    Grp:=DirectProduct(Grs);
-    gamma:=EdgeOrbitsGraph(Grp,fedg,sum);
-
-    return UnderlyingGraph(gamma);
-end );
-
-#############################################################################
-##
-#F  CompleteMultipartiteGraph( <n1> , <n2> , ... )
-##  
-InstallGlobalFunction( CompleteMultipartiteGraph, 
-function( arg... )
-    local   sum, Grs, Grp,  i, fvtx, comb, gamma;
-
-    sum := 0;
-    Grs := [];
-    fvtx := [];
-
-    for i in arg do
-      sum := sum + i;
-      Add(fvtx,sum-i+1);
-      Add(Grs,SymmetricGroup([sum-i+1..sum]));
-    od;      
-
-    comb:=Combinations(fvtx,2);
-    Grp:=DirectProduct(Grs);
-    gamma:=EdgeOrbitsGraph(Grp,comb,sum);
-
-    return UnderlyingGraph(gamma);
-end );
-
-#############################################################################
-##
-#F  TriangularGraph( <n> )
-##  
-InstallGlobalFunction( TriangularGraph, 
-function( n )
-    return JohnsonGraph(n,2);
-end );
-
-#############################################################################
-##
-#F  SquareLatticeGraph( <n> )
-##  
-InstallGlobalFunction( SquareLatticeGraph, 
-function( n )   
-    return HammingGraph(2,n);
-end );
-
-#############################################################################
-##
-#F  HoffmanSingletonGraph(  )
-##  
-InstallGlobalFunction( HoffmanSingletonGraph, 
-function(  )
-  local G, cyrng, cyflip, permlist, edgelist, gamma, i,j,h,hi,hij;
-
-  permlist := [];
-  edgelist:=[];
-
-  # Create initial groups to add multiple edges as orbit members
-  for i in [0..9] do
-    cyrng := (5*i+1,5*i+2,5*i+3,5*i+4,5*i+5);
-    Add(permlist,cyrng);
+    fi;
   od;
-
-  # Add edge. We have 5 5-cycles and then 5 pentagrams
-  for i in [0..4] do
-    Append(edgelist,[[5*i+1,5*i+2],[5*i+2,5*i+1]]);
-    Append(edgelist,[25+[5*i+1,5*i+3],25+[5*i+3,5*i+1]]);
-  od;
-
-  G := Group(permlist);
-  gamma := EdgeOrbitsGraph(G,edgelist,50);
-
-  # Get rid of the group as it may not consist of automorphisms of 
-  # the complete graph
-  gamma := NewGroupGraph(Group(()),gamma);
   
+  return mslist;
 
-  # Adding edges as described by Brouwer
-  for h in [1..5] do
-    for i in [1..5] do 
-      hi := h*i;
-      for j in [1..5] do
-        hij := ((hi+j) mod 5)+1 ;
-        AddEdgeOrbit(gamma,[5*(h-1)+j,20+5*i+hij]);
-        AddEdgeOrbit(gamma,[20+5*i+hij,5*(h-1)+j]);
-      od;
-    od;
-  od;  
-
-  # Store the Automorphism group
-  AutGroupGraph(gamma);
-
-  return gamma;
-
-end );
-
-#############################################################################
-##
-#F  HigmanSimsGraph(  )
-##  
-InstallGlobalFunction( HigmanSimsGraph, 
-function(  )
-  local gamma, cocliqs;
-
-  gamma := HoffmanSingletonGraph();
-  gamma := ComplementGraph(gamma);
-
-  cocliqs := CompleteSubgraphsOfGivenSize(gamma,15,2,false);
-
-  return Graph(Group(()),cocliqs,OnSets,
-               function(x,y) return Length(Intersection(x,y)) in [0,8]; end);
-
-end );
-
-#############################################################################
-##
-#F  SimsGerwitzGraph(  )
-##  
-InstallGlobalFunction( SimsGerwitzGraph, 
-function(  )
-  local gamma;
-  gamma := HigmanSimsGraph();
-
-  return DistanceSetInduced(gamma,[2],[1,2]);
-end );
-
-#############################################################################
-##
-#F  AffinePolarGraph( <q> , <e> , <epsilon> )
-##  
-InstallGlobalFunction( AffinePolarGraph, 
-function( q, e, epsilon )
-  local   gamma, grp, Qform;
-  
-  grp := GO(epsilon,e,q);
-  Qform := InvariantQuadraticForm(grp).matrix;
-
- # gamma:=Graph(grp,Elements(GF(q)^e)
-end );
-
-#############################################################################
-##
-#F  StronglyRegularGraphAvailable( <parms>  )
-##
-InstallGlobalFunction( StronglyRegularGraphAvailable, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  StronglyRegularGraph( <parms> , <nr> )
-##  
-InstallGlobalFunction( StronglyRegularGraph, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  NrStronglyRegularGraphs( <parms> )
-##  
-InstallGlobalFunction( NrStronglyRegularGraphs, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  OneStronglyRegularGraph( <parms> )
-##  
-InstallGlobalFunction( OneStronglyRegularGraph, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  AllStronglyRegularGraphs( <parms> )
-##  
-InstallGlobalFunction( AllStronglyRegularGraphs, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  StronglyRegularGraphsIterator( <parms> )
-##  
-InstallGlobalFunction( StronglyRegularGraphIterator, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  SmallFeasibleSRGParameterTuples( [ <v>, <k>, <lambda>, <mu> ], <opt> )
-##  
-InstallGlobalFunction( SmallFeasibleSRGParameterTuples, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  IsEnumeratedSRGParameterTuple( [ <v>, <k>, <lambda>, <mu> ] )
-##  
-InstallGlobalFunction( IsEnumeratedSRGParameterTuple, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
-end );
-
-#############################################################################
-##
-#F  IsKnownSRGParameterTuple( [ <v>, <k>, <lambda>, <mu> ] )
-##  
-InstallGlobalFunction( IsKnownSRGParameterTuple, 
-function( str )
-    local   pieces,  start,  i;
-
-    pieces := [];    
-    return pieces;
 end );
 
 #############################################################################

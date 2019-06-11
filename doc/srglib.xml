@@ -4,15 +4,17 @@
 <Section Label="A library of strongly regular graphs">
 <Heading>A library of strongly regular graphs</Heading>
 
-<#Include Label="StronglyRegularGraph">
+<#Include Label="IsSRGAvailable">
 
-<#Include Label="NrStronglyRegularGraphs">
+<#Include Label="SRG">
 
-<#Include Label="OneStronglyRegularGraph">
+<#Include Label="NrSRGs">
 
-<#Include Label="AllStronglyRegularGraphs">
+<#Include Label="OneSRG">
 
-<#Include Label="StronglyRegularGraphIterator">
+<#Include Label="AllSRGs">
+
+<#Include Label="SRGIterator">
 
 <#Include Label="SmallFeasibleSRGParameterTuples">
 
@@ -35,8 +37,6 @@
 <#Include Label="HigmanSimsGraph">
 
 <#Include Label="SimsGerwitzGraph">
-
-<#Include Label="AffinePolarGraph">
 
 </Section>
 

@@ -8,26 +8,31 @@
 ##  Explanation of file????????????????????????????????????TODO
 ##
 
+######################
+## GLOBAL FUNCTIONS ##
+######################
+##---------------------------------------------------------------------------------------------
+
 #############################################################################
 ##
-#F  EdgeRegularGraphParameters( <gamma> )
+#F  ERGParameters( <gamma> )
 ##  
-##  <#GAPDoc Label="EdgeRegularGraphParameters">
+##  <#GAPDoc Label="ERGParameters">
 ##  <ManSection>
-##  <Func Name="EdgeRegularGraphParameters"
+##  <Func Name="ERGParameters"
 ##   Arg='gamma'/>
 ##
 ##  <Description>
 ##  If the graph <A>gamma</A> is edge-regular, this function returns the 
 ##  edge-regular graph parameters of <A>gamma</A>. Otherwise, it returns
-##  false.
+##  <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=NullGraph(Group(()),5);;
-##gap> EdgeRegularGraphParameters(gamma);
+##gap> ERGParameters(gamma);
 ##false
 ##gap> gamma:=JohnsonGraph(7,3);;
-##gap> EdgeRegularGraphParameters(gamma);
+##gap> ERGParameters(gamma);
 ##[ 35, 12, 5 ]
 ##      ]]>
 ##    </Example>
@@ -35,27 +40,27 @@
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "EdgeRegularGraphParameters" );
+DeclareGlobalFunction( "ERGParameters" );
 
 #############################################################################
 ##
-#F  IsEdgeRegularGraph( <gamma> )
+#F  IsERG( <gamma> )
 ##  
-##  <#GAPDoc Label="IsEdgeRegularGraph">
+##  <#GAPDoc Label="IsERG">
 ##  <ManSection>
-##  <Func Name="IsEdgeRegularGraph"
+##  <Func Name="IsERG"
 ##   Arg='gamma'/>
 ##
 ##  <Description>
-##  This function returns true if the graph <A>gamma</A> is an edge-regular
-##  graph, and false otherwise.
+##  This function returns <C>true</C> if the graph <A>gamma</A> is an edge-regular
+##  graph, and <C>false</C> otherwise.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=NullGraph(Group(()),5);;
-##gap> IsEdgeRegularGraph(gamma);
+##gap> IsERG(gamma);
 ##false
 ##gap> gamma:=JohnsonGraph(7,3);;
-##gap> IsEdgeRegularGraph(gamma);
+##gap> IsERG(gamma);
 ##true
 ##      ]]>
 ##    </Example>
@@ -63,7 +68,7 @@ DeclareGlobalFunction( "EdgeRegularGraphParameters" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "IsEdgeRegularGraph" );
+DeclareGlobalFunction( "IsERG" );
 
 #############################################################################
 ##
@@ -75,7 +80,7 @@ DeclareGlobalFunction( "IsEdgeRegularGraph" );
 ##   Arg='[ v, k, l ]'/>
 ##
 ##  <Description>
-##  This function returns true if <M>( v, k, l )</M> is a feasible
+##  This function returns <C>true</C> if <M>( v, k, l )</M> is a feasible
 ##  parameter tuple for a edge-regular graph, according to the following 
 ##  well known necessary conditions;
 ##  <List>
@@ -85,7 +90,7 @@ DeclareGlobalFunction( "IsEdgeRegularGraph" );
 ##        divides <M>vkl</M>.</Item>
 ##  <Item><M>v-2k+l \geq 0</M></Item>
 ##  </List> 
-##  Otherwise, it returns false.
+##  Otherwise, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsFeasibleERGParameters([15,9,6]);
@@ -102,24 +107,24 @@ DeclareGlobalFunction( "IsFeasibleERGParameters" );
 
 #############################################################################
 ##
-#F  StronglyRegularGraphParameters( <gamma> )
+#F  SRGParameters( <gamma> )
 ##  
-##  <#GAPDoc Label="StronglyRegularGraphParameters">
+##  <#GAPDoc Label="SRGParameters">
 ##  <ManSection>
-##  <Func Name="StronglyRegularGraphParameters"
+##  <Func Name="SRGParameters"
 ##   Arg='gamma'/>
 ##
 ##  <Description>
 ##  If the graph <A>gamma</A> is strongly regular, this function returns  
 ##  the strongly regular graph parameters of <A>gamma</A>. Otherwise, it 
-##  returns false.
+##  returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=CompleteGraph(Group(()),5);;
-##gap> StronglyRegularGraphParameters(gamma);
+##gap> SRGParameters(gamma);
 ##false
 ##gap> gamma:=JohnsonGraph(5,3);;            
-##gap> StronglyRegularGraphParameters(gamma);
+##gap> SRGParameters(gamma);
 ##[ 10, 6, 3, 4 ]
 ##      ]]>
 ##    </Example>
@@ -127,27 +132,27 @@ DeclareGlobalFunction( "IsFeasibleERGParameters" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "StronglyRegularGraphParameters" );
+DeclareGlobalFunction( "SRGParameters" );
 
 #############################################################################
 ##
-#F  IsStronglyRegularGraph( <gamma> )
+#F  IsSRG( <gamma> )
 ##  
-##  <#GAPDoc Label="IsStronglyRegularGraph">
+##  <#GAPDoc Label="IsSRG">
 ##  <ManSection>
-##  <Func Name="IsStronglyRegularGraph"
+##  <Func Name="IsSRG"
 ##   Arg='gamma'/>
 ##
 ##  <Description>
 ##  This function returns true if the graph <A>gamma</A> is a strongly
-##  regular graph, and false otherwise.
+##  regular graph, and <C>false</C> otherwise.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=CompleteGraph(Group(()),5);;
-##gap> IsStronglyRegularGraph(gamma);
+##gap> IsSRG(gamma);
 ##false
 ##gap> gamma:=JohnsonGraph(5,3);;         
-##gap> IsStronglyRegularGraph(gamma);
+##gap> IsSRG(gamma);
 ##true
 ##      ]]>
 ##    </Example>
@@ -155,7 +160,7 @@ DeclareGlobalFunction( "StronglyRegularGraphParameters" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "IsStronglyRegularGraph" );
+DeclareGlobalFunction( "IsSRG" );
 
 #############################################################################
 ##
@@ -167,7 +172,7 @@ DeclareGlobalFunction( "IsStronglyRegularGraph" );
 ##   Arg='[ v, k, l, m ]'/>
 ##
 ##  <Description>
-##  This function returns true if <M>( v, k, l, m )</M> is a feasible
+##  This function returns <C>true</C> if <M>( v, k, l, m )</M> is a feasible
 ##  parameter tuple for a strongly regular graph, according to the following 
 ##  well known necessary conditions;
 ##  <List>
@@ -180,7 +185,7 @@ DeclareGlobalFunction( "IsStronglyRegularGraph" );
 ##  <Item>The formulae for the multiplicities of the eigenvalues of a strongly
 ##        regular graph with these parameters must be integer.</Item>
 ##  </List> 
-##  Otherwise, it returns false. 
+##  Otherwise, it returns <C>false</C>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsFeasibleSRGParameters([15,9,4,7]);
@@ -205,8 +210,8 @@ DeclareGlobalFunction( "IsFeasibleSRGParameters" );
 ##   Arg='[ v, k, l, m ]'/>
 ##
 ##  <Description>
-##  This function returns true if a strongly regular graph with parameters
-##  <M>( v, k, l, m )</M> is primitive. Otherwise, it returns false.  
+##  This function returns <C>true</C> if a strongly regular graph with parameters
+##  <M>( v, k, l, m )</M> is primitive. Otherwise, it returns <C>false</C>.  
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsFeasibleSRGParameters([8,6,4,6]); 
@@ -233,8 +238,8 @@ DeclareGlobalFunction( "IsPrimitiveSRGParameters" );
 ##   Arg='[ v, k, l, m ]'/>
 ##
 ##  <Description>
-##  This function returns true if a strongly regular graph with parameters
-##  <M>( v, k, l, m )</M> is of type I. Otherwise, it returns false.
+##  This function returns <C>true</C> if a strongly regular graph with parameters
+##  <M>( v, k, l, m )</M> is of type I. Otherwise, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsTypeIParameters([5,2,0,1]);                              
@@ -260,8 +265,8 @@ DeclareGlobalFunction( "IsTypeIParameters" );
 ##   Arg='[ v, k, l, m ]'/>
 ##
 ##  <Description>
-##  This function returns true a strongly regular graph with parameters
-##  <M>( v, k, l, m )</M> is of type II. Otherwise, it returns false.
+##  This function returns <C>true</C> a strongly regular graph with parameters
+##  <M>( v, k, l, m )</M> is of type II. Otherwise, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsTypeIIParameters([5,2,0,1]); 
@@ -292,7 +297,7 @@ DeclareGlobalFunction( "IsTypeIIParameters" );
 ##  this function returns the complementary parameter tuple. Therefore, a
 ##  graph with parameters <M>( v, k, l, m )</M> exists if and only if there
 ##  exists a graph with parameters <C>ComplementParameters([v,k,l,m])</C>.
-##  If <M>( v, k, l, m )</M> is not feasible, it returns false.
+##  If <M>( v, k, l, m )</M> is not feasible, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> ComplementParameters([15,9,7,3]);
@@ -319,7 +324,7 @@ DeclareGlobalFunction( "ComplementParameters" );
 ##  <Description>
 ##  If <M>( v, k, l, m )</M> is a feasible strongly regular parameter 
 ##  tuple, this function returns the global parameters of the graph. 
-##  Otherwise, it returns false.
+##  Otherwise, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> SRGToGlobalParameters([20,7,3,8]);
@@ -346,7 +351,7 @@ DeclareGlobalFunction( "SRGToGlobalParameters" );
 ##  <Description>
 ##  If <C>parms</C> is the global parameters of a primitive strongly regular
 ##  graph, this function returns the corresponding strongly regular graph
-##  parameters. Otherwise, it returns false.
+##  parameters. Otherwise, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> parms:=GlobalParameters(JohnsonGraph(7,3));
@@ -394,7 +399,7 @@ DeclareGlobalFunction( "GlobalToSRGParameters" );
 ##gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
 ##gap> LeastEigenvalueInterval(gamma,1/10);            
 ##[ -13/8, -25/16 ]
-##gap> parms:=StronglyRegularGraphParameters(gamma);
+##gap> parms:=SRGParameters(gamma);
 ##[ 5, 2, 0, 1 ]
 ##gap> LeastEigenvalueInterval(parms,1/10);         
 ##[ -13/8, -25/16 ]
@@ -438,7 +443,7 @@ DeclareOperation( "LeastEigenvalueInterval",  [IsList, IsRat]  );
 ##gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
 ##gap> SecondEigenvalueInterval(gamma,1/10);           
 ##[ 9/16, 5/8 ]
-##gap> parms:=StronglyRegularGraphParameters(gamma);
+##gap> parms:=SRGParameters(gamma);
 ##[ 5, 2, 0, 1 ]
 ##gap> SecondEigenvalueInterval(parms,1/10);           
 ##[ 9/16, 5/8 ]
@@ -465,7 +470,7 @@ DeclareOperation( "SecondEigenvalueInterval" , [IsList, IsRat] );
 ##  <Description>
 ##  If the parameters <M>(v,k,l,m)</M> are feasible strongly regular graph 
 ##  parameters, this function returns the least eigenvalue of a strongly 
-##  regular graph with these parameters. Otherwise, it returns false. 
+##  regular graph with these parameters. Otherwise, it returns <C>false</C>. 
 ##  <P/>
 ##  If the eigenvalue is integer, the object returned is an integer. If the
 ##  eigenvalue is irrational, the object returned lies in a cyclotomic field.
@@ -497,7 +502,7 @@ DeclareGlobalFunction( "LeastEigenvalueFromSRGParameters" );
 ##  <Description>
 ##  If the parameters <M>(v,k,l,m)</M> are feasible strongly regular graph 
 ##  parameters, this function returns the second largest eigenvalue of a 
-## strongly regular graph with these parameters. Otherwise, it returns false. 
+## strongly regular graph with these parameters. Otherwise, it returns <C>false</C>. 
 ##  <P/>
 ##  If the eigenvalue is integer, the object returned is an integer. If the
 ##  eigenvalue is irrational, the object returned lies in a cyclotomic field.
@@ -530,7 +535,7 @@ DeclareGlobalFunction( "SecondEigenvalueFromSRGParameters" );
 ##  If the parameters <M>(v,k,l,m)</M> are feasible strongly regular graph 
 ##  parameters, this function returns the multiplicity of the least
 ##  eigenvalue of a strongly regular graph with these parameters. Otherwise,
-##  it returns false. 
+##  it returns <C>false</C>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> LeastEigenvalueMultiplicityFromSRGParameters([22,15,4,6]);
@@ -558,7 +563,7 @@ DeclareGlobalFunction( "LeastEigenvalueMultiplicityFromSRGParameters" );
 ##  If the parameters <M>(v,k,l,m)</M> are feasible strongly regular graph 
 ##  parameters, this function returns the multiplicity of the second largest
 ##  eigenvalue of a strongly regular graph with these parameters. Otherwise,
-##  it returns false. 
+##  it returns <C>false</C>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> SecondEigenvalueMultiplicityFromSRGParameters([22,15,4,6]);
@@ -586,7 +591,7 @@ DeclareGlobalFunction( "SecondEigenvalueMultiplicityFromSRGParameters" );
 ##  If the parameters <M>(v,k,l,m)</M> are feasible strongly regular graph 
 ##  parameters, this function returns a list of  (non-trivial) Krein 
 ##  parameters of a strongly regular graph with these parameters. Otherwise,
-##  it returns false.
+##  it returns <C>false</C>.
 ##  <P/>
 ##  If the eigenvalues of the strongly regular graph are integer, the object
 ##  returned is a list of integers. If the eigenvalues are irrational, the 
@@ -622,7 +627,7 @@ DeclareGlobalFunction( "KreinParameters" );
 ##  <Description>
 ##  If the parameters <M>(v,k,l,m)</M> are feasible strongly regular graph 
 ##  parameters, this function will check whether the parameters satisfy the
-##  Krein conditions. Otherwise, it returns false.
+##  Krein conditions. Otherwise, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> KreinConditionsCheck([13,6,3,4]);    
@@ -653,7 +658,7 @@ DeclareGlobalFunction( "KreinConditionsCheck" );
 ##  <Description>
 ##  If the parameters <M>(v,k,l,m)</M> are feasible strongly regular graph 
 ##  parameters, this function will check whether the parameters satisfy the
-##  Absolute bounds. Otherwise, it returns false.
+##  Absolute bounds. Otherwise, it returns <C>false</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> AbsoluteBoundCheck([13,6,3,4]);
@@ -670,21 +675,19 @@ DeclareGlobalFunction( "KreinConditionsCheck" );
 ##
 DeclareGlobalFunction( "AbsoluteBoundCheck" );
 
-##---------------------------------------------------------------------------------------------
-
 #############################################################################
 ##
 #O  HoffmanCocliqueBound( <gamma> )
 ##  
 ##  <#GAPDoc Label="HoffmanCocliqueBound">
 ##  <ManSection>
-##  <Func Name="HoffmanCocliqueBound"
-##   Arg='gamma'/>
+##  <Oper Name="HoffmanCocliqueBound"
+##   Arg="gamma"/>
+##  <Oper Name="HoffmanCocliqueBound"
+##   Arg="list" Label="for SRG parameters"/>
 ##
 ##  <Description>
-##  This function returns returns the Hoffman coclique bound of a graph. 
-##  <P/>
-##  Given a graph <C>gamma</C>, this function returns the Hoffman coclique 
+##  Given a regular graph <C>gamma</C>, this function returns the Hoffman coclique 
 ##  bound of <C>gamma</C>.
 ##  <P/>
 ##  Given a list <C>list</C>, this function will check if <C>list</C> is a
@@ -693,7 +696,11 @@ DeclareGlobalFunction( "AbsoluteBoundCheck" );
 ##  parameters <C>list</C>. 
 ##    <Example>
 ##      <![CDATA[
-##
+##gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
+##gap> HoffmanCocliqueBound(gamma);
+##2
+##gap> HoffmanCocliqueBound([5,2,0,1]);
+##2
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -710,18 +717,31 @@ DeclareOperation( "HoffmanCocliqueBound" , [IsList] );
 ##  
 ##  <#GAPDoc Label="HoffmanCliqueBound">
 ##  <ManSection>
-##  <Func Name="HoffmanCliqueBound"
-##   Arg='gamma'/>
+##  <Oper Name="HoffmanCliqueBound"
+##   Arg="gamma"/>
+##  <Oper Name="HoffmanCliqueBound"
+##   Arg="list" Label="for SRG parameters"/>
 ##
 ##  <Description>
-##  TODO This function will calculate the Hoffman clique bound of a graph
-##  blah de blah TODO
+##  Given a regular graph <C>gamma</C>, this function returns the Hoffman clique 
+##  bound of <C>gamma</C> (i.e the Hoffman coclique bound of the complement of 
+##  <C>gamma</C>).
+##  <P/>
+##  Given a list <C>list</C>, this function will check if <C>list</C> is a
+##  feasible strongly regular graph parameter tuple. If so, this function 
+##  returns the Hoffman clique bound of a strongly regular graph with 
+##  parameters <C>list</C>. 
 ##    <Example>
 ##      <![CDATA[
-
+##gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
+##gap> HoffmanCliqueBound(gamma);
+##2
+##gap> HoffmanCliqueBound([5,2,0,1]);
+##2
 ##      ]]>
 ##    </Example>
 ##  </Description>
+##
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
@@ -734,18 +754,30 @@ DeclareOperation( "HoffmanCliqueBound" , [IsList] );
 ##  
 ##  <#GAPDoc Label="DelsarteCliqueBound">
 ##  <ManSection>
-##  <Func Name="DelsarteCliqueBound"
-##   Arg='gamma'/>
+##  <Oper Name="DelsarteCliqueBound"
+##   Arg="gamma"/>
+##  <Oper Name="DelsarteCliqueBound"
+##   Arg="list" Label="for SRG parameters"/>
 ##
 ##  <Description>
-##  TODO This function will calculate the Delsarte clique bound of a graph
-##  TODO
+##  Given a strongly regular graph <C>gamma</C>, this function returns the 
+##  Delsarte clique bound of <C>gamma</C>.
+##  <P/>
+##  Given a list <C>list</C>, this function will check if <C>list</C> is a
+##  feasible strongly regular graph parameter tuple. If so, this function 
+##  returns the Delsarte clique bound of a strongly regular graph with 
+##  parameters <C>list</C>. 
 ##    <Example>
 ##      <![CDATA[
-
+##gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
+##gap> DelsarteCliqueBound(gamma);
+##2
+##gap> DelsarteCliqueBound([5,2,0,1]);
+##2
 ##      ]]>
 ##    </Example>
 ##  </Description>
+##
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
@@ -756,19 +788,22 @@ DeclareSynonym( "HoffmanColoringBound" , DelsarteCliqueBound);
 
 #############################################################################
 ##
-#F  CliqueAdjacencyPolynomial( [ <v>, <k>, <l> ] )
+#F  CliqueAdjacencyPolynomial( [ <v>, <k>, <l> ], x, y )
 ##  
 ##  <#GAPDoc Label="CliqueAdjacencyPolynomial">
 ##  <ManSection>
 ##  <Func Name="CliqueAdjacencyPolynomial"
-##   Arg='[ v, k, l ]'/>
+##   Arg='parms,x,y'/>
 ##
 ##  <Description>
-##  TODO This function will return the Clique Adjacency Polynomial of a graph
-##  from ERG parameters TODO
+##  Given a list of edge-regular graph parameters <C>parms</C> and strings 
+##  <C>x,y</C> the desired variable names, this function returns the Clique Adjacency 
+##  Polynomial  with respect to the parameters <C>parms</C>, defined in Soicher
+##  REF. The variables are defined over the field of rationals.
 ##    <Example>
 ##      <![CDATA[
-
+##gap> CliqueAdjacencyPolynomial([16,9,4],"x","y");
+##-x^2*y-y^3+16*x^2-x*y+9*y^2+16*x-26*y
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -784,14 +819,16 @@ DeclareGlobalFunction( "CliqueAdjacencyPolynomial" );
 ##  <#GAPDoc Label="CliqueAdjacencyBound">
 ##  <ManSection>
 ##  <Func Name="CliqueAdjacencyBound"
-##   Arg='[ v, k, l ]'/>
+##   Arg='parms'/>
 ##
 ##  <Description>
-##  TODO This function will return the Clique Adjacency Bound of a graph
-##  from ERG parameters TODO
+##  Given edge-regular graph parameters <C>parms</C>, this function 
+##  returns the Clique Adjacency Bound  with respect to the parameters 
+##  <C>parms</C>, defined in Soicher REF.
 ##    <Example>
 ##      <![CDATA[
-
+##gap> CliqueAdjacencyBound([21,7,3]);
+##5
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -802,19 +839,27 @@ DeclareGlobalFunction( "CliqueAdjacencyBound" );
 
 #############################################################################
 ##
-#F  RegularCliqueERGParameters( [ <v>, <k>, <l> ])
+#F  RegularCliqueERGParameters( [ <v>, <k>, <l> ] )
 ##  
 ##  <#GAPDoc Label="RegularCliqueERGParameters">
 ##  <ManSection>
 ##  <Func Name="RegularCliqueERGParameters"
-##   Arg='[ v, k, l ]'/>
+##   Arg='parms'/>
 ##
 ##  <Description>
-##  TODO This function will return size of a regular clique 
-##  if an ERG with these parameters permits one, false otherwise
+##  Given edge-regular graph parameters <C>parms</C>, this function 
+##  returns the possible pairs <C>[s,m]</C>, where <C>s</C> are the orders and 
+##  <C>m</C> are the nexi of a regular clique of a graph with these parameters.
+##  Note that the function will return a list of pairs if and only if 
+##  <C>parms</C> corresponds to a complete graph.
 ##    <Example>
 ##      <![CDATA[
-
+##gap> RegularCliqueERGParameters([8,7,6]);
+##[ [ 1, 1 ], [ 2, 2 ], [ 3, 3 ], [ 4, 4 ], [ 5, 5 ], [ 6, 6 ], [ 7, 7 ] ]
+##gap> RegularCliqueERGParameters([8,6,4]);
+##[ 4, 3 ]
+##gap> RegularCliqueERGParameters([16,9,4]);
+##[ 4, 2 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -825,19 +870,25 @@ DeclareGlobalFunction( "RegularCliqueERGParameters" );
 
 #############################################################################
 ##
-#F  IsFeasibleRegularCliqueERGParameters( [ <v>, <k>, <l> ])
+#F  IsFeasibleRegularCliqueERGParameters( [ <v>, <k>, <l> ] )
 ##  
 ##  <#GAPDoc Label="IsFeasibleRegularCliqueERGParameters">
 ##  <ManSection>
 ##  <Func Name="IsFeasibleRegularCliqueERGParameters"
-##   Arg='[ v, k, l ]'/>
+##   Arg='[v,k,l]'/>
 ##
 ##  <Description>
-##  TODO This function will return true if an ERG with these parameters
-##  has feasible parameters for a regular clique TODO
+##  Given edge-regular graph parameters <M>(v,k,l)</M>, this function 
+##  returns <C>true</C> if there exists positive integers <M>s,m</M>, such that
+##  <M>(v,k,l;s,m)</M> are feasible Nuemaier graph parameters.
 ##    <Example>
 ##      <![CDATA[
-
+##gap> IsFeasibleRegularCliqueERGParameters([5,4,3]); 
+##true
+##gap> IsFeasibleRegularCliqueERGParameters([16,9,4]);
+##true
+##gap> IsFeasibleRegularCliqueERGParameters([21,7,3]);
+##false
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -848,42 +899,22 @@ DeclareGlobalFunction( "IsFeasibleRegularCliqueERGParameters" );
 
 #############################################################################
 ##
-#F  IsFeasibleQuasiRegularCliqueERGParameters( [ <v>, <k>, <l> ] )
-##  
-##  <#GAPDoc Label="IsFeasibleQuasiRegularCliqueERGParameters">
-##  <ManSection>
-##  <Func Name="IsFeasibleQuasiRegularCliqueERGParameters"
-##   Arg='[ v, k, l ]'/>
-##
-##  <Description>
-##  TODO This function will return true if an ERG with these parameters
-##  has feasible parameters for a quasi-regular clique TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "IsFeasibleQuasiRegularCliqueERGParameters" );
-
-#############################################################################
-##
-#F  RegularAdjacencyPolynomial( [ <v>, <k>, <l>, <m> ] )
+#F  RegularAdjacencyPolynomial( [ <v>, <k>, <l>, <m> ], x, y, d )
 ##  
 ##  <#GAPDoc Label="RegularAdjacencyPolynomial">
 ##  <ManSection>
 ##  <Func Name="RegularAdjacencyPolynomial"
-##   Arg='[ v, k, l, m ]'/>
+##   Arg='parms,x,y,d'/>
 ##
 ##  <Description>
-##  TODO This function will return the Regular Adjacency Polynomial of a 
-##  graph with strongly regular graph parameters TODO
+##  Given strongly regular graph parameters <C>parms</C> and strings 
+##  <C>x,y,d</C> the desired variable names, this function returns the Regular Adjacency 
+##  Polynomial  with respect to the parameters <C>parms</C>, defined in Evans
+##  REF. The variables are defined over the field of rationals.
 ##    <Example>
 ##      <![CDATA[
-
+##RegularAdjacencyPolynomial([16,6,2,2],"x","y","d");
+##-x^2*y+2*x*y*d-y*d^2+16*x^2-x*y+2*y^2+y*d+4*x-2*y
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -902,11 +933,13 @@ DeclareGlobalFunction( "RegularAdjacencyPolynomial" );
 ##   Arg='[ v, k, l, m ]'/>
 ##
 ##  <Description>
-##  TODO This function will return the Regular Adjacency Bounds of a 
-##  graph with strongly regular graph parameters TODO
+##  Given strongly regular graph parameters <C>parms</C>, this function 
+##  returns a list containing the Regular Adjacency upper and lower bounds with respect to the parameters 
+##  <C>parms</C>, defined in Evans REF.
 ##    <Example>
 ##      <![CDATA[
-
+##gap> RegularAdjacencyBounds([16,6,2,2],4);
+##[ 8, 12 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -925,8 +958,10 @@ DeclareGlobalFunction( "RegularAdjacencyBounds" );
 ##   Arg='[ v, k, l, m ]'/>
 ##
 ##  <Description>
-##  TODO This function will return true if an SRG with these parameters
-##  has feasible parameters for a regular set TODO
+##  Given strongly regular graph parameters <C>parms</C>, this function 
+##  returns the possible pairs <C>[s,m]</C>, where <C>s</C> are the orders and 
+##  <C>m</C> are the nexi of a regular set of a graph with these parameters.
+##  Note that the function will return a list of pairs.
 ##    <Example>
 ##      <![CDATA[
 
@@ -937,494 +972,6 @@ DeclareGlobalFunction( "RegularAdjacencyBounds" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "IsFeasibleRegularSetSRGParameters" );
-
-#############################################################################
-##
-#F  IsFeasibleQuasiRegularSetSRGParameters( [ <v>, <k>, <l>, <m> ] )
-##  
-##  <#GAPDoc Label="IsFeasibleQuasiRegularSetSRGParameters">
-##  <ManSection>
-##  <Func Name="IsFeasibleQuasiRegularSetSRGParameters"
-##   Arg='[ v, k, l, m ]'/>
-##
-##  <Description>
-##  TODO This function will return true if an ERG with these parameters
-##  has feasible parameters for a quasi-regular set TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "IsFeasibleQuasiRegularSetSRGParameters" );
-
-#############################################################################
-##
-#F  BasicEdgeSwitching( <gamma> , <list1> , <list2> )
-##  
-##  <#GAPDoc Label="BasicEdgeSwitching">
-##  <ManSection>
-##  <Func Name="BasicEdgeSwitching"
-##   Arg='gamma, list1, list2'/>
-##
-##  <Description>
-##  TODO This function will switch edges relative to the vertex sets 
-##  list1 and list2
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "BasicEdgeSwitching" );
-
-#############################################################################
-##
-#F  GodsilMcKaySwitching( <gamma> , <partition> )
-##  
-##  <#GAPDoc Label="GodsilMcKaySwitching">
-##  <ManSection>
-##  <Func Name="GodsilMcKaySwitching"
-##   Arg='gamma, partition'/>
-##
-##  <Description>
-##  TODO This function will switch edges relative to the Godsil-McKay  
-##  partition.
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "GodsilMcKaySwitching" );
-
-#############################################################################
-##
-#F  IsGodsilMcKayPartition( <gamma> , <partition> )
-##  
-##  <#GAPDoc Label="IsGodsilMcKayPartition">
-##  <ManSection>
-##  <Func Name="IsGodsilMcKayPartition"
-##   Arg='gamma, partition'/>
-##
-##  <Description>
-##  TODO This function will return true if the partition is a Godsil-McKay  
-##  partition.
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "IsGodsilMcKayPartition" );
-
-#############################################################################
-##
-#F  DisjointUnionOfCliques( <n1> , <n2>, ... )
-##  
-##  <#GAPDoc Label="DisjointUnionOfCliques">
-##  <ManSection>
-##  <Func Name="DisjointUnionOfCliques"
-##   Arg='n1, n2, ... '/>
-##
-##  <Description>
-##  TODO This function will return the disjoint union of cliques with sizes
-##  n1, n2, ...TODO Note that the ordering of the sizes greater than 1 are
-##  fixed, parts of size 1 are moved to the 'end' 
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "DisjointUnionOfCliques" );
-
-#############################################################################
-##
-#F  CompleteMultipartiteGraph( <n1> , <n2>, ... )
-##  
-##  <#GAPDoc Label="CompleteMultipartiteGraph">
-##  <ManSection>
-##  <Func Name="CompleteMultipartiteGraph"
-##   Arg='n1, n2, ... '/>
-##
-##  <Description>
-##  TODO This function will return the complete multipartite graph with parts
-##  of size n1, n2, ...TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "CompleteMultipartiteGraph" );
-
-#############################################################################
-##
-#F  TriangularGraph( <n> )
-##  
-##  <#GAPDoc Label="TriangularGraph">
-##  <ManSection>
-##  <Func Name="TriangularGraph"
-##   Arg='n'/>
-##
-##  <Description>
-##  TODO This function will return the triangular graph on n points.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "TriangularGraph" );
-
-#############################################################################
-##
-#F  SquareLatticeGraph( <n> )
-##  
-##  <#GAPDoc Label="SquareLatticeGraph">
-##  <ManSection>
-##  <Func Name="SquareLatticeGraph"
-##   Arg='n'/>
-##
-##  <Description>
-##  TODO This function will return the square lattice graph on n points.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "SquareLatticeGraph" );
-
-#############################################################################
-##
-#F  HoffmanSingletonGraph(  )
-##  
-##  <#GAPDoc Label="HoffmanSingletonGraph">
-##  <ManSection>
-##  <Func Name="HoffmanSingletonGraph"
-##   Arg=''/>
-##
-##  <Description>
-##  TODO This function will return the Hoffman-Singleton graph. This function
-##  constructs the graph through the use of a simple combinatorial 
-##  description found in Brouwer [REF]TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "HoffmanSingletonGraph" );
-
-#############################################################################
-##
-#F  HigmanSimsGraph(  )
-##  
-##  <#GAPDoc Label="HigmanSimsGraph">
-##  <ManSection>
-##  <Func Name="HigmanSimsGraph"
-##   Arg=''/>
-##
-##  <Description>
-##  TODO This function will return the Higman-Sims graph. This function
-##  constructs the graph through the use of a combinatorial 
-##  description found in Brouwer [REF]TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "HigmanSimsGraph" );
-
-#############################################################################
-##
-#F  SimsGerwitzGraph(  )
-##  
-##  <#GAPDoc Label="SimsGerwitzGraph">
-##  <ManSection>
-##  <Func Name="SimsGerwitzGraph"
-##   Arg=''/>
-##
-##  <Description>
-##  TODO This function will return the Sims-Gerwitz graph.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "SimsGerwitzGraph" );
-
-#############################################################################
-##
-#F  AffinePolarGraph( <q> , <e> , <epsilon> )
-##  
-##  <#GAPDoc Label="AffinePolarGraph">
-##  <ManSection>
-##  <Func Name="AffinePolarGraph"
-##   Arg='q, e, epsilon'/>
-##
-##  <Description>
-##  TODO This function will return the Affine polar graph over <M>F_{q}</M>
-##  of dimension <M>2e</M> with type <M>\epsilon</M>.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "AffinePolarGraph" );
-
-#############################################################################
-##
-#F  StronglyRegularGraphAvailable( <parms>  )
-##  
-##  <#GAPDoc Label="StronglyRegularGraphAvailable">
-##  <ManSection>
-##  <Func Name="StronglyRegularGraphAvailable"
-##   Arg='parms'/>
-##
-##  <Description>
-##  TODO This function will return true if an srg with parameters parms
-##  has been stored in the library. TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "StronglyRegularGraphAvailable" );
-
-#############################################################################
-##
-#F  StronglyRegularGraph( <parms> , <nr> )
-##  
-##  <#GAPDoc Label="StronglyRegularGraph">
-##  <ManSection>
-##  <Func Name="StronglyRegularGraph"
-##   Arg='parms, nr'/>
-##
-##  <Description>
-##  TODO This function will return the strongly regular graph with parameters
-##  <A>parms</A> and index <A>nr</A> in the stored list. TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "StronglyRegularGraph" );
-
-#############################################################################
-##
-#F  NrStronglyRegularGraphs( <parms> )
-##  
-##  <#GAPDoc Label="NrStronglyRegularGraphs">
-##  <ManSection>
-##  <Func Name="NrStronglyRegularGraphs"
-##   Arg='parms'/>
-##
-##  <Description>
-##  TODO This function will return the number of strongly regular graphs
-##  with parameters <A>parms</A>. It may accept subsets of fixed parms.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "NrStronglyRegularGraphs" );
-
-#############################################################################
-##
-#F  OneStronglyRegularGraph( <parms> )
-##  
-##  <#GAPDoc Label="OneStronglyRegularGraph">
-##  <ManSection>
-##  <Func Name="OneStronglyRegularGraph"
-##   Arg='parms'/>
-##
-##  <Description>
-##  TODO This function will return one strongly regular graph 
-##  with parameters <A>parms</A>. It may accept subsets of fixed parms.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "OneStronglyRegularGraph" );
-
-#############################################################################
-##
-#F  AllStronglyRegularGraphs( <parms> )
-##  
-##  <#GAPDoc Label="AllStronglyRegularGraphs">
-##  <ManSection>
-##  <Func Name="AllStronglyRegularGraphs"
-##   Arg='parms'/>
-##
-##  <Description>
-##  TODO This function will return a list of all strongly regular graphs 
-##  (up to isomorphism) with parameters <A>parms</A>.
-##  It may accept subsets of fixed parms.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "AllStronglyRegularGraphs" );
-
-#############################################################################
-##
-#F  StronglyRegularGraphsIterator( <parms> )
-##  
-##  <#GAPDoc Label="StronglyRegularGraphIterator">
-##  <ManSection>
-##  <Func Name="StronglyRegularGraphIterator"
-##   Arg='parms'/>
-##
-##  <Description>
-##  TODO This function will return an iterator of all strongly regular graphs 
-##  with parameters <A>parms</A>. It may accept subsets of fixed parms.TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "StronglyRegularGraphIterator" );
-
-
-
-#############################################################################
-##
-#F  SmallFeasibleSRGParameterTuples( [ <v>, <k>, <l>, <m> ], <opt> )
-##  
-##  <#GAPDoc Label="SmallFeasibleSRGParameterTuples">
-##  <ManSection>
-##  <Func Name="SmallFeasibleSRGParameterTuples"
-##   Arg='[ v, k, l, m ], opt'/>
-##
-##  <Description>TODO
-##  This function will give all feasible parameter tuples with certain fixed
-##  values with <A>v</A> in the list of Brouwer. Options will include
-##  looking at parameters in which graphs have been enumerated, proven to
-##  exist, not disproven to exist and all 'feasible' parameters.  TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "SmallFeasibleSRGParameterTuples" );
-
-#############################################################################
-##
-#F  IsEnumeratedSRGParameterTuple( [ <v>, <k>, <l>, <m> ] )
-##  
-##  <#GAPDoc Label="IsEnumeratedSRGParameterTuple">
-##  <ManSection>
-##  <Func Name="IsEnumeratedSRGParameterTuple"
-##   Arg='[ v, k, l, m ]'/>
-##
-##  <Description>TODO
-##  This function will return true if srgs with parameters parms have been 
-##  completely enumerated (v is small enough).  TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "IsEnumeratedSRGParameterTuple" );
-
-#############################################################################
-##
-#F  IsKnownSRGParameterTuple( [ <v>, <k>, <l>, <m> ] )
-##  
-##  <#GAPDoc Label="IsKnownSRGParameterTuple">
-##  <ManSection>
-##  <Func Name="IsKnownSRGParameterTuple"
-##   Arg='[ v, k, l, m ]'/>
-##
-##  <Description>TODO
-##  This function will return true if there is an srg with parameters parms  
-##  (v is small enough).  TODO
-##    <Example>
-##      <![CDATA[
-
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "IsKnownSRGParameterTuple" );
 
 #############################################################################
 ##

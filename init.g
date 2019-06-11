@@ -1,12 +1,16 @@
 #############################################################################
 ##
-#W    init.g                 The srgs package
+#W    init.g                 The agt package
 ##
 
 #############################################################################
 ##
 #R  Read the declaration files.
 ##
-ReadPackage( "srgs", "lib/srgs.gd");
+ReadPackage( "srgs", "lib/utils.gd" );
+ReadPackage( "srgs", "lib/srgs.gd" );
+ReadPackage( "srgs", "lib/srglib.gd" );
 
-#E  init.g . . . . . . . . . . . . . . . . . . . . . . . . . . . .  ends here
+#############################################################################
+##
+#E

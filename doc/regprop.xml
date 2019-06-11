@@ -1,18 +1,18 @@
 <Chapter Label="regprop">
-<Heading>Regularity properties of graphs</Heading>
+<Heading>Properties of graphs</Heading>
 
 <Section Label="Parameters of graphs">
 <Heading>Parameters of graphs</Heading>
 
-<#Include Label="EdgeRegularGraphParameters">
+<#Include Label="ERGParameters">
 
-<#Include Label="IsEdgeRegularGraph">
+<#Include Label="IsERG">
 
 <#Include Label="IsFeasibleERGParameters">
 
-<#Include Label="StronglyRegularGraphParameters">
+<#Include Label="SRGParameters">
 
-<#Include Label="IsStronglyRegularGraph">
+<#Include Label="IsSRG">
 
 <#Include Label="IsFeasibleSRGParameters">
 
@@ -42,10 +42,6 @@
 <#Include Label="LeastEigenvalueInterval">
 
 <#Include Label="SecondEigenvalueInterval">
-
-<#Include Label="LeastEigenvalueFromSRGParameters">
-
-<#Include Label="SecondEigenvalueFromSRGParameters">
 
 <#Include Label="LeastEigenvalueMultiplicityFromSRGParameters">
 

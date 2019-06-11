@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE Book SYSTEM "gapdoc.dtd"
-   [ <!ENTITY SRGs "<Package>SRGs</Package>">
+   [ <!ENTITY AGT "<Package>AGT</Package>">
      <#Include Label="PKGVERSIONDATA">
    ]>
 
-<Book Name="SRGs"> 
+<Book Name="AGT"> 
 
 <TitlePage>
-  <Title>&SRGs;</Title>
-  <Subtitle>&GAP; A library of small strongly regular graphs</Subtitle>
+  <Title>&AGT;</Title>
+  <Subtitle>&GAP; Algebraic Graph Theory package</Subtitle>
   <Version>Version &VERSION;</Version>
   <Date>&RELEASEDATE;</Date>
   <Author> Rhys John Evans
@@ -19,7 +19,7 @@
     <Copyright> 
     <Index>License</Index>
     &copyright; 2018 by Rhys Evans   TODO<P/>
-    &SRGs; package is free software; 
+    &AGT; package is free software; 
     you can redistribute it and/or modify it under the terms of the 
     <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL> 
     as published by the Free Software Foundation.
@@ -33,11 +33,11 @@
 
 <Body>
 
-<#Include SYSTEM "srglib.xml">
-
 <#Include SYSTEM "regprop.xml">
 
 <#Include SYSTEM "regsub.xml">
+
+<#Include SYSTEM "srglib.xml">
 
 </Body>
 
