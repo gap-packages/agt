@@ -1,0 +1,52 @@
+<Chapter Label="eigenv">
+<Heading>Spectra of graphs</Heading>
+
+In this chapter we give methods for invetigating the eigenvlaues of a graph.
+<P/>
+Let <M>\Gamma</M> be a graphs of order <M>v</M>. The <E>adjacency matrix</E> of
+ <M>\Gamma</M>,  <M>A(\Gamma)</M>, is the <M>v\times v</M> matrix indexed by 
+<M>V(\Gamma)</M> such that <M>A(\Gamma)_{xy}=1</M> if <M>xy\in E(\Gamma)</M>, 
+and <M>A(\Gamma)_{xy}=0</M> otherwise. 
+<P/>
+The <E>spectrum</E> of <M>\Gamma</M>, 
+<M>Spec(\Gamma)</M>, is the multiset of eigenvalues of its adjacency matrix, 
+and  an  <E>eigenvalue of </E><M>\Gamma</M> is a member of <M>Spec(\Gamma)</M>. 
+The <E>multiplicity</E> of an eigenvalue <M>\alpha</M> of <M>\Gamma</M> is the
+ number of times <M>\alpha</M> appears in <M>Spec(\Gamma)</M>. 
+
+<Section Label="Eigenvalues of regular graphs">
+<Heading>Eigenvalues of regular graphs</Heading>
+
+In this section, we introduce methods for investigating eigenvalues of regular graphs.
+The input for these methods will either be a specific graph, or the parameters
+of a graph.
+<P/>
+Let <M>\Gamma</M> be a regular graph with parameters <M>(v,k)</M>. Then 
+<M>\Gamma</M> has largest eigenvalue <M>k</M> (see REF). Therefore we do not implement a
+<Q>LargestEigenvalue</Q> function for regular graphs.
+<P/>
+Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>.
+ Then the eigenvalues of <M>\Gamma</M> and their corresponding multiplicites
+ are uniquely determined by the parameters <M>(v,k,a,b)</M> (see REF). 
+ Using this knowledge, we provide methods which take as input feasible strongly
+ regular graph parameters <M>(v,k,a,b)</M>, resulting in faster computation. We also give methods
+which return an exact representation of the eigenvalues of a strongly regular 
+graph with parameters <M>(v,k,a,b)</M>, and their multiplicities. 
+
+
+<#Include Label="LeastEigenvalueInterval">
+
+<#Include Label="SecondEigenvalueInterval">
+
+<#Include Label="LeastEigenvalueFromSRGParameters">
+
+<#Include Label="SecondEigenvalueFromSRGParameters">
+
+<#Include Label="LeastEigenvalueMultiplicity">
+
+<#Include Label="SecondEigenvalueMultiplicity">
+
+</Section>
+
+
+</Chapter>

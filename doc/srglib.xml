@@ -1,10 +1,54 @@
 <Chapter Label="srglib">
-<Heading>A library of Strongly Regular graphs</Heading>
+<Heading>Strongly regular graphs</Heading>
 
-<Section Label="A library of strongly regular graphs">
-<Heading>A library of strongly regular graphs</Heading>
+In this chapter we give functions to investigate strongly regular graphs. In 
+particular, we provide a collection of small strongly regular graphs which can 
+be a useful resource for hypothesis testing.
+
+<Section Label="Strongly regular graph parameter tuples">
+<Heading>Strongly regular graph parameter tuples</Heading>
+
+In this section, we give functions to investigate the parameters of a strongly
+regular graph.
+<P/>
+ Redo feasible parameters/ def of srg in this chapter.
+
+<#Include Label="ComplementSRGParameters">
+
+<#Include Label="SRGToGlobalParameters">
+
+<#Include Label="GlobalToSRGParameters">
+
+<#Include Label="IsPrimitiveSRGParameters">
+
+<#Include Label="IsTypeISRGParameters">
+
+<#Include Label="IsTypeIISRGParameters">
+
+<#Include Label="KreinParameters">
+
+<#Include Label="IsKreinConditionsSatisfied">
+
+<#Include Label="IsAbsoluteBoundSatisfied">
+
+</Section>
+
+<Section Label="Small strongly regular graphs">
+<Heading>Small strongly regular graphs</Heading>
+
+In this section, we give functions to access and use the library of strongly
+regular graphs currently stored in this package. 
+<P/>
+The information on small strongly regular graphs in this section is based on the
+tables of Andries Brouwer REF.
+
+<#Include Label="AGT_Brouwer_Parameters_MAX">
+
+<#Include Label="AGT_Brouwer_Parameters">
 
 <#Include Label="IsSRGAvailable">
+
+<#Include Label="SRGLibraryInfo">
 
 <#Include Label="SRG">
 
@@ -23,8 +67,13 @@
 <#Include Label="IsKnownSRGParameterTuple">
 
 </Section>
-<Section Label="Families of Strongly regular graphs">
-<Heading>Families of Strongly Regular graphs</Heading>
+<Section Label="More strongly regular graphs">
+<Heading>More strongly regular graphs</Heading>
+
+In this section, we give functions to construct certain graphs, most of which
+are strongly regular graphs.
+
+<#Include Label="DisjointUnionOfCliques">
 
 <#Include Label="CompleteMultipartiteGraph">
 

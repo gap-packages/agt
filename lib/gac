@@ -51,10 +51,10 @@
 SHELL="/bin/bash"
 
 # absolute path of the directory in which GAP was compiled
-abs_top_builddir="/usr/share/gap-4.9.3/pkg/agt"
+abs_top_builddir="/usr/share/gap-4.9.3/pkg/agt/lib"
 
 # path of the directory the GAP sources contained in
-abs_top_srcdir="/usr/share/gap-4.9.3/pkg/agt/../.."
+abs_top_srcdir="/usr/share/gap-4.9.3/pkg/agt/lib/../../.."
 
 #
 libdir="${exec_prefix}/lib"

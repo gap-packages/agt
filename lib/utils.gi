@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#W  utils.gi           Strongly Regular graph library               Rhys Evans
+#W  utils.gi           Algebraic Graph Theory package         Rhys J. Evans
 ##
 ##
 ##  TODO This file contains the routines for the strongly regular graphs library
@@ -17,7 +17,7 @@
 ##  
 InstallGlobalFunction( AGT_Dir,
 function( )
-  return PackageInfo("srgs")[1]!.InstallationPath;
+  return PackageInfo("agt")[1]!.InstallationPath;
 end );
 
 #############################################################################

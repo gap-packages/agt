@@ -1,8 +1,31 @@
 <Chapter Label="regprop">
-<Heading>Properties of graphs</Heading>
+<Heading>Regular graphs</Heading>
 
-<Section Label="Parameters of graphs">
-<Heading>Parameters of graphs</Heading>
+In this chapter we give functions used to identify graphs with varying 
+regularity properties and to find the parameters of such graphs.
+
+<Section Label="Regular graphs">
+<Heading>Regular graphs</Heading>
+
+A graph <A>gamma</A> is <E>regular</E> with <E>parameters</E> <M>(v,k)</M>
+if <A>gamma</A> is simple and undirected, it has <M>v</M> vertices, 
+and every vertex of <A>gamma</A> has degree <M>k</M>.
+
+<#Include Label="RGParameters">
+
+<#Include Label="IsRG">
+
+<#Include Label="IsFeasibleRGParameters">
+
+</Section>
+
+<Section Label="Edge-regular graphs">
+<Heading>Edge-regular graphs</Heading>
+
+A graph <A>gamma</A> is <E>edge-regular</E> with <E>parameters</E> 
+<M>(v,k,a)</M> if it is regular with parameters <M>(v,k)</M>, it has at 
+least one edge, and every pair of adjacent vertices have exactly <M>a</M> 
+common neighbours.
 
 <#Include Label="ERGParameters">
 
@@ -10,42 +33,22 @@
 
 <#Include Label="IsFeasibleERGParameters">
 
+</Section>
+
+<Section Label="Strongly regular graphs">
+<Heading>Strongly regular graphs</Heading>
+
+A graph <A>gamma</A> is <E>strongly regular</E> with <E>parameters</E> 
+<M>(v,k,a,b)</M> if it is edge-regular with parameters <M>(v,k,a)</M>, 
+it has at least one pair of distinct non-adjacent vertices, and every 
+pair of distinct  non-adjacent vertices have exactly <M>b</M> 
+common neighbours.
+
 <#Include Label="SRGParameters">
 
 <#Include Label="IsSRG">
 
 <#Include Label="IsFeasibleSRGParameters">
-
-<#Include Label="IsPrimitiveSRGParameters">
-
-<#Include Label="IsTypeIParameters">
-
-<#Include Label="IsTypeIIParameters">
-
-<#Include Label="ComplementParameters">
-
-<#Include Label="SRGToGlobalParameters">
-
-<#Include Label="GlobalToSRGParameters">
-
-</Section>
-
-<Section Label="Inspecting regular graphs and their parameters">
-<Heading>Inspecting regular graphs and their parameters</Heading>
-
-<#Include Label="KreinParameters">
-
-<#Include Label="KreinConditionsCheck">
-
-<#Include Label="AbsoluteBoundCheck">
-
-<#Include Label="LeastEigenvalueInterval">
-
-<#Include Label="SecondEigenvalueInterval">
-
-<#Include Label="LeastEigenvalueMultiplicityFromSRGParameters">
-
-<#Include Label="SecondEigenvalueMultiplicityFromSRGParameters">
 
 </Section>
 

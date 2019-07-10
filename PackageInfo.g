@@ -1,9 +1,9 @@
 #############################################################################
-#
-# PackageInfo.g for the package 'agt'                          Rhys J. Evans
-#
-# (created from the template file in the `Example' package)
-#
+##
+#W  PackageInfo.g         Algebraic Graph Theory package        Rhys J. Evans
+##
+## (created from the template file in the `Example' package)
+##
 SetPackageInfo( rec(
 
 ##  This is case sensitive, use your preferred spelling.
@@ -12,7 +12,7 @@ PackageName := "agt",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
-Subtitle := "A library of small strongly regular graphs",
+Subtitle := "Algebraic Graph Theory",
 
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
@@ -20,13 +20,13 @@ Subtitle := "A library of small strongly regular graphs",
 Version := "0.1",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "12/11/2018",
+Date := "17/07/2019",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.1">
-##  <!ENTITY RELEASEDATE "12 November 2018">
+##  <!ENTITY RELEASEDATE "20 October 2019">
 ##  <#/GAPDoc>
 
 PackageWWWHome  := "https://rhysje00.github.io/agt/",
@@ -147,7 +147,7 @@ Persons := [
   rec(
     IsAuthor := true,
     IsMaintainer := true,
-    FirstNames := "Rhys John",
+    FirstNames := "Rhys J.",
     LastName := "Evans",
     WWWHome := "https://www.qmul.ac.uk/maths/profiles/evansr.html",
     Email := "r.evans@qmul.ac.uk",
@@ -203,9 +203,10 @@ PackageInfoURL :=
 # computing the Smith normal form of integer matrices and some related \
 # utilities.",
 AbstractHTML   :=  
-  "The <span class=\"pkgname\">agt</span> package provides a library \
-  of strongly regular graphs on at most 40 vertices. It also provides  \
-  functions to analyse strongly regular and other kinds of graphs",
+  "The <span class=\"pkgname\">agt</span> package provides functionality to \
+   inspect combinatorial and algebraic properties of graphs in GRAPE format. \
+   It also provides a library  strongly regular graphs on at most 40 vertices,\
+   and several graph constructions",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
@@ -242,7 +243,7 @@ PackageDoc := rec(
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "A library of small strongly regular graphs",
+  LongTitle := "Algebraic Graph Theory",
 ),
 
 
@@ -304,7 +305,7 @@ AvailabilityTest := ReturnTrue,
 ##  the info in this file. If you are not happy with it, you can provide
 ##  a string here that is used as a banner. GAP decides when the banner is 
 ##  shown and when it is not shown (note the ~-syntax in this example).
-##BannerString := Concatenation( 
+##BannerString := Concatenation( TODO 
 ##    "----------------------------------------------------------------\n",
 ##    "Loading  agt ", ~.Version, "\n",
 ##    "by ",
@@ -327,7 +328,7 @@ AvailabilityTest := ReturnTrue,
 TestFile := "tst/testall.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
-##  of the package.
+##  of the package. TODO
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
 Keywords := ["strongly regular"]
 

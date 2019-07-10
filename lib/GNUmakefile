@@ -113,17 +113,17 @@ build_os = linux-gnu
 build_vendor = pc
 
 # build paths
-abs_builddir = /usr/share/gap-4.9.3/pkg/agt
-abs_srcdir = /usr/share/gap-4.9.3/pkg/agt/../..
+abs_builddir = /usr/share/gap-4.9.3/pkg/agt/lib
+abs_srcdir = /usr/share/gap-4.9.3/pkg/agt/lib/../../..
 builddir = .
-srcdir = ../..
+srcdir = ../../..
 
 # for compatibility: top_builddir is used by libtool for LIBTOOL variable;
 # keeping the others makes it easier to "git bisect" back and forth
 top_builddir = .
-top_srcdir = ../..
-abs_top_builddir = /usr/share/gap-4.9.3/pkg/agt
-abs_top_srcdir = /usr/share/gap-4.9.3/pkg/agt/../..
+top_srcdir = ../../..
+abs_top_builddir = /usr/share/gap-4.9.3/pkg/agt/lib
+abs_top_srcdir = /usr/share/gap-4.9.3/pkg/agt/lib/../../..
 
 # install paths
 bindir = ${exec_prefix}/bin

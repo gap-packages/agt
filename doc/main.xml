@@ -12,13 +12,13 @@
   <Subtitle>&GAP; Algebraic Graph Theory package</Subtitle>
   <Version>Version &VERSION;</Version>
   <Date>&RELEASEDATE;</Date>
-  <Author> Rhys John Evans
+  <Author> Rhys J. Evans
     <Email>r.evans@qmul.ac.uk</Email>
     <Homepage>https://www.qmul.ac.uk/maths/profiles/evansr.html</Homepage>
   </Author>
     <Copyright> 
     <Index>License</Index>
-    &copyright; 2018 by Rhys Evans   TODO<P/>
+    &copyright; 2019 by Rhys Evans   TODO<P/>
     &AGT; package is free software; 
     you can redistribute it and/or modify it under the terms of the 
     <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL> 
@@ -35,12 +35,15 @@
 
 <#Include SYSTEM "regprop.xml">
 
+<#Include SYSTEM "eigenv.xml">
+
 <#Include SYSTEM "regsub.xml">
 
 <#Include SYSTEM "srglib.xml">
 
 </Body>
 
+<Bibliography Databases="references"/>
 <TheIndex/>
 
 </Book>

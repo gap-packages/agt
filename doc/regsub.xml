@@ -1,32 +1,100 @@
 <Chapter Label="regsub">
-<Heading>Subgraphs of graphs</Heading>
+<Heading>Regular induced subgraphs</Heading>
 
-<Section Label="Subgraph bounds related to eigenvalues">
-<Heading>Subgraph bounds related to eigenvalues</Heading>
+In this chapter we give methods to investigate regular induced subgraphs
+of regular graphs.
+<P/>
+Let <M>\Gamma</M> be a graph, and consider a subset <M>U</M> of its vertices.
+The <E>induced subgraph</E> of <M>\Gamma</M> on <M>U</M>, denoted by 
+<M>\Gamma[U]</M>, is the graph with vertex set <M>U</M>, and vertices in 
+<M>\Gamma[U]</M> are adjacent if and only if they are adjacent in <M>\Gamma</M>.
+
+
+<Section Label="Spectral bounds">
+<Heading>Spectral bounds</Heading>
+
+In this section, we introduce some bounds on regular induced subgraphs of 
+regular graphs, which depend on the spectrum of the graph.
+<P/>
+Let <M>\Gamma</M> be a graph. A <E>coclique</E>, or <E>independent set</E>, 
+of <M>\Gamma</M> is a subset of vertices for which each pair of distinct vertices
+are non-adjacent. A <E>clique</E> of <M>\Gamma</M> is a subset of vertices for 
+which each pair of distinct vertices are adjacent. 
 
 <#Include Label="HoffmanCocliqueBound">
 
 <#Include Label="HoffmanCliqueBound">
 
-<#Include Label="DelsarteCliqueBound">
+HaemersUpper and Lower bounds?
 
 </Section>
-<Section Label="Block intersection polynomials">
-<Heading>Block intersection polynomials</Heading>
+
+<Section Label="Block intersection polynomials and bounds">
+<Heading>Block intersection polynomials and bounds</Heading>
+
+In this section, we introduce functions related to the block intersection 
+polynomials, defined in REF. If you would like to know more about the
+properties of these polynomials, see REFREFREF
 
 <#Include Label="CliqueAdjacencyPolynomial">
 
 <#Include Label="CliqueAdjacencyBound">
 
-<#Include Label="RegularCliqueERGParameters">
-
-<#Include Label="IsFeasibleRegularCliqueERGParameters">
-
 <#Include Label="RegularAdjacencyPolynomial">
 
-<#Include Label="RegularAdjacencyBounds">
+<#Include Label="RegularAdjacencyUpperBound">
 
-<#Include Label="IsFeasibleRegularSetSRGParameters">
+<#Include Label="RegularAdjacencyLowerBound">
+
+</Section>
+
+<Section Label="Regular sets">
+<Heading>Regular sets</Heading>
+
+In this section we give functions to investigate regular sets, and in
+particular, regular sets in strongly regular graphs. 
+<P/>
+Let <M>\Gamma</M> be a graph and <M>U</M> be a subset of its vertices. Then 
+<M>U</M> is an <M>m</M><E>-regular set</E> if every vertex in 
+<M>V(\Gamma)\backslash U</M> is adjacent to the same number <M>m&gt;0</M> of 
+vertices in <M>U</M>. In this case we say that 
+<M>U</M> has <E>nexus</E> <M>m</M>.
+<P/>
+The set <M>U</M> is a <M>(d,m)</M><E>-regular set</E> 
+if <M>U</M> is an <M>m</M>-regular set and <M>\Gamma[U]</M> is a <M>d</M>-regular graph.
+Then we call <M>(d,m)</M> the <E>regular set parameters</E> of <M>U</M>.
+
+<#Include Label="Nexus">
+
+<#Include Label="RegularSetParameters">
+
+<#Include Label="IsRegularSet">
+
+<#Include Label="RegularSetSRGParameters">
+
+</Section>
+
+<Section Label="Neumaier graphs">
+<Heading>Neumaier graphs</Heading>
+
+In this section, we give functions to investigate regular cliques in edge-regular
+graphs.
+<P/>
+A clique <M>S</M> in <M>\Gamma</M> is <M>m</M><E>-regular</E>, for some 
+<M>m&gt;0</M>, if <M>S</M> is an <M>m</M>-regular set. 
+<P/>
+A graph <M>\Gamma</M> is a <E>Neumaier graph</E> with <E>parameters</E> 
+<M>(v,k,a;s,m)</M> if it is edge-regular with parameters <M>(v,k,a)</M>, and it
+contains an <M>m</M>-regular clique of order <M>s</M>. For more information on 
+Neumaier graphs, see REF.
+
+<#Include Label="NGParameters">
+
+<#Include Label="IsNG">
+
+<#Include Label="IsFeasibleNGParameters">
+
+<#Include Label="RegularCliqueERGParameters">
 
 </Section>
 
