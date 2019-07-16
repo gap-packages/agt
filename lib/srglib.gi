@@ -31,6 +31,7 @@ end );
 ##  
 InstallGlobalFunction( IsPrimitiveSRGParameters,
 function( parms )
+
   if not IsFeasibleSRGParameters(parms) then
     return false;
   fi;

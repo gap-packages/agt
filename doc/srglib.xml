@@ -11,7 +11,7 @@ be a useful resource for hypothesis testing.
 In this section, we give functions to investigate the parameters of a strongly
 regular graph.
 <P/>
- Redo feasible parameters/ def of srg in this chapter.
+ TODO Redo feasible parameters/ def of srg in this chapter.?????
 
 <#Include Label="ComplementSRGParameters">
 
@@ -40,7 +40,7 @@ In this section, we give functions to access and use the library of strongly
 regular graphs currently stored in this package. 
 <P/>
 The information on small strongly regular graphs in this section is based on the
-tables of Andries Brouwer REF.
+tables of Andries Brouwer <Cite Key="B_2018"/>.
 
 <#Include Label="AGT_Brouwer_Parameters_MAX">
 

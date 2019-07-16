@@ -27,11 +27,13 @@ Date := "17/07/2019",
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.1">
 ##  <!ENTITY RELEASEDATE "20 October 2019">
+##  <!ENTITY PKGWWWHOME "https://rhysje00.github.io/agt/">
 ##  <#/GAPDoc>
 
 PackageWWWHome  := "https://rhysje00.github.io/agt/",
 ##PackageWWWHome :=
 ##  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
+##
 
 ##  Optional:
 ##    - Type and the URL of the source code repository

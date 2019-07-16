@@ -87,11 +87,11 @@ DeclareSynonym( "IsRG", IsRegularGraph );
 ##
 ##  <Description>
 ##  Given a list of integers of length 2, <A>[v,k]</A>, this 
-##  function returns <K>true</K> if <M>( v, k )</M> is a feasible
+##  function returns <K>true</K> if <M>( <A>v</A>, <A>k</A> )</M> is a feasible
 ##  parameter tuple for a regular graph. Otherwise, the function 
 ##  returns <K>false</K>.
 ##  <P/>
-##  The tuple <M>( v, k  )</M> is a <E>feasible</E>
+##  The tuple <M>(v, k)</M> is a <E>feasible</E>
 ##  parameter tuple for a regular graph if it satisfies the following
 ##  well-known conditions:
 ##  <List>
@@ -156,8 +156,7 @@ DeclareGlobalFunction( "ERGParameters" );
 ##
 ##  <Description>
 ##  Given a graph <A>gamma</A>, this function returns <K>true</K> if 
-##  <A>gamma</A> is an edge-regular graph, and <K>false</K> otherwise. See 
-##  <Ref Func="ERGParameters"/> for information on edge-regular graphs.
+##  <A>gamma</A> is an edge-regular graph, and <K>false</K> otherwise.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=NullGraph(Group(()),5);;
@@ -186,7 +185,7 @@ DeclareGlobalFunction( "IsERG" );
 ##
 ##  <Description>
 ##  Given a list of integers of length 3, <A>[v,k,a]</A>, this 
-##  function returns <K>true</K> if <M>( v, k, a )</M> is a feasible
+##  function returns <K>true</K> if <M>( <A>v, k, a</A> )</M> is a feasible
 ##  parameter tuple for an edge-regular graph. Otherwise, the function 
 ##  returns <K>false</K>.
 ##  <P/>
@@ -258,8 +257,7 @@ DeclareGlobalFunction( "SRGParameters" );
 ##
 ##  <Description>
 ##  Given a graph <A>gamma</A>, this function returns <K>true</K> if 
-##  <A>gamma</A> is a strongly regular graph, and <K>false</K> otherwise. See 
-##  <Ref Func="SRGParameters"/> for information on strongly regular graphs.
+##  <A>gamma</A> is a strongly regular graph, and <K>false</K> otherwise.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=CompleteGraph(Group(()),5);;
@@ -288,7 +286,7 @@ DeclareGlobalFunction( "IsSRG" );
 ##
 ##  <Description>
 ##  Given a list of integers of length 4, <A>[v,k,a,b]</A>, this 
-##  function returns <K>true</K> if <M>( v, k, a, b )</M> is a feasible
+##  function returns <K>true</K> if <M>( <A>v, k, a, b</A> )</M> is a feasible
 ##  parameter tuple for a strongly regular graph. Otherwise, this function 
 ##  returns <K>false</K>. 
 ##  <P/>
@@ -341,9 +339,9 @@ DeclareGlobalFunction( "IsFeasibleSRGParameters" );
 ##  eigenvalue of a strongly regular graph with parameters <A>parms</A>. 
 ##  <P/>
 ##  The interval returned is in the form of a list, <A>[y,z]</A> of rationals 
-##  <M>y\leq z</M> with the property that <M>z-y\leq eps</M>. If the eigenvalue
+##  <M><A>y</A>\leq <A>z</A></M> with the property that <M><A>z</A>-<A>y</A>\leq <A>eps</A></M>. If the eigenvalue
 ##  is rational, then this function will return a list <A>[y,z]</A>, where 
-##  <M>y=z</M>.  
+##  <M><A>y</A>=<A>z</A></M>.  
 ##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
 ##      <![CDATA[
@@ -389,9 +387,9 @@ DeclareOperation( "LeastEigenvalueInterval",  [IsList, IsRat]  );
 ##  parameters <A>parms</A>. 
 ##  <P/>
 ##  The interval returned is in the form of a list, <A>[y,z]</A> of rationals 
-##  <M>y\leq z</M> with the property that <M>z-y\leq eps</M>. If the eigenvalue
+##  <M><A>y</A>\leq <A>z</A></M> with the property that <M><A>z</A>-<A>y</A>\leq eps</M>. If the eigenvalue
 ##  is rational, then this function will return a list <A>[y,z]</A>, where 
-##  <M>y=z</M>.
+##  <M><A>y</A>=<A>z</A></M>.
 ##  <P/> 
 ##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
@@ -427,7 +425,7 @@ DeclareOperation( "SecondEigenvalueInterval" , [IsList, IsRat] );
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
 ##  this function returns the least eigenvalue of a strongly regular graph
-##  with parameters <A>[v, k, a, b]</A>. If the eigenvalue is integer, the 
+##  with parameters <M>(<A>v,k,a,b</A>)</M>. If the eigenvalue is integer, the 
 ##  object returned is an integer. If the eigenvalue is irrational, the object
 ##  returned lies in a cyclotomic field.
 ##  <P/> 
@@ -459,7 +457,7 @@ DeclareGlobalFunction( "LeastEigenvalueFromSRGParameters" );
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
 ##  this function returns the second largest eigenvalue of a strongly 
-##  regular graph with parameters <A>[v, k, a, b]</A>. If the eigenvalue is
+##  regular graph with parameters <M>(<A>v,k,a,b</A>)</M>. If the eigenvalue is
 ##  integer, the object returned is an integer. If the eigenvalue is 
 ##  irrational, the object returned lies in a cyclotomic field.
 ##  <P/> 
@@ -491,7 +489,7 @@ DeclareGlobalFunction( "SecondEigenvalueFromSRGParameters" );
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
 ##  this function returns the multiplicity of the least eigenvalue of a 
-##  strongly regular graph with parameters <A>[v, k, a, b]</A>.
+##  strongly regular graph with parameters <M>(<A>v,k,a,b</A>)</M>.
 ##  <P/> 
 ##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
@@ -521,7 +519,7 @@ DeclareOperation( "LeastEigenvalueMultiplicity" , [IsList] );
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
 ##  this function returns the multiplicity of the second eigenvalue of a 
-##  strongly regular graph with parameters <A>[v, k, a, b]</A>.
+##  strongly regular graph with parameters <M>(<A>v,k,a,b</A>)</M>.
 ##  <P/> 
 ##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>

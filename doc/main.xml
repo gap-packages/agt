@@ -2,6 +2,7 @@
 
 <!DOCTYPE Book SYSTEM "gapdoc.dtd"
    [ <!ENTITY AGT "<Package>AGT</Package>">
+     <!ENTITY Grape "<Package>Grape</Package>">
      <#Include Label="PKGVERSIONDATA">
    ]>
 
@@ -32,6 +33,8 @@
 <TableOfContents/>
 
 <Body>
+
+<#Include SYSTEM "intro.xml">
 
 <#Include SYSTEM "regprop.xml">
 

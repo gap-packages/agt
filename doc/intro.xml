@@ -1,0 +1,110 @@
+<Chapter Label="The AGT package">
+<Heading>The &AGT; package</Heading>
+<Index Key="AGT">&AGT; package overview</Index>
+
+  This is the manual for the &AGT; package version &VERSION;.  This package
+  was developed at Queen Mary University of London, by Rhys J. Evans.
+  <P/>
+  The &AGT; package contains a methods used for the determination of  various 
+  algebraic and regularity properties of graphs, as well as subgraph structures. 
+  The package also provides a library of small strongly regular graphs.
+  These provide a useful source of graphs to experiment with computationally. 
+  <P/>
+  All of the functions in this package deal with finite simple graphs in 
+  &Grape; format <Cite Key="GRAPE_2018"/>. Behind the scenes, we also use the 
+  <Package>Digraphs</Package> package <Cite Key="DIGRAPHS_2019"/> to format and store the graphs in the
+  strongly regular graph library efficiently. 
+  
+
+<Section Label="install">
+<Heading>Installing &AGT;</Heading>
+<Index>&AGT;</Index>
+
+To install the &AGT; package, you will first need to download the most recent 
+<C>tar.gz</C> file, found at &PKGWWWHOME;. Once downloaded, you can install the 
+package by following the instructions found in the &GAP; reference manual, 
+<URL Text="chapter 76">https://www.gap-system.org/Manuals/doc/ref/chap76.html</URL>.
+<P/>
+The &AGT; package requires the following &GAP; packages:
+<List>
+<Item><Package>GAPDoc</Package> <Cite Key="GAPDOC_2019"/>, version 1.6 or higher;</Item>
+<Item><Package>DESIGN</Package> <Cite Key="DESIGN_2019"/>, version 1.7 or higher ;</Item>
+<Item><Package>GRAPE</Package> <Cite Key="GRAPE_2018"/>, version 4.8 or higher ;</Item>
+<Item><Package>Digraphs</Package> <Cite Key="DIGRAPHS_2019"/>, version 0.12.2 or higher.</Item>
+</List>
+These required packages are all part of the standard &GAP; distribution.
+
+</Section>
+
+<Section Label="load">
+<Heading>Loading &AGT;</Heading>
+
+Once correctly installed, you can load th &AGT; package at the &GAP; prompt by
+typing the following.
+<Example>
+gap> LoadPackage("agt");
+true
+</Example>
+</Section>
+
+<Section Label="cite">
+<Heading>Citing &AGT;</Heading>
+
+  If you use the &AGT; package in your research, please tell us about it by 
+  emailing <Email>r.evans@qmul.ac.uk</Email>. We are interested in any research
+  involving the use of the &AGT; package and might refer to your work in the future.
+  
+  If you wish to refer to the &AGT; package in a published work, please cite 
+  &AGT; like a journal article. For example, the following BibTeX entry for the
+  current &AGT; version:
+
+<Listing Type="bibtex">
+@Manual{agt,
+        author = {Evans, Rhys J.},
+        key = {agt},
+        title = {{AGT -- Algebraic Graph Theory package for GAP, Version &VERSION;}},
+        url = {\verb+(&PKGWWWHOME;)+},
+        year = {2019}
+</Listing>
+</Section>
+
+<Section>
+<Heading>Examples of the use of &AGT;</Heading>
+
+We will give an example of how to use the &AGT; package here. Further applications 
+of the package can be found in <Cite Key="E_2020"/>.
+
+In this example, we will examine the properties and subgraphs of the strongly 
+regular graphs with parameters <M>(16,6,2,2)</M>.
+
+<Example>
+gap> LoadPackage("agt");
+true
+gap> IsFeasibleSRGParameters([16,6,2,2]); 
+true
+gap> NrSRGs([16,6,2,2]);
+2
+gap> IsEnumeratedSRGParameterTuple([16,6,2,2]);
+true
+gap> graphs:=AllSRGs([16,6,2,2]);;
+gap> LeastEigenvalueFromSRGParameters([16,6,2,2]);
+-2
+gap> LeastEigenvalueInterval(graphs[1],1/10);
+[ -2, -2 ]
+gap> HoffmanCliqueBound([16,6,2,2]);  
+4
+gap> CliqueAdjacencyBound([16,6,2]);
+4
+gap> S:=[1,2,3,4];
+[ 1, 2, 3, 4 ]
+gap> Nexus(graphs[1],S);
+1
+gap> RegularSetParameters(graphs[1],S);
+[ 3, 1 ]
+
+</Example>
+
+
+
+</Section>
+</Chapter>

@@ -33,8 +33,9 @@ HaemersUpper and Lower bounds?
 <Heading>Block intersection polynomials and bounds</Heading>
 
 In this section, we introduce functions related to the block intersection 
-polynomials, defined in REF. If you would like to know more about the
-properties of these polynomials, see REFREFREF
+polynomials, defined in <Cite Key="S_2010"/>. If you would like to know more about the
+properties of these polynomials, see <Cite Key="S_2010"/>, <Cite Key="S_2015"/>
+or <Cite Key="GS_2016"/>.
 
 <#Include Label="CliqueAdjacencyPolynomial">
 
@@ -85,8 +86,8 @@ A clique <M>S</M> in <M>\Gamma</M> is <M>m</M><E>-regular</E>, for some
 <P/>
 A graph <M>\Gamma</M> is a <E>Neumaier graph</E> with <E>parameters</E> 
 <M>(v,k,a;s,m)</M> if it is edge-regular with parameters <M>(v,k,a)</M>, and it
-contains an <M>m</M>-regular clique of order <M>s</M>. For more information on 
-Neumaier graphs, see REF.
+contains an <M>m</M>-regular clique of size <M>s</M>. For more information on 
+Neumaier graphs, see <Cite Key="E_2020"/>.
 
 <#Include Label="NGParameters">
 

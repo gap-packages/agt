@@ -22,12 +22,12 @@ The input for these methods will either be a specific graph, or the parameters
 of a graph.
 <P/>
 Let <M>\Gamma</M> be a regular graph with parameters <M>(v,k)</M>. Then 
-<M>\Gamma</M> has largest eigenvalue <M>k</M> (see REF). Therefore we do not implement a
+<M>\Gamma</M> has largest eigenvalue <M>k</M> (see <Cite Key="BH_2011"/>). Therefore we do not implement a
 <Q>LargestEigenvalue</Q> function for regular graphs.
 <P/>
 Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>.
  Then the eigenvalues of <M>\Gamma</M> and their corresponding multiplicites
- are uniquely determined by the parameters <M>(v,k,a,b)</M> (see REF). 
+ are uniquely determined by the parameters <M>(v,k,a,b)</M> (see <Cite Key="BH_2011"/>). 
  Using this knowledge, we provide methods which take as input feasible strongly
  regular graph parameters <M>(v,k,a,b)</M>, resulting in faster computation. We also give methods
 which return an exact representation of the eigenvalues of a strongly regular 
