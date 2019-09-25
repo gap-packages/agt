@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-GAP=/usr/share/gap-4.9.3/pkg/agt/bin/gap.sh
+GAP=/usr/share/gap-4.10.2/pkg/agt/bin/gap.sh
 GAPARGS="-b -m 1g -x 80 -q -r --quitonbreak"
 
 echo "--------------------"
@@ -11,9 +11,9 @@ echo "Building GAP manuals"
 echo "--------------------"
 
 "$GAP" $GAPARGS -A <<EOF
-base:="/usr/share/gap-4.9.3/pkg/agt/../..";;
+base:="/usr/share/gap-4.10.2/pkg/agt/../..";;
 books:=["ref", "tut", "changes", "hpc", "dev"];;
-latexOpts := rec(Maintitlesize := "\\fontsize{36}{38}\\selectfont");;
+latexOpts := rec(Maintitlesize := "\\\\fontsize{36}{38}\\\\selectfont");;
 for run in [1,2] do
   for book in books do
     path := Concatenation(base, "/doc/", book);

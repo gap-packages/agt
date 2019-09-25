@@ -51,10 +51,10 @@
 SHELL="/bin/bash"
 
 # absolute path of the directory in which GAP was compiled
-abs_top_builddir="/usr/share/gap-4.9.3/pkg/agt"
+abs_top_builddir="/usr/share/gap-4.10.2/pkg/agt"
 
 # path of the directory the GAP sources contained in
-abs_top_srcdir="/usr/share/gap-4.9.3/pkg/agt/../.."
+abs_top_srcdir="/usr/share/gap-4.10.2/pkg/agt/../.."
 
 #
 libdir="${exec_prefix}/lib"
@@ -76,7 +76,7 @@ c_linker="$libtool --mode=link $CC"
 c_dyn_linker="$libtool --mode=link $CC -module -avoid-version -rpath $libdir"
 c_addlibs=""
 
-GAPARCH=x86_64-pc-linux-gnu-default64
+GAPARCH=x86_64-pc-linux-gnu-default64-kv3
 SYS_IS_CYGWIN32=
 if [ X"$SYS_IS_CYGWIN32" = X"yes" ] ; then
     c_dyn_linker="$c_dyn_linker -no-undefined -version-info 0:0:0"
@@ -314,10 +314,9 @@ make_compstat () {
     temps_c="${temps_c} ${gactmp}/$$compstat.c"
     (
         echo     "/* made by 'gac', can be thrown away */"
-        echo     "#include <src/compiled.h>"
+        echo     "#include \"compiled.h\""
 
         echo     "#ifndef AVOID_PRECOMPILED"
-        echo     "extern StructInitInfo * Init__methsel1 ( void );"
         echo     "extern StructInitInfo * Init__type1 ( void );"
         echo     "extern StructInitInfo * Init__oper1( void );"
         echo     "#endif"
@@ -328,7 +327,6 @@ make_compstat () {
 
         echo     "InitInfoFunc CompInitFuncs [] = {"
         echo     "#ifndef AVOID_PRECOMPILED"
-        echo     "    Init__methsel1,"
         echo     "    Init__type1,"
         echo     "    Init__oper1,"
         echo     "#endif"
@@ -410,7 +408,7 @@ if [ $comp_howfar = "link" ]; then
         if [ "X${output}" = "X" ]; then output="gacout"; fi
 
         for object in $GAP_OBJS;  do
-            if [ ${object} != "obj/compstat.lo" ]; then
+            if [ ${object} != "obj/src/compstat.lo" ]; then
                 objects="${abs_top_builddir}/${object} ${objects}"
             fi
         done

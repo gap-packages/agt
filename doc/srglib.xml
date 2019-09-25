@@ -66,6 +66,7 @@ tables of Andries Brouwer <Cite Key="B_2018"/>.
 
 <#Include Label="IsKnownSRGParameterTuple">
 
+<#Include Label="IsAllSRGsStored">
 </Section>
 <Section Label="More strongly regular graphs">
 <Heading>More strongly regular graphs</Heading>

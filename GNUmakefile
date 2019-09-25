@@ -21,9 +21,16 @@ ABI_CFLAGS =
 HPCGAP = no
 ADDGUARDS2 = 
 
+# garbage collector source files
+GC_SOURCES = src/gasman.c
+
 # compatibility mode
 COMPAT_MODE = yes
-GAPARCH = x86_64-pc-linux-gnu-default64
+GAPARCH = x86_64-pc-linux-gnu-default64-kv3
+
+# GAP kernel version
+GAP_KERNEL_MINOR_VERSION = 1
+GAP_KERNEL_MAJOR_VERSION = 3
 
 # autoconf package metadata
 PACKAGE_BUGREPORT = support@gap-system.org
@@ -47,16 +54,26 @@ DEFS = -DHAVE_CONFIG_H
 LDFLAGS =  
 LIBS = -lm -ldl -lutil 
 
-WARNING_CPPFLAGS = -fno-strict-aliasing -Wall -Wextra -Wundef -Wnested-externs -Wwrite-strings -Wpointer-arith -Wredundant-decls -Wno-unused-parameter -Wmissing-field-initializers -Wformat=2 -Wold-style-definition -Wformat-nonliteral -Wformat-security -Wno-sign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked -Wmissing-format-attribute -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wimplicit-function-declaration -Wreturn-type -Wswitch-enum -Wno-implicit-fallthrough -Wno-inline -Wno-error=unused-parameter -Wno-error=sign-compare -Wno-error=inline
+WARNING_CPPFLAGS = -fno-strict-aliasing -Wall -Wextra -Wundef -Wwrite-strings -Wpointer-arith -Wredundant-decls -Wno-unused-parameter -Wmissing-field-initializers -Wformat=2 -Wold-style-definition -Wformat-nonliteral -Wformat-security -Wno-sign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked -Wmissing-format-attribute -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wreturn-type -Wno-implicit-fallthrough -Wno-inline -Wlogical-op -Wdouble-promotion -Wno-cast-function-type -Wnested-externs -Wimplicit-function-declaration -Wjump-misses-init -Wno-error=unused-parameter -Wno-error=sign-compare -Wno-error=inline
 
 BUILD_GMP = yes
 GMP_CPPFLAGS = -I${abs_builddir}/extern/install/gmp/include
 GMP_LDFLAGS = ${abs_builddir}/extern/install/gmp/lib/libgmp.la
 GMP_LIBS = 
 
+BUILD_ZLIB = no
+ZLIB_CPPFLAGS = 
+ZLIB_LDFLAGS = 
+ZLIB_LIBS = -lz
+
 READLINE_CPPFLAGS = 
 READLINE_LDFLAGS = 
 READLINE_LIBS = 
+
+JULIA = 
+JULIA_CPPFLAGS = 
+JULIA_LDFLAGS = 
+JULIA_LIBS = 
 
 BUILD_BOEHM_GC = 
 BOEHM_GC_CPPFLAGS = 
@@ -113,8 +130,8 @@ build_os = linux-gnu
 build_vendor = pc
 
 # build paths
-abs_builddir = /usr/share/gap-4.9.3/pkg/agt
-abs_srcdir = /usr/share/gap-4.9.3/pkg/agt/../..
+abs_builddir = /usr/share/gap-4.10.2/pkg/agt
+abs_srcdir = /usr/share/gap-4.10.2/pkg/agt/../..
 builddir = .
 srcdir = ../..
 
@@ -122,8 +139,8 @@ srcdir = ../..
 # keeping the others makes it easier to "git bisect" back and forth
 top_builddir = .
 top_srcdir = ../..
-abs_top_builddir = /usr/share/gap-4.9.3/pkg/agt
-abs_top_srcdir = /usr/share/gap-4.9.3/pkg/agt/../..
+abs_top_builddir = /usr/share/gap-4.10.2/pkg/agt
+abs_top_srcdir = /usr/share/gap-4.10.2/pkg/agt/../..
 
 # install paths
 bindir = ${exec_prefix}/bin

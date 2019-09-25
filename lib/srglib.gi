@@ -432,6 +432,32 @@ function( parms )
 
 end );
 
+
+#############################################################################
+##
+#F  IsAllSRGsStored( [ <v>, <k>, <a>, <b> ] )
+##  
+InstallGlobalFunction( IsAllSRGsStored, 
+function( parms )
+  local info;
+
+  if not (IsFeasibleSRGParameters(parms) and parms[1]<=AGT_Brouwer_Parameters_MAX) then
+    Error("usage: IsKnownSRGParameterTuple(<parms>), where \n\
+          <parms> is feasible strongly regular graph parameters, and \n\
+          parms[1]<=AGT_Brouwer_Parameters_MAX.");
+  fi;
+
+  if not IsPrimitiveSRGParameters(parms) then
+    return false;
+  fi;
+  
+  info := SRGLibraryInfo(parms);  
+
+  return info[3]=info[4];
+
+end );
+
+
 #############################################################################
 ##
 #F  DisjointUnionOfCliques( <n1> , <n2>, ... )

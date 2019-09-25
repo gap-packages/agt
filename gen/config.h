@@ -4,14 +4,20 @@
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
-/* Use Boehm garbage collector */
-/* #undef BOEHM_GC */
-
 /* define as least offset which is still safe for an unaligned access */
 #define C_STACK_ALIGN 2
 
 /* define if building in debug mode */
 /* #undef GAP_KERNEL_DEBUG */
+
+/* The major version of the kernel ABI */
+#define GAP_KERNEL_MAJOR_VERSION 3
+
+/* The minor version of the kernel ABI */
+#define GAP_KERNEL_MINOR_VERSION 1
+
+/* define if building with memory checking */
+/* #undef GAP_MEM_CHECK */
 
 /* define as 1 if >> for long int behaves like an arithmetic right shift for
    negative numbers */
@@ -230,6 +236,9 @@
 /* Define to 1 if `vfork' works. */
 #define HAVE_WORKING_VFORK 1
 
+/* Define to 1 if ZLIB is found */
+#define HAVE_ZLIB 1
+
 /* Define to 1 if you have the `_setjmp' function. */
 /* #undef HAVE__SETJMP */
 
@@ -266,6 +275,9 @@
 
 /* maximum number of GC threads */
 /* #undef MAX_GC_THREADS */
+
+/* define if building with valgrind extensions */
+/* #undef MEMORY_CANARY */
 
 /* Define to the address where bug reports for this package should be sent. */
 #define PACKAGE_BUGREPORT "support@gap-system.org"
@@ -314,7 +326,7 @@
 #define STDC_HEADERS 1
 
 /* for backwards compatibility */
-#define SYS_ARCH "x86_64-pc-linux-gnu-default64"
+#define SYS_ARCH "x86_64-pc-linux-gnu-default64-kv3"
 
 /* define if this is the Cygwin32 port */
 /* #undef SYS_IS_CYGWIN32 */
@@ -322,8 +334,17 @@
 /* define if this is the Darwin port */
 /* #undef SYS_IS_DARWIN */
 
+/* define as 1 if Boehm GC is used */
+/* #undef USE_BOEHM_GC */
+
+/* define as 1 if GASMAN is used */
+#define USE_GASMAN 1
+
 /* for backwards compatibility */
 #define USE_GMP 1
+
+/* define as 1 if the Julia GC is used */
+/* #undef USE_JULIA_GC */
 
 /* define as 1 if we should try and use the __builtin_popcntl function if
    available */
@@ -352,58 +373,11 @@
 /* Define for large files, on AIX-style hosts. */
 /* #undef _LARGE_FILES */
 
-/* Define for Solaris 2.5.1 so the uint32_t typedef from <sys/synch.h>,
-   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
-   #define below would cause a syntax error. */
-/* #undef _UINT32_T */
-
-/* Define for Solaris 2.5.1 so the uint64_t typedef from <sys/synch.h>,
-   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
-   #define below would cause a syntax error. */
-/* #undef _UINT64_T */
-
-/* Define for Solaris 2.5.1 so the uint8_t typedef from <sys/synch.h>,
-   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
-   #define below would cause a syntax error. */
-/* #undef _UINT8_T */
-
 /* Defined to return type of backtrace(). */
 #define backtrace_size_t int
 
-/* Define to the type of a signed integer type of width exactly 16 bits if
-   such a type exists and the standard includes do not define it. */
-/* #undef int16_t */
-
-/* Define to the type of a signed integer type of width exactly 32 bits if
-   such a type exists and the standard includes do not define it. */
-/* #undef int32_t */
-
-/* Define to the type of a signed integer type of width exactly 64 bits if
-   such a type exists and the standard includes do not define it. */
-/* #undef int64_t */
-
-/* Define to the type of a signed integer type of width exactly 8 bits if such
-   a type exists and the standard includes do not define it. */
-/* #undef int8_t */
-
 /* Define to `int' if <sys/types.h> does not define. */
 /* #undef pid_t */
-
-/* Define to the type of an unsigned integer type of width exactly 16 bits if
-   such a type exists and the standard includes do not define it. */
-/* #undef uint16_t */
-
-/* Define to the type of an unsigned integer type of width exactly 32 bits if
-   such a type exists and the standard includes do not define it. */
-/* #undef uint32_t */
-
-/* Define to the type of an unsigned integer type of width exactly 64 bits if
-   such a type exists and the standard includes do not define it. */
-/* #undef uint64_t */
-
-/* Define to the type of an unsigned integer type of width exactly 8 bits if
-   such a type exists and the standard includes do not define it. */
-/* #undef uint8_t */
 
 /* Define as `fork' if `vfork' does not work. */
 /* #undef vfork */

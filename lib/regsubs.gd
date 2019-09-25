@@ -113,6 +113,82 @@ DeclareOperation( "HoffmanCliqueBound" , [IsList] );
 
 #############################################################################
 ##
+#O  HaemersRegularUpperBound( <gamma> , <d> )
+##  
+##  <#GAPDoc Label="HaemersRegularUpperBound">
+##  <ManSection>
+##  <Oper Name="HaemersRegularUpperBound"
+##   Arg="gamma"/>
+##  <Oper Name="HaemersRegularUpperBound"
+##   Arg="parms,d" Label="for SRG parameters"/>
+##  <Returns>an integer.</Returns>
+##
+##  <Description>
+##  Given a non-null regular graph <A>gamma</A>, this function returns the 
+##  Haemers upper bound on <A>d</A>-regular induced subgraphs of <A>gamma</A>.
+##  <P/>
+##  Given feasible strongly regular graph parameters <A>parms</A>, this 
+##  function returns the Haemers upper bound on <A>d</A>-regular induced subgraphs of a strongly regular graph
+##  with parameters <A>parms</A>. 
+##  <P/>
+##  Let <M>\Gamma</M> be a non-null regular graph with parameters <M>(v,k)</M> and least 
+##  eigenvalue <M>s</M> and let <M>d</M> be a non-negative integer. The
+##  <E>Haemers upper bound</E> on <M>d</M>-regular induced subgraphs of <M>\Gamma</M>, is defined as
+##  <Display>\delta=\lfloor\left(\frac{v(d-s)}{k-s}\right)\rfloor.</Display>
+##  It is known that any <M>d</M>-regular induced subgraph in <M>\Gamma</M> has order at most <M>\delta</M>
+##  (see <Cite Key="E_2020"/>).
+##    <Example>
+##      <![CDATA[
+##      ]]>
+##    </Example>
+##  </Description>
+##
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareOperation( "HaemersRegularUpperBound" , [IsRecord, IsInt] );
+DeclareOperation( "HaemersRegularUpperBound" , [IsList, IsInt] );
+
+#############################################################################
+##
+#O  HaemersRegularLowerBound( <gamma> , <d> )
+##  
+##  <#GAPDoc Label="HaemersRegularLowerBound">
+##  <ManSection>
+##  <Oper Name="HaemersRegularLowerBound"
+##   Arg="gamma"/>
+##  <Oper Name="HaemersRegularLowerBound"
+##   Arg="parms,d" Label="for SRG parameters"/>
+##  <Returns>an integer.</Returns>
+##
+##  <Description>
+##  Given a connected regular graph <A>gamma</A>, this function returns the 
+##  Haemers lower bound on <A>d</A>-regular induced subgraphs of <A>gamma</A>.
+##  <P/>
+##  Given feasible strongly regular graph parameters <A>parms</A>, this 
+##  function returns the Haemers lower bound on <A>d</A>-regular induced subgraphs of a connected strongly regular graph
+##  with parameters <A>parms</A>. 
+##  <P/>
+##  Let <M>\Gamma</M> be a connected regular graph with parameters <M>(v,k)</M> and second 
+##  eigenvalue <M>r</M> and let <M>d</M> be a non-negative integer. The
+##  <E>Haemers lower bound</E> on <M>d</M>-regular induced subgraphs of <M>\Gamma</M>, is defined as
+##  <Display>\delta=\lfloor\left(\frac{v(d-r)}{k-r}\right)\rfloor.</Display>
+##  It is known that any <M>d</M>-regular induced subgraph in <M>\Gamma</M> has order at least <M>\delta</M>
+##  (see <Cite Key="E_2020"/>).
+##    <Example>
+##      <![CDATA[
+##      ]]>
+##    </Example>
+##  </Description>
+##
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareOperation( "HaemersRegularLowerBound" , [IsRecord, IsInt] );
+DeclareOperation( "HaemersRegularLowerBound" , [IsList, IsInt] );
+
+#############################################################################
+##
 #F  CliqueAdjacencyPolynomial( <parms>, <x>, <y> )
 ##  
 ##  <#GAPDoc Label="CliqueAdjacencyPolynomial">

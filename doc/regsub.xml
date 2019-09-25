@@ -25,6 +25,10 @@ which each pair of distinct vertices are adjacent.
 
 <#Include Label="HoffmanCliqueBound">
 
+<#Include Label="HaemersRegularUpperBound">
+
+<#Include Label="HaemersRegularLowerBound">
+
 HaemersUpper and Lower bounds?
 
 </Section>

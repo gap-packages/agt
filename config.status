@@ -393,7 +393,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" bin/gap.sh:cnf/compat/gap.sh.in bin/x86_64-pc-linux-gnu-default64/extern/gmp/include/gmp.h:cnf/compat/gmp.h.in GNUmakefile doc/make_doc gac:cnf/gac.in"
+config_files=" bin/gap.sh:cnf/compat/gap.sh.in bin/x86_64-pc-linux-gnu-default64-kv3/extern/gmp/include/gmp.h:cnf/compat/gmp.h.in GNUmakefile doc/make_doc gac:cnf/gac.in"
 config_headers=" gen/config.h:src/config.h.in"
 config_commands=" gen/stamp-h libtool src/compiled.h"
 
@@ -438,7 +438,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/usr/share/gap-4.9.3/pkg/agt'
+ac_pwd='/usr/share/gap-4.10.2/pkg/agt'
 srcdir='../..'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -892,7 +892,9 @@ S["gapdir"]=""
 S["wincygbin"]=""
 S["wingapdir"]=""
 S["COMPAT_MODE"]="yes"
-S["GAPARCH"]="x86_64-pc-linux-gnu-default64"
+S["GAPARCH"]="x86_64-pc-linux-gnu-default64-kv3"
+S["gap_kernel_minor_version"]="1"
+S["gap_kernel_major_version"]="3"
 S["BOEHM_GC_LIBS"]=""
 S["BOEHM_GC_LDFLAGS"]=""
 S["BOEHM_GC_CPPFLAGS"]=""
@@ -902,17 +904,27 @@ S["LIBATOMIC_OPS_LDFLAGS"]=""
 S["LIBATOMIC_OPS_CPPFLAGS"]=""
 S["BUILD_LIBATOMIC_OPS"]=""
 S["ADDGUARDS2"]=""
+S["JULIA_LIBS"]=""
+S["JULIA_LDFLAGS"]=""
+S["JULIA_CPPFLAGS"]=""
+S["JULIA"]=""
 S["READLINE_LIBS"]=""
 S["READLINE_LDFLAGS"]=""
 S["READLINE_CPPFLAGS"]=""
+S["ZLIB_LIBS"]="-lz"
+S["BUILD_ZLIB"]="no"
+S["ZLIB_LDFLAGS"]=""
+S["ZLIB_CPPFLAGS"]=""
 S["GMP_LIBS"]=""
 S["BUILD_GMP"]="yes"
 S["GMP_LDFLAGS"]="${abs_builddir}/extern/install/gmp/lib/libgmp.la"
 S["GMP_CPPFLAGS"]="-I${abs_builddir}/extern/install/gmp/include"
-S["WARNING_CPPFLAGS"]="-fno-strict-aliasing -Wall -Wextra -Wundef -Wnested-externs -Wwrite-strings -Wpointer-arith -Wredundant-decls -Wno-unused-parameter -Wmissing-field-"\
-"initializers -Wformat=2 -Wold-style-definition -Wformat-nonliteral -Wformat-security -Wno-sign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked "\
-"-Wmissing-format-attribute -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wimplicit-function-declaration -Wreturn-type"\
-" -Wswitch-enum -Wno-implicit-fallthrough -Wno-inline -Wno-error=unused-parameter -Wno-error=sign-compare -Wno-error=inline"
+S["WARNING_CPPFLAGS"]="-fno-strict-aliasing -Wall -Wextra -Wundef -Wwrite-strings -Wpointer-arith -Wredundant-decls -Wno-unused-parameter -Wmissing-field-initializers -Wfo"\
+"rmat=2 -Wold-style-definition -Wformat-nonliteral -Wformat-security -Wno-sign-compare -Wstrict-aliasing -Wshadow -Winline -Wpacked -Wmissing-format-"\
+"attribute -Winit-self -Wmissing-include-dirs -Wunused-but-set-variable -Warray-bounds -Wreturn-type -Wno-implicit-fallthrough -Wno-inline -Wlogical-"\
+"op -Wdouble-promotion -Wno-cast-function-type -Wnested-externs -Wimplicit-function-declaration -Wjump-misses-init -Wno-error=unused-parameter -Wno-e"\
+"rror=sign-compare -Wno-error=inline"
+S["GC_SOURCES"]="src/gasman.c"
 S["HPCGAP"]="no"
 S["CXXCPP"]="g++ -E"
 S["LT_SYS_LIBRARY_PATH"]=""
@@ -1077,9 +1089,13 @@ D["HAVE___BUILTIN_POPCOUNTL"]=" 1"
 D["SIZEOF_INT"]=" 4"
 D["SIZEOF_LONG"]=" 8"
 D["SIZEOF_LONG_LONG"]=" 8"
+D["USE_GASMAN"]=" 1"
 D["USE_POPCNT"]=" 1"
 D["USE_GMP"]=" 1"
-D["SYS_ARCH"]=" \"x86_64-pc-linux-gnu-default64\""
+D["HAVE_ZLIB"]=" 1"
+D["GAP_KERNEL_MAJOR_VERSION"]=" 3"
+D["GAP_KERNEL_MINOR_VERSION"]=" 1"
+D["SYS_ARCH"]=" \"x86_64-pc-linux-gnu-default64-kv3\""
 D["C_STACK_ALIGN"]=" 2"
 D["HAVE_TERMIOS_H"]=" 1"
 D["HAVE_SYS_IOCTL_H"]=" 1"

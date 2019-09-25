@@ -722,6 +722,35 @@ DeclareGlobalFunction( "IsKnownSRGParameterTuple" );
 
 #############################################################################
 ##
+#F  IsAllSRGsStored( [ <v>, <k>, <a>, <b> ] )
+##  
+##  <#GAPDoc Label="IsAllSRGsStored">
+##  <ManSection>
+##  <Func Name="IsAllSRGsStored"
+##   Arg='parms'/>
+##  <Returns><K>true</K> or <K>false</K>.</Returns>
+##
+##  <Description>
+##  Given feasible strongly regular graph parameters <A>parms</A>, with first
+##  parameter <A>v</A> at most <Ref Var="AGT_Brouwer_Parameters_MAX"/>, this 
+##  function returns <K>true</K> if all pairwise non-isomorphic  
+##  strongly regular graphs with parameters <A>parms</A> are stored in the package. 
+##  Otherwise, this function returns
+##  <K>false</K>.
+##    <Example>
+##      <![CDATA[
+##TODO
+##      ]]>
+##    </Example>
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "IsAllSRGsStored" );
+
+
+#############################################################################
+##
 #F  DisjointUnionOfCliques( <n1> , <n2>, ... )
 ##  
 ##  <#GAPDoc Label="DisjointUnionOfCliques">

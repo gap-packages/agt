@@ -104,6 +104,167 @@ function( parms )
   return HoffmanCocliqueBound(ComplementSRGParameters(parms));
 end );
 
+
+#############################################################################
+##
+#O  HaemersRegularUpperBound( <gamma> , <d> )
+##  
+InstallMethod( HaemersRegularUpperBound, [IsRecord, IsInt], 
+function( gamma, d )
+  local sigma,a,b,v,k,sig1,sig2,eps;
+
+  if not IsGraph(gamma) then
+    TryNextMethod();
+  fi;
+
+  if IsNullGraph(gamma) or not IsRegularGraph(gamma) or d<0 then
+    Error("Gamma must be a non-empty regular graph, d>=0");
+  fi;
+
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
+
+  repeat 
+
+  sigma:=LeastEigenvalueInterval(gamma,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
+
+  v:= gamma.order;
+  k:= VertexDegree(gamma,1);
+  a:=v*(d-sig2)/(k-sig2);
+  b:=v*(d-sig1)/(k-sig1);
+
+  eps:=eps/2;
+
+  until Int(a)=Int(b);
+
+  return Int(a);
+end );
+
+#############################################################################
+##
+#O  HaemersRegularUpperBound( <parms> )
+##  
+InstallMethod( HaemersRegularUpperBound, [IsList,IsInt],
+function( parms , d )
+  local sigma,a,b,v,k,sig1,sig2,eps;
+  
+  if not IsFeasibleSRGParameters(parms) then
+    TryNextMethod();
+  fi;
+
+  if d<0 then
+    Error("d must be an integer, d>=0");
+  fi;
+
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
+
+  repeat 
+
+  sigma:=LeastEigenvalueInterval(parms,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
+
+  v:= parms[1];
+  k:= parms[2];
+  a:=v*(d-sig2)/(k-sig2);
+  b:=v*(d-sig1)/(k-sig1);
+
+  eps:=eps/2;
+
+  until Int(a)=Int(b);
+
+  return Int(a);
+end );
+
+
+
+
+#############################################################################
+##
+#O  HaemersRegularLowerBound( <gamma> , <d> )
+##  
+InstallMethod( HaemersRegularLowerBound, [IsRecord, IsInt], 
+function( gamma, d )
+  local sigma,a,b,v,k,sig1,sig2,eps;
+
+  if not IsGraph(gamma) then
+    TryNextMethod();
+  fi;
+
+  if IsNullGraph(gamma) or not IsRegularGraph(gamma) or not IsConnectedGraph(gamma) then
+    Error("Gamma must be a non-empty, connected regular graph");
+  fi;
+
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
+
+  repeat 
+
+  sigma:=SecondEigenvalueInterval(gamma,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
+
+  v:= gamma.order;
+  k:= VertexDegree(gamma,1);
+  a:=v*(d-sig2)/(k-sig2);
+  b:=v*(d-sig1)/(k-sig1);
+
+  eps:=eps/2;
+
+  until  Int(Ceil(Float(a)))= Int(Ceil(Float(b)));
+
+  return Int(Ceil(Float(a)));
+end );
+
+#############################################################################
+##
+#O  HaemersRegularLowerBound( <parms> )
+##  
+InstallMethod( HaemersRegularLowerBound, [IsList,IsInt],
+function( parms , d )
+  local sigma,a,b,v,k,sig1,sig2,eps;
+  
+  if not IsFeasibleSRGParameters(parms) then
+    TryNextMethod();
+  fi;
+
+  if d<0 or parms[4]=0 then
+    Error("d must be an integer, d>=0 and parms must not have parms[4]=0");
+  fi;
+
+
+  sigma:=[];
+  sig1:=-1;
+  sig2:=-2;
+  eps:=1/10;
+
+  repeat 
+
+  sigma:=SecondEigenvalueInterval(parms,eps);
+  sig1:=sigma[1];
+  sig2:=sigma[2];
+
+  v:= parms[1];
+  k:= parms[2];
+  a:=v*(d-sig2)/(k-sig2);
+  b:=v*(d-sig1)/(k-sig1);
+
+  eps:=eps/2;
+
+  until  Int(Ceil(Float(a)))= Int(Ceil(Float(b)));
+
+  return Int(Ceil(Float(a)));
+end );
+
 #############################################################################
 ##
 #F  CliqueAdjacencyPolynomial( <parms>, <x>, <y> )
@@ -288,7 +449,7 @@ function( parms , d )
 
   m := [0,0];
 
-  fubnd:=v;
+  fubnd:=0;
 
   for s in Reversed([2..v]) do
 
@@ -335,7 +496,7 @@ function( parms , d )
 
   m := [0,0];
 
-  flbnd:=d+1;
+  flbnd:=v+1;
 
   for s in [2..v] do
 
