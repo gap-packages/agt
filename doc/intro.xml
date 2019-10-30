@@ -2,25 +2,25 @@
 <Heading>The &AGT; package</Heading>
 <Index Key="AGT">&AGT; package overview</Index>
 
-  This is the manual for the &AGT; package version &VERSION;.  This package
-  was developed at Queen Mary University of London, by Rhys J. Evans.
+  This is the manual for the &AGT; package version &VERSION;, developed at 
+  Queen Mary University of London by Rhys J. Evans.
   <P/>
   The &AGT; package contains a methods used for the determination of  various 
-  algebraic and regularity properties of graphs, as well as subgraph structures. 
-  The package also provides a library of small strongly regular graphs.
-  These provide a useful source of graphs to experiment with computationally. 
+  algebraic and regularity properties of graphs, as well as certain substructures 
+  of graphs. The package also contains a library of small strongly regular graphs,
+  which has turned out to be a useful resource for computational experiments. 
   <P/>
   All of the functions in this package deal with finite simple graphs in 
   &Grape; format <Cite Key="GRAPE_2018"/>. Behind the scenes, we also use the 
-  <Package>Digraphs</Package> package <Cite Key="DIGRAPHS_2019"/> to format and store the graphs in the
-  strongly regular graph library efficiently. 
+  <Package>Digraphs</Package> package <Cite Key="DIGRAPHS_2019"/> to format and efficiently 
+  store the graphs in the strongly regular graph library. 
   
 
 <Section Label="install">
 <Heading>Installing &AGT;</Heading>
 <Index>&AGT;</Index>
 
-To install the &AGT; package, you will first need to download the most recent 
+To install the &AGT; package, you will need to download the most recent 
 <C>tar.gz</C> file, found at &PKGWWWHOME;. Once downloaded, you can install the 
 package by following the instructions found in the &GAP; reference manual, 
 <URL Text="chapter 76">https://www.gap-system.org/Manuals/doc/ref/chap76.html</URL>.
@@ -28,18 +28,18 @@ package by following the instructions found in the &GAP; reference manual,
 The &AGT; package requires the following &GAP; packages:
 <List>
 <Item><Package>GAPDoc</Package> <Cite Key="GAPDOC_2019"/>, version 1.6 or higher;</Item>
-<Item><Package>DESIGN</Package> <Cite Key="DESIGN_2019"/>, version 1.7 or higher ;</Item>
-<Item><Package>GRAPE</Package> <Cite Key="GRAPE_2018"/>, version 4.8 or higher ;</Item>
+<Item><Package>DESIGN</Package> <Cite Key="DESIGN_2019"/>, version 1.7 or higher;</Item>
+<Item><Package>GRAPE</Package> <Cite Key="GRAPE_2018"/>, version 4.8 or higher;</Item>
 <Item><Package>Digraphs</Package> <Cite Key="DIGRAPHS_2019"/>, version 0.12.2 or higher.</Item>
 </List>
-These required packages are all part of the standard &GAP; distribution.
+Each of the above packages are part of the standard &GAP; distribution.
 
 </Section>
 
 <Section Label="load">
 <Heading>Loading &AGT;</Heading>
 
-Once correctly installed, you can load th &AGT; package at the &GAP; prompt by
+Once correctly installed, you can load the &AGT; package at the &GAP; prompt by
 typing the following.
 <Example>
 gap> LoadPackage("agt");

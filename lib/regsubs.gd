@@ -41,13 +41,11 @@
 ##  vertices (see <Cite Key="BH_2011"/>).
 ##    <Example>
 ##      <![CDATA[
-##gap> gamma:=HammingGraph(3,5);;
-##gap> HoffmanCocliqueBound(gamma);
+##gap> HoffmanCocliqueBound(HammingGraph(3,5));
 ##25
-##gamma:=HammingGraph(2,5);;
-##gap> HoffmanCocliqueBound(gamma);               
+##gap> HoffmanCocliqueBound(HammingGraph(2,5));               
 ##5
-##gap> parms:=SRGParameters(gamma);
+##gap> parms:=SRGParameters(HammingGraph(2,5));
 ##[ 25, 8, 3, 2 ]
 ##gap> HoffmanCocliqueBound(parms);
 ##5
@@ -118,16 +116,16 @@ DeclareOperation( "HoffmanCliqueBound" , [IsList] );
 ##  <#GAPDoc Label="HaemersRegularUpperBound">
 ##  <ManSection>
 ##  <Oper Name="HaemersRegularUpperBound"
-##   Arg="gamma"/>
+##   Arg="gamma,d"/>
 ##  <Oper Name="HaemersRegularUpperBound"
 ##   Arg="parms,d" Label="for SRG parameters"/>
 ##  <Returns>an integer.</Returns>
 ##
 ##  <Description>
-##  Given a non-null regular graph <A>gamma</A>, this function returns the 
+##  Given a non-null regular graph <A>gamma</A> and non-negative integer <A>d</A>, this function returns the 
 ##  Haemers upper bound on <A>d</A>-regular induced subgraphs of <A>gamma</A>.
 ##  <P/>
-##  Given feasible strongly regular graph parameters <A>parms</A>, this 
+##  Given feasible strongly regular graph parameters <A>parms</A> and non-negative integer <A>d</A>, this 
 ##  function returns the Haemers upper bound on <A>d</A>-regular induced subgraphs of a strongly regular graph
 ##  with parameters <A>parms</A>. 
 ##  <P/>
@@ -139,6 +137,10 @@ DeclareOperation( "HoffmanCliqueBound" , [IsList] );
 ##  (see <Cite Key="E_2020"/>).
 ##    <Example>
 ##      <![CDATA[
+##gap> HaemersRegularUpperBound(SimsGerwitzGraph(),3);
+##28
+##gap> HaemersRegularUpperBound([56,10,0,2],0);       
+##16
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -156,17 +158,17 @@ DeclareOperation( "HaemersRegularUpperBound" , [IsList, IsInt] );
 ##  <#GAPDoc Label="HaemersRegularLowerBound">
 ##  <ManSection>
 ##  <Oper Name="HaemersRegularLowerBound"
-##   Arg="gamma"/>
+##   Arg="gamma,d"/>
 ##  <Oper Name="HaemersRegularLowerBound"
 ##   Arg="parms,d" Label="for SRG parameters"/>
 ##  <Returns>an integer.</Returns>
 ##
 ##  <Description>
-##  Given a connected regular graph <A>gamma</A>, this function returns the 
+##  Given a connected regular graph <A>gamma</A> and non-negative integer <A>d</A>, this function returns the 
 ##  Haemers lower bound on <A>d</A>-regular induced subgraphs of <A>gamma</A>.
 ##  <P/>
-##  Given feasible strongly regular graph parameters <A>parms</A>, this 
-##  function returns the Haemers lower bound on <A>d</A>-regular induced subgraphs of a connected strongly regular graph
+##  Given the parameters of a connected strongly regular graph, <A>parms</A>, and non-negative integer <A>d</A>, this 
+##  function returns the Haemers lower bound on <A>d</A>-regular induced subgraphs of a strongly regular graph
 ##  with parameters <A>parms</A>. 
 ##  <P/>
 ##  Let <M>\Gamma</M> be a connected regular graph with parameters <M>(v,k)</M> and second 
@@ -177,6 +179,10 @@ DeclareOperation( "HaemersRegularUpperBound" , [IsList, IsInt] );
 ##  (see <Cite Key="E_2020"/>).
 ##    <Example>
 ##      <![CDATA[
+##gap> HaemersRegularLowerBound(HoffmanSingletonGraph(),4);
+##20
+##gap> HaemersRegularLowerBound([50,7,0,1],3);             
+##10
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -201,7 +207,7 @@ DeclareOperation( "HaemersRegularLowerBound" , [IsList, IsInt] );
 ##  Given feasible edge-regular graph parameters <A>parms</A> and indeterminates 
 ##  <A>x,y</A>, this function returns the clique adjacency polynomial with
 ##  respect to the parameters <A>parms</A> and indeterminates <A>x,y</A>, defined
-##  in Soicher <Cite Key="S_2015"/>.
+##  in <Cite Key="S_2015"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be an edge-regular graph with parameters <M>(v,k,a)</M>. 
 ##  The <E>clique adjacency polynomial</E> of <M>\Gamma</M> is defined as
@@ -237,7 +243,7 @@ DeclareGlobalFunction( "CliqueAdjacencyPolynomial" );
 ##  <Description>
 ##  Given feasible edge-regular graph parameters <A>parms</A>, this function 
 ##  returns the clique adjacency bound  with respect to the parameters 
-##  <A>parms</A>, defined in Soicher <Cite Key="S_2010"/>.
+##  <A>parms</A>, defined in <Cite Key="S_2010"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be an edge-regular graph with parameters <M>(v,k,a)</M>,
 ##  and let <M>C</M> be its corresponding clique adjacency poylnomial (see 
@@ -274,6 +280,10 @@ DeclareGlobalFunction( "CliqueAdjacencyBound" );
 ##  the function returns <K>fail</K>.
 ##    <Example>
 ##      <![CDATA[
+##gap> NGParameters(HigmanSimsGraph());                    
+##fail
+##gap> NGParameters(TriangularGraph(10));
+##[ [ 45, 16, 8, 9, 2 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -297,6 +307,10 @@ DeclareGlobalFunction( "NGParameters" );
 ##  <A>gamma</A> is a Neumaier graph, and <K>false</K> otherwise.
 ##    <Example>
 ##      <![CDATA[
+##gap> IsNG(HammingGraph(3,7));
+##false
+##gap> IsNG(HammingGraph(2,7));
+##true
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -334,6 +348,10 @@ DeclareGlobalFunction( "IsNG" );
 ##  conditions (see <Cite Key="E_2020"/>). 
 ##    <Example>
 ##      <![CDATA[
+##gap> IsFeasibleNGParameters([35,16,6,5,2]);
+##true
+##gap> IsFeasibleNGParameters([37,18,8,5,2]);
+##false
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -388,7 +406,7 @@ DeclareGlobalFunction( "RegularCliqueERGParameters" );
 ##  Given feasible strongly regular graph parameters <A>parms</A> and indeterminates 
 ##  <A>x,y,d</A>, this function returns the regular adjacency polynomial with
 ##  respect to the parameters <A>parms</A> and indeterminates <A>x,y,d</A>, as 
-##  defined in Evans <Cite Key="E_2020"/>.
+##  defined in <Cite Key="E_2020"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>. 
 ##  The <E>regular adjacency polynomial</E> of <M>\Gamma</M> is defined as
@@ -396,7 +414,7 @@ DeclareGlobalFunction( "RegularCliqueERGParameters" );
 ##  For the properties of the regular adjacency polynomial, see <Cite Key="E_2020"/>.
 ##    <Example>
 ##      <![CDATA[
-##RegularAdjacencyPolynomial([16,6,2,2],"x","y","d");
+##gap> RegularAdjacencyPolynomial([16,6,2,2],"x","y","d");
 ##-x^2*y+2*x*y*d-y*d^2+16*x^2-x*y+2*y^2+y*d+4*x-2*y
 ##      ]]>
 ##    </Example>
@@ -420,19 +438,19 @@ DeclareGlobalFunction( "RegularAdjacencyPolynomial" );
 ##  Given strongly regular graph parameters <A>parms</A> and non-negative 
 ##  integer <A>d</A>, this function returns the regular adjacency upper bound
 ##  with respect to the parameters <A>parms</A> and integer <A>d</A>, defined
-##  in Evans <Cite Key="E_2020"/>.
+##  in <Cite Key="E_2020"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>,
 ##  and let <M>R</M> be its corresponding regular adjacency poylnomial (see 
 ##  <Ref Func="RegularAdjacencyPolynomial"/>). For fixed <M>d</M>, the <E>regular adjacency upper bound</E>
-##  of <M>\Gamma</M> is defined as the largest integer <M>1\leq y\leq v</M> such 
+##  of <M>\Gamma</M> is defined as the largest integer <M>d+1\leq y\leq v</M> such 
 ##  that for all integers <M>m</M>, we have <M>R(m,y,d) \geq 0</M> if such a <M>y</M> exists, and 0 otherwise.
 ##  It is known that the regular adjacency upper bound is an upper bound on the number 
 ##  of vertices in any <M>d</M>-regular induced subgraph of <M>\Gamma</M> (see <Cite Key="E_2020"/>).
 ##    <Example>
 ##      <![CDATA[
-##gap> RegularAdjacencyUpperBound([16,6,2,2],4);
-##12
+##gap> RegularAdjacencyUpperBound([56,10,0,2],3);
+##28
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -448,26 +466,26 @@ DeclareGlobalFunction( "RegularAdjacencyUpperBound" );
 ##  <#GAPDoc Label="RegularAdjacencyLowerBound">
 ##  <ManSection>
 ##  <Func Name="RegularAdjacencyLowerBound"
-##   Arg='parms'/>
+##   Arg='parms,d'/>
 ##  <Returns>an integer.</Returns>
 ##
 ##  <Description>
-##  Given strongly regular graph parameters <A>parms</A> and non-negative 
+##  Given the parameters of a connected strongly regular graph, <A>parms</A>, and non-negative 
 ##  integer <A>d</A>, this function returns the Regular Adjacency lower bound
 ##  with respect to the parameters <A>parms</A> and integer <A>d</A>, defined
-##  in Evans <Cite Key="E_2020"/>.
+##  in <Cite Key="E_2020"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>,
 ##  and let <M>R</M> be its corresponding regular adjacency poylnomial (see 
 ##  <Ref Func="RegularAdjacencyPolynomial"/>). For fixed <M>d</M>, the <E>regular adjacency lower bound</E>
-##  of <M>\Gamma</M> is defined as the smallest integer <M>1\leq y\leq v</M> such 
+##  of <M>\Gamma</M> is defined as the smallest integer <M>d+1\leq y\leq v</M> such 
 ##  that for all integers <M>m</M>, we have <M>R(m,y,d) \geq 0</M> if such a <M>y</M>, and <M>v+1</M> otherwise.
 ##  It is known that the regular adjacency lower bound is a lower bound on the number 
 ##  of vertices in any <M>d</M>-regular induced subgraph of <M>\Gamma</M> (see <Cite Key="E_2020"/>).
 ##    <Example>
 ##      <![CDATA[
-##gap> RegularAdjacencyLowerBound([16,6,2,2],4);
-##8
+##gap> RegularAdjacencyLowerBound([50,7,0,1],2);
+##5
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -492,6 +510,10 @@ DeclareGlobalFunction( "RegularAdjacencyLowerBound" );
 ##  set for some <M>m</M>, the function returns <K>fail</K>.
 ##    <Example>
 ##      <![CDATA[
+##gap> Nexus(SquareLatticeGraph(5),[1,2,3,4,6]);
+##fail
+##gap> Nexus(SquareLatticeGraph(5),[1,2,3,4,5]);
+##1
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -508,15 +530,19 @@ DeclareGlobalFunction( "Nexus" );
 ##  <ManSection>
 ##  <Func Name="RegularSetParameters"
 ##   Arg='gamma,U'/>
-##  <Returns>a list.</Returns>
+##  <Returns>a list or <K>fail</K>.</Returns>
 ##
 ##  <Description>
 ##  Given a graph <A>gamma</A> and a subset <A>U</A> of its vertices, this
-##  function returns a list <A>[d,m]</A> such that <A>U</A> is a <M>(<A>d,m</A>)</M>
-##  -regular set. If <A>U</A> is not an <M>(d,m)</M>-regular
+##  function returns a list <A>[d,m]</A> such that <A>U</A> is a <M>(<A>d,m</A>)</M>-regular set.
+##  If <A>U</A> is not an <M>(d,m)</M>-regular
 ##  set for some <M>d,m</M>, the function returns <K>fail</K>.
 ##    <Example>
 ##      <![CDATA[
+##gap> RegularSetParameters(SquareLatticeGraph(5),[6,11,16,21]);  
+##fail
+##gap> RegularSetParameters(SquareLatticeGraph(5),[1,6,11,16,21]);
+##[ 4, 1 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -552,6 +578,10 @@ DeclareGlobalFunction( "RegularSetParameters" );
 ##  </List>
 ##    <Example>
 ##      <![CDATA[
+##gap> IsRegularSet(HoffmanSingletonGraph(),[11..50],false);
+##true
+##gap> IsRegularSet(HoffmanSingletonGraph(),[11..50],true); 
+##false
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -588,7 +618,7 @@ DeclareGlobalFunction( "IsRegularSet" );
 ##  positive integer <M>s</M> such that 
 ##  <Display>R(m-1,s,d)=R(m,s,d)=0.</Display>
 ##  It is known that any <M>(d,m)</M>-regular set of size <M>s</M> in <M>\Gamma</M>
-##  must have satisfy the above conditions (see <Cite Key="E_2020"/>).
+##  must satisfy the above conditions (see <Cite Key="E_2020"/>).
 ##    <Example>
 ##      <![CDATA[
 ##gap> RegularSetSRGParameters([16,6,2,2],4);

@@ -60,9 +60,8 @@ DeclareGlobalFunction( "ComplementSRGParameters" );
 ##  complement parameters <M>(v',k',a',b')</M>. Then the parameter tuple
 ##  <M>(v,k,a,b)</M> is called <E>primitive</E> if <M>b\not= 0,b'\not= 0</M>. 
 ##  <P/>
-##  This definition is significant for the following reason. A strongly regular
-##  graph <M>\Gamma</M> is called <E>primitive</E> if <M>\Gamma</M> and its 
-##  complement is connected. It is known that a 
+##  A strongly regular graph <M>\Gamma</M> is called <E>primitive</E> if 
+##  <M>\Gamma</M> and its complement is connected. It is known that a 
 ##  non-primitive strongly regular graph is a union of cliques, or the 
 ##  complement of a union of cliques. From our definition, it follows that a 
 ##  strongly regular graph <M>\Gamma</M> is primitive if and only if 
@@ -103,11 +102,10 @@ DeclareGlobalFunction( "IsPrimitiveSRGParameters" );
 ##  <E>type I</E> (or a <E>conference graph</E>) if there exists a positive integer <M>t</M> such that 
 ##  <M>v=4t+1,k=2t,a=t-1,b=t</M>.
 ##  <P/>
-##  This definition is significant for the following reason. There are two
-##  types of strongly regular graphs, called <E>type I</E> and <E>type II</E>
-##  (see <Cite Key="BCN_1989"/>). Let <M>\Gamma</M> be a strongly regular graph with parameters 
-##  <M>(v,k,a,b)</M>. Then <M>\Gamma</M> is of <E>type I</E>  
-##  if and only if <M>(v,k,a,b)</M> is of type I.
+##  There are two types of strongly regular graphs, called <E>type I</E> and 
+##  <E>type II</E> (see <Cite Key="BCN_1989"/>). Let <M>\Gamma</M> be a 
+##  strongly regular graph with parameters <M>(v,k,a,b)</M>. Then <M>\Gamma</M>
+##  is of <E>type I</E> if and only if <M>(v,k,a,b)</M> is of type I.
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsTypeISRGParameters([5,2,0,1]);                              
@@ -143,14 +141,14 @@ DeclareGlobalFunction( "IsTypeISRGParameters" );
 ##  A feasible strongly regular parameter tuple <M>(v,k,a,b)</M> is of 
 ##  <E>type II</E> if the polynomial <M>x^{2}-(a-b)x+b-k</M> has integer zeros.
 ##  <P/>
-##  This definition is significant for the following reason. There are two
-##  types of strongly regular graphs, called <E>type I</E> and <E>type II</E>
-##  (see <Cite Key="BCN_1989"/>). Let <M>\Gamma</M> be a strongly regular graph with parameters 
-##  <M>(v,k,a,b)</M>. Then <M>\Gamma</M> is of <E>type II</E> if and only if all of its 
-##  eigenvalues are integer. The eigenvalues of
-##  <M>\Gamma</M> are <M>k</M> and the zeros of the polynomial 
-##  <M>x^{2}-(a-b)x+b-k</M> (see <Cite Key="BCN_1989"/>). From our definition, it follows that
-##  <M>\Gamma</M> is of type II if and only if <M>(v,k,a,b)</M> is of type II. 
+##  There are two types of strongly regular graphs, called <E>type I</E> and 
+##  <E>type II</E> (see <Cite Key="BCN_1989"/>). Let <M>\Gamma</M> be a 
+##  strongly regular graph with parameters <M>(v,k,a,b)</M>. Then <M>\Gamma</M> 
+##  is of <E>type II</E> if and only if all of its eigenvalues are integer. 
+##  The eigenvalues of <M>\Gamma</M> are <M>k</M> and the zeros of the 
+##  polynomial <M>x^{2}-(a-b)x+b-k</M> (see <Cite Key="BCN_1989"/>). From our 
+##  definition, it follows that <M>\Gamma</M> is of type II if and only if 
+##  <M>(v,k,a,b)</M> is of type II. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsTypeIISRGParameters([5,2,0,1]); 
@@ -287,11 +285,11 @@ DeclareOperation( "KreinParameters" , [IsList]);
 ##  For information on the Krein conditions of strongly regular graphs, see <Cite Key="BCN_1989"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap>IsKreinConditionsSatisfied([28,9,0,4]);
+##gap> IsKreinConditionsSatisfied([28,9,0,4]);
 ##false
-##gap>IsKreinConditionsSatisfied([13,6,2,3]);
+##gap> IsKreinConditionsSatisfied([13,6,2,3]);
 ##true
-##gap>IsKreinConditionsSatisfied([10,6,3,4]);
+##gap> IsKreinConditionsSatisfied([10,6,3,4]);
 ##true
 ##      ]]>
 ##    </Example>
@@ -352,7 +350,7 @@ DeclareGlobalFunction( "IsAbsoluteBoundSatisfied" );
 ##
 ##  <Description>
 ##  This variable stores the largest order of the strongly regular graph 
-##  parameters contained in the current library
+##  parameters contained in the current library.
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
@@ -387,7 +385,7 @@ DeclareGlobalFunction( "IsAbsoluteBoundSatisfied" );
 ##          <C>parms</C>, but all such graphs have not been enumerated,</Item>
 ##    <Item><M>2</M> if it is not known if a strongly regular graph with
 ##          parameters <C>parms</C> exists, </Item>
-##    <Item><M>3</M> if it has proven that no strongly regular graph with 
+##    <Item><M>3</M> if it has been proven that no strongly regular graph with 
 ##          parameters <C>parms</C> exists.</Item>
 ##    </List> 
 ##  </Item> 
@@ -469,6 +467,10 @@ DeclareGlobalFunction( "IsSRGAvailable" );
 ##  corresponding to <A>parms</A>. 
 ##    <Example>
 ##      <![CDATA[
+##gap> SRGLibraryInfo([37,18,8,9]); 
+##[ [ 37, 18, 8, 9 ], 1, 6760, -1 ]
+##gap> SRGLibraryInfo([36,15,6,6]);
+##[ [ 36, 15, 6, 6 ], 0, 32548, 32548 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -600,7 +602,16 @@ DeclareGlobalFunction( "OneSRG" );
 ##  are stored in this package.
 ##    <Example>
 ##      <![CDATA[
-##TODO
+##gap> AllSRGs([16,6,2,2]);
+##[ rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], 
+##    group := <permutation group with 6 generators>, isGraph := true, 
+##    names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], 
+##    schreierVector := [ -1, 6, 4, 3, 5, 5, 5, 6, 6, 6, 4, 4, 4, 3, 3, 3 ] ),
+##  rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], group := Group([ (3,4)(5,6)
+##    (8,9)(11,14)(12,13)(15,16), (2,3)(4,5)(6,7)(9,11)(10,12)(14,15), (1,2)
+##    (5,8)(6,9)(7,10)(11,12)(13,14) ]), isGraph := true, 
+##    names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], 
+##    schreierVector := [ -1, 3, 2, 1, 2, 1, 2, 3, 3, 3, 2, 2, 1, 1, 2, 1 ] )]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -628,7 +639,6 @@ DeclareGlobalFunction( "AllSRGs" );
 ##      <![CDATA[
 ##gap> SRGIterator([16,6,2,2]);
 ##<iterator>
-##TODO
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -653,7 +663,7 @@ DeclareGlobalFunction( "SRGIterator" );
 ##  currently goes up to 1300 vertices.
 ##    <Example>
 ##      <![CDATA[
-##gap>SmallFeasibleSRGParameterTuples(16);
+##gap> SmallFeasibleSRGParameterTuples(16);
 ##[ [ 5, 2, 0, 1 ], [ 9, 4, 1, 2 ], [ 10, 3, 0, 1 ], [ 10, 6, 3, 4 ], 
 ##  [ 13, 6, 2, 3 ], [ 15, 6, 1, 3 ], [ 15, 8, 4, 4 ], [ 16, 5, 0, 2 ], 
 ##  [ 16, 10, 6, 6 ], [ 16, 6, 2, 2 ], [ 16, 9, 4, 6 ] ]
@@ -679,12 +689,15 @@ DeclareGlobalFunction( "SmallFeasibleSRGParameterTuples" );
 ##  Given feasible strongly regular graph parameters <A>parms</A>, with first
 ##  parameter <A>v</A> at most <Ref Var="AGT_Brouwer_Parameters_MAX"/>, this 
 ##  function returns <K>true</K> if the 
-##  strongly regular graphs with parameters <A>parms</A> have been enumerated. 
+##  strongly regular graphs with parameters <A>parms</A> have been enumerated, 
 ##  according to the list of Brouwer <Cite Key="B_2018"/>. Otherwise, this function returns
 ##  <K>false</K>.
 ##    <Example>
 ##      <![CDATA[
-##TODO
+##gap> IsEnumeratedSRGParameterTuple([37,18,8,9]);
+##false
+##gap> IsEnumeratedSRGParameterTuple([56,10,0,2]);
+##true
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -711,7 +724,12 @@ DeclareGlobalFunction( "IsEnumeratedSRGParameterTuple" );
 ##  Otherwise, this function returns <K>false</K>.
 ##    <Example>
 ##      <![CDATA[
-
+##gap> IsKnownSRGParameterTuple([64,28,12,12]);
+##true
+##gap> IsKnownSRGParameterTuple([64,30,18,10]);
+##false
+##gap> IsKnownSRGParameterTuple([65,32,15,16]);
+##false
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -739,7 +757,10 @@ DeclareGlobalFunction( "IsKnownSRGParameterTuple" );
 ##  <K>false</K>.
 ##    <Example>
 ##      <![CDATA[
-##TODO
+##gap> IsAllSRGsStored([37,18,8,9]);
+##false
+##gap> IsAllSRGsStored([36,15,6,6]);
+##true
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -766,7 +787,7 @@ DeclareGlobalFunction( "IsAllSRGsStored" );
 ##  DEF?
 ##    <Example>
 ##      <![CDATA[
-##gap>DisjointUnionOfCliques(3,5,7);            
+##gap> DisjointUnionOfCliques(3,5,7);            
 ##rec( adjacencies := [ [ 2, 3 ], [ 5, 6, 7, 8 ], [ 10, 11, 12, 13, 14, 15 ] ], 
 ##  group := Group([ (1,2,3), (1,2), (4,5,6,7,8), (4,5), (9,10,11,12,13,14,15),
 ##    (9,10) ]), isGraph := true, isSimple := true, order := 15, 
@@ -836,12 +857,12 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph" );
 ##  The graph <M>T(n)</M> is strongly regular with parameters <M>({n \choose 2},2(n-2),n-2,4)</M>.
 ##  For <M>n\not= 8</M>, <M>T(n)</M> is the unique strongly regular graph with its
 ##  parameters. There are four pairwise non-isomomorphic strongly regular graphs that have the same
-##  parameters as <M>T(8)</M>, which are the traingular graph <M>T(8)</M> and the
+##  parameters as <M>T(8)</M>, which are the triangular graph <M>T(8)</M> and the
 ##  <E>Chang graphs</E> (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>).
 ##  
 ##    <Example>
 ##      <![CDATA[
-##gap>TriangularGraph(7); 
+##gap> TriangularGraph(7); 
 ##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ] ], 
 ##  group := Group([ (1,7,12,16,19,21,6)(2,8,13,17,20,5,11)(3,9,14,18,4,10,15),
 ##    (2,7)(3,8)(4,9)(5,10)(6,11) ]), isGraph := true, isSimple := true, 
@@ -881,7 +902,7 @@ DeclareGlobalFunction( "TriangularGraph" );
 ##  The graph <M>L_{2}(n)</M> is strongly regular with parameters <M>(n^{2},2(n-1),n-2,2)</M>.
 ##  For <M>n\not= 4</M>, <M>L_{2}(n)</M> is the unique strongly regular graph with its
 ##  parameters. There are two pairwise non-isomomorphic strongly regular graphs that have the same
-##  parameters as <M>L_{2}(8)</M>, which are the traingular graph <M>T(8)</M> and the
+##  parameters as <M>L_{2}(4)</M>, which are the square lattice graph graph <M>L_{2}(4)</M> and the
 ##  <E>Shrikhande graph</E> (see <Cite Key="S_1959b"/>).
 ##   <Example>
 ##      <![CDATA[

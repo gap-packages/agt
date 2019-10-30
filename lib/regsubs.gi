@@ -424,7 +424,7 @@ function( parms, x, y, d )
   a:=parms[3]; 
   b:=parms[4];
 
-  return (v-y)*x*(x+1) - 2*x*k + (2*x+a-b+1)*y*d + y*(y-1)*b - y*d*d;
+  return (v-y)*x*(x+1) - 2*x*y*k + (2*x+a-b+1)*y*d + y*(y-1)*b - y*d*d;
 
 end );
 

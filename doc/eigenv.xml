@@ -1,9 +1,9 @@
 <Chapter Label="eigenv">
 <Heading>Spectra of graphs</Heading>
 
-In this chapter we give methods for invetigating the eigenvlaues of a graph.
+In this chapter we give methods for investigating the eigenvalues of a graph.
 <P/>
-Let <M>\Gamma</M> be a graphs of order <M>v</M>. The <E>adjacency matrix</E> of
+Let <M>\Gamma</M> be a graph of order <M>v</M>. The <E>adjacency matrix</E> of
  <M>\Gamma</M>,  <M>A(\Gamma)</M>, is the <M>v\times v</M> matrix indexed by 
 <M>V(\Gamma)</M> such that <M>A(\Gamma)_{xy}=1</M> if <M>xy\in E(\Gamma)</M>, 
 and <M>A(\Gamma)_{xy}=0</M> otherwise. 
@@ -29,7 +29,7 @@ Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>.
  Then the eigenvalues of <M>\Gamma</M> and their corresponding multiplicites
  are uniquely determined by the parameters <M>(v,k,a,b)</M> (see <Cite Key="BH_2011"/>). 
  Using this knowledge, we provide methods which take as input feasible strongly
- regular graph parameters <M>(v,k,a,b)</M>, resulting in faster computation. We also give methods
+ regular graph parameters <M>(v,k,a,b)</M>. We also give methods
 which return an exact representation of the eigenvalues of a strongly regular 
 graph with parameters <M>(v,k,a,b)</M>, and their multiplicities. 
 

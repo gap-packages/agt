@@ -3,7 +3,7 @@
 
 In this chapter we give functions to investigate strongly regular graphs. In 
 particular, we provide a collection of small strongly regular graphs which can 
-be a useful resource for hypothesis testing.
+be a useful computational resource.
 
 <Section Label="Strongly regular graph parameter tuples">
 <Heading>Strongly regular graph parameter tuples</Heading>
@@ -11,7 +11,8 @@ be a useful resource for hypothesis testing.
 In this section, we give functions to investigate the parameters of a strongly
 regular graph.
 <P/>
- TODO Redo feasible parameters/ def of srg in this chapter.?????
+For the definition of feasible strongly regular graph parameters, see 
+<Ref Func="IsFeasibleSRGParameters"/>.
 
 <#Include Label="ComplementSRGParameters">
 
@@ -69,7 +70,7 @@ tables of Andries Brouwer <Cite Key="B_2018"/>.
 <#Include Label="IsAllSRGsStored">
 </Section>
 <Section Label="More strongly regular graphs">
-<Heading>More strongly regular graphs</Heading>
+<Heading>Strongly regular graph constructors</Heading>
 
 In this section, we give functions to construct certain graphs, most of which
 are strongly regular graphs.

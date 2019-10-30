@@ -299,7 +299,7 @@ DeclareGlobalFunction( "IsSRG" );
 ##  <Item><M>(v-k-1)b = k(k-a-1)</M>;</Item>
 ##  <Item><M>v-2-2k+b \geq 0</M>;</Item>
 ##  <Item>the formulae for the multiplicities of the eigenvalues of a strongly
-##        regular graph with these parameters evaluate to positive integers.</Item>
+##        regular graph with these parameters evaluate to positive integers (see <Cite Key="BH_2011"/>).</Item>
 ##  </List> 
 ##  Any strongly regular graph must have parameters which satisfy these 
 ##  conditions (see <Cite Key="BCN_1989"/>). 
@@ -387,7 +387,7 @@ DeclareOperation( "LeastEigenvalueInterval",  [IsList, IsRat]  );
 ##  parameters <A>parms</A>. 
 ##  <P/>
 ##  The interval returned is in the form of a list, <A>[y,z]</A> of rationals 
-##  <M><A>y</A>\leq <A>z</A></M> with the property that <M><A>z</A>-<A>y</A>\leq eps</M>. If the eigenvalue
+##  <M><A>y</A>\leq <A>z</A></M> with the property that <M><A>z</A>-<A>y</A>\leq <A>eps</A></M>. If the eigenvalue
 ##  is rational, then this function will return a list <A>[y,z]</A>, where 
 ##  <M><A>y</A>=<A>z</A></M>.
 ##  <P/> 
