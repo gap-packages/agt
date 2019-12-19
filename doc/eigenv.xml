@@ -14,11 +14,14 @@ and  an  <E>eigenvalue of </E><M>\Gamma</M> is a member of <M>Spec(\Gamma)</M>.
 The <E>multiplicity</E> of an eigenvalue <M>\alpha</M> of <M>\Gamma</M> is the
  number of times <M>\alpha</M> appears in <M>Spec(\Gamma)</M>. 
 
+For information on most of the objects and results  discussed in this chapter, 
+see <Cite Key="BH_2011"/>.
+
 <Section Label="Eigenvalues of regular graphs">
 <Heading>Eigenvalues of regular graphs</Heading>
 
 In this section, we introduce methods for investigating eigenvalues of regular graphs.
-The input for these methods will either be a specific graph, or the parameters
+The input for these methods will be a specific graph or the parameters
 of a graph.
 <P/>
 Let <M>\Gamma</M> be a regular graph with parameters <M>(v,k)</M>. Then 
@@ -26,7 +29,7 @@ Let <M>\Gamma</M> be a regular graph with parameters <M>(v,k)</M>. Then
 <Q>LargestEigenvalue</Q> function for regular graphs.
 <P/>
 Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>.
- Then the eigenvalues of <M>\Gamma</M> and their corresponding multiplicites
+ The eigenvalues of <M>\Gamma</M> and their corresponding multiplicites
  are uniquely determined by the parameters <M>(v,k,a,b)</M> (see <Cite Key="BH_2011"/>). 
  Using this knowledge, we provide methods which take as input feasible strongly
  regular graph parameters <M>(v,k,a,b)</M>. We also give methods

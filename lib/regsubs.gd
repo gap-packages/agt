@@ -11,8 +11,6 @@
 ######################
 ## GLOBAL FUNCTIONS ##
 ######################
-##---------------------------------------------------------------------------------------------
-
 
 #############################################################################
 ##
@@ -24,7 +22,7 @@
 ##   Arg="gamma"/>
 ##  <Oper Name="HoffmanCocliqueBound"
 ##   Arg="parms" Label="for SRG parameters"/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given a non-null regular graph <A>gamma</A>, this function returns the 
@@ -69,7 +67,7 @@ DeclareOperation( "HoffmanCocliqueBound" , [IsList] );
 ##   Arg="gamma"/>
 ##  <Oper Name="HoffmanCliqueBound"
 ##   Arg="parms" Label="for SRG parameters"/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given a non-null, non-complete regular graph <A>gamma</A>, this function returns the
@@ -119,7 +117,7 @@ DeclareOperation( "HoffmanCliqueBound" , [IsList] );
 ##   Arg="gamma,d"/>
 ##  <Oper Name="HaemersRegularUpperBound"
 ##   Arg="parms,d" Label="for SRG parameters"/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given a non-null regular graph <A>gamma</A> and non-negative integer <A>d</A>, this function returns the 
@@ -161,7 +159,7 @@ DeclareOperation( "HaemersRegularUpperBound" , [IsList, IsInt] );
 ##   Arg="gamma,d"/>
 ##  <Oper Name="HaemersRegularLowerBound"
 ##   Arg="parms,d" Label="for SRG parameters"/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given a connected regular graph <A>gamma</A> and non-negative integer <A>d</A>, this function returns the 
@@ -201,7 +199,7 @@ DeclareOperation( "HaemersRegularLowerBound" , [IsList, IsInt] );
 ##  <ManSection>
 ##  <Func Name="CliqueAdjacencyPolynomial"
 ##   Arg='parms,x,y'/>
-##  <Returns>a polynomial.</Returns>
+##  <Returns>A polynomial.</Returns>
 ##
 ##  <Description>
 ##  Given feasible edge-regular graph parameters <A>parms</A> and indeterminates 
@@ -212,8 +210,6 @@ DeclareOperation( "HaemersRegularLowerBound" , [IsList, IsInt] );
 ##  Let <M>\Gamma</M> be an edge-regular graph with parameters <M>(v,k,a)</M>. 
 ##  The <E>clique adjacency polynomial</E> of <M>\Gamma</M> is defined as
 ##  <Display>C(x,y):=x(x+1)(v-y)-2xy(k-y+1)+y(y-1)(a-y+2).</Display>
-##  For the properties of the clique adjacency polynomial, see <Cite Key="S_2010"/>
-##  and <Cite Key="S_2015"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> x:=Indeterminate(Rationals,"x");
@@ -238,7 +234,7 @@ DeclareGlobalFunction( "CliqueAdjacencyPolynomial" );
 ##  <ManSection>
 ##  <Func Name="CliqueAdjacencyBound"
 ##   Arg='parms'/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given feasible edge-regular graph parameters <A>parms</A>, this function 
@@ -248,10 +244,10 @@ DeclareGlobalFunction( "CliqueAdjacencyPolynomial" );
 ##  Let <M>\Gamma</M> be an edge-regular graph with parameters <M>(v,k,a)</M>,
 ##  and let <M>C</M> be its corresponding clique adjacency poylnomial (see 
 ##  <Ref Func="CliqueAdjacencyPolynomial"/>). The <E>clique adjacency bound</E>
-##  of <M>\Gamma</M>, is defined as the smallest integer <M>y\geq 2</M> such 
+##  of <M>\Gamma</M> is defined as the smallest integer <M>y\geq 2</M> such 
 ##  that there exists an integer <M>m</M> for which <M>C(m,y+1) &lt; 0</M>.
 ##  It is known that the clique adjacency bound is an upper bound on the number 
-##  of vertices in any clique of <M>\Gamma</M> (see <Cite Key="S_2010"/>).
+##  of vertices in any clique of <M>\Gamma</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> CliqueAdjacencyBound([16,6,2]);
@@ -272,7 +268,7 @@ DeclareGlobalFunction( "CliqueAdjacencyBound" );
 ##  <ManSection>
 ##  <Func Name="NGParameters"
 ##   Arg='gamma'/>
-##  <Returns>a list or <K>fail</K>.</Returns>
+##  <Returns>A list or <K>fail</K>.</Returns>
 ##
 ##  <Description>
 ##  Given a graph <A>gamma</A>, this function returns the Neumaier graph
@@ -368,14 +364,13 @@ DeclareGlobalFunction( "IsFeasibleNGParameters" );
 ##  <ManSection>
 ##  <Func Name="RegularCliqueERGParameters"
 ##   Arg='parms'/>
-##  <Returns>a list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given feasible edge-regular graph parameters <A>parms</A><C>=[v,k,a]</C>, this function 
 ##  returns a list of pairs <C>[s,m]</C>, such that
 ##  <M>(<A>v,k,a;s,m</A>)</M> are feasible Neumaier graph parameters (as defined in
 ##  <Ref Func="IsFeasibleNGParameters"/>).
-##  If there exist no such pairs, this function returns <C>fail</C>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> RegularCliqueERGParameters([8,7,6]);
@@ -400,7 +395,7 @@ DeclareGlobalFunction( "RegularCliqueERGParameters" );
 ##  <ManSection>
 ##  <Func Name="RegularAdjacencyPolynomial"
 ##   Arg='parms,x,y,d'/>
-##  <Returns>a polynomial.</Returns>
+##  <Returns>A polynomial.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A> and indeterminates 
@@ -411,7 +406,6 @@ DeclareGlobalFunction( "RegularCliqueERGParameters" );
 ##  Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>. 
 ##  The <E>regular adjacency polynomial</E> of <M>\Gamma</M> is defined as
 ##  <Display>R(x,y,d):=x(x+1)(v-y)-2xyk+(2x+a-b+1)yd+y(y-1)b-yd^{2}.</Display>
-##  For the properties of the regular adjacency polynomial, see <Cite Key="E_2020"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> RegularAdjacencyPolynomial([16,6,2,2],"x","y","d");
@@ -432,7 +426,7 @@ DeclareGlobalFunction( "RegularAdjacencyPolynomial" );
 ##  <ManSection>
 ##  <Func Name="RegularAdjacencyUpperBound"
 ##   Arg='parms,d'/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given strongly regular graph parameters <A>parms</A> and non-negative 
@@ -446,7 +440,7 @@ DeclareGlobalFunction( "RegularAdjacencyPolynomial" );
 ##  of <M>\Gamma</M> is defined as the largest integer <M>d+1\leq y\leq v</M> such 
 ##  that for all integers <M>m</M>, we have <M>R(m,y,d) \geq 0</M> if such a <M>y</M> exists, and 0 otherwise.
 ##  It is known that the regular adjacency upper bound is an upper bound on the number 
-##  of vertices in any <M>d</M>-regular induced subgraph of <M>\Gamma</M> (see <Cite Key="E_2020"/>).
+##  of vertices in any <M>d</M>-regular induced subgraph of <M>\Gamma</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> RegularAdjacencyUpperBound([56,10,0,2],3);
@@ -467,11 +461,11 @@ DeclareGlobalFunction( "RegularAdjacencyUpperBound" );
 ##  <ManSection>
 ##  <Func Name="RegularAdjacencyLowerBound"
 ##   Arg='parms,d'/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given the parameters of a connected strongly regular graph, <A>parms</A>, and non-negative 
-##  integer <A>d</A>, this function returns the Regular Adjacency lower bound
+##  integer <A>d</A>, this function returns the regular adjacency lower bound
 ##  with respect to the parameters <A>parms</A> and integer <A>d</A>, defined
 ##  in <Cite Key="E_2020"/>.
 ##  <P/>
@@ -481,7 +475,7 @@ DeclareGlobalFunction( "RegularAdjacencyUpperBound" );
 ##  of <M>\Gamma</M> is defined as the smallest integer <M>d+1\leq y\leq v</M> such 
 ##  that for all integers <M>m</M>, we have <M>R(m,y,d) \geq 0</M> if such a <M>y</M>, and <M>v+1</M> otherwise.
 ##  It is known that the regular adjacency lower bound is a lower bound on the number 
-##  of vertices in any <M>d</M>-regular induced subgraph of <M>\Gamma</M> (see <Cite Key="E_2020"/>).
+##  of vertices in any <M>d</M>-regular induced subgraph of <M>\Gamma</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> RegularAdjacencyLowerBound([50,7,0,1],2);
@@ -502,12 +496,12 @@ DeclareGlobalFunction( "RegularAdjacencyLowerBound" );
 ##  <ManSection>
 ##  <Func Name="Nexus"
 ##   Arg='gamma,U'/>
-##  <Returns>an integer or <K>fail</K>.</Returns>
+##  <Returns>An integer or <K>fail</K>.</Returns>
 ##
 ##  <Description>
 ##  Given a graph <A>gamma</A> and a subset <A>U</A> of its vertices, this
 ##  function returns the nexus of <A>U</A>. If <A>U</A> is not an <M>m</M>-regular
-##  set for some <M>m</M>, the function returns <K>fail</K>.
+##  set for some <M>m>0</M>, the function returns <K>fail</K>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> Nexus(SquareLatticeGraph(5),[1,2,3,4,6]);
@@ -530,7 +524,7 @@ DeclareGlobalFunction( "Nexus" );
 ##  <ManSection>
 ##  <Func Name="RegularSetParameters"
 ##   Arg='gamma,U'/>
-##  <Returns>a list or <K>fail</K>.</Returns>
+##  <Returns>A list or <K>fail</K>.</Returns>
 ##
 ##  <Description>
 ##  Given a graph <A>gamma</A> and a subset <A>U</A> of its vertices, this
@@ -598,7 +592,7 @@ DeclareGlobalFunction( "IsRegularSet" );
 ##  <ManSection>
 ##  <Func Name="RegularSetSRGParameters"
 ##   Arg='parms,d'/>
-##  <Returns>a list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A> and non-negative
@@ -612,7 +606,7 @@ DeclareGlobalFunction( "IsRegularSet" );
 ##  </List> 
 ##  Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>
 ##  and let <M>R</M> be its corresponding regular adjacency polynomial 
-##  (see <Ref Label="RegularAdjacencyPolynomial"/>).
+##  (see <Ref Func="RegularAdjacencyPolynomial"/>).
 ##  Then the tuple <M>(d,m)</M> is a <E>feasible regular set parameter tuple</E>
 ##  for <M>\Gamma</M> if <M>d,m</M> are non-negative integers and there exists a
 ##  positive integer <M>s</M> such that 

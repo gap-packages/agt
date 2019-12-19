@@ -37,7 +37,7 @@ which each pair of distinct vertices are adjacent.
 In this section, we introduce functions related to the block intersection 
 polynomials, defined in <Cite Key="S_2010"/>. If you would like to know more about the
 properties of these polynomials, see <Cite Key="S_2010"/>, <Cite Key="S_2015"/>
-or <Cite Key="GS_2016"/>.
+and <Cite Key="GS_2016"/>.
 
 <#Include Label="CliqueAdjacencyPolynomial">
 
@@ -58,7 +58,7 @@ In this section we give functions to investigate regular sets, with a focus on
 regular sets in strongly regular graphs. 
 <P/>
 Let <M>\Gamma</M> be a graph and <M>U</M> be a subset of its vertices. Then 
-<M>U</M> is an <M>m</M><E>-regular set</E> if every vertex in 
+<M>U</M> is <M>m</M><E>-regular</E> if every vertex in 
 <M>V(\Gamma)\backslash U</M> is adjacent to the same number <M>m&gt;0</M> of 
 vertices in <M>U</M>. In this case we say that 
 <M>U</M> has <E>nexus</E> <M>m</M>.

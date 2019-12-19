@@ -58,7 +58,7 @@ DeclareGlobalFunction( "ComplementSRGParameters" );
 ##  <P/>
 ##  Let <M>(v,k,a,b)</M> be feasible strongly regular parameters with 
 ##  complement parameters <M>(v',k',a',b')</M>. Then the parameter tuple
-##  <M>(v,k,a,b)</M> is called <E>primitive</E> if <M>b\not= 0,b'\not= 0</M>. 
+##  <M>(v,k,a,b)</M> is called <E>primitive</E> if <M>b\not= 0</M> and <M>b'\not= 0</M>. 
 ##  <P/>
 ##  A strongly regular graph <M>\Gamma</M> is called <E>primitive</E> if 
 ##  <M>\Gamma</M> and its complement is connected. It is known that a 
@@ -102,8 +102,8 @@ DeclareGlobalFunction( "IsPrimitiveSRGParameters" );
 ##  <E>type I</E> (or a <E>conference graph</E>) if there exists a positive integer <M>t</M> such that 
 ##  <M>v=4t+1,k=2t,a=t-1,b=t</M>.
 ##  <P/>
-##  There are two types of strongly regular graphs, called <E>type I</E> and 
-##  <E>type II</E> (see <Cite Key="BCN_1989"/>). Let <M>\Gamma</M> be a 
+##  There are two types of strongly regular graphs, called type I and 
+##  type II (see <Cite Key="BCN_1989"/>). Let <M>\Gamma</M> be a 
 ##  strongly regular graph with parameters <M>(v,k,a,b)</M>. Then <M>\Gamma</M>
 ##  is of <E>type I</E> if and only if <M>(v,k,a,b)</M> is of type I.
 ##    <Example>
@@ -141,7 +141,7 @@ DeclareGlobalFunction( "IsTypeISRGParameters" );
 ##  A feasible strongly regular parameter tuple <M>(v,k,a,b)</M> is of 
 ##  <E>type II</E> if the polynomial <M>x^{2}-(a-b)x+b-k</M> has integer zeros.
 ##  <P/>
-##  There are two types of strongly regular graphs, called <E>type I</E> and 
+##  There are two types of strongly regular graphs, called type I and 
 ##  <E>type II</E> (see <Cite Key="BCN_1989"/>). Let <M>\Gamma</M> be a 
 ##  strongly regular graph with parameters <M>(v,k,a,b)</M>. Then <M>\Gamma</M> 
 ##  is of <E>type II</E> if and only if all of its eigenvalues are integer. 
@@ -229,7 +229,7 @@ DeclareGlobalFunction( "GlobalToSRGParameters" );
 ##  <ManSection>
 ##  <Oper Name="KreinParameters"
 ##   Arg='[ v, k, a, b ]'/>
-##  <Returns>an list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A>, 
@@ -311,14 +311,14 @@ DeclareOperation( "IsKreinConditionsSatisfied" , [IsList]);
 ##
 ##  <Description>
 ##  Given primitive strongly regular graph parameters <A>[v, k, a, b]</A>, 
-##  this function returns <K>true</K> if the parameters satisfy the Absolute 
+##  this function returns <K>true</K> if the parameters satisfy the absolute 
 ##  bound. Otherwise, this function returns <K>false</K>.
 ##  <P/> 
 ##  Let <M>\Gamma</M> be a primitive strongly regular graph with parameters <M>(v,k,a,b)</M>
 ##  and eigenvalues <M>k\geq r &gt; s</M>, with multiplicities <M>1,f,g</M>.
-##  The <E>Absolute bound</E> for the number of vertices of <M>\Gamma</M> is 
+##  The <E>absolute bound</E> for the number of vertices of <M>\Gamma</M> is 
 ##  <Display>v\leq f(f+3)/2, v\leq g(g+3)/2.</Display>
-##  For information on the Absolute bounds of strongly regular graphs, see <Cite Key="BCN_1989"/>.
+##  For information on the absolute bound of strongly regular graphs, see <Cite Key="BCN_1989"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> IsAbsoluteBoundSatisfied([13,6,3,4]);
@@ -349,8 +349,10 @@ DeclareGlobalFunction( "IsAbsoluteBoundSatisfied" );
 ##  <Var Name="AGT_Brouwer_Parameters_MAX"/>
 ##
 ##  <Description>
-##  This variable stores the largest order of the strongly regular graph 
-##  parameters contained in the current library.
+##  This variable stores the largest value <M>v</M> for which the current 
+##  package contains information about the parameters of all strongly regular
+##  graphs with at most <M>v</M> vertices. This information is stored in the 
+##  list <Ref Var="AGT_Brouwer_Parameters"/>.  
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
@@ -394,7 +396,8 @@ DeclareGlobalFunction( "IsAbsoluteBoundSatisfied" );
 ##        strongly regular graphs with parameters <C>parms</C> that are 
 ##        available in the current package.</Item>
 ##  <Mark><C>num</C></Mark>
-##  <Item>the number of non-isomorphic 
+##  <Item>
+##        the number of non-isomorphic 
 ##        strongly regular graphs with parameters <C>parms</C> that exist. If this
 ##        has not been determined, the value of <C>num</C> is set to <C>-1</C>.
 ##  </Item>
@@ -458,7 +461,7 @@ DeclareGlobalFunction( "IsSRGAvailable" );
 ##  <ManSection>
 ##  <Func Name="SRGLibraryInfo"
 ##   Arg='parms'/>
-##  <Returns>a list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A>, with first
@@ -487,12 +490,12 @@ DeclareGlobalFunction( "SRGLibraryInfo" );
 ##  <ManSection>
 ##  <Func Name="SRG"
 ##   Arg='parms, n'/>
-##  <Returns>a record or <K>fail</K>.</Returns>
+##  <Returns>A record or <K>fail</K>.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A> and positive
 ##  integer <A>n</A>, this function returns the <A>n</A>th strongly regular 
-##  graph with parameters <A>parms</A> that is stored in this package. If there
+##  graph with parameters <A>parms</A> available in this package. If there
 ##  there is no <A>n</A>th strongly regular 
 ##  graph with parameters <A>parms</A> available, the function returns
 ##  <K>fail</K>.
@@ -528,7 +531,7 @@ DeclareGlobalFunction( "SRG" );
 ##  <ManSection>
 ##  <Func Name="NrSRGs"
 ##   Arg='parms'/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A>, this function
@@ -556,12 +559,11 @@ DeclareGlobalFunction( "NrSRGs" );
 ##  <ManSection>
 ##  <Func Name="OneSRG"
 ##   Arg='parms'/>
-##  <Returns>a record or <K>fail</K>.</Returns>
+##  <Returns>A record or <K>fail</K>.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A>, this function
-##  returns one strongly regular graph with parameters <A>parms</A> that 
-##  is stored in this package. If there
+##  returns one strongly regular graph with parameters <A>parms</A>. If there
 ##  there is no strongly regular 
 ##  graph with parameters <A>parms</A> available, the function returns
 ##  <K>fail</K>.
@@ -593,13 +595,12 @@ DeclareGlobalFunction( "OneSRG" );
 ##  <ManSection>
 ##  <Func Name="AllSRGs"
 ##   Arg='parms'/>
-##  <Returns>a list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A>, this function
-##  returns a list of all the pairwise non-isomorphic
-##   strongly regular graphs with parameters <A>parms</A> that 
-##  are stored in this package.
+##  returns a list of all pairwise non-isomorphic
+##   strongly regular graphs with parameters <A>parms</A> available in this package.
 ##    <Example>
 ##      <![CDATA[
 ##gap> AllSRGs([16,6,2,2]);
@@ -628,7 +629,7 @@ DeclareGlobalFunction( "AllSRGs" );
 ##  <ManSection>
 ##  <Func Name="SRGIterator"
 ##   Arg='parms'/>
-##  <Returns>an iterator.</Returns>
+##  <Returns>An iterator.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>parms</A>, this function
@@ -655,12 +656,12 @@ DeclareGlobalFunction( "SRGIterator" );
 ##  <ManSection>
 ##  <Func Name="SmallFeasibleSRGParameterTuples"
 ##   Arg='v'/>
-##  <Returns>a list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given an integer <A>v</A>, this function returns a list of all feasible parameter tuples
 ##  with at most <A>v</A> vertices, according to the list of Brouwer <Cite Key="B_2018"/>. The list
-##  currently goes up to 1300 vertices.
+##  contains parameter tuples with first parameter at most <Ref Var="AGT_Brouwer_Parameters_MAX"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> SmallFeasibleSRGParameterTuples(16);
@@ -686,7 +687,7 @@ DeclareGlobalFunction( "SmallFeasibleSRGParameterTuples" );
 ##  <Returns><K>true</K> or <K>false</K>.</Returns>
 ##
 ##  <Description>
-##  Given feasible strongly regular graph parameters <A>parms</A>, with first
+##  Given feasible strongly regular graph parameters <A>parms</A> with first
 ##  parameter <A>v</A> at most <Ref Var="AGT_Brouwer_Parameters_MAX"/>, this 
 ##  function returns <K>true</K> if the 
 ##  strongly regular graphs with parameters <A>parms</A> have been enumerated, 
@@ -717,7 +718,7 @@ DeclareGlobalFunction( "IsEnumeratedSRGParameterTuple" );
 ##  <Returns><K>true</K> or <K>false</K>.</Returns>
 ##
 ##  <Description>
-##  Given feasible strongly regular graph parameters <A>parms</A>, with first
+##  Given feasible strongly regular graph parameters <A>parms</A> with first
 ##  parameter <A>v</A> at most <Ref Var="AGT_Brouwer_Parameters_MAX"/>, this 
 ##  function returns <K>true</K> if it is known that there exists a strongly
 ##  regular graph with parameters <A>parms</A>, according to the list of Brouwer <Cite Key="B_2018"/>.
@@ -749,7 +750,7 @@ DeclareGlobalFunction( "IsKnownSRGParameterTuple" );
 ##  <Returns><K>true</K> or <K>false</K>.</Returns>
 ##
 ##  <Description>
-##  Given feasible strongly regular graph parameters <A>parms</A>, with first
+##  Given feasible strongly regular graph parameters <A>parms</A> with first
 ##  parameter <A>v</A> at most <Ref Var="AGT_Brouwer_Parameters_MAX"/>, this 
 ##  function returns <K>true</K> if all pairwise non-isomorphic  
 ##  strongly regular graphs with parameters <A>parms</A> are stored in the package. 
@@ -778,13 +779,11 @@ DeclareGlobalFunction( "IsAllSRGsStored" );
 ##  <ManSection>
 ##  <Func Name="DisjointUnionOfCliques"
 ##   Arg='n1, n2, ... '/>
-##  <Returns>a record.</Returns>
+##  <Returns>A record.</Returns>
 ##
 ##  <Description>
 ##  Given positive integers <A>n1, n2,...</A>, this function returns the graph consisting of
 ##  the disjoint union of cliques with orders <A>n1, n2,...</A>.  
-##  <P/>
-##  DEF?
 ##    <Example>
 ##      <![CDATA[
 ##gap> DisjointUnionOfCliques(3,5,7);            
@@ -809,7 +808,7 @@ DeclareGlobalFunction( "DisjointUnionOfCliques" );
 ##  <ManSection>
 ##  <Func Name="CompleteMultipartiteGraph"
 ##   Arg='n1, n2, ... '/>
-##  <Returns>a record.</Returns>
+##  <Returns>A record.</Returns>
 ##
 ##  <Description>
 ##  Given positive integers <A>n1, n2,...</A>, this function returns the complete multipartite
@@ -843,7 +842,7 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph" );
 ##  <ManSection>
 ##  <Func Name="TriangularGraph"
 ##   Arg='n'/>
-##  <Returns>a record.</Returns>
+##  <Returns>A record.</Returns>
 ##
 ##  <Description>
 ##  Given an integer <A>n</A>, where <M><A>n</A>\geq 3</M>, this function 
@@ -888,7 +887,7 @@ DeclareGlobalFunction( "TriangularGraph" );
 ##  <ManSection>
 ##  <Func Name="SquareLatticeGraph"
 ##   Arg='n'/>
-##  <Returns>a record.</Returns>
+##  <Returns>A record.</Returns>
 ##
 ##  <Description>
 ##  Given an integer <A>n</A>, where <M><A>n</A>\geq 2</M>, this function 
@@ -933,7 +932,7 @@ DeclareGlobalFunction( "SquareLatticeGraph" );
 ##  <ManSection>
 ##  <Func Name="HoffmanSingletonGraph"
 ##   Arg=''/>
-##  <Returns>a record.</Returns>
+##  <Returns>A record.</Returns>
 ##
 ##  <Description>
 ##  This function returns the Hoffman-Singleton graph.
@@ -959,7 +958,7 @@ DeclareGlobalFunction( "HoffmanSingletonGraph" );
 ##  <ManSection>
 ##  <Func Name="HigmanSimsGraph"
 ##   Arg=''/>
-##  <Returns>a record.</Returns>
+##  <Returns>A record.</Returns>
 ##
 ##  <Description>
 ##  This function returns the Higman-Sims graph.
@@ -985,7 +984,7 @@ DeclareGlobalFunction( "HigmanSimsGraph" );
 ##  <ManSection>
 ##  <Func Name="SimsGerwitzGraph"
 ##   Arg=''/>
-##  <Returns>a record.</Returns>
+##  <Returns>A record.</Returns>
 ##
 ##  <Description>
 ##  This function returns the Sims-Gerwitz graph.

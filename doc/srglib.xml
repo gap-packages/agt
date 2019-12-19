@@ -2,16 +2,14 @@
 <Heading>Strongly regular graphs</Heading>
 
 In this chapter we give functions to investigate strongly regular graphs. In 
-particular, we provide a collection of small strongly regular graphs which can 
+particular, we provide a collection of strongly regular graphs which can 
 be a useful computational resource.
 
 <Section Label="Strongly regular graph parameter tuples">
 <Heading>Strongly regular graph parameter tuples</Heading>
 
 In this section, we give functions to investigate the parameters of a strongly
-regular graph.
-<P/>
-For the definition of feasible strongly regular graph parameters, see 
+regular graph. For the definition of feasible strongly regular graph parameters, see 
 <Ref Func="IsFeasibleSRGParameters"/>.
 
 <#Include Label="ComplementSRGParameters">
@@ -38,10 +36,9 @@ For the definition of feasible strongly regular graph parameters, see
 <Heading>Small strongly regular graphs</Heading>
 
 In this section, we give functions to access and use the library of strongly
-regular graphs currently stored in this package. 
-<P/>
-The information on small strongly regular graphs in this section is based on the
-tables of Andries Brouwer <Cite Key="B_2018"/>.
+regular graphs currently stored in this package. The information on small 
+strongly regular graphs in this section is based on the tables of Andries 
+Brouwer <Cite Key="B_2018"/>.
 
 <#Include Label="AGT_Brouwer_Parameters_MAX">
 

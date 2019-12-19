@@ -26,7 +26,7 @@ Date := "17/07/2019",
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.1">
-##  <!ENTITY RELEASEDATE "20 October 2019">
+##  <!ENTITY RELEASEDATE "31 December 2019">
 ##  <!ENTITY PKGWWWHOME "https://rhysje00.github.io/agt/">
 ##  <#/GAPDoc>
 

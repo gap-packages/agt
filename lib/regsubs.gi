@@ -363,7 +363,7 @@ function( parms )
     t:=v-k;
     s:=v/t;
     if not (IsInt(s) and s > 0) then
-      return fail;
+      return [];
     fi;
 
     if a=k-1  then
@@ -376,14 +376,14 @@ function( parms )
   disc := b*b-4*al*c;
 
   if disc < 0 then
-    return fail;
+    return [];
   fi;
 
   sqrt := Sqrt(disc);
   s := (-b+sqrt)/(2*al);
 
   if not IsInt(s) then
-    return fail;
+    return [];
   fi;
 
   al := v-s;
@@ -393,14 +393,14 @@ function( parms )
   disc := b*b-4*al*c;
 
   if disc < 0 then
-    return fail;
+    return [];
   fi;
 
   sqrt := Sqrt(disc);
   m := (-b+sqrt)/(2*al);
 
   if not IsInt(m) then
-    return fail;
+    return [];
   fi;
  
   return [[s,m]];

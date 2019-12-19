@@ -1,7 +1,7 @@
 <Chapter Label="regprop">
 <Heading>Regular graphs</Heading>
 
-In this chapter we give functions used to identify graphs with varying 
+In this chapter we give functions used to identify graphs with various 
 regularity properties and determine their parameters.
 
 <Section Label="Regular graphs">

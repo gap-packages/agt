@@ -7,13 +7,13 @@
   <P/>
   The &AGT; package contains a methods used for the determination of  various 
   algebraic and regularity properties of graphs, as well as certain substructures 
-  of graphs. The package also contains a library of small strongly regular graphs,
-  which has turned out to be a useful resource for computational experiments. 
+  of graphs. The package also contains a library of strongly regular graphs,
+  intended to be a useful resource for computational experiments. 
   <P/>
   All of the functions in this package deal with finite simple graphs in 
   &Grape; format <Cite Key="GRAPE_2018"/>. Behind the scenes, we also use the 
   <Package>Digraphs</Package> package <Cite Key="DIGRAPHS_2019"/> to format and efficiently 
-  store the graphs in the strongly regular graph library. 
+  store and access the graphs in the strongly regular graph library. 
   
 
 <Section Label="install">
@@ -55,7 +55,7 @@ true
   involving the use of the &AGT; package and might refer to your work in the future.
   
   If you wish to refer to the &AGT; package in a published work, please cite 
-  &AGT; like a journal article. For example, the following BibTeX entry for the
+  &AGT; like a journal article. The following is a BibTeX entry for the
   current &AGT; version:
 
 <Listing Type="bibtex">
@@ -71,7 +71,7 @@ true
 <Section>
 <Heading>Examples of the use of &AGT;</Heading>
 
-We will give an example of how to use the &AGT; package here. Further applications 
+We will give a simple example of how to use the &AGT; package here. Further applications 
 of the package can be found in <Cite Key="E_2020"/>.
 
 In this example, we will examine the properties and subgraphs of the strongly 
@@ -103,8 +103,6 @@ gap> RegularSetParameters(graphs[1],S);
 [ 3, 1 ]
 
 </Example>
-
-
 
 </Section>
 </Chapter>

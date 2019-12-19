@@ -102,9 +102,9 @@ DeclareSynonym( "IsRG", IsRegularGraph );
 ##  conditions (see <Cite Key="BCN_1989"/>). 
 ##    <Example>
 ##      <![CDATA[
-##gap> IsFeasibleERGParameters([15,9]);
+##gap> IsFeasibleRGParameters([15,9]);
 ##false
-##gap> IsFeasibleERGParameters([16,9]);
+##gap> IsFeasibleRGParameters([16,9]);
 ##true
 ##      ]]>
 ##    </Example>
@@ -195,7 +195,7 @@ DeclareGlobalFunction( "IsERG" );
 ##  <List>
 ##  <Item><M>(v,k)</M> is a feasible regular graph parameter tuple;</Item> 
 ##  <Item><M>k>a\geq 0</M>;</Item>
-##  <Item><M>2</M> divides <M>ka</M>, and <M>6</M> 
+##  <Item><M>2</M> divides <M>ka</M> and <M>6</M> 
 ##        divides <M>vka</M>;</Item>
 ##  <Item><M>v-2k+a \geq 0</M>.</Item>
 ##  </List> 
@@ -328,7 +328,7 @@ DeclareGlobalFunction( "IsFeasibleSRGParameters" );
 ##   Arg="gamma, eps"/>
 ##  <Oper Name="LeastEigenvalueInterval"
 ##   Arg="parms, eps" Label="for SRG parameters"/>
-##  <Returns>a list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given a graph <A>gamma</A> and rational number <A>eps</A>, this function 
@@ -340,9 +340,8 @@ DeclareGlobalFunction( "IsFeasibleSRGParameters" );
 ##  <P/>
 ##  The interval returned is in the form of a list, <A>[y,z]</A> of rationals 
 ##  <M><A>y</A>\leq <A>z</A></M> with the property that <M><A>z</A>-<A>y</A>\leq <A>eps</A></M>. If the eigenvalue
-##  is rational, then this function will return a list <A>[y,z]</A>, where 
+##  is rational this function will return a list <A>[y,z]</A>, where 
 ##  <M><A>y</A>=<A>z</A></M>.  
-##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
@@ -374,7 +373,7 @@ DeclareOperation( "LeastEigenvalueInterval",  [IsList, IsRat]  );
 ##   Arg="gamma, eps"/>
 ##  <Oper Name="SecondEigenvalueInterval"
 ##   Arg="parms, eps" Label="for SRG parameters"/>
-##  <Returns>a list.</Returns>
+##  <Returns>A list.</Returns>
 ##
 ##  <Description>
 ##  Given a regular graph <A>gamma</A> and rational number <A>eps</A>, this
@@ -388,10 +387,8 @@ DeclareOperation( "LeastEigenvalueInterval",  [IsList, IsRat]  );
 ##  <P/>
 ##  The interval returned is in the form of a list, <A>[y,z]</A> of rationals 
 ##  <M><A>y</A>\leq <A>z</A></M> with the property that <M><A>z</A>-<A>y</A>\leq <A>eps</A></M>. If the eigenvalue
-##  is rational, then this function will return a list <A>[y,z]</A>, where 
+##  is rational this function will return a list <A>[y,z]</A>, where 
 ##  <M><A>y</A>=<A>z</A></M>.
-##  <P/> 
-##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
@@ -420,7 +417,7 @@ DeclareOperation( "SecondEigenvalueInterval" , [IsList, IsRat] );
 ##  <ManSection>
 ##  <Func Name="LeastEigenvalueFromSRGParameters"
 ##   Arg='[ v, k, a, b ]'/>
-##  <Returns>an integer, or element of a cyclotomic field.</Returns>
+##  <Returns>An integer or an element of a cyclotomic field.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
@@ -428,8 +425,6 @@ DeclareOperation( "SecondEigenvalueInterval" , [IsList, IsRat] );
 ##  with parameters <M>(<A>v,k,a,b</A>)</M>. If the eigenvalue is integer, the 
 ##  object returned is an integer. If the eigenvalue is irrational, the object
 ##  returned lies in a cyclotomic field.
-##  <P/> 
-##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> LeastEigenvalueFromSRGParameters([5,2,0,1]); 
@@ -452,16 +447,14 @@ DeclareGlobalFunction( "LeastEigenvalueFromSRGParameters" );
 ##  <ManSection>
 ##  <Func Name="SecondEigenvalueFromSRGParameters"
 ##   Arg='[ v, k, a, b ]'/>
-##  <Returns>an integer, or element of a cyclotomic field.</Returns>
+##  <Returns>An integer or an element of a cyclotomic field.</Returns>
 ##
 ##  <Description>
-##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
+##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A>, 
 ##  this function returns the second largest eigenvalue of a strongly 
 ##  regular graph with parameters <M>(<A>v,k,a,b</A>)</M>. If the eigenvalue is
 ##  integer, the object returned is an integer. If the eigenvalue is 
 ##  irrational, the object returned lies in a cyclotomic field.
-##  <P/> 
-##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> SecondEigenvalueFromSRGParameters([5,2,0,1]);
@@ -484,14 +477,12 @@ DeclareGlobalFunction( "SecondEigenvalueFromSRGParameters" );
 ##  <ManSection>
 ##  <Oper Name="LeastEigenvalueMultiplicity"
 ##   Arg='[ v, k, a, b ]'/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
 ##  this function returns the multiplicity of the least eigenvalue of a 
 ##  strongly regular graph with parameters <M>(<A>v,k,a,b</A>)</M>.
-##  <P/> 
-##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> LeastEigenvalueMultiplicity([16,9,4,6]); 
@@ -514,14 +505,12 @@ DeclareOperation( "LeastEigenvalueMultiplicity" , [IsList] );
 ##  <ManSection>
 ##  <Oper Name="SecondEigenvalueMultiplicity"
 ##   Arg='[ v, k, a, b ]'/>
-##  <Returns>an integer.</Returns>
+##  <Returns>An integer.</Returns>
 ##
 ##  <Description>
 ##  Given feasible strongly regular graph parameters <A>[v, k, a, b]</A> 
 ##  this function returns the multiplicity of the second eigenvalue of a 
 ##  strongly regular graph with parameters <M>(<A>v,k,a,b</A>)</M>.
-##  <P/> 
-##  For information on eigenvalues of graphs and strongly regular graphs, see <Cite Key="BH_2011"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> SecondEigenvalueMultiplicity([16,9,4,6]); 
