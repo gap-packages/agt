@@ -576,8 +576,6 @@ DeclareGlobalFunction( "NrSRGs" );
 ##  names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], 
 ##  schreierVector := [ -1, 4, 3, 3, 3, 2, 1, 4, 4, 4, 3, 2, 1, 3, 2, 1 ] )
 ##gap> OneSRG([28,9,0,4]); 
-##false
-##gap> OneSRG([21,9,0,4]);
 ##fail
 ##      ]]>
 ##    </Example>
@@ -788,10 +786,10 @@ DeclareGlobalFunction( "IsAllSRGsStored" );
 ##      <![CDATA[
 ##gap> DisjointUnionOfCliques(3,5,7);            
 ##rec( adjacencies := [ [ 2, 3 ], [ 5, 6, 7, 8 ], [ 10, 11, 12, 13, 14, 15 ] ], 
-##  group := Group([ (1,2,3), (1,2), (4,5,6,7,8), (4,5), (9,10,11,12,13,14,15),
-##    (9,10) ]), isGraph := true, isSimple := true, order := 15, 
-##  representatives := [ 1, 4, 9 ], 
-##  schreierVector := [ -1, 1, 1, -2, 3, 3, 3, 3, -3, 5, 5, 5, 5, 5, 5 ] )
+##  autGroup := <permutation group with 12 generators>, 
+##  group := <permutation group with 12 generators>, isGraph := true, 
+##  isSimple := true, order := 15, representatives := [ 1, 4, 9 ], 
+##  schreierVector := [ -1, 12, 11, -2, 10, 9, 8, 7, -3, 6, 5, 4, 3, 2, 1 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -823,9 +821,10 @@ DeclareGlobalFunction( "DisjointUnionOfCliques" );
 ##      <![CDATA[
 ##gap> CompleteMultipartiteGraph(4,2,1);
 ##rec( adjacencies := [ [ 5, 6, 7 ], [ 1, 2, 3, 4, 7 ], [ 1, 2, 3, 4, 5, 6 ] ], 
-##  group := Group([ (1,2,3,4), (1,2), (5,6) ]), isGraph := true, 
-##  isSimple := true, order := 7, representatives := [ 1, 5, 7 ], 
-##  schreierVector := [ -1, 1, 1, 1, -2, 3, -3 ] )
+##  autGroup := Group([ (5,6), (3,4), (2,3), (1,2) ]), group := Group([ (5,6),
+##    (3,4), (2,3), (1,2) ]), isGraph := true, isSimple := true, order := 7, 
+##  representatives := [ 1, 5, 7 ], 
+##  schreierVector := [ -1, 4, 3, 2, -2, 1, -3 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
