@@ -1,4 +1,6 @@
 # agt, chapter 5
+gap> LoadPackage("agt");;
+gap> START_TEST("AGT package: agt05.tst");
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 31, 36 ]    
 gap> ComplementSRGParameters([16,9,4,6]);
@@ -109,10 +111,11 @@ gap> NrSRGs([28,9,0,4]);
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 570, 583 ] 
 gap> OneSRG([16,9,4,6]); 
 rec( adjacencies := [ [ 8, 9, 10, 11, 12, 13, 14, 15, 16 ] ], 
-  group := Group([ (6,7)(9,10)(12,13)(15,16), (5,6)(8,9)(11,12)(14,15), (2,5)
-  (3,6)(4,7)(9,11)(10,14)(13,15), (1,2)(5,8)(6,9)(7,10) ]), isGraph := true, 
-  names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], 
-  schreierVector := [ -1, 4, 3, 3, 3, 2, 1, 4, 4, 4, 3, 2, 1, 3, 2, 1 ] )
+  group := Group([ (2,5)(3,6)(4,7)(9,11)(10,14)(13,15), (6,7)(9,10)(12,13)
+  (15,16), (5,6)(8,9)(11,12)(14,15), (1,2)(5,8)(6,9)(7,10) ]), 
+  isGraph := true, names := [ 1 .. 16 ], order := 16, 
+  representatives := [ 1 ], 
+  schreierVector := [ -1, 4, 1, 1, 1, 3, 2, 4, 4, 4, 1, 3, 2, 1, 3, 2 ] )
 gap> OneSRG([28,9,0,4]); 
 fail
 
@@ -126,7 +129,8 @@ gap> AllSRGs([16,6,2,2]);
       (8,9)(11,14)(12,13)(15,16), (2,3)(4,5)(6,7)(9,11)(10,12)(14,15), (1,2)
       (5,8)(6,9)(7,10)(11,12)(13,14) ]), isGraph := true, 
       names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], 
-      schreierVector := [ -1, 3, 2, 1, 2, 1, 2, 3, 3, 3, 2, 2, 1, 1, 2, 1 ] )]
+      schreierVector := [ -1, 3, 2, 1, 2, 1, 2, 3, 3, 3, 2, 2, 1, 1, 2, 1 ] ) 
+ ]
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 639, 644 ]
 gap> SRGIterator([16,6,2,2]);
@@ -207,3 +211,6 @@ gap> gamma:=HigmanSimsGraph();;
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 994, 998 ]    
 gap> gamma:=SimsGerwitzGraph();;
+
+#
+gap> STOP_TEST("AGT package: agt05.tst",0);

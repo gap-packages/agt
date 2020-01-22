@@ -1,4 +1,6 @@
 # agt, chapter 1
+gap> LoadPackage("agt");;
+gap> START_TEST("AGT package: agt01.tst");
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/intro.xml", 44, 47 ]
 gap> LoadPackage("agt");
@@ -28,3 +30,6 @@ gap> Nexus(graphs[1],S);
 1
 gap> RegularSetParameters(graphs[1],S);
 [ 3, 1 ]
+
+#
+gap> STOP_TEST("AGT package: agt01.tst",0);

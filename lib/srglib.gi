@@ -255,7 +255,7 @@ function( parms, n )
   if info[3]<n then  
     return fail;
   fi;
-########################Need to close pipe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   fn := AGT_SRGFilename(parms); 
 
   return Graph(ReadDigraphs(fn,n));

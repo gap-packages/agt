@@ -1,4 +1,6 @@
 # agt, chapter 3
+gap> LoadPackage("agt");;
+gap> START_TEST("AGT package: agt03.tst");
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regprop.gd", 345, 357 ]  
 gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;
@@ -45,3 +47,6 @@ gap> SecondEigenvalueMultiplicity([16,9,4,6]);
 9
 gap> SecondEigenvalueMultiplicity([25,12,5,6]);
 12
+
+#
+gap> STOP_TEST("AGT package: agt03.tst",0);

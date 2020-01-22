@@ -6,9 +6,6 @@
 #
 LoadPackage( "agt" );
 
-x:=Indeterminate(Rationals, "x");
-y:=Indeterminate(Rationals, "y");
-d:=Indeterminate(Rationals, "d");
 TestDirectory(DirectoriesPackageLibrary( "agt", "tst" ),
   rec(exitGAP := true));
 

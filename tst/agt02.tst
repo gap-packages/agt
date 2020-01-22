@@ -1,4 +1,6 @@
 # agt, chapter 2
+gap> LoadPackage("agt");;
+gap> START_TEST("AGT package: agt02.tst");
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regprop.gd", 30, 39 ]
 gap> gamma:=EdgeOrbitsGraph(Group((2,3,4,5)),[[1,2],[2,1]]);;
@@ -68,3 +70,6 @@ gap> IsFeasibleSRGParameters([15,9,4,7]);
 false
 gap> IsFeasibleSRGParameters([10,3,0,1]);
 true
+
+#
+gap> STOP_TEST("AGT package: agt02.tst",0);
