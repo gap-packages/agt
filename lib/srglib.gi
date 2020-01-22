@@ -238,7 +238,7 @@ end );
 ##  
 InstallGlobalFunction( SRG, 
 function( parms, n )
-  local fn, info;
+  local fn, info, gamma;
   
   if not (IsFeasibleSRGParameters(parms) and IsInt(n) and n>0) then
     Error("usage: SRG(<parms>,<n>), where \n\
@@ -257,8 +257,9 @@ function( parms, n )
   fi;
 
   fn := AGT_SRGFilename(parms); 
+  gamma:=Graph(ReadDigraphs(fn,n));
 
-  return Graph(ReadDigraphs(fn,n));
+  return gamma;
 end );
 
 #############################################################################
