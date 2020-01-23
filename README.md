@@ -1,3 +1,9 @@
+[![Build Status](https://https://travis-ci.org/rhysje00/agt.svg?branch=master)](https://https://travis-ci.org/rhysje00/agt)
+[![Code Coverage](https://codecov.io/github/https://codecov.io/gh/rhysje00/agt.svg?branch=master&token=)](https://https://codecov.io/gh/rhysje00/agt)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rhysje00/agt/master)
+
+
+
 # The GAP package agt
 
 The agt package provides a library of strongly regular graphs on
