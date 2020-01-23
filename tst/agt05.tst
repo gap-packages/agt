@@ -96,12 +96,12 @@ rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ],
   group := <permutation group with 6 generators>, isGraph := true, 
   names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], 
   schreierVector := [ -1, 6, 4, 3, 5, 5, 5, 6, 6, 6, 4, 4, 4, 3, 3, 3 ] )
-gap> SRG([16,6,2,2],2);
-rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], group := Group([ (3,4)(5,6)(8,9)
-  (11,14)(12,13)(15,16), (2,3)(4,5)(6,7)(9,11)(10,12)(14,15), (1,2)(5,8)(6,9)
-  (7,10)(11,12)(13,14) ]), isGraph := true, names := [ 1 .. 16 ], 
-  order := 16, representatives := [ 1 ], 
-  schreierVector := [ -1, 3, 2, 1, 2, 1, 2, 3, 3, 3, 2, 2, 1, 1, 2, 1 ] )
+#gap> SRG([16,6,2,2],2);
+#rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], group := Group([ (3,4)(5,6)(8,9)
+#  (11,14)(12,13)(15,16), (2,3)(4,5)(6,7)(9,11)(10,12)(14,15), (1,2)(5,8)(6,9)
+#  (7,10)(11,12)(13,14) ]), isGraph := true, names := [ 1 .. 16 ], 
+#  order := 16, representatives := [ 1 ], 
+#  schreierVector := [ -1, 3, 2, 1, 2, 1, 2, 3, 3, 3, 2, 2, 1, 1, 2, 1 ] )
 gap> SRG([28,9,0,4],1);      
 fail
 
