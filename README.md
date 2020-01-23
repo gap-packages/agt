@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/rhysje00/agt.svg?branch=master)](https://travis-ci.org/rhysje00/agt)
-[![Code Coverage](https://codecov.io/gh/rhysje00/agt.svg?branch=master&token=)](https://codecov.io/gh/rhysje00/agt)
+[![codecov](https://codecov.io/gh/rhysje00/agt/branch/master/graph/badge.svg)](https://codecov.io/gh/rhysje00/agt)
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rhysje00/agt/master)
 
 # The GAP package agt
