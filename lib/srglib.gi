@@ -257,7 +257,7 @@ function( parms, n )
   fi;
 
   fn := AGT_SRGFilename(parms); 
-  gamma:=AsGraph(ReadDigraphs(fn,n));
+  gamma := Graph(ReadDigraphs(fn,n));
 
   return gamma;
 end );
