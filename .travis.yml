@@ -1,8 +1,8 @@
 language: c
 env:
   global:
-#    - GAPROOT=gaproot
-#    - COVDIR=coverage
+    - GAPROOT=gaproot
+    - COVDIR=coverage
     # list of package to compile; io and profiling are always needed for coverage reports
     - GAP_PKGS_TO_BUILD="grape digraphs io profiling"
 
