@@ -1,6 +1,9 @@
 # agt, chapter 4
-gap> LoadPackage("agt");;
 gap> START_TEST("AGT package: agt04.tst");
+
+# Loading package
+gap> LoadPackage("agt",false);
+true
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regsubs.gd", 40, 51 ]
 gap> HoffmanCocliqueBound(HammingGraph(3,5));

@@ -1,6 +1,9 @@
 # agt, chapter 2
-gap> LoadPackage("agt");;
 gap> START_TEST("AGT package: agt02.tst");
+
+# Loading package
+gap> LoadPackage("agt",false);
+true
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regprop.gd", 30, 39 ]
 gap> gamma:=EdgeOrbitsGraph(Group((2,3,4,5)),[[1,2],[2,1]]);;

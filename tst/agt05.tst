@@ -1,6 +1,9 @@
 # agt, chapter 5
-gap> LoadPackage("agt");;
 gap> START_TEST("AGT package: agt05.tst");
+
+# Loading package
+gap> LoadPackage("agt",false);
+true
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 31, 36 ]    
 gap> ComplementSRGParameters([16,9,4,6]);
