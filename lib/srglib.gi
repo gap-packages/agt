@@ -3,7 +3,9 @@
 #W  srglib.gi           Algebraic Graph Theory package         Rhys J. Evans
 ##
 ##
-##  TODO This file contains the routines for the strongly regular graphs library
+#Y  Copyright (C) 2020
+##
+##  Implementation file for functions involving strongly regular graphs. 
 ##
 
 
@@ -185,10 +187,6 @@ function( parms )
   return 2*v <= f*(f+3) and 2*v <= g*(g+3);
 end );
 
-######################
-## GLOBAL FUNCTIONS ##
-######################
-##---------------------------------------------------------------------------------------------
 
 #############################################################################
 ##

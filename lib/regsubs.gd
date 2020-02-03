@@ -3,14 +3,11 @@
 #W  regsubs.gd           Algebraic Graph Theory package         Rhys J. Evans
 ##
 ##
-#Y  Copyright (C) ????????????????????????????????????TODO
+#Y  Copyright (C) 2020
 ##
-##  Explanation of file????????????????????????????????????TODO
+##  Declaration file for functions involving regular subgraphs of graphs.
 ##
 
-######################
-## GLOBAL FUNCTIONS ##
-######################
 
 #############################################################################
 ##
@@ -33,7 +30,8 @@
 ##  with parameters <A>parms</A>. 
 ##  <P/>
 ##  Let <M>\Gamma</M> be a non-null regular graph with parameters <M>(v,k)</M> and least 
-##  eigenvalue <M>s</M>. The <E>Hoffman coclique bound</E>, or <E>ratio bound</E> of <M>\Gamma</M>, is defined as
+##  eigenvalue <M>s</M>. The <E>Hoffman coclique bound</E>, or 
+##  <E>ratio bound</E> of <M>\Gamma</M>, is defined as
 ##  <Display>\delta=\lfloor\left(\frac{v}{k-s}\right)\rfloor.</Display>
 ##  It is known that any coclique in <M>\Gamma</M> must contain at most <M>\delta</M>
 ##  vertices (see <Cite Key="BH_2011"/>).

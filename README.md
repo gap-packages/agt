@@ -2,11 +2,13 @@
 [![codecov](https://codecov.io/gh/rhysje00/agt/branch/master/graph/badge.svg)](https://codecov.io/gh/rhysje00/agt)
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rhysje00/agt/master)
 
-# The GAP package agt
+# The AGT package for GAP
 
-The agt package provides a library of strongly regular graphs on
-at most 40 vertices. It also provides functions to analyse strongly
-regular and other kinds of graphs.
+The AGT package contains a methods used for the determination of  various 
+algebraic and regularity properties of graphs, as well as certain substructures 
+of graphs. The package also contains a library of strongly regular graphs,
+intended to be a useful resource for computational experiments. 
+  
 
 ## Documentation
 
@@ -26,7 +28,7 @@ Please submit bug reports and feature requests via our GitHub issue tracker:
 
 # License
 
-agt is free software; you can redistribute it and/or modify
+AGT is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by the
 Free Software Foundation. For details see the LICENSE file.
 

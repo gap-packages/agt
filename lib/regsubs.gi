@@ -3,13 +3,10 @@
 #W  regsubs.gi           Algebraic Graph Theory package         Rhys J. Evans
 ##
 ##
-##  This file contains the routines for the strongly regular graphs library
+#Y  Copyright (C) 2020
 ##
-
-######################
-## GLOBAL FUNCTIONS ##
-######################
-##---------------------------------------------------------------------------------------------
+##  Implementation file for functions involving regular subgraphs of graphs. 
+##
 
 
 #############################################################################

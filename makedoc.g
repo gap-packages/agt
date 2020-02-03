@@ -1,4 +1,4 @@
-##  This builds the documentation of the Example package
+##  This builds the documentation of the AGT package
 ##  Needs: GAPDoc package, latex, pdflatex, mkindex
 ##  
 LoadPackage( "GAPDoc" );
@@ -8,7 +8,7 @@ MakeGAPDocDoc( "doc",     # path to the directory containing the main file
                           # list of (probably source code) files relative 
                           # to path which contain pieces of documentation 
                           # which must be included in the document
-               [ "../PackageInfo.g", "../lib/regprop.gd",
+               [ "../PackageInfo.g", "../lib/regprop.gd", "../lib/eigenv.gd",
                   "../lib/regsubs.gd", "../lib/srglib.gd", "../lib/utils.gd" ], 
                "agt", # the name of the book used by GAP's online help
                "../../..",# optional: relative path to the main GAP root 

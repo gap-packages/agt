@@ -3,14 +3,12 @@
 #W  utils.gi           Algebraic Graph Theory package         Rhys J. Evans
 ##
 ##
-##  TODO This file contains the routines for the strongly regular graphs library
+#Y  Copyright (C) 2020
+##
+##  Implementation file for internal functions for the package.
 ##
 
-########################
-## INTERNAL FUNCTIONS ##
-########################
 
-##---------------------------------------------------------------------------------------------
 ####################################################################
 ##
 #F  AGT_Dir( )

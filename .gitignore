@@ -24,3 +24,10 @@
 
 /tmp/
 /gh-pages/
+
+/srglib/Validated.g
+/srglib/NotInvalidated.g
+/srglib/Enumerated.g
+/srglib/BrouwerParametersold.g
+/srglib/Available.g
+/srglib/SpenceFileToGAP.m
