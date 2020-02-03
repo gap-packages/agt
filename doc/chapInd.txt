@@ -1,0 +1,77 @@
+  
+  
+  [1XIndex[101X
+  
+  [5XAGT[105X package overview 1. 
+  [5XAGT[105X 1.1 
+  [2XAGT_Brouwer_Parameters[102X 5.2-2 
+  [2XAGT_Brouwer_Parameters_MAX[102X 5.2-1 
+  [2XAllSRGs[102X 5.2-8 
+  [2XCliqueAdjacencyBound[102X 4.2-2 
+  [2XCliqueAdjacencyPolynomial[102X 4.2-1 
+  [2XComplementSRGParameters[102X 5.1-1 
+  [2XCompleteMultipartiteGraph[102X 5.3-2 
+  [2XDisjointUnionOfCliques[102X 5.3-1 
+  [2XERGParameters[102X 2.2-1 
+  [2XGlobalToSRGParameters[102X 5.1-3 
+  [2XHaemersRegularLowerBound[102X 4.1-4 
+      for SRG parameters 4.1-4 
+  [2XHaemersRegularUpperBound[102X 4.1-3 
+      for SRG parameters 4.1-3 
+  [2XHigmanSimsGraph[102X 5.3-6 
+  [2XHoffmanCliqueBound[102X 4.1-2 
+      for SRG parameters 4.1-2 
+  [2XHoffmanCocliqueBound[102X 4.1-1 
+      for SRG parameters 4.1-1 
+  [2XHoffmanSingletonGraph[102X 5.3-5 
+  [2XIsAbsoluteBoundSatisfied[102X 5.1-9 
+  [2XIsAllSRGsStored[102X 5.2-13 
+  [2XIsEnumeratedSRGParameterTuple[102X 5.2-11 
+  [2XIsERG[102X 2.2-2 
+  [2XIsFeasibleERGParameters[102X 2.2-3 
+  [2XIsFeasibleNGParameters[102X 4.4-3 
+  [2XIsFeasibleRGParameters[102X 2.1-3 
+  [2XIsFeasibleSRGParameters[102X 2.3-3 
+  [2XIsKnownSRGParameterTuple[102X 5.2-12 
+  [2XIsKreinConditionsSatisfied[102X 5.1-8 
+  [2XIsNG[102X 4.4-2 
+  [2XIsPrimitiveSRGParameters[102X 5.1-4 
+  [2XIsRegularSet[102X 4.3-3 
+  [2XIsRG[102X 2.1-2 
+  [2XIsSRG[102X 2.3-2 
+  [2XIsSRGAvailable[102X 5.2-3 
+  [2XIsTypeIISRGParameters[102X 5.1-6 
+  [2XIsTypeISRGParameters[102X 5.1-5 
+  [2XKreinParameters[102X 5.1-7 
+  [2XLeastEigenvalueFromSRGParameters[102X 3.1-3 
+  [2XLeastEigenvalueInterval[102X 3.1-1 
+      for SRG parameters 3.1-1 
+  [2XLeastEigenvalueMultiplicity[102X 3.1-5 
+  License .-1 
+  [2XNexus[102X 4.3-1 
+  [2XNGParameters[102X 4.4-1 
+  [2XNrSRGs[102X 5.2-6 
+  [2XOneSRG[102X 5.2-7 
+  [2XRegularAdjacencyLowerBound[102X 4.2-5 
+  [2XRegularAdjacencyPolynomial[102X 4.2-3 
+  [2XRegularAdjacencyUpperBound[102X 4.2-4 
+  [2XRegularCliqueERGParameters[102X 4.4-4 
+  [2XRegularSetParameters[102X 4.3-2 
+  [2XRegularSetSRGParameters[102X 4.3-4 
+  [2XRGParameters[102X 2.1-1 
+  [2XSecondEigenvalueFromSRGParameters[102X 3.1-4 
+  [2XSecondEigenvalueInterval[102X 3.1-2 
+      for SRG parameters 3.1-2 
+  [2XSecondEigenvalueMultiplicity[102X 3.1-6 
+  [2XSimsGerwitzGraph[102X 5.3-7 
+  [2XSmallFeasibleSRGParameterTuples[102X 5.2-10 
+  [2XSquareLatticeGraph[102X 5.3-4 
+  [2XSRG[102X 5.2-5 
+  [2XSRGIterator[102X 5.2-9 
+  [2XSRGLibraryInfo[102X 5.2-4 
+  [2XSRGParameters[102X 2.3-1 
+  [2XSRGToGlobalParameters[102X 5.1-2 
+  [2XTriangularGraph[102X 5.3-3 
+  
+  
+  -------------------------------------------------------

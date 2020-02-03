@@ -1,0 +1,64 @@
+  
+  
+  [1XReferences[101X
+  
+  [[20XBCN89[120X]  [16XBrouwer,  A.  E.,  Cohen,  A. M. and Neumaier, A.[116X, [17XDistance-Regular
+  Graphs[117X, Springer-Verlag, Berlin (1989).
+  
+  [[20XBH11[120X]  [16XBrouwer,  A.  E.  and  Haemers,  W.  H.[116X, [17XSpectra of Graphs[117X, Springer
+  Science \& Business Media (2011).
+  
+  [[20XBro18a[120X]  [16XBrouwer,  A.  E.[116X,  [17XDatabase  of  strongly  regular  graphs[117X (2018),
+  ((\href{https://www.win.tue.nl/~aeb/graphs/srg/srgtab.html}{https://www.win.tue.nl/~aeb/graphs/srg/srgtab.html})).
+  
+  [[20XBro18b[120X]      [16XBrouwer,     A.     E.[116X,     [17XGraph     descriptions[117X     (2018),
+  ((\href{https://www.win.tue.nl/~aeb/graphs/index.html}{https://www.win.tue.nl/~aeb/graphs/index.html})).
+  
+  [[20XCha59[120X]  [16XChang,  L.-C.[116X,  [17XThe Uniqueness and Non-Uniqueness of the Triangular
+  Association  Scheme[117X,  in  Science  Record,  Peking  Mathematical  Society, [19X3[119X
+  (1959), 604--613.
+  
+  [[20XCon58[120X]  [16XConnor, W. S.[116X, [17XThe Uniqueness of the Triangular Association Scheme[117X,
+  [18XThe Annals of Mathematical Statistics[118X, [19X29[119X, 1 (1958), 262--266.
+  
+  [[20XDBJM+19[120X]  [16XDe Beule, J., Jonu{\~s}as, J., Mitchell, J. D., Torpey, M. C. and
+  Wilson,  W. A.[116X, [17XDigraphs -- A GAP package, Version 0.15.3[117X (2019), ((Refereed
+  GAP                  package,                  available                  at
+  \href{https://gap-packages.github.io/Digraphs/}{https://gap-packages.github.io/Digraphs/})).
+  
+  [[20XDel73[120X]  [16XDelsarte,  P.[116X,  [17XAn algebraic approach to the association schemes of
+  coding theory[117X, [18XPhilips Research Reports. Supplements[118X, [19X10[119X (1973), 143--161.
+  
+  [[20XEva20[120X]  [16XEvans,  R. J.[116X, [17XOn regular induced subgraphs of edge-regular graphs[117X,
+  Ph.D.  thesis,  School  of  Mathematical  Sciences, Queen Mary University of
+  London (2020).
+  
+  [[20XGS16[120X]  [16XGreaves,  G.  R.  W.  and  Soicher, L. H.[116X, [17XOn the clique number of a
+  strongly  regular  graph[117X,  [18XElectronic Journal of Combinatorics[118X, [19X25(4)[119X, P4.15
+  (2016).
+  
+  [[20XLN19[120X]  [16XL{\"u}beck,  F.  and  Neunh{\"o}ffer,  M.[116X,  [17XGAPDoc -- A GAP package,
+  Version    1.6.1[117X    (2019),    ((Refereed    GAP   package,   available   at
+  \href{http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/index.html}{http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/index.html})).
+  
+  [[20XShr59[120X] [16XShrikhande, S. S.[116X, [17XThe Uniqueness of the L_2 Association Scheme[117X, [18XThe
+  Annals of Mathematical Statistics[118X, [19X230[119X, 3 (1959), 781--798.
+  
+  [[20XSoi10[120X]  [16XSoicher,  L.  H.[116X,  [17XMore  on  block intersection polynomials and new
+  applications  to  graphs and block designs[117X, [18XJournal of Combinatorial Theory,
+  Series A[118X, [19X117[119X, 7 (2010), 799--809.
+  
+  [[20XSoi15[120X]  [16XSoicher,  L.  H.[116X,  [17XOn  cliques  in  edge-regular graphs[117X, [18XJournal of
+  Algebra[118X, [19X421[119X (2015), 260--267.
+  
+  [[20XSoi18[120X]  [16XSoicher,  L.  H.[116X, [17XGRAPE, GRaph Algorithms using PErmutation groups,
+  Version    4.8[117X    (2018),    ((Refereed    GAP    package,    available   at
+  \href{https://gap-packages.github.io/grape/}{https://gap-packages.github.io/grape/})).
+  
+  [[20XSoi19[120X]  [16XSoicher,  L.  H.[116X,  [17XThe  DESIGN package for GAP, Version 1.7[117X (2019),
+  ((Refereed           GAP           package,           available           at
+  \href{https://gap-packages.github.io/design/}{https://gap-packages.github.io/design/})).
+  
+  
+  
+  [32X

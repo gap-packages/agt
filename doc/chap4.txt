@@ -1,0 +1,523 @@
+  
+  [1X4 [33X[0;0YRegular induced subgraphs[133X[101X
+  
+  [33X[0;0YIn  this chapter we give methods to investigate regular induced subgraphs of
+  regular graphs.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a  graph,  and  consider a subset [22XU[122X of its vertices. The [13Xinduced
+  subgraph[113X  of  [22XΓ[122X  on [22XU[122X, [22XΓ[U][122X, is the graph with vertex set [22XU[122X, and vertices in
+  [22XΓ[U][122X are adjacent if and only if they are adjacent in [22XΓ[122X.[133X
+  
+  
+  [1X4.1 [33X[0;0YSpectral bounds[133X[101X
+  
+  [33X[0;0YIn  this  section,  we introduce some bounds on regular induced subgraphs of
+  regular graphs, which depend on the spectrum of the graph.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a  graph.  A  [13Xcoclique[113X,  or [13Xindependent set[113X, of [22XΓ[122X is a subset of
+  vertices for which each pair of distinct vertices are non-adjacent. A [13Xclique[113X
+  of  [22XΓ[122X  is  a subset of vertices for which each pair of distinct vertices are
+  adjacent.[133X
+  
+  [1X4.1-1 HoffmanCocliqueBound[101X
+  
+  [33X[1;0Y[29X[2XHoffmanCocliqueBound[102X( [3Xgamma[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XHoffmanCocliqueBound[102X( [3Xparms[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  a  non-null  regular  graph  [3Xgamma[103X, this function returns the Hoffman
+  coclique bound of [3Xgamma[103X.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns  the  Hoffman  coclique  bound  of  a  strongly  regular  graph with
+  parameters [3Xparms[103X.[133X
+  
+  [33X[0;0YLet [22XΓ[122X be a non-null regular graph with parameters [22X(v,k)[122X and least eigenvalue
+  [22Xs[122X. The [13XHoffman coclique bound[113X, or [13Xratio bound[113X of [22XΓ[122X, is defined as[133X
+  
+  
+  [24X[33X[0;6Y\delta=\lfloor\left(\frac{v}{k-s}\right)\rfloor.[133X
+  
+  [124X
+  
+  [33X[0;0YIt  is  known  that  any  coclique in [22XΓ[122X must contain at most [22Xδ[122X vertices (see
+  [BH11]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XHoffmanCocliqueBound(HammingGraph(3,5));[127X[104X
+    [4X[28X25[128X[104X
+    [4X[25Xgap>[125X [27XHoffmanCocliqueBound(HammingGraph(2,5));               [127X[104X
+    [4X[28X5[128X[104X
+    [4X[25Xgap>[125X [27Xparms:=SRGParameters(HammingGraph(2,5));[127X[104X
+    [4X[28X[ 25, 8, 3, 2 ][128X[104X
+    [4X[25Xgap>[125X [27XHoffmanCocliqueBound(parms);[127X[104X
+    [4X[28X5[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.1-2 HoffmanCliqueBound[101X
+  
+  [33X[1;0Y[29X[2XHoffmanCliqueBound[102X( [3Xgamma[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XHoffmanCliqueBound[102X( [3Xparms[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  a  non-null,  non-complete regular graph [3Xgamma[103X, this function returns
+  the Hoffman clique bound of [3Xgamma[103X.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns the Hoffman clique bound of a strongly regular graph with parameters
+  [3Xparms[103X.[133X
+  
+  [33X[0;0YLet [22XΓ[122X be a non-null, non-complete regular graph. The [13XHoffman clique bound[113X of
+  [22XΓ[122X,  is  defined  as  the  Hoffman  coclique  bound  of  its  complement (see
+  [2XHoffmanCocliqueBound[102X  ([14X4.1-1[114X)). It is known that the Hoffman clique bound is
+  an  upper  bound  on the number of vertices in any clique of [22XΓ[122X (see [BH11]).
+  Note  that  in  the  case  that [22XΓ[122X is a strongly regular graph, this function
+  returns  the  value  of  the  well-known  [13XDelsarte-Hoffman clique bound[113X (see
+  [Del73]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=EdgeOrbitsGraph(CyclicGroup(IsPermGroup,15),[[1,2],[2,1]]);;[127X[104X
+    [4X[25Xgap>[125X [27XHoffmanCliqueBound(gamma);[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=JohnsonGraph(7,2);;[127X[104X
+    [4X[25Xgap>[125X [27XHoffmanCliqueBound(gamma);[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27Xparms:=SRGParameters(gamma);[127X[104X
+    [4X[28X[ 21, 10, 5, 4 ][128X[104X
+    [4X[25Xgap>[125X [27XHoffmanCliqueBound(parms);[127X[104X
+    [4X[28X6[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.1-3 HaemersRegularUpperBound[101X
+  
+  [33X[1;0Y[29X[2XHaemersRegularUpperBound[102X( [3Xgamma[103X, [3Xd[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XHaemersRegularUpperBound[102X( [3Xparms[103X, [3Xd[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  a  non-null  regular  graph  [3Xgamma[103X  and  non-negative integer [3Xd[103X, this
+  function  returns  the Haemers upper bound on [3Xd[103X-regular induced subgraphs of
+  [3Xgamma[103X.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters [3Xparms[103X and non-negative
+  integer  [3Xd[103X,  this  function  returns  the  Haemers  upper bound on [3Xd[103X-regular
+  induced subgraphs of a strongly regular graph with parameters [3Xparms[103X.[133X
+  
+  [33X[0;0YLet [22XΓ[122X be a non-null regular graph with parameters [22X(v,k)[122X and least eigenvalue
+  [22Xs[122X  and let [22Xd[122X be a non-negative integer. The [13XHaemers upper bound[113X on [22Xd[122X-regular
+  induced subgraphs of [22XΓ[122X, is defined as[133X
+  
+  
+  [24X[33X[0;6Y\delta=\lfloor\left(\frac{v(d-s)}{k-s}\right)\rfloor.[133X
+  
+  [124X
+  
+  [33X[0;0YIt  is  known  that  any [22Xd[122X-regular induced subgraph in [22XΓ[122X has order at most [22Xδ[122X
+  (see [Eva20]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XHaemersRegularUpperBound(SimsGerwitzGraph(),3);[127X[104X
+    [4X[28X28[128X[104X
+    [4X[25Xgap>[125X [27XHaemersRegularUpperBound([56,10,0,2],0);       [127X[104X
+    [4X[28X16[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.1-4 HaemersRegularLowerBound[101X
+  
+  [33X[1;0Y[29X[2XHaemersRegularLowerBound[102X( [3Xgamma[103X, [3Xd[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XHaemersRegularLowerBound[102X( [3Xparms[103X, [3Xd[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  a  connected  regular  graph  [3Xgamma[103X  and non-negative integer [3Xd[103X, this
+  function  returns  the Haemers lower bound on [3Xd[103X-regular induced subgraphs of
+  [3Xgamma[103X.[133X
+  
+  [33X[0;0YGiven  the  parameters  of  a  connected  strongly regular graph, [3Xparms[103X, and
+  non-negative  integer  [3Xd[103X,  this  function returns the Haemers lower bound on
+  [3Xd[103X-regular  induced  subgraphs  of  a  strongly regular graph with parameters
+  [3Xparms[103X.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a  connected  regular  graph  with  parameters  [22X(v,k)[122X and second
+  eigenvalue [22Xr[122X and let [22Xd[122X be a non-negative integer. The [13XHaemers lower bound[113X on
+  [22Xd[122X-regular induced subgraphs of [22XΓ[122X, is defined as[133X
+  
+  
+  [24X[33X[0;6Y\delta=\lfloor\left(\frac{v(d-r)}{k-r}\right)\rfloor.[133X
+  
+  [124X
+  
+  [33X[0;0YIt  is  known  that any [22Xd[122X-regular induced subgraph in [22XΓ[122X has order at least [22Xδ[122X
+  (see [Eva20]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XHaemersRegularLowerBound(HoffmanSingletonGraph(),4);[127X[104X
+    [4X[28X20[128X[104X
+    [4X[25Xgap>[125X [27XHaemersRegularLowerBound([50,7,0,1],3);             [127X[104X
+    [4X[28X10[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.2 [33X[0;0YBlock intersection polynomials and bounds[133X[101X
+  
+  [33X[0;0YIn  this  section,  we introduce functions related to the block intersection
+  polynomials,  defined  in  [Soi10]. If you would like to know more about the
+  properties of these polynomials, see [Soi10], [Soi15] and [GS16].[133X
+  
+  [1X4.2-1 CliqueAdjacencyPolynomial[101X
+  
+  [33X[1;0Y[29X[2XCliqueAdjacencyPolynomial[102X( [3Xparms[103X, [3Xx[103X, [3Xy[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA polynomial.[133X
+  
+  [33X[0;0YGiven  feasible  edge-regular graph parameters [3Xparms[103X and indeterminates [3Xx,y[103X,
+  this  function  returns  the clique adjacency polynomial with respect to the
+  parameters [3Xparms[103X and indeterminates [3Xx,y[103X, defined in [Soi15].[133X
+  
+  [33X[0;0YLet [22XΓ[122X be an edge-regular graph with parameters [22X(v,k,a)[122X. The [13Xclique adjacency
+  polynomial[113X of [22XΓ[122X is defined as[133X
+  
+  
+  [24X[33X[0;6YC(x,y):=x(x+1)(v-y)-2xy(k-y+1)+y(y-1)(a-y+2).[133X
+  
+  [124X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xx:=Indeterminate(Rationals,"x");[127X[104X
+    [4X[28Xx[128X[104X
+    [4X[25Xgap>[125X [27Xy:=Indeterminate(Rationals,"y");[127X[104X
+    [4X[28Xy[128X[104X
+    [4X[25Xgap>[125X [27XCliqueAdjacencyPolynomial([21,8,3],x,y);[127X[104X
+    [4X[28X-x^2*y-y^3+21*x^2-x*y+8*y^2+21*x-23*y[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.2-2 CliqueAdjacencyBound[101X
+  
+  [33X[1;0Y[29X[2XCliqueAdjacencyBound[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  feasible  edge-regular  graph parameters [3Xparms[103X, this function returns
+  the  clique adjacency bound with respect to the parameters [3Xparms[103X, defined in
+  [Soi10].[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  an  edge-regular graph with parameters [22X(v,k,a)[122X, and let [22XC[122X be its
+  corresponding  clique  adjacency  poylnomial  (see [2XCliqueAdjacencyPolynomial[102X
+  ([14X4.2-1[114X)). The [13Xclique adjacency bound[113X of [22XΓ[122X is defined as the smallest integer
+  [22Xy≥ 2[122X such that there exists an integer [22Xm[122X for which [22XC(m,y+1) < 0[122X. It is known
+  that  the clique adjacency bound is an upper bound on the number of vertices
+  in any clique of [22XΓ[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XCliqueAdjacencyBound([16,6,2]);[127X[104X
+    [4X[28X4[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.2-3 RegularAdjacencyPolynomial[101X
+  
+  [33X[1;0Y[29X[2XRegularAdjacencyPolynomial[102X( [3Xparms[103X, [3Xx[103X, [3Xy[103X, [3Xd[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA polynomial.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular graph parameters [3Xparms[103X and indeterminates
+  [3Xx,y,d[103X,  this  function returns the regular adjacency polynomial with respect
+  to the parameters [3Xparms[103X and indeterminates [3Xx,y,d[103X, as defined in [Eva20].[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a  strongly regular graph with parameters [22X(v,k,a,b)[122X. The [13Xregular
+  adjacency polynomial[113X of [22XΓ[122X is defined as[133X
+  
+  
+  [24X[33X[0;6YR(x,y,d):=x(x+1)(v-y)-2xyk+(2x+a-b+1)yd+y(y-1)b-yd^{2}.[133X
+  
+  [124X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XRegularAdjacencyPolynomial([16,6,2,2],"x","y","d");[127X[104X
+    [4X[28X-x^2*y+2*x*y*d-y*d^2+16*x^2-x*y+2*y^2+y*d+4*x-2*y[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.2-4 RegularAdjacencyUpperBound[101X
+  
+  [33X[1;0Y[29X[2XRegularAdjacencyUpperBound[102X( [3Xparms[103X, [3Xd[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  strongly  regular  graph parameters [3Xparms[103X and non-negative integer [3Xd[103X,
+  this  function returns the regular adjacency upper bound with respect to the
+  parameters [3Xparms[103X and integer [3Xd[103X, defined in [Eva20].[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a strongly regular graph with parameters [22X(v,k,a,b)[122X, and let [22XR[122X be
+  its      corresponding      regular      adjacency      poylnomial      (see
+  [2XRegularAdjacencyPolynomial[102X  ([14X4.2-3[114X)).  For  fixed  [22Xd[122X,  the [13Xregular adjacency
+  upper  bound[113X  of [22XΓ[122X is defined as the largest integer [22Xd+1≤ y≤ v[122X such that for
+  all integers [22Xm[122X, we have [22XR(m,y,d) ≥ 0[122X if such a [22Xy[122X exists, and 0 otherwise. It
+  is  known  that  the  regular adjacency upper bound is an upper bound on the
+  number of vertices in any [22Xd[122X-regular induced subgraph of [22XΓ[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XRegularAdjacencyUpperBound([56,10,0,2],3);[127X[104X
+    [4X[28X28[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.2-5 RegularAdjacencyLowerBound[101X
+  
+  [33X[1;0Y[29X[2XRegularAdjacencyLowerBound[102X( [3Xparms[103X, [3Xd[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  the  parameters  of  a  connected  strongly regular graph, [3Xparms[103X, and
+  non-negative  integer  [3Xd[103X,  this function returns the regular adjacency lower
+  bound  with  respect  to  the  parameters  [3Xparms[103X  and  integer [3Xd[103X, defined in
+  [Eva20].[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a strongly regular graph with parameters [22X(v,k,a,b)[122X, and let [22XR[122X be
+  its      corresponding      regular      adjacency      poylnomial      (see
+  [2XRegularAdjacencyPolynomial[102X  ([14X4.2-3[114X)).  For  fixed  [22Xd[122X,  the [13Xregular adjacency
+  lower  bound[113X of [22XΓ[122X is defined as the smallest integer [22Xd+1≤ y≤ v[122X such that for
+  all  integers  [22Xm[122X, we have [22XR(m,y,d) ≥ 0[122X if such a [22Xy[122X, and [22Xv+1[122X otherwise. It is
+  known  that the regular adjacency lower bound is a lower bound on the number
+  of vertices in any [22Xd[122X-regular induced subgraph of [22XΓ[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XRegularAdjacencyLowerBound([50,7,0,1],2);[127X[104X
+    [4X[28X5[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.3 [33X[0;0YRegular sets[133X[101X
+  
+  [33X[0;0YIn  this section we give functions to investigate regular sets, with a focus
+  on regular sets in strongly regular graphs.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be a graph and [22XU[122X be a subset of its vertices. Then [22XU[122X is [22Xm[122X[13X-regular[113X if
+  every  vertex  in  [22XV(Γ)backslash  U[122X  is  adjacent  to the same number [22Xm>0[122X of
+  vertices in [22XU[122X. In this case we say that [22XU[122X has [13Xnexus[113X [22Xm[122X.[133X
+  
+  [33X[0;0YThe  set  [22XU[122X  is  a  [22X(d,m)[122X[13X-regular set[113X if [22XU[122X is an [22Xm[122X-regular set and [22XΓ[U][122X is a
+  [22Xd[122X-regular graph. Then we call [22X(d,m)[122X the [13Xregular set parameters[113X of [22XU[122X.[133X
+  
+  [1X4.3-1 Nexus[101X
+  
+  [33X[1;0Y[29X[2XNexus[102X( [3Xgamma[103X, [3XU[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn integer or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven  a  graph  [3Xgamma[103X and a subset [3XU[103X of its vertices, this function returns
+  the  nexus  of  [3XU[103X.  If  [3XU[103X is not an [22Xm[122X-regular set for some [22Xm>0[122X, the function
+  returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XNexus(SquareLatticeGraph(5),[1,2,3,4,6]);[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27XNexus(SquareLatticeGraph(5),[1,2,3,4,5]);[127X[104X
+    [4X[28X1[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.3-2 RegularSetParameters[101X
+  
+  [33X[1;0Y[29X[2XRegularSetParameters[102X( [3Xgamma[103X, [3XU[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven  a graph [3Xgamma[103X and a subset [3XU[103X of its vertices, this function returns a
+  list  [3X[d,m][103X such that [3XU[103X is a [22X([3Xd,m[103X)[122X-regular set. If [3XU[103X is not an [22X(d,m)[122X-regular
+  set for some [22Xd,m[122X, the function returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XRegularSetParameters(SquareLatticeGraph(5),[6,11,16,21]);  [127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27XRegularSetParameters(SquareLatticeGraph(5),[1,6,11,16,21]);[127X[104X
+    [4X[28X[ 4, 1 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.3-3 IsRegularSet[101X
+  
+  [33X[1;0Y[29X[2XIsRegularSet[102X( [3Xgamma[103X, [3XU[103X, [3Xopt[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a  graph  [3Xgamma[103X and a subset [3XU[103X of its vertices, this function returns
+  [9Xtrue[109X if [3XU[103X is a regular set, and [9Xfalse[109X otherwise.[133X
+  
+  [33X[0;0YThe input [3Xopt[103X should take a boolean value [9Xtrue[109X or [9Xfalse[109X. This option effects
+  the output of the function in the following way.[133X
+  
+  [8X[9Xtrue[109X[108X
+        [33X[0;6Ythis function will return [9Xtrue[109X if and only if [3XU[103X is a [22X(d,m)[122X-regular set
+        for some [22Xd,m[122X.[133X
+  
+  [8X[9Xfalse[109X[108X
+        [33X[0;6Ythis function will return [9Xtrue[109X if and only if [3XU[103X is a [22Xm[122X-regular set for
+        some [22Xm[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsRegularSet(HoffmanSingletonGraph(),[11..50],false);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsRegularSet(HoffmanSingletonGraph(),[11..50],true); [127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.3-4 RegularSetSRGParameters[101X
+  
+  [33X[1;0Y[29X[2XRegularSetSRGParameters[102X( [3Xparms[103X, [3Xd[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters [3Xparms[103X and non-negative
+  integer  [3Xd[103X,  this  function returns a list of pairs [3X[s,m][103X with the following
+  properties:[133X
+  
+  [30X    [33X[0;6Y[22X([3Xd,m[103X)[122X are feasible regular set parameters for a strongly regular graph
+        with parameters [3Xparms[103X.[133X
+  
+  [30X    [33X[0;6Y[3Xs[103X  is  the  order of any [22X([3Xd,m[103X)[122X-regular set in a strongly regular graph
+        with parameters [3Xparms[103X.[133X
+  
+  [33X[0;0YLet [22XΓ[122X be a strongly regular graph with parameters [22X(v,k,a,b)[122X and let [22XR[122X be its
+  corresponding  regular  adjacency polynomial (see [2XRegularAdjacencyPolynomial[102X
+  ([14X4.2-3[114X)). Then the tuple [22X(d,m)[122X is a [13Xfeasible regular set parameter tuple[113X for
+  [22XΓ[122X  if  [22Xd,m[122X  are  non-negative integers and there exists a positive integer [22Xs[122X
+  such that[133X
+  
+  
+  [24X[33X[0;6YR(m-1,s,d)=R(m,s,d)=0.[133X
+  
+  [124X
+  
+  [33X[0;0YIt is known that any [22X(d,m)[122X-regular set of size [22Xs[122X in [22XΓ[122X must satisfy the above
+  conditions (see [Eva20]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XRegularSetSRGParameters([16,6,2,2],4);[127X[104X
+    [4X[28X[ [ 8, 2 ], [ 12, 6 ] ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.4 [33X[0;0YNeumaier graphs[133X[101X
+  
+  [33X[0;0YIn  this  section,  we  give  functions  to  investigate  regular cliques in
+  edge-regular graphs.[133X
+  
+  [33X[0;0YA  clique  [22XS[122X  in  [22XΓ[122X  is [22Xm[122X[13X-regular[113X, for some [22Xm>0[122X, if [22XS[122X is an [22Xm[122X-regular set. A
+  graph   [22XΓ[122X  is  a  [13XNeumaier  graph[113X  with  [13Xparameters[113X  [22X(v,k,a;s,m)[122X  if  it  is
+  edge-regular  with parameters [22X(v,k,a)[122X, and [22XΓ[122X contains an [22Xm[122X-regular clique of
+  size [22Xs[122X. For more information on Neumaier graphs, see [Eva20].[133X
+  
+  [1X4.4-1 NGParameters[101X
+  
+  [33X[1;0Y[29X[2XNGParameters[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven  a graph [3Xgamma[103X, this function returns the Neumaier graph parameters of
+  [3Xgamma[103X. If [3Xgamma[103X is not a Neumaier graph, the function returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XNGParameters(HigmanSimsGraph());                    [127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27XNGParameters(TriangularGraph(10));[127X[104X
+    [4X[28X[ [ 45, 16, 8, 9, 2 ] ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.4-2 IsNG[101X
+  
+  [33X[1;0Y[29X[2XIsNG[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a  graph  [3Xgamma[103X,  this  function  returns [9Xtrue[109X if [3Xgamma[103X is a Neumaier
+  graph, and [9Xfalse[109X otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsNG(HammingGraph(3,7));[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsNG(HammingGraph(2,7));[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.4-3 IsFeasibleNGParameters[101X
+  
+  [33X[1;0Y[29X[2XIsFeasibleNGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xs[103X, [3Xm[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a  list  of  integers of length 5, [3X[v,k,a,s,m][103X, this function returns
+  [9Xtrue[109X  if  [22X(  [3Xv,k,a;s,m[103X )[122X is a feasible parameter tuple for a Neumaier graph.
+  Otherwise, the function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YThe  tuple  [22X(  v,  k, a; s, m )[122X is a [13Xfeasible[113X parameter tuple for a Neumaier
+  graph if it satisfies the following conditions:[133X
+  
+  [30X    [33X[0;6Y[22X(v,k,a)[122X is a feasible edge-regular graph parameter tuple;[133X
+  
+  [30X    [33X[0;6Y[22X0<m≤ s[122X and [22X2≤ s≤ a+2[122X;[133X
+  
+  [30X    [33X[0;6Y[22X(v-s)m=(k-s+1)s[122X;[133X
+  
+  [30X    [33X[0;6Y[22X(k-s+1)(m-1)=(a-s+2)(s-1)[122X.[133X
+  
+  [33X[0;0YAny  Neumaier graph must have parameters which satisfy these conditions (see
+  [Eva20]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleNGParameters([35,16,6,5,2]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleNGParameters([37,18,8,5,2]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X4.4-4 RegularCliqueERGParameters[101X
+  
+  [33X[1;0Y[29X[2XRegularCliqueERGParameters[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  feasible  edge-regular  graph parameters [3Xparms[103X[10X=[v,k,a][110X, this function
+  returns  a  list of pairs [10X[s,m][110X, such that [22X([3Xv,k,a;s,m[103X)[122X are feasible Neumaier
+  graph parameters (as defined in [2XIsFeasibleNGParameters[102X ([14X4.4-3[114X)).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XRegularCliqueERGParameters([8,7,6]);[127X[104X
+    [4X[28X[ [ 1, 1 ], [ 2, 2 ], [ 3, 3 ], [ 4, 4 ], [ 5, 5 ], [ 6, 6 ], [ 7, 7 ] ][128X[104X
+    [4X[25Xgap>[125X [27XRegularCliqueERGParameters([8,6,4]);[127X[104X
+    [4X[28X[ [ 4, 3 ] ][128X[104X
+    [4X[25Xgap>[125X [27XRegularCliqueERGParameters([16,9,4]);[127X[104X
+    [4X[28X[ [ 4, 2 ] ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  

@@ -1,0 +1,752 @@
+  
+  [1X5 [33X[0;0YStrongly regular graphs[133X[101X
+  
+  [33X[0;0YIn this chapter we give functions to investigate strongly regular graphs. In
+  particular,  we provide a collection of strongly regular graphs which can be
+  a useful computational resource.[133X
+  
+  
+  [1X5.1 [33X[0;0YStrongly regular graph parameter tuples[133X[101X
+  
+  [33X[0;0YIn  this  section,  we  give  functions  to  investigate the parameters of a
+  strongly  regular  graph.  For  the  definition of feasible strongly regular
+  graph parameters, see [2XIsFeasibleSRGParameters[102X ([14X2.3-3[114X).[133X
+  
+  [1X5.1-1 ComplementSRGParameters[101X
+  
+  [33X[1;0Y[29X[2XComplementSRGParameters[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns the complement parameters of [3Xparms[103X.[133X
+  
+  [33X[0;0YSuppose  [22XΓ[122X  is  a strongly regular graph with parameters [22X(v,k,a,b)[122X. Then the
+  complement   of   [22XΓ[122X   is   a   strongly   regular   graph   with  parameters
+  [22X(v,v-k-1,v-2-2k+b,v-2k+a)[122X (see [BCN89]). We define the [13Xcomplement parameters[113X
+  of  the  feasible  strongly  regular  graph parameter tuple [22X(v,k,a,b)[122X as the
+  tuple [22X(v,v-k-1,v-2-2k+b,v-2k+a)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XComplementSRGParameters([16,9,4,6]);[127X[104X
+    [4X[28X[ 16, 6, 2, 2 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-2 SRGToGlobalParameters[101X
+  
+  [33X[1;0Y[29X[2XSRGToGlobalParameters[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns  the  global  parameters  of  a  graph  with  strongly regular graph
+  parameters  [3Xparms[103X.  For  information  on  global  parameters of a graph, see
+  [Soi18].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSRGToGlobalParameters([50,7,0,1]);[127X[104X
+    [4X[28X[ [ 0, 0, 7 ], [ 1, 0, 6 ], [ 1, 6, 0 ] ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-3 GlobalToSRGParameters[101X
+  
+  [33X[1;0Y[29X[2XGlobalToSRGParameters[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  the  global  parameters  [3Xparms[103X of a connected strongly regular graph,
+  this  function  returns  the strongly regular graph parameters of the graph.
+  For information on global parameters of a graph, see [Soi18].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xparms:=GlobalParameters(JohnsonGraph(5,3));[127X[104X
+    [4X[28X[ [ 0, 0, 6 ], [ 1, 3, 2 ], [ 4, 2, 0 ] ][128X[104X
+    [4X[25Xgap>[125X [27XGlobalToSRGParameters(parms);              [127X[104X
+    [4X[28X[ 10, 6, 3, 4 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-4 IsPrimitiveSRGParameters[101X
+  
+  [33X[1;0Y[29X[2XIsPrimitiveSRGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a list of integers of length 4, [3X[v,k,a,b][103X, this function returns [9Xtrue[109X
+  if  [22X([3Xv,k,a,b[103X)[122X is a feasible parameter tuple for a primitive strongly regular
+  graph. Otherwise, this function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YLet  [22X(v,k,a,b)[122X  be  feasible  strongly  regular  parameters  with complement
+  parameters  [22X(v',k',a',b')[122X.  Then  the  parameter  tuple  [22X(v,k,a,b)[122X is called
+  [13Xprimitive[113X if [22Xbnot= 0[122X and [22Xb'not= 0[122X.[133X
+  
+  [33X[0;0YA  strongly  regular  graph [22XΓ[122X is called [13Xprimitive[113X if [22XΓ[122X and its complement is
+  connected.  It  is  known  that  a non-primitive strongly regular graph is a
+  union  of  cliques,  or  the  complement  of  a  union  of cliques. From our
+  definition,  it  follows that a strongly regular graph [22XΓ[122X is primitive if and
+  only if [22XΓ[122X has primitive strongly regular graph parameters (see [BCN89]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleSRGParameters([8,6,4,6]); [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsPrimitiveSRGParameters([8,6,4,6]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsPrimitiveSRGParameters([10,6,3,4]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-5 IsTypeISRGParameters[101X
+  
+  [33X[1;0Y[29X[2XIsTypeISRGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a list of integers of length 4, [3X[v,k,a,b][103X, this function returns [9Xtrue[109X
+  if  [22X([3Xv,k,a,b[103X)[122X  is  a  feasible parameter tuple for a type I strongly regular
+  graph. Otherwise, this function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YA  feasible  strongly  regular  parameter tuple [22X(v,k,a,b)[122X is of [13Xtype I[113X (or a
+  [13Xconference   graph[113X)   if  there  exists  a  positive  integer  [22Xt[122X  such  that
+  [22Xv=4t+1,k=2t,a=t-1,b=t[122X.[133X
+  
+  [33X[0;0YThere  are  two  types of strongly regular graphs, called type I and type II
+  (see  [BCN89]). Let [22XΓ[122X be a strongly regular graph with parameters [22X(v,k,a,b)[122X.
+  Then [22XΓ[122X is of [13Xtype I[113X if and only if [22X(v,k,a,b)[122X is of type I.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsTypeISRGParameters([5,2,0,1]);                              [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsTypeISRGParameters([9,4,1,2]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsTypeISRGParameters([10,3,0,1]); [127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-6 IsTypeIISRGParameters[101X
+  
+  [33X[1;0Y[29X[2XIsTypeIISRGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a list of integers of length 4, [3X[v,k,a,b][103X, this function returns [9Xtrue[109X
+  if  [22X([3Xv,k,a,b[103X)[122X  is  a feasible parameter tuple for a type II strongly regular
+  graph. Otherwise, this function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YA  feasible  strongly regular parameter tuple [22X(v,k,a,b)[122X is of [13Xtype II[113X if the
+  polynomial [22Xx^2-(a-b)x+b-k[122X has integer zeros.[133X
+  
+  [33X[0;0YThere  are  two  types of strongly regular graphs, called type I and [13Xtype II[113X
+  (see  [BCN89]). Let [22XΓ[122X be a strongly regular graph with parameters [22X(v,k,a,b)[122X.
+  Then  [22XΓ[122X is of [13Xtype II[113X if and only if all of its eigenvalues are integer. The
+  eigenvalues  of  [22XΓ[122X are [22Xk[122X and the zeros of the polynomial [22Xx^2-(a-b)x+b-k[122X (see
+  [BCN89]).  From  our definition, it follows that [22XΓ[122X is of type II if and only
+  if [22X(v,k,a,b)[122X is of type II.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsTypeIISRGParameters([5,2,0,1]); [127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsTypeIISRGParameters([9,4,1,2]); [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsTypeIISRGParameters([10,3,0,1]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-7 KreinParameters[101X
+  
+  [33X[1;0Y[29X[2XKreinParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven feasible strongly regular graph parameters [3X[v, k, a, b][103X, this function
+  returns a list of (non-trivial) Krein parameters of a strongly regular graph
+  with parameters [22X([3Xv,k,a,b[103X)[122X.[133X
+  
+  [33X[0;0YIf  the  eigenvalues  of  a  strongly  regular graph are integer, the object
+  returned  is  a  list  of  integers.  If the eigenvalues are irrational, the
+  object returned will be a list of cyclotomic numbers.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X be a strongly regular graph with parameters [22X(v,k,a,b)[122X and eigenvalues
+  [22Xk≥ r > s[122X. Then the [13XKrein parameters[113X of [22XΓ[122X are the numbers[133X
+  
+  
+  [24X[33X[0;6YK_{1}=(k+r)(s+1)^{2} - (r+1)(k+r+2rs),[133X
+  
+  [124X
+  
+  
+  [24X[33X[0;6YK_{2}=(k+s)(r+1)^{2} - (s+1)(k+s+2rs).[133X
+  
+  [124X
+  
+  [33X[0;0YFor  information  on  the  Krein  parameters of strongly regular graphs, see
+  [BCN89].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XKreinParameters([10,6,3,4]);[127X[104X
+    [4X[28X[ 1, 16 ][128X[104X
+    [4X[25Xgap>[125X [27XKreinParameters([13,6,2,3]);[127X[104X
+    [4X[28X[ -14*E(13)-12*E(13)^2-14*E(13)^3-14*E(13)^4-12*E(13)^5-12*E(13)^6-12*E(13)^7[128X[104X
+    [4X[28X   -12*E(13)^8-14*E(13)^9-14*E(13)^10-12*E(13)^11-14*E(13)^12, [128X[104X
+    [4X[28X-12*E(13)-14*E(13)^2-12*E(13)^3-12*E(13)^4-14*E(13)^5-14*E(13)^6-14*E(13)^7[128X[104X
+    [4X[28X   -14*E(13)^8-12*E(13)^9-12*E(13)^10-14*E(13)^11-12*E(13)^12 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-8 IsKreinConditionsSatisfied[101X
+  
+  [33X[1;0Y[29X[2XIsKreinConditionsSatisfied[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven feasible strongly regular graph parameters [3X[v, k, a, b][103X, this function
+  returns [9Xtrue[109X if the parameters satisfy the Krein conditions. Otherwise, this
+  function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a  strongly  regular  graph  with parameters [22X(v,k,a,b)[122X and Krein
+  parameters  [22XK_1,K_2[122X  (see [2XKreinParameters[102X ([14X5.1-7[114X). The [13XKrein conditions[113X of [22XΓ[122X
+  are the inequalities[133X
+  
+  
+  [24X[33X[0;6YK_{1}\geq 0, K_{2}\geq 0.[133X
+  
+  [124X
+  
+  [33X[0;0YIt  is  known  that  any  strongly  regular  graph must have parameters that
+  satisfy  the  Krein  conditions.  For information on the Krein conditions of
+  strongly regular graphs, see [BCN89].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsKreinConditionsSatisfied([28,9,0,4]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsKreinConditionsSatisfied([13,6,2,3]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsKreinConditionsSatisfied([10,6,3,4]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-9 IsAbsoluteBoundSatisfied[101X
+  
+  [33X[1;0Y[29X[2XIsAbsoluteBoundSatisfied[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  primitive  strongly  regular  graph  parameters  [3X[v,  k,  a, b][103X, this
+  function  returns  [9Xtrue[109X  if  the  parameters  satisfy  the  absolute  bound.
+  Otherwise, this function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a primitive strongly regular graph with parameters [22X(v,k,a,b)[122X and
+  eigenvalues  [22Xk≥ r > s[122X, with multiplicities [22X1,f,g[122X. The [13Xabsolute bound[113X for the
+  number of vertices of [22XΓ[122X is[133X
+  
+  
+  [24X[33X[0;6Yv\leq f(f+3)/2, v\leq g(g+3)/2.[133X
+  
+  [124X
+  
+  [33X[0;0YFor  information  on  the  absolute  bound  of  strongly regular graphs, see
+  [BCN89].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsAbsoluteBoundSatisfied([13,6,3,4]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsAbsoluteBoundSatisfied([50,21,4,12]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsAbsoluteBoundSatisfied([50,21,8,9]); [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X5.2 [33X[0;0YSmall strongly regular graphs[133X[101X
+  
+  [33X[0;0YIn this section, we give functions to access and use the library of strongly
+  regular  graphs  currently  stored in this package. The information on small
+  strongly  regular  graphs  in this section is based on the tables of Andries
+  Brouwer [Bro18a].[133X
+  
+  [1X5.2-1 AGT_Brouwer_Parameters_MAX[101X
+  
+  [33X[1;0Y[29X[2XAGT_Brouwer_Parameters_MAX[102X[32X global variable[133X
+  
+  [33X[0;0YThis  variable  stores  the  largest  value  [22Xv[122X for which the current package
+  contains  information  about  the  parameters of all strongly regular graphs
+  with   at   most  [22Xv[122X  vertices.  This  information  is  stored  in  the  list
+  [2XAGT_Brouwer_Parameters[102X ([14X5.2-2[114X).[133X
+  
+  [1X5.2-2 AGT_Brouwer_Parameters[101X
+  
+  [33X[1;0Y[29X[2XAGT_Brouwer_Parameters[102X[32X global variable[133X
+  
+  [33X[0;0YThis  variable  stores information about the feasible strongly regular graph
+  parameters  found  in  Brouwer  [Bro18a]  and the available strongly regular
+  graphs. [3XAGT_Brouwer_Parameters[103X is a list, each element of which is a list of
+  length  [22X4[122X.  For an element [10X[parms,status,stored,num][110X, each entry denotes the
+  following;[133X
+  
+  [8X[10Xparms[110X[8X[108X
+        [33X[0;6YA  feasible  strongly regular graph parameter tuple [10X[v,k,a,b][110X, where [3Xv[103X
+        is less than [2XAGT_Brouwer_Parameters_MAX[102X ([14X5.2-1[114X).[133X
+  
+  [8X[10Xstatus[110X[8X[108X
+        [33X[0;6Ythe status of the known strongly regular graphs with parameters [10Xparms[110X.
+        This entry is[133X
+  
+        [30X    [33X[0;12Y[22X0[122X  if  there  exists  a  strongly  regular graph with parameters
+              [10Xparms[110X, and all such graphs have been enumerated,[133X
+  
+        [30X    [33X[0;12Y[22X1[122X  if  there  exists  a  strongly  regular graph with parameters
+              [10Xparms[110X, but all such graphs have not been enumerated,[133X
+  
+        [30X    [33X[0;12Y[22X2[122X if it is not known if a strongly regular graph with parameters
+              [10Xparms[110X exists,[133X
+  
+        [30X    [33X[0;12Y[22X3[122X  if  it  has  been  proven that no strongly regular graph with
+              parameters [10Xparms[110X exists.[133X
+  
+  [8X[10Xstored[110X[8X[108X
+        [33X[0;6Ythe  number  of non-isomoprhic strongly regular graphs with parameters
+        [10Xparms[110X that are available in the current package.[133X
+  
+  [8X[10Xnum[110X[8X[108X
+        [33X[0;6Ythe  number  of non-isomorphic strongly regular graphs with parameters
+        [10Xparms[110X that exist. If this has not been determined, the value of [10Xnum[110X is
+        set to [10X-1[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XAGT_Brouwer_Parameters[34];  [127X[104X
+    [4X[28X[ [ 36, 20, 10, 12 ], 0, 32548, 32548 ][128X[104X
+    [4X[25Xgap>[125X [27XAGT_Brouwer_Parameters[35];  [127X[104X
+    [4X[28X[ [ 37, 18, 8, 9 ], 1, 6760, -1 ][128X[104X
+    [4X[25Xgap>[125X [27XAGT_Brouwer_Parameters[2530];[127X[104X
+    [4X[28X[ [ 765, 176, 28, 44 ], 2, 0, -1 ][128X[104X
+    [4X[25Xgap>[125X [27XAGT_Brouwer_Parameters[4530];[127X[104X
+    [4X[28X[ [ 1293, 646, 322, 323 ], 3, 0, 0 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-3 IsSRGAvailable[101X
+  
+  [33X[1;0Y[29X[2XIsSRGAvailable[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns  [9Xtrue[109X  if  there  is  a strongly regular graph with parameters [3Xparms[103X
+  stored  in this package. If [3Xparms[103X is a feasible parameter tuple but there is
+  no  strongly  regular  graphs  with parameters [3Xparms[103X available, the function
+  returns [9Xfalse[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsSRGAvailable([28,12,6,4]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSRGAvailable([28,9,0,4]); [127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-4 SRGLibraryInfo[101X
+  
+  [33X[1;0Y[29X[2XSRGLibraryInfo[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven feasible strongly regular graph parameters [3Xparms[103X, with first parameter
+  [3Xv[103X  at  most  [2XAGT_Brouwer_Parameters_MAX[102X  ([14X5.2-1[114X),  this function returns the
+  element of [2XAGT_Brouwer_Parameters[102X ([14X5.2-2[114X) corresponding to [3Xparms[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSRGLibraryInfo([37,18,8,9]); [127X[104X
+    [4X[28X[ [ 37, 18, 8, 9 ], 1, 6760, -1 ][128X[104X
+    [4X[25Xgap>[125X [27XSRGLibraryInfo([36,15,6,6]);[127X[104X
+    [4X[28X[ [ 36, 15, 6, 6 ], 0, 32548, 32548 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-5 SRG[101X
+  
+  [33X[1;0Y[29X[2XSRG[102X( [3Xparms[103X, [3Xn[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven  feasible strongly regular graph parameters [3Xparms[103X and positive integer
+  [3Xn[103X,  this  function  returns  the  [3Xn[103Xth strongly regular graph with parameters
+  [3Xparms[103X  available  in this package. If there there is no [3Xn[103Xth strongly regular
+  graph with parameters [3Xparms[103X available, the function returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSRG([16,6,2,2],1);[127X[104X
+    [4X[28Xrec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], [128X[104X
+    [4X[28Xgroup := <permutation group with 6 generators>, isGraph := true, [128X[104X
+    [4X[28Xnames := [ 1 .. 16 ], order := 16, representatives := [ 1 ], [128X[104X
+    [4X[28XschreierVector := [ -1, 6, 4, 3, 5, 5, 5, 6, 6, 6, 4, 4, 4, 3, 3, 3 ] )[128X[104X
+    [4X[25Xgap>[125X [27XSRG([16,6,2,2],2);[127X[104X
+    [4X[28Xrec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], group := Group([ (3,4)(5,6)(8,9)[128X[104X
+    [4X[28X(11,14)(12,13)(15,16), (2,3)(4,5)(6,7)(9,11)(10,12)(14,15), (1,2)(5,8)(6,9)[128X[104X
+    [4X[28X(7,10)(11,12)(13,14) ]), isGraph := true, names := [ 1 .. 16 ], [128X[104X
+    [4X[28Xorder := 16, representatives := [ 1 ], [128X[104X
+    [4X[28XschreierVector := [ -1, 3, 2, 1, 2, 1, 2, 3, 3, 3, 2, 2, 1, 1, 2, 1 ] )[128X[104X
+    [4X[25Xgap>[125X [27XSRG([28,9,0,4],1);      [127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-6 NrSRGs[101X
+  
+  [33X[1;0Y[29X[2XNrSRGs[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns  the  number of pairwise non-isomorphic strongly regular graphs with
+  parameters [3Xparms[103X currently stored in this package.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XNrSRGs([36,15,6,6]);   [127X[104X
+    [4X[28X32548[128X[104X
+    [4X[25Xgap>[125X [27XNrSRGs([28,9,0,4]); [127X[104X
+    [4X[28X0[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-7 OneSRG[101X
+  
+  [33X[1;0Y[29X[2XOneSRG[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns  one strongly regular graph with parameters [3Xparms[103X. If there there is
+  no  strongly  regular  graph  with  parameters [3Xparms[103X available, the function
+  returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XOneSRG([16,9,4,6]); [127X[104X
+    [4X[28Xrec( adjacencies := [ [ 8, 9, 10, 11, 12, 13, 14, 15, 16 ] ], [128X[104X
+    [4X[28Xgroup := Group([ (6,7)(9,10)(12,13)(15,16), (5,6)(8,9)(11,12)(14,15), (2,5)[128X[104X
+    [4X[28X(3,6)(4,7)(9,11)(10,14)(13,15), (1,2)(5,8)(6,9)(7,10) ]), isGraph := true, [128X[104X
+    [4X[28Xnames := [ 1 .. 16 ], order := 16, representatives := [ 1 ], [128X[104X
+    [4X[28XschreierVector := [ -1, 4, 3, 3, 3, 2, 1, 4, 4, 4, 3, 2, 1, 3, 2, 1 ] )[128X[104X
+    [4X[25Xgap>[125X [27XOneSRG([28,9,0,4]); [127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-8 AllSRGs[101X
+  
+  [33X[1;0Y[29X[2XAllSRGs[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns  a  list of all pairwise non-isomorphic strongly regular graphs with
+  parameters [3Xparms[103X available in this package.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XAllSRGs([16,6,2,2]);[127X[104X
+    [4X[28X[ rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], [128X[104X
+    [4X[28X  group := <permutation group with 6 generators>, isGraph := true, [128X[104X
+    [4X[28X  names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], [128X[104X
+    [4X[28X  schreierVector := [ -1, 6, 4, 3, 5, 5, 5, 6, 6, 6, 4, 4, 4, 3, 3, 3 ] ),[128X[104X
+    [4X[28Xrec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], group := Group([ (3,4)(5,6)[128X[104X
+    [4X[28X  (8,9)(11,14)(12,13)(15,16), (2,3)(4,5)(6,7)(9,11)(10,12)(14,15), (1,2)[128X[104X
+    [4X[28X  (5,8)(6,9)(7,10)(11,12)(13,14) ]), isGraph := true, [128X[104X
+    [4X[28X  names := [ 1 .. 16 ], order := 16, representatives := [ 1 ], [128X[104X
+    [4X[28X  schreierVector := [ -1, 3, 2, 1, 2, 1, 2, 3, 3, 3, 2, 2, 1, 1, 2, 1 ] )][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-9 SRGIterator[101X
+  
+  [33X[1;0Y[29X[2XSRGIterator[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn iterator.[133X
+  
+  [33X[0;0YGiven  feasible  strongly  regular  graph  parameters  [3Xparms[103X,  this function
+  returns  an  iterator  of all pairwise non-isomorphic strongly regular graph
+  with parameters [3Xparms[103X that are stored in this package.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSRGIterator([16,6,2,2]);[127X[104X
+    [4X[28X<iterator>[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-10 SmallFeasibleSRGParameterTuples[101X
+  
+  [33X[1;0Y[29X[2XSmallFeasibleSRGParameterTuples[102X( [3Xv[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  an  integer [3Xv[103X, this function returns a list of all feasible parameter
+  tuples  with  at most [3Xv[103X vertices, according to the list of Brouwer [Bro18a].
+  The   list   contains   parameter   tuples  with  first  parameter  at  most
+  [2XAGT_Brouwer_Parameters_MAX[102X ([14X5.2-1[114X).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSmallFeasibleSRGParameterTuples(16);[127X[104X
+    [4X[28X[ [ 5, 2, 0, 1 ], [ 9, 4, 1, 2 ], [ 10, 3, 0, 1 ], [ 10, 6, 3, 4 ], [128X[104X
+    [4X[28X[ 13, 6, 2, 3 ], [ 15, 6, 1, 3 ], [ 15, 8, 4, 4 ], [ 16, 5, 0, 2 ], [128X[104X
+    [4X[28X[ 16, 10, 6, 6 ], [ 16, 6, 2, 2 ], [ 16, 9, 4, 6 ] ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-11 IsEnumeratedSRGParameterTuple[101X
+  
+  [33X[1;0Y[29X[2XIsEnumeratedSRGParameterTuple[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  feasible strongly regular graph parameters [3Xparms[103X with first parameter
+  [3Xv[103X  at most [2XAGT_Brouwer_Parameters_MAX[102X ([14X5.2-1[114X), this function returns [9Xtrue[109X if
+  the  strongly  regular  graphs  with  parameters [3Xparms[103X have been enumerated,
+  according  to the list of Brouwer [Bro18a]. Otherwise, this function returns
+  [9Xfalse[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsEnumeratedSRGParameterTuple([37,18,8,9]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEnumeratedSRGParameterTuple([56,10,0,2]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-12 IsKnownSRGParameterTuple[101X
+  
+  [33X[1;0Y[29X[2XIsKnownSRGParameterTuple[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  feasible strongly regular graph parameters [3Xparms[103X with first parameter
+  [3Xv[103X  at most [2XAGT_Brouwer_Parameters_MAX[102X ([14X5.2-1[114X), this function returns [9Xtrue[109X if
+  it  is  known  that  there  exists  a strongly regular graph with parameters
+  [3Xparms[103X,  according  to the list of Brouwer [Bro18a]. Otherwise, this function
+  returns [9Xfalse[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsKnownSRGParameterTuple([64,28,12,12]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsKnownSRGParameterTuple([64,30,18,10]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsKnownSRGParameterTuple([65,32,15,16]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-13 IsAllSRGsStored[101X
+  
+  [33X[1;0Y[29X[2XIsAllSRGsStored[102X( [3Xparms[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  feasible strongly regular graph parameters [3Xparms[103X with first parameter
+  [3Xv[103X  at most [2XAGT_Brouwer_Parameters_MAX[102X ([14X5.2-1[114X), this function returns [9Xtrue[109X if
+  all  pairwise  non-isomorphic  strongly regular graphs with parameters [3Xparms[103X
+  are stored in the package. Otherwise, this function returns [9Xfalse[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsAllSRGsStored([37,18,8,9]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsAllSRGsStored([36,15,6,6]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X5.3 [33X[0;0YStrongly regular graph constructors[133X[101X
+  
+  [33X[0;0YIn  this  section,  we  give  functions to construct certain graphs, most of
+  which are strongly regular graphs.[133X
+  
+  [1X5.3-1 DisjointUnionOfCliques[101X
+  
+  [33X[1;0Y[29X[2XDisjointUnionOfCliques[102X( [3Xn1[103X, [3Xn2[103X, [3X...[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record.[133X
+  
+  [33X[0;0YGiven  positive  integers  [3Xn1,  n2,...[103X,  this  function  returns  the  graph
+  consisting of the disjoint union of cliques with orders [3Xn1, n2,...[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XDisjointUnionOfCliques(3,5,7);            [127X[104X
+    [4X[28Xrec( adjacencies := [ [ 2, 3 ], [ 5, 6, 7, 8 ], [ 10, 11, 12, 13, 14, 15 ] ], [128X[104X
+    [4X[28XautGroup := <permutation group with 12 generators>, [128X[104X
+    [4X[28Xgroup := <permutation group with 12 generators>, isGraph := true, [128X[104X
+    [4X[28XisSimple := true, order := 15, representatives := [ 1, 4, 9 ], [128X[104X
+    [4X[28XschreierVector := [ -1, 12, 11, -2, 10, 9, 8, 7, -3, 6, 5, 4, 3, 2, 1 ] )[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.3-2 CompleteMultipartiteGraph[101X
+  
+  [33X[1;0Y[29X[2XCompleteMultipartiteGraph[102X( [3Xn1[103X, [3Xn2[103X, [3X...[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record.[133X
+  
+  [33X[0;0YGiven  positive  integers  [3Xn1,  n2,...[103X,  this  function returns the complete
+  multipartite graph with parts of orders [3Xn1, n2,...[103X.[133X
+  
+  [33X[0;0YLet  [22Xn_1,n_2,dots,n_t[122X  be  positive integers. Then the [13Xcomplete multipartite
+  graph[113X,  [22XK_n_1,n_2,dots,n_t}[122X,  has  vertex set that can be partitioned into [22Xt[122X
+  disjoint  sets [22XX_1,X_2,dots,X_t[122X of sizes [22Xn_1,n_2,dots,n_t[122X such that distinct
+  vertices are adjacent if and only if they belong to different [22XX_i[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XCompleteMultipartiteGraph(4,2,1);[127X[104X
+    [4X[28Xrec( adjacencies := [ [ 5, 6, 7 ], [ 1, 2, 3, 4, 7 ], [ 1, 2, 3, 4, 5, 6 ] ], [128X[104X
+    [4X[28XautGroup := Group([ (5,6), (3,4), (2,3), (1,2) ]), group := Group([ (5,6),[128X[104X
+    [4X[28X  (3,4), (2,3), (1,2) ]), isGraph := true, isSimple := true, order := 7, [128X[104X
+    [4X[28Xrepresentatives := [ 1, 5, 7 ], [128X[104X
+    [4X[28XschreierVector := [ -1, 4, 3, 2, -2, 1, -3 ] )[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.3-3 TriangularGraph[101X
+  
+  [33X[1;0Y[29X[2XTriangularGraph[102X( [3Xn[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record.[133X
+  
+  [33X[0;0YGiven  an  integer [3Xn[103X, where [22X[3Xn[103X≥ 3[122X, this function returns the triangular graph
+  on [3Xn[103X points.[133X
+  
+  [33X[0;0YLet [22Xn[122X be an integer, where [22Xn≥ 3[122X. The [13Xtriangular graph[113X , [22XT(n)[122X, has vertex set
+  consisting  of  the  subsets  of  [22X{1,2,...,n}[122X  of  size  [22X2[122X, and two distinct
+  vertices [22XA,B[122X are joined by an edge precisely when [22X|A∩ B|=1[122X.[133X
+  
+  [33X[0;0YThe   graph   [22XT(n)[122X   is   strongly   regular   with   parameters  [22X(n  choose
+  2,2(n-2),n-2,4)[122X. For [22Xnnot= 8[122X, [22XT(n)[122X is the unique strongly regular graph with
+  its  parameters.  There  are four pairwise non-isomomorphic strongly regular
+  graphs that have the same parameters as [22XT(8)[122X, which are the triangular graph
+  [22XT(8)[122X and the [13XChang graphs[113X (see [Con58] and [Cha59]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XTriangularGraph(7); [127X[104X
+    [4X[28Xrec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ] ], [128X[104X
+    [4X[28Xgroup := Group([ (1,7,12,16,19,21,6)(2,8,13,17,20,5,11)(3,9,14,18,4,10,15),[128X[104X
+    [4X[28X  (2,7)(3,8)(4,9)(5,10)(6,11) ]), isGraph := true, isSimple := true, [128X[104X
+    [4X[28Xnames := [ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [ 1, 7 ], [128X[104X
+    [4X[28X    [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 2, 7 ], [ 3, 4 ], [ 3, 5 ], [128X[104X
+    [4X[28X    [ 3, 6 ], [ 3, 7 ], [ 4, 5 ], [ 4, 6 ], [ 4, 7 ], [ 5, 6 ], [ 5, 7 ], [128X[104X
+    [4X[28X    [ 6, 7 ] ], order := 21, representatives := [ 1 ], [128X[104X
+    [4X[28XschreierVector := [ -1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, [128X[104X
+    [4X[28X    1, 1, 1 ] )[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.3-4 SquareLatticeGraph[101X
+  
+  [33X[1;0Y[29X[2XSquareLatticeGraph[102X( [3Xn[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record.[133X
+  
+  [33X[0;0YGiven  an  integer  [3Xn[103X,  where [22X[3Xn[103X≥ 2[122X, this function returns the square lattice
+  graph on [22Xn^2[122X points.[133X
+  
+  [33X[0;0YLet  [22Xn[122X  be  an  integer,  where  [22Xn≥ 2[122X. The [13Xsquare lattice graph[113X, [22XL_2(n)[122X, has
+  vertex  set [22X{1,2,...,n}×{1,2,...,n}[122X, and two distinct vertices are joined by
+  an edge precisely when they have the same value at one coordinate.[133X
+  
+  [33X[0;0YThe graph [22XL_2(n)[122X is strongly regular with parameters [22X(n^2,2(n-1),n-2,2)[122X. For
+  [22Xnnot=  4[122X,  [22XL_2(n)[122X  is the unique strongly regular graph with its parameters.
+  There  are  two  pairwise non-isomomorphic strongly regular graphs that have
+  the  same  parameters  as  [22XL_2(4)[122X,  which are the square lattice graph graph
+  [22XL_2(4)[122X and the [13XShrikhande graph[113X (see [Shr59]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSquareLatticeGraph(6);[127X[104X
+    [4X[28Xrec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 13, 19, 25, 31 ] ], [128X[104X
+    [4X[28Xgroup := <permutation group with 5 generators>, isGraph := true, [128X[104X
+    [4X[28Xnames := [ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [128X[104X
+    [4X[28X    [ 2, 1 ], [ 2, 2 ], [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 3, 1 ], [128X[104X
+    [4X[28X    [ 3, 2 ], [ 3, 3 ], [ 3, 4 ], [ 3, 5 ], [ 3, 6 ], [ 4, 1 ], [ 4, 2 ], [128X[104X
+    [4X[28X    [ 4, 3 ], [ 4, 4 ], [ 4, 5 ], [ 4, 6 ], [ 5, 1 ], [ 5, 2 ], [ 5, 3 ], [128X[104X
+    [4X[28X    [ 5, 4 ], [ 5, 5 ], [ 5, 6 ], [ 6, 1 ], [ 6, 2 ], [ 6, 3 ], [ 6, 4 ], [128X[104X
+    [4X[28X    [ 6, 5 ], [ 6, 6 ] ], order := 36, representatives := [ 1 ], [128X[104X
+    [4X[28XschreierVector := [ -1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, [128X[104X
+    [4X[28X    1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3 ] )[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.3-5 HoffmanSingletonGraph[101X
+  
+  [33X[1;0Y[29X[2XHoffmanSingletonGraph[102X(  ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record.[133X
+  
+  [33X[0;0YThis function returns the Hoffman-Singleton graph.[133X
+  
+  [33X[0;0YThe  [13XHoffman-Singleton  graph[113X  is  the  unique  strongly  regular graph with
+  parameters [22X(50,7,0,1)[122X. For more information on this graph, see [Bro18b].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=HoffmanSingletonGraph();;[127X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.3-6 HigmanSimsGraph[101X
+  
+  [33X[1;0Y[29X[2XHigmanSimsGraph[102X(  ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record.[133X
+  
+  [33X[0;0YThis function returns the Higman-Sims graph.[133X
+  
+  [33X[0;0YThe  [13XHigman-Sims  graph[113X is the unique strongly regular graph with parameters
+  [22X(100,22,0,6)[122X. For more information on this graph, see [Bro18b].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=HigmanSimsGraph();;[127X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X5.3-7 SimsGerwitzGraph[101X
+  
+  [33X[1;0Y[29X[2XSimsGerwitzGraph[102X(  ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA record.[133X
+  
+  [33X[0;0YThis function returns the Sims-Gerwitz graph.[133X
+  
+  [33X[0;0YThe  [13XSims-Gerwitz graph[113X is the unique strongly regular graph with parameters
+  [22X(56,10,0,2)[122X. For more information on this graph, see [Bro18b].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=SimsGerwitzGraph();;[127X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  

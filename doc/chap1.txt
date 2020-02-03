@@ -1,0 +1,102 @@
+  
+  [1X1 [33X[0;0YThe [5XAGT[105X[101X[1X package[133X[101X
+  
+  [33X[0;0YThis  is the manual for the [5XAGT[105X package version 0.1, developed at Queen Mary
+  University of London by Rhys J. Evans.[133X
+  
+  [33X[0;0YThe  [5XAGT[105X  package  contains  a methods used for the determination of various
+  algebraic   and   regularity  properties  of  graphs,  as  well  as  certain
+  substructures  of  graphs.  The  package also contains a library of strongly
+  regular   graphs,  intended  to  be  a  useful  resource  for  computational
+  experiments.[133X
+  
+  [33X[0;0YAll of the functions in this package deal with finite simple graphs in [5XGrape[105X
+  format  [Soi18].  Behind  the  scenes,  we  also  use  the  [5XDigraphs[105X package
+  [DBJM+19]  to  format  and  efficiently  store  and access the graphs in the
+  strongly regular graph library.[133X
+  
+  
+  [1X1.1 [33X[0;0YInstalling [5XAGT[105X[101X[1X[133X[101X
+  
+  [33X[0;0YTo install the [5XAGT[105X package, you will need to download the most recent [10Xtar.gz[110X
+  file,  found  at  https://github.com/rhysje00/agt.  Once downloaded, you can
+  install the package by following the instructions found in the [5XGAP[105X reference
+  manual, chapter 76 ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap76.html[107X).[133X
+  
+  [33X[0;0YThe [5XAGT[105X package requires the following [5XGAP[105X packages:[133X
+  
+  [30X    [33X[0;6Y[5XGAPDoc[105X [LN19], version 1.6 or higher;[133X
+  
+  [30X    [33X[0;6Y[5XDESIGN[105X [Soi19], version 1.7 or higher;[133X
+  
+  [30X    [33X[0;6Y[5XGRAPE[105X [Soi18], version 4.8 or higher;[133X
+  
+  [30X    [33X[0;6Y[5XDigraphs[105X [DBJM+19], version 0.12.2 or higher.[133X
+  
+  [33X[0;0YEach of the above packages are part of the standard [5XGAP[105X distribution.[133X
+  
+  
+  [1X1.2 [33X[0;0YLoading [5XAGT[105X[101X[1X[133X[101X
+  
+  [33X[0;0YOnce  correctly installed, you can load the [5XAGT[105X package at the [5XGAP[105X prompt by
+  typing the following.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage("agt");[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3 [33X[0;0YCiting [5XAGT[105X[101X[1X[133X[101X
+  
+  [33X[0;0YIf  you  use  the  [5XAGT[105X  package in your research, please tell us about it by
+  emailing  [7Xmailto:r.evans@qmul.ac.uk[107X.  We  are  interested  in  any  research
+  involving  the  use  of  the [5XAGT[105X package and might refer to your work in the
+  future.  If you wish to refer to the [5XAGT[105X package in a published work, please
+  cite  [5XAGT[105X  like  a  journal article. The following is a BibTeX entry for the
+  current [5XAGT[105X version:[133X
+  
+  [4X[32X  bibtex  [32X[104X
+    [4X@Manual{agt,[104X
+    [4X        author = {Evans, Rhys J.},[104X
+    [4X        key = {agt},[104X
+    [4X        title = {{AGT -- Algebraic Graph Theory package for GAP, Version 0.1}},[104X
+    [4X        url = {\verb+(https://github.com/rhysje00/agt)+},[104X
+    [4X        year = {2019}[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4 [33X[0;0YExamples of the use of [5XAGT[105X[101X[1X[133X[101X
+  
+  [33X[0;0YWe  will  give  a simple example of how to use the [5XAGT[105X package here. Further
+  applications  of  the  package  can be found in [Eva20]. In this example, we
+  will  examine  the  properties  and subgraphs of the strongly regular graphs
+  with parameters [22X(16,6,2,2)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage("agt");[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleSRGParameters([16,6,2,2]); [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XNrSRGs([16,6,2,2]);[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XIsEnumeratedSRGParameterTuple([16,6,2,2]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xgraphs:=AllSRGs([16,6,2,2]);;[127X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueFromSRGParameters([16,6,2,2]);[127X[104X
+    [4X[28X-2[128X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueInterval(graphs[1],1/10);[127X[104X
+    [4X[28X[ -2, -2 ][128X[104X
+    [4X[25Xgap>[125X [27XHoffmanCliqueBound([16,6,2,2]);  [127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XCliqueAdjacencyBound([16,6,2]);[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XS:=[1,2,3,4];[127X[104X
+    [4X[28X[ 1, 2, 3, 4 ][128X[104X
+    [4X[25Xgap>[125X [27XNexus(graphs[1],S);[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XRegularSetParameters(graphs[1],S);[127X[104X
+    [4X[28X[ 3, 1 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  

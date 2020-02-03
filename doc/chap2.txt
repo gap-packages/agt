@@ -1,0 +1,250 @@
+  
+  [1X2 [33X[0;0YRegular graphs[133X[101X
+  
+  [33X[0;0YIn  this  chapter  we  give  functions  used to identify graphs with various
+  regularity properties and determine their parameters.[133X
+  
+  
+  [1X2.1 [33X[0;0YRegular graphs[133X[101X
+  
+  [33X[0;0YA graph [22XΓ[122X is [13Xregular[113X with [13Xparameters[113X [22X(v,k)[122X if [22XΓ[122X is simple and undirected, it
+  has order [22Xv[122X, and every vertex of [22XΓ[122X has degree [22Xk[122X.[133X
+  
+  [1X2.1-1 RGParameters[101X
+  
+  [33X[1;0Y[29X[2XRGParameters[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven  a  graph [3Xgamma[103X, this function returns the regular graph parameters of
+  [3Xgamma[103X. If [3Xgamma[103X is not a regular graph, the function returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=EdgeOrbitsGraph(Group((2,3,4,5)),[[1,2],[2,1]]);;[127X[104X
+    [4X[25Xgap>[125X [27XRGParameters(gamma);[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=HammingGraph(3,4);;                              [127X[104X
+    [4X[25Xgap>[125X [27XRGParameters(gamma);[127X[104X
+    [4X[28X[ 64, 9 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-2 IsRG[101X
+  
+  [33X[1;0Y[29X[2XIsRG[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven a graph [3Xgamma[103X, this function returns [9Xtrue[109X if [3Xgamma[103X is a regular graph,
+  and [9Xfalse[109X otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=NullGraph(Group(()),5);;[127X[104X
+    [4X[25Xgap>[125X [27XIsRG(gamma);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=EdgeOrbitsGraph(Group((2,3,4,5)),[[1,2],[2,1]]);;[127X[104X
+    [4X[25Xgap>[125X [27XIsRG(gamma);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=TriangularGraph(6);;                             [127X[104X
+    [4X[25Xgap>[125X [27XIsRG(gamma);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-3 IsFeasibleRGParameters[101X
+  
+  [33X[1;0Y[29X[2XIsFeasibleRGParameters[102X( [[3Xv[103X, [3Xk[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven a list of integers of length 2, [3X[v,k][103X, this function returns [9Xtrue[109X if [22X(
+  [3Xv[103X,  [3Xk[103X  )[122X  is  a feasible parameter tuple for a regular graph. Otherwise, the
+  function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YThe  tuple  [22X(v,  k)[122X  is a [13Xfeasible[113X parameter tuple for a regular graph if it
+  satisfies the following well-known conditions:[133X
+  
+  [30X    [33X[0;6Y[22Xv>k≥ 0[122X;[133X
+  
+  [30X    [33X[0;6Y[22X2[122X divides [22Xvk[122X.[133X
+  
+  [33X[0;0YAny  regular  graph  must have parameters that satisfy these conditions (see
+  [BCN89]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleRGParameters([15,9]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleRGParameters([16,9]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.2 [33X[0;0YEdge-regular graphs[133X[101X
+  
+  [33X[0;0YA  graph  [22XΓ[122X  is  [13Xedge-regular[113X  with [13Xparameters[113X [22X(v,k,a)[122X if it is regular with
+  parameters  [22X(v,k)[122X,  it  has  at  least  one edge, and every pair of adjacent
+  vertices have exactly [22Xa[122X common neighbours.[133X
+  
+  [1X2.2-1 ERGParameters[101X
+  
+  [33X[1;0Y[29X[2XERGParameters[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven a graph [3Xgamma[103X, this function returns the edge-regular graph parameters
+  of [3Xgamma[103X. If [3Xgamma[103X is not an edge-regular graph, the function returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=NullGraph(Group(()),5);;[127X[104X
+    [4X[25Xgap>[125X [27XERGParameters(gamma);[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=JohnsonGraph(7,3);;[127X[104X
+    [4X[25Xgap>[125X [27XERGParameters(gamma);[127X[104X
+    [4X[28X[ 35, 12, 5 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-2 IsERG[101X
+  
+  [33X[1;0Y[29X[2XIsERG[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a graph [3Xgamma[103X, this function returns [9Xtrue[109X if [3Xgamma[103X is an edge-regular
+  graph, and [9Xfalse[109X otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=NullGraph(Group(()),5);;[127X[104X
+    [4X[25Xgap>[125X [27XIsERG(gamma);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=JohnsonGraph(7,3);;[127X[104X
+    [4X[25Xgap>[125X [27XIsERG(gamma);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-3 IsFeasibleERGParameters[101X
+  
+  [33X[1;0Y[29X[2XIsFeasibleERGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven a list of integers of length 3, [3X[v,k,a][103X, this function returns [9Xtrue[109X if
+  [22X(  [3Xv,  k,  a[103X  )[122X  is  a  feasible  parameter tuple for an edge-regular graph.
+  Otherwise, the function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YThe  tuple  [22X(  v,  k,  a )[122X is a [13Xfeasible[113X parameter tuple for an edge-regular
+  graph if it satisfies the following well-known conditions:[133X
+  
+  [30X    [33X[0;6Y[22X(v,k)[122X is a feasible regular graph parameter tuple;[133X
+  
+  [30X    [33X[0;6Y[22Xk>a≥ 0[122X;[133X
+  
+  [30X    [33X[0;6Y[22X2[122X divides [22Xka[122X and [22X6[122X divides [22Xvka[122X;[133X
+  
+  [30X    [33X[0;6Y[22Xv-2k+a ≥ 0[122X.[133X
+  
+  [33X[0;0YAny  edge-regular  graph must have parameters which satisfy these conditions
+  (see [BCN89]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleERGParameters([15,9,6]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleERGParameters([16,9,4]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.3 [33X[0;0YStrongly regular graphs[133X[101X
+  
+  [33X[0;0YA   graph  [22XΓ[122X  is  [13Xstrongly  regular[113X  with  [13Xparameters[113X  [22X(v,k,a,b)[122X  if  it  is
+  edge-regular  with  parameters [22X(v,k,a)[122X, it has at least one pair of distinct
+  non-adjacent vertices, and every pair of distinct non-adjacent vertices have
+  exactly [22Xb[122X common neighbours.[133X
+  
+  [1X2.3-1 SRGParameters[101X
+  
+  [33X[1;0Y[29X[2XSRGParameters[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YA list or [9Xfail[109X.[133X
+  
+  [33X[0;0YGiven  a  graph  [3Xgamma[103X,  this  function  returns  the strongly regular graph
+  parameters  of [3Xgamma[103X. If [3Xgamma[103X is not a strongly regular graph, the function
+  returns [9Xfail[109X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=CompleteGraph(Group(()),5);;[127X[104X
+    [4X[25Xgap>[125X [27XSRGParameters(gamma);[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=JohnsonGraph(5,3);;            [127X[104X
+    [4X[25Xgap>[125X [27XSRGParameters(gamma);[127X[104X
+    [4X[28X[ 10, 6, 3, 4 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-2 IsSRG[101X
+  
+  [33X[1;0Y[29X[2XIsSRG[102X( [3Xgamma[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a  graph  [3Xgamma[103X,  this  function  returns [9Xtrue[109X if [3Xgamma[103X is a strongly
+  regular graph, and [9Xfalse[109X otherwise.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=CompleteGraph(Group(()),5);;[127X[104X
+    [4X[25Xgap>[125X [27XIsSRG(gamma);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=JohnsonGraph(5,3);;         [127X[104X
+    [4X[25Xgap>[125X [27XIsSRG(gamma);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-3 IsFeasibleSRGParameters[101X
+  
+  [33X[1;0Y[29X[2XIsFeasibleSRGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X.[133X
+  
+  [33X[0;0YGiven  a list of integers of length 4, [3X[v,k,a,b][103X, this function returns [9Xtrue[109X
+  if  [22X(  [3Xv,  k,  a,  b[103X  )[122X is a feasible parameter tuple for a strongly regular
+  graph. Otherwise, this function returns [9Xfalse[109X.[133X
+  
+  [33X[0;0YThe  tuple  [22X(v,k,a,b)[122X  is  a [13Xfeasible[113X parameter tuple for a strongly regular
+  graph if it satisfies the following well-known conditions:[133X
+  
+  [30X    [33X[0;6Y[22X(v,k,a)[122X is a feasible edge-regular graph parameter tuple;[133X
+  
+  [30X    [33X[0;6Y[22Xk≥ b[122X;[133X
+  
+  [30X    [33X[0;6Y[22X(v-k-1)b = k(k-a-1)[122X;[133X
+  
+  [30X    [33X[0;6Y[22Xv-2-2k+b ≥ 0[122X;[133X
+  
+  [30X    [33X[0;6Ythe  formulae  for the multiplicities of the eigenvalues of a strongly
+        regular graph with these parameters evaluate to positive integers (see
+        [BH11]).[133X
+  
+  [33X[0;0YAny  strongly  regular  graph  must  have  parameters  which  satisfy  these
+  conditions (see [BCN89]).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleSRGParameters([15,9,4,7]);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsFeasibleSRGParameters([10,3,0,1]);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  

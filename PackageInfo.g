@@ -1,102 +1,99 @@
 #############################################################################
-##  
-##  Demo PackageInfo.g for the GitHubPagesForGAP
 ##
-
+#W  PackageInfo.g         Algebraic Graph Theory package        Rhys J. Evans
+##
+##
+##
 SetPackageInfo( rec(
 
-PackageName := "GitHubPagesForGAP",
+  PackageName := "AGT",
+  Subtitle := "Algebraic Graph Theory",
+  Version := "0.1",
+  Date := "27/01/2020",
 
-Subtitle := "A GitHub Pages generator for GAP packages",
-Version := "0.3",
-Date := "10/11/2019", # dd/mm/yyyy format
-License := "0BSD",
+##  <#GAPDoc Label="PKGVERSIONDATA">
+##  <!ENTITY VERSION "0.1">
+##  <!ENTITY RELEASEDATE "27 January 2020">
+##  <!ENTITY PKGWWWHOME "https://github.com/rhysje00/agt">
+##  <#/GAPDoc>
 
-Persons := [
-  rec(
-    LastName      := "Horn",
-    FirstNames    := "Max",
-    IsAuthor      := true,
-    IsMaintainer  := true,
-    Email         := "max.horn@uni-siegen.de",
-    WWWHome       := "https://www.quendi.de/math",
-    PostalAddress := Concatenation(
-                       "Department Mathematik\n",
-                       "Universität Siegen\n",
-                       "Walter-Flex-Straße 3\n",
-                       "57072 Siegen\n",
-                       "Germany" ),
-    Place         := "Siegen",
-    Institution   := "Universität Siegen"
-  ),
+  PackageWWWHome  := "https://github.com/rhysje00/agt",
+##PackageWWWHome :=
+##  Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
+##
 
-  rec(
-    LastName      := "Thor",
-    FirstNames    := "A. U.",
-    IsAuthor      := true,
-    IsMaintainer  := false,
-    #Email         := "author@example.com",
-  ),
+  SourceRepository :=
+    rec( Type := "git",
+         URL :=  "https://rhysje00.github.io/agt"),
+##  SourceRepository :=
+##    rec( Type := "git",
+##         URL  := URL :=  "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
 
-  rec(
-    LastName      := "Itor",
-    FirstNames    := "Jan",
-    IsAuthor      := false,
-    IsMaintainer  := true,
-    #Email         := "janitor@example.com",
-  ),
-],
+  IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ), 
 
-Status := "other",
+  SupportEmail := "r.evans@qmul.ac.uk",
 
-# The following are not strictly necessary in your own PackageInfo.g
-# (in the sense that update.g only looks at the usual fields
-# like PackageWWWHome, ArchiveURL etc.). But they are convenient
-# if you use exactly the scheme for your package website that we propose.
-GithubUser := "gap-system",
-GithubRepository := ~.PackageName,
-GithubWWW := Concatenation("https://github.com/", ~.GithubUser, "/", ~.GithubRepository),
+  ArchiveURL := Concatenation( ~.SourceRepository.URL,
+                               "/releases/download/v", ~.Version,
+                               "/", ~.PackageName, "-", ~.Version ),
 
-PackageWWWHome := Concatenation("https://", ~.GithubUser, ".github.io/", ~.GithubRepository, "/"),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-# The following assumes you are using the Github releases system. If not, adjust
-# it accordingly.
-ArchiveURL     := Concatenation(~.GithubWWW,
-                    "/releases/download/v", ~.Version, "/",
-                    ~.GithubRepository, "-", ~.Version),
+  ArchiveFormats := ".tar.gz",
 
-ArchiveFormats := ".tar.gz .tar.bz2",
-
-AbstractHTML := 
-  "This is a pseudo package that contains no actual\
-  <span class=\"pkgname\">GAP</span> code. Instead, it is a template for other\
-  GAP packages that allows to quickly setup GitHub Pages.",
-
-PackageDoc := rec(
-  BookName  := "GitHubPagesForGAP",
-  ArchiveURLSubset := ["doc"],
-  HTMLStart := "doc/chap0.html",
-  PDFFile   := "doc/manual.pdf",
-  SixFile   := "doc/manual.six",
-  LongTitle := "A GitHub Pages generator for GAP packages",
-),
-
-# The following dependencies are fake and for testing / demo purposes
-Dependencies := rec(
-  GAP := ">=4.8.1",
-  NeededOtherPackages := [
-    ["GAPDoc", ">= 1.2"],
-    ["IO", ">= 4.1"],
+  Persons := [
+    rec(
+      IsAuthor := true,
+      IsMaintainer := true,
+      FirstNames := "Rhys J.",
+      LastName := "Evans",
+      WWWHome := "https://www.qmul.ac.uk/maths/profiles/evansr.html",
+      Email := "r.evans@qmul.ac.uk",
+      PostalAddress := "Mile End Road, London, E14NS",
+      Place := "London",
+      Institution := "School of Mathematical Sciences, Queen Mary University of London",
+    ),
   ],
-  SuggestedOtherPackages := [["orb", ">= 4.2"]],
-  ExternalConditions := []
-),
 
-AvailabilityTest := ReturnTrue,
+  Status := "other",
 
-Keywords := ["GitHub Pages", "GAP"]
+  README_URL := 
+    Concatenation( ~.PackageWWWHome, "/README.md" ),
+  
+  PackageInfoURL := 
+    Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+
+  AbstractHTML   :=  
+    "The <span class=\"pkgname\">AGT</span> package provides functionality to \
+     inspect combinatorial and algebraic properties of graphs in GRAPE format. \
+     It also provides a library  strongly regular graphs on at most 40 vertices,\
+     and several graph constructions",
+
+  PackageDoc := rec(
+    BookName  := "agt",
+    ArchiveURLSubset := ["doc"],
+    HTMLStart := "doc/chap0.html",
+    PDFFile   := "doc/manual.pdf",
+    # the path to the .six file used by GAP's help system
+    SixFile   := "doc/manual.six",
+    LongTitle := "Algebraic Graph Theory",
+  ),
+
+  Dependencies := rec(
+
+    GAP := ">= 4.9",
+
+    NeededOtherPackages := [["GAPDoc", "1.5"],["grape","4.8"],["design","1.6"],["Digraphs","0.12.2"]],
+    SuggestedOtherPackages := [],
+    OtherPackagesLoadedInAdvance := [],
+
+    ExternalConditions := []
+
+  ),
+
+  AvailabilityTest := ReturnTrue,
+
+  TestFile := "tst/testall.g",
+
+  Keywords := ["strongly regular","edge-regular","eigenvalues", "clique","induced subgraphs"]
 
 ));
-
 

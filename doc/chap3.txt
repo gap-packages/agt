@@ -1,0 +1,179 @@
+  
+  [1X3 [33X[0;0YSpectra of graphs[133X[101X
+  
+  [33X[0;0YIn  this  chapter  we  give  methods  for investigating the eigenvalues of a
+  graph.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a graph of order [22Xv[122X. The [13Xadjacency matrix[113X of [22XΓ[122X, [22XA(Γ)[122X, is the [22Xv× v[122X
+  matrix  indexed  by  [22XV(Γ)[122X  such  that  [22XA(Γ)_xy=1[122X  if [22Xxy∈ E(Γ)[122X, and [22XA(Γ)_xy=0[122X
+  otherwise.[133X
+  
+  [33X[0;0YThe  [13Xspectrum[113X of [22XΓ[122X, [22XSpec(Γ)[122X, is the multiset of eigenvalues of its adjacency
+  matrix,  and  an [13Xeigenvalue of [113X[22XΓ[122X is a member of [22XSpec(Γ)[122X. The [13Xmultiplicity[113X of
+  an  eigenvalue  [22Xα[122X  of  [22XΓ[122X  is  the  number of times [22Xα[122X appears in [22XSpec(Γ)[122X. For
+  information  on  most  of the objects and results discussed in this chapter,
+  see [BH11].[133X
+  
+  
+  [1X3.1 [33X[0;0YEigenvalues of regular graphs[133X[101X
+  
+  [33X[0;0YIn  this  section,  we  introduce  methods  for investigating eigenvalues of
+  regular  graphs. The input for these methods will be a specific graph or the
+  parameters of a graph.[133X
+  
+  [33X[0;0YLet  [22XΓ[122X  be  a  regular  graph  with  parameters  [22X(v,k)[122X.  Then  [22XΓ[122X has largest
+  eigenvalue [22Xk[122X (see [BH11]). Therefore we do not implement a [21XLargestEigenvalue[121X
+  function for regular graphs.[133X
+  
+  [33X[0;0YLet [22XΓ[122X be a strongly regular graph with parameters [22X(v,k,a,b)[122X. The eigenvalues
+  of  [22XΓ[122X  and  their corresponding multiplicites are uniquely determined by the
+  parameters  [22X(v,k,a,b)[122X (see [BH11]). Using this knowledge, we provide methods
+  which take as input feasible strongly regular graph parameters [22X(v,k,a,b)[122X. We
+  also give methods which return an exact representation of the eigenvalues of
+  a   strongly   regular   graph   with   parameters   [22X(v,k,a,b)[122X,   and  their
+  multiplicities.[133X
+  
+  [1X3.1-1 LeastEigenvalueInterval[101X
+  
+  [33X[1;0Y[29X[2XLeastEigenvalueInterval[102X( [3Xgamma[103X, [3Xeps[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XLeastEigenvalueInterval[102X( [3Xparms[103X, [3Xeps[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  a  graph  [3Xgamma[103X  and  rational  number  [3Xeps[103X, this function returns an
+  interval containing the least eigenvalue of [3Xgamma[103X.[133X
+  
+  [33X[0;0YGiven  feasible  strongly regular graph parameters [3Xparms[103X and rational number
+  [3Xeps[103X,  this function returns an interval containing the least eigenvalue of a
+  strongly regular graph with parameters [3Xparms[103X.[133X
+  
+  [33X[0;0YThe interval returned is in the form of a list, [3X[y,z][103X of rationals [22X[3Xy[103X≤ [3Xz[103X[122X with
+  the property that [22X[3Xz[103X-[3Xy[103X≤ [3Xeps[103X[122X. If the eigenvalue is rational this function will
+  return a list [3X[y,z][103X, where [22X[3Xy[103X=[3Xz[103X[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;[127X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueInterval(gamma,1/10);            [127X[104X
+    [4X[28X[ -13/8, -25/16 ][128X[104X
+    [4X[25Xgap>[125X [27Xparms:=SRGParameters(gamma);[127X[104X
+    [4X[28X[ 5, 2, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueInterval(parms,1/10);         [127X[104X
+    [4X[28X[ -13/8, -25/16 ][128X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueInterval(JohnsonGraph(7,3),1/20);[127X[104X
+    [4X[28X[ -3, -3 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.1-2 SecondEigenvalueInterval[101X
+  
+  [33X[1;0Y[29X[2XSecondEigenvalueInterval[102X( [3Xgamma[103X, [3Xeps[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XSecondEigenvalueInterval[102X( [3Xparms[103X, [3Xeps[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA list.[133X
+  
+  [33X[0;0YGiven  a  regular graph [3Xgamma[103X and rational number [3Xeps[103X, this function returns
+  an interval containing the second largest eigenvalue of [3Xgamma[103X.[133X
+  
+  [33X[0;0YGiven  feasible  strongly regular graph parameters [3Xparms[103X and rational number
+  [3Xeps[103X,  this  function  returns  an  interval  containing  the  second largest
+  eigenvalue of a strongly regular graph with parameters [3Xparms[103X.[133X
+  
+  [33X[0;0YThe interval returned is in the form of a list, [3X[y,z][103X of rationals [22X[3Xy[103X≤ [3Xz[103X[122X with
+  the property that [22X[3Xz[103X-[3Xy[103X≤ [3Xeps[103X[122X. If the eigenvalue is rational this function will
+  return a list [3X[y,z][103X, where [22X[3Xy[103X=[3Xz[103X[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27Xgamma:=EdgeOrbitsGraph(Group((1,2,3,4,5)),[[1,2],[2,1]]);;[127X[104X
+    [4X[25Xgap>[125X [27XSecondEigenvalueInterval(gamma,1/10);           [127X[104X
+    [4X[28X[ 9/16, 5/8 ][128X[104X
+    [4X[25Xgap>[125X [27Xparms:=SRGParameters(gamma);[127X[104X
+    [4X[28X[ 5, 2, 0, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XSecondEigenvalueInterval(parms,1/10);           [127X[104X
+    [4X[28X[ 9/16, 5/8 ][128X[104X
+    [4X[25Xgap>[125X [27XSecondEigenvalueInterval(JohnsonGraph(7,3),1/20);[127X[104X
+    [4X[28X[ 5, 5 ][128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.1-3 LeastEigenvalueFromSRGParameters[101X
+  
+  [33X[1;0Y[29X[2XLeastEigenvalueFromSRGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn integer or an element of a cyclotomic field.[133X
+  
+  [33X[0;0YGiven  feasible strongly regular graph parameters [3X[v, k, a, b][103X this function
+  returns  the  least  eigenvalue  of a strongly regular graph with parameters
+  [22X([3Xv,k,a,b[103X)[122X.  If the eigenvalue is integer, the object returned is an integer.
+  If  the  eigenvalue  is irrational, the object returned lies in a cyclotomic
+  field.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueFromSRGParameters([5,2,0,1]); [127X[104X
+    [4X[28XE(5)^2+E(5)^3[128X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueFromSRGParameters([10,3,0,1]);[127X[104X
+    [4X[28X-2[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.1-4 SecondEigenvalueFromSRGParameters[101X
+  
+  [33X[1;0Y[29X[2XSecondEigenvalueFromSRGParameters[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YAn integer or an element of a cyclotomic field.[133X
+  
+  [33X[0;0YGiven feasible strongly regular graph parameters [3X[v, k, a, b][103X, this function
+  returns  the  second  largest  eigenvalue  of  a strongly regular graph with
+  parameters  [22X([3Xv,k,a,b[103X)[122X.  If the eigenvalue is integer, the object returned is
+  an  integer.  If the eigenvalue is irrational, the object returned lies in a
+  cyclotomic field.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSecondEigenvalueFromSRGParameters([5,2,0,1]);[127X[104X
+    [4X[28XE(5)+E(5)^4[128X[104X
+    [4X[25Xgap>[125X [27XSecondEigenvalueFromSRGParameters([10,3,0,1]);[127X[104X
+    [4X[28X1[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.1-5 LeastEigenvalueMultiplicity[101X
+  
+  [33X[1;0Y[29X[2XLeastEigenvalueMultiplicity[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  feasible strongly regular graph parameters [3X[v, k, a, b][103X this function
+  returns the multiplicity of the least eigenvalue of a strongly regular graph
+  with parameters [22X([3Xv,k,a,b[103X)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueMultiplicity([16,9,4,6]); [127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XLeastEigenvalueMultiplicity([25,12,5,6]);[127X[104X
+    [4X[28X12[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.1-6 SecondEigenvalueMultiplicity[101X
+  
+  [33X[1;0Y[29X[2XSecondEigenvalueMultiplicity[102X( [[3Xv[103X, [3Xk[103X, [3Xa[103X, [3Xb[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YAn integer.[133X
+  
+  [33X[0;0YGiven  feasible strongly regular graph parameters [3X[v, k, a, b][103X this function
+  returns  the  multiplicity  of  the  second eigenvalue of a strongly regular
+  graph with parameters [22X([3Xv,k,a,b[103X)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[25Xgap>[125X [27XSecondEigenvalueMultiplicity([16,9,4,6]); [127X[104X
+    [4X[28X9[128X[104X
+    [4X[25Xgap>[125X [27XSecondEigenvalueMultiplicity([25,12,5,6]);[127X[104X
+    [4X[28X12[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  

@@ -1,1 +1,127 @@
-Placeholder
+  
+  
+                                      [1X[5XAGT[105X[101X
+  
+  
+                       [1X[5XGAP[105X Algebraic Graph Theory package[101X
+  
+  
+                                  Version 0.1
+  
+  
+                                27 January 2020
+  
+  
+                                 Rhys J. Evans
+  
+  
+  
+  Rhys J. Evans
+      Email:    [7Xmailto:r.evans@qmul.ac.uk[107X
+      Homepage: [7Xhttps://www.qmul.ac.uk/maths/profiles/evansr.html[107X
+  
+  -------------------------------------------------------
+  [1XCopyright[101X
+  [33X[0;0Y© 2019 by Rhys J. Evans[133X
+  
+  [33X[0;0YThe  [5XAGT[105X  package is free software; you can redistribute it and/or modify it
+  under     the     terms     of    the    GNU    General    Public    License
+  ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
+  Foundation.[133X
+  
+  
+  -------------------------------------------------------
+  [1XAcknowledgements[101X
+  [33X[0;0YI  would  like to thank Leonard Soicher for his continued support throughout
+  the development of this package.[133X
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (AGT)[101X
+  
+  1 [33X[0;0YThe [5XAGT[105X package[133X
+    1.1 [33X[0;0YInstalling [5XAGT[105X[133X
+    1.2 [33X[0;0YLoading [5XAGT[105X[133X
+    1.3 [33X[0;0YCiting [5XAGT[105X[133X
+    1.4 [33X[0;0YExamples of the use of [5XAGT[105X[133X
+  2 [33X[0;0YRegular graphs[133X
+    2.1 [33X[0;0YRegular graphs[133X
+      2.1-1 RGParameters
+      2.1-2 IsRG
+      2.1-3 IsFeasibleRGParameters
+    2.2 [33X[0;0YEdge-regular graphs[133X
+      2.2-1 ERGParameters
+      2.2-2 IsERG
+      2.2-3 IsFeasibleERGParameters
+    2.3 [33X[0;0YStrongly regular graphs[133X
+      2.3-1 SRGParameters
+      2.3-2 IsSRG
+      2.3-3 IsFeasibleSRGParameters
+  3 [33X[0;0YSpectra of graphs[133X
+    3.1 [33X[0;0YEigenvalues of regular graphs[133X
+      3.1-1 LeastEigenvalueInterval
+      3.1-2 SecondEigenvalueInterval
+      3.1-3 LeastEigenvalueFromSRGParameters
+      3.1-4 SecondEigenvalueFromSRGParameters
+      3.1-5 LeastEigenvalueMultiplicity
+      3.1-6 SecondEigenvalueMultiplicity
+  4 [33X[0;0YRegular induced subgraphs[133X
+    4.1 [33X[0;0YSpectral bounds[133X
+      4.1-1 HoffmanCocliqueBound
+      4.1-2 HoffmanCliqueBound
+      4.1-3 HaemersRegularUpperBound
+      4.1-4 HaemersRegularLowerBound
+    4.2 [33X[0;0YBlock intersection polynomials and bounds[133X
+      4.2-1 CliqueAdjacencyPolynomial
+      4.2-2 CliqueAdjacencyBound
+      4.2-3 RegularAdjacencyPolynomial
+      4.2-4 RegularAdjacencyUpperBound
+      4.2-5 RegularAdjacencyLowerBound
+    4.3 [33X[0;0YRegular sets[133X
+      4.3-1 Nexus
+      4.3-2 RegularSetParameters
+      4.3-3 IsRegularSet
+      4.3-4 RegularSetSRGParameters
+    4.4 [33X[0;0YNeumaier graphs[133X
+      4.4-1 NGParameters
+      4.4-2 IsNG
+      4.4-3 IsFeasibleNGParameters
+      4.4-4 RegularCliqueERGParameters
+  5 [33X[0;0YStrongly regular graphs[133X
+    5.1 [33X[0;0YStrongly regular graph parameter tuples[133X
+      5.1-1 ComplementSRGParameters
+      5.1-2 SRGToGlobalParameters
+      5.1-3 GlobalToSRGParameters
+      5.1-4 IsPrimitiveSRGParameters
+      5.1-5 IsTypeISRGParameters
+      5.1-6 IsTypeIISRGParameters
+      5.1-7 KreinParameters
+      5.1-8 IsKreinConditionsSatisfied
+      5.1-9 IsAbsoluteBoundSatisfied
+    5.2 [33X[0;0YSmall strongly regular graphs[133X
+      5.2-1 AGT_Brouwer_Parameters_MAX
+      5.2-2 AGT_Brouwer_Parameters
+      5.2-3 IsSRGAvailable
+      5.2-4 SRGLibraryInfo
+      5.2-5 SRG
+      5.2-6 NrSRGs
+      5.2-7 OneSRG
+      5.2-8 AllSRGs
+      5.2-9 SRGIterator
+      5.2-10 SmallFeasibleSRGParameterTuples
+      5.2-11 IsEnumeratedSRGParameterTuple
+      5.2-12 IsKnownSRGParameterTuple
+      5.2-13 IsAllSRGsStored
+    5.3 [33X[0;0YStrongly regular graph constructors[133X
+      5.3-1 DisjointUnionOfCliques
+      5.3-2 CompleteMultipartiteGraph
+      5.3-3 TriangularGraph
+      5.3-4 SquareLatticeGraph
+      5.3-5 HoffmanSingletonGraph
+      5.3-6 HigmanSimsGraph
+      5.3-7 SimsGerwitzGraph
+  
+  
+  [32X
