@@ -24,7 +24,7 @@ SetPackageInfo( rec(
 
   SourceRepository :=
     rec( Type := "git",
-         URL :=  "https://rhysje00.github.io/agt"),
+         URL :=  "https://github.com/rhysje00/agt"),
 ##  SourceRepository :=
 ##    rec( Type := "git",
 ##         URL  := URL :=  "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
