@@ -6,7 +6,7 @@
 ##
 SetPackageInfo( rec(
 
-  PackageName := "agt",
+  PackageName := "AGT",
   Subtitle := "Algebraic Graph Theory",
   Version := "0.1",
   Date := "27/01/2020",

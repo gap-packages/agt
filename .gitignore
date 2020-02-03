@@ -24,6 +24,7 @@
 
 /tmp/
 /gh-pages/
+/setup-gh-pages
 
 /srglib/Validated.g
 /srglib/NotInvalidated.g
