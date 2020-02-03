@@ -9,11 +9,11 @@ SetPackageInfo( rec(
   PackageName := "AGT",
   Subtitle := "Algebraic Graph Theory",
   Version := "0.1",
-  Date := "27/01/2020",
+  Date := "04/02/2020",
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.1">
-##  <!ENTITY RELEASEDATE "27 January 2020">
+##  <!ENTITY RELEASEDATE "4 February 2020">
 ##  <!ENTITY PKGWWWHOME "https://github.com/rhysje00/agt">
 ##  <#/GAPDoc>
 
