@@ -14,7 +14,7 @@ SetPackageInfo( rec(
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.1">
 ##  <!ENTITY RELEASEDATE "4 February 2020">
-##  <!ENTITY PKGWWWHOME "https://rhysje00.github.io/agt/">
+##  <!ENTITY PKGWWWHOME "https://gap-packages.github.io/agt/">
 ##  <#/GAPDoc>
 
   PackageWWWHome :=
