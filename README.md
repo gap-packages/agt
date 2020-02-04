@@ -16,14 +16,14 @@ Full information and documentation can be found in the manual, available
 as PDF `doc/manual.pdf` or as HTML `doc/chap0.html`, or on the package
 homepage at
 
-  <https://rhysje00.github.io/agt/>
+  <https://gap-packages.github.io/agt/>
 
 
 ## Bug reports and feature requests
 
 Please submit bug reports and feature requests via our GitHub issue tracker:
 
-  <https://github.com/rhysje00/agt/issues>
+  <https://github.com/gap-packages/agt/issues>
 
 
 # License

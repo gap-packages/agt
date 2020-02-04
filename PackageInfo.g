@@ -17,17 +17,12 @@ SetPackageInfo( rec(
 ##  <!ENTITY PKGWWWHOME "https://rhysje00.github.io/agt/">
 ##  <#/GAPDoc>
 
-  PackageWWWHome  := "https://rhysje00.github.io/agt/",
-##PackageWWWHome :=
-##  Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
-##
+  PackageWWWHome :=
+  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
 
   SourceRepository :=
     rec( Type := "git",
-         URL :=  "https://github.com/rhysje00/agt/"),
-##  SourceRepository :=
-##    rec( Type := "git",
-##         URL  := URL :=  "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
+         URL  := URL :=  "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
 
   IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ), 
 
