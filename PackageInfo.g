@@ -14,17 +14,17 @@ SetPackageInfo( rec(
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.1">
 ##  <!ENTITY RELEASEDATE "4 February 2020">
-##  <!ENTITY PKGWWWHOME "https://github.com/rhysje00/agt">
+##  <!ENTITY PKGWWWHOME "https://rhysje00.github.io/agt/">
 ##  <#/GAPDoc>
 
-  PackageWWWHome  := "https://github.com/rhysje00/agt",
+  PackageWWWHome  := "https://rhysje00.github.io/agt/",
 ##PackageWWWHome :=
 ##  Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
 ##
 
   SourceRepository :=
     rec( Type := "git",
-         URL :=  "https://github.com/rhysje00/agt"),
+         URL :=  "https://github.com/rhysje00/agt/"),
 ##  SourceRepository :=
 ##    rec( Type := "git",
 ##         URL  := URL :=  "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
