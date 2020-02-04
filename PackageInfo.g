@@ -20,9 +20,11 @@ SetPackageInfo( rec(
   PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
 
-  SourceRepository :=
-    rec( Type := "git",
-         URL :=  Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
+  SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation("https://github.com/gap-packages/",
+                         ~.PackageName),
+  ),
 
   IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ), 
 
