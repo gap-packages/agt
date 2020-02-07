@@ -28,7 +28,9 @@ Please submit bug reports and feature requests via our GitHub issue tracker:
 
 # License
 
-AGT is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by the
-Free Software Foundation. For details see the LICENSE file.
+AGT is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
 

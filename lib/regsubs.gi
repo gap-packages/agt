@@ -431,9 +431,9 @@ end );
 ##  
 InstallGlobalFunction( RegularAdjacencyUpperBound, 
 function( parms , d )
-    local v,k,a,b,s,m,lambdas,fubnd,lam2;
+  local v,k,a,b,s,al,bl,cl,disc,x1,x2,out,C,i;
 
-  if not (IsFeasibleSRGParameters(parms) and IsInt(d) and d>=0) then
+  if not (IsFeasibleSRGParameters(parms) and IsInt(d) and d>=0 and d<=parms[2]) then
     Error("usage: RegularAdjacencyUpperBound(<parms>,<d>), where \n\
            <parms> is feasible strongly regular graph parameters and <d> \n\
            is a non-negative integer d<=parms[2].");
@@ -444,33 +444,51 @@ function( parms , d )
   a:=parms[3]; 
   b:=parms[4];
 
-  m := [0,0];
+  if d=k then
+    return v;
+  fi;
 
-  fubnd:=0;
+  out:=false;
 
-  for s in Reversed([2..v]) do
+  for s in Reversed([d+1..v-1]) do
 
-    m:=ListWithIdenticalEntries(s+1,0);  # For future use we always update m. 
+    out:=false;
 
-    lam2 := b + (((a - b + 1) - d)*d)/(s-1);
-    if lam2 < 0 then
+    # The coefficients of the rap
+    al := v-s;
+    bl := al-2*s*(k-d);
+    cl := (a-b+1)*s*d+s*(s-1)*b-s*d*d;
+    disc := bl*bl-4*al*cl;
+
+    # If it attains no negative value, we have found a feasible s 
+    if disc <= 0 then
+      return s;
+    fi;
+ 
+    # Integers near the roots of the rap
+    x1:=Int((-bl-RootInt(disc)-1)/(2*al));
+    x2:=Int((-bl+RootInt(disc)+1)/(2*al));
+
+    C:=UnivariatePolynomial(Rationals,[cl,bl,al],1);
+    
+
+    for i in [x1..x2] do
+      if Value(C,i)<0 then
+        out:=true;
+        break;
+      fi;
+    od;
+    
+    if out then
       continue;
     fi;
-
-    # Here we use a costly function to find if there is an integer
-    # evaluating to a negative number under the polynomial
-    # May be able to improve on this for the specific case of quadratic
-    lambdas := [ v - s , k - d, lam2 ];
- 
-    if BlockIntersectionPolynomialCheck(m,lambdas) then
-      fubnd:= s;
-      break;
-    fi;
+    return s;
   od;
-
-  return fubnd;
-
+  
+  # Finally, we have not found a feasible value for s 
+  return 0;
 end );
+
 
 #############################################################################
 ##
@@ -478,7 +496,7 @@ end );
 ##  
 InstallGlobalFunction( RegularAdjacencyLowerBound, 
 function( parms , d )
-    local v,k,a,b,s,m,lambdas,flbnd,lam2;
+  local v,k,a,b,s,al,bl,cl,disc,x1,x2,out,C,i;
 
   if not (IsFeasibleSRGParameters(parms) and IsInt(d) and d>=0 and d<=parms[2]) then
     Error("usage: RegularAdjacencyLowerBound(<parms>,<d>), where \n\
@@ -491,33 +509,45 @@ function( parms , d )
   a:=parms[3]; 
   b:=parms[4];
 
-  m := [0,0];
+  if d=k then
+    return v;
+  fi;
 
-  flbnd:=v+1;
+  out:=false;
 
-  for s in [2..v] do
+  for s in [d+1..v-1] do
 
-    m[s+1] := 0;  # For future use we always update m. 
+    out:=false;
 
-    lam2 := b + (((a - b + 1) - d)*d)/(s-1);
-    if lam2 < 0 then
+    # The coefficients of the rap
+    al := v-s;
+    bl := al-2*s*(k-d);
+    cl := (a-b+1)*s*d+s*(s-1)*b-s*d*d;
+    disc := bl*bl-4*al*cl;
+
+    # If it attains no negative value, we have found a feasible s 
+    if disc <= 0 then
+      return s;
+    fi;
+ 
+    # Integers near the roots of the rap
+    x1:=Int((-bl-RootInt(disc)-1)/(2*al));
+    x2:=Int((-bl+RootInt(disc)+1)/(2*al));
+
+    C:=UnivariatePolynomial(Rationals,[cl,bl,al],1);
+     
+    if ForAny([x1..x2],x->Value(C,x)<0) then
       continue;
     fi;
 
-    # Here we use a costly function to find if there is an integer
-    # evaluating to a negative number under the polynomial
-    # May be able to improve on this for the specific case of quadratic
-    lambdas := [ v - s , k - d, lam2 ];
+    return s;
  
-    if BlockIntersectionPolynomialCheck(m,lambdas) then
-      flbnd:= s;
-      break;
-    fi;
   od;
 
-  return flbnd;
-
+  # Finally, we have not found a feasible value for s 
+  return v+1;
 end );
+
 
 #############################################################################
 ##

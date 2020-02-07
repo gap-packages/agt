@@ -10,6 +10,7 @@ SetPackageInfo( rec(
   Subtitle := "Algebraic Graph Theory",
   Version := "0.1",
   Date := "04/02/2020",
+  License := "GPL-2.0-or-later",
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.1">

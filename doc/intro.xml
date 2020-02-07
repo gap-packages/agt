@@ -64,7 +64,7 @@ true
         key = {agt},
         title = {{AGT -- Algebraic Graph Theory package for GAP, Version &VERSION;}},
         url = {\verb+(&PKGWWWHOME;)+},
-        year = {2019}
+        year = {2020}
 </Listing>
 </Section>
 
