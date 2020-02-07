@@ -8,25 +8,6 @@
 ##  Implementation file for internal functions for the package.
 ##
 
-
-####################################################################
-##
-#F  AGT_Dir( )
-##  
-InstallGlobalFunction( AGT_Dir,
-function( )
-  return PackageInfo("agt")[1]!.InstallationPath;
-end );
-
-#############################################################################
-##
-#F  AGT_SRGLibrary( )
-##  
-InstallGlobalFunction( AGT_SRGLibrary,
-function(  )
-  return Concatenation(AGT_Dir(),"/srglib/");  
-end );
-
 #############################################################################
 ##
 #F  AGT_SRGFilename( parms )
@@ -42,11 +23,6 @@ function( parms )
   
   fn := Concatenation(String(v),"-",String(k),"-",String(l),"-",String(m),".p.gz");
   
-  return Concatenation(AGT_SRGLibrary(),fn);  
+  return Filename(DirectoriesPackageLibrary("agt","srglib"),fn);  
 
 end );
-
-
-#############################################################################
-##
-#E

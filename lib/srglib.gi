@@ -203,7 +203,7 @@ function( parms )
   
   fn := AGT_SRGFilename(parms);  
 
-  return IsReadableFile(fn);
+  return fn <> fail and IsReadableFile(fn);
 end );
 
 #############################################################################
