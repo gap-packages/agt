@@ -77,9 +77,9 @@ SetPackageInfo( rec(
 
   Dependencies := rec(
 
-    GAP := ">= 4.9",
+    GAP := ">= 4.10",
 
-    NeededOtherPackages := [["GAPDoc", "1.5"],["grape","4.8"],["design","1.6"],["Digraphs","0.12.2"]],
+    NeededOtherPackages := [["GAPDoc", ">= 1.6"],["GRAPE",">= 4.8"],["design",">= 1.7"],["Digraphs",">= 0.15.2"]],
     SuggestedOtherPackages := [],
     OtherPackagesLoadedInAdvance := [],
 
