@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/rhysje00/agt.svg?branch=master)](https://travis-ci.org/rhysje00/agt)
-[![codecov](https://codecov.io/gh/rhysje00/agt/branch/master/graph/badge.svg)](https://codecov.io/gh/rhysje00/agt)
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/rhysje00/agt/master)
+[![Build Status](https://travis-ci.org/gap-packages/agt.svg?branch=master)](https://travis-ci.org/gap-packages/agt)
+[![codecov](https://codecov.io/gh/gap-packages/agt/branch/master/graph/badge.svg)](https://codecov.io/gh/gap-packages/agt)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/gap-packages/agt/master)
 
 # The AGT package for GAP
 
@@ -16,19 +16,21 @@ Full information and documentation can be found in the manual, available
 as PDF `doc/manual.pdf` or as HTML `doc/chap0.html`, or on the package
 homepage at
 
-  <https://github.com/rhysje00/agt/>
+  <https://gap-packages.github.io/agt/>
 
 
 ## Bug reports and feature requests
 
 Please submit bug reports and feature requests via our GitHub issue tracker:
 
-  <https://github.com/rhysje00/agt/issues>
+  <https://github.com/gap-packages/agt/issues>
 
 
 # License
 
-AGT is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by the
-Free Software Foundation. For details see the LICENSE file.
+AGT is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
 

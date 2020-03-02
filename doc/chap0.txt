@@ -6,10 +6,10 @@
                        [1X[5XGAP[105X Algebraic Graph Theory package[101X
   
   
-                                  Version 0.1
+                                  Version 0.2
   
   
-                                4 February 2020
+                                  2 March 2020
   
   
                                  Rhys J. Evans
@@ -22,12 +22,13 @@
   
   -------------------------------------------------------
   [1XCopyright[101X
-  [33X[0;0Y© 2019 by Rhys J. Evans[133X
+  [33X[0;0Y© 2020 by Rhys J. Evans[133X
   
-  [33X[0;0YThe  [5XAGT[105X  package is free software; you can redistribute it and/or modify it
+  [33X[0;0YThe  [5XAGT[105X  package is free software: you can redistribute it and/or modify it
   under     the     terms     of    the    GNU    General    Public    License
   ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
-  Foundation.[133X
+  Foundation,  either  version 2 of the License, or (at your option) any later
+  version.[133X
   
   
   -------------------------------------------------------

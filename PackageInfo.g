@@ -8,26 +8,24 @@ SetPackageInfo( rec(
 
   PackageName := "AGT",
   Subtitle := "Algebraic Graph Theory",
-  Version := "0.1",
-  Date := "04/02/2020",
+  Version := "0.2",
+  Date := "02/03/2020",
+  License := "GPL-2.0-or-later",
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "0.1">
-##  <!ENTITY RELEASEDATE "4 February 2020">
-##  <!ENTITY PKGWWWHOME "https://github.com/rhysje00/agt">
+##  <!ENTITY VERSION "0.2">
+##  <!ENTITY RELEASEDATE "2 March 2020">
+##  <!ENTITY PKGWWWHOME "https://gap-packages.github.io/agt/">
 ##  <#/GAPDoc>
 
-  PackageWWWHome  := "https://github.com/rhysje00/agt",
-##PackageWWWHome :=
-##  Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
-##
+  PackageWWWHome :=
+  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
 
-  SourceRepository :=
-    rec( Type := "git",
-         URL :=  "https://github.com/rhysje00/agt"),
-##  SourceRepository :=
-##    rec( Type := "git",
-##         URL  := URL :=  "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
+  SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation("https://github.com/gap-packages/",
+                         ~.PackageName),
+  ),
 
   IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ), 
 
@@ -79,9 +77,9 @@ SetPackageInfo( rec(
 
   Dependencies := rec(
 
-    GAP := ">= 4.9",
+    GAP := ">= 4.10",
 
-    NeededOtherPackages := [["GAPDoc", "1.5"],["grape","4.8"],["design","1.6"],["Digraphs","0.12.2"]],
+    NeededOtherPackages := [["GAPDoc", ">= 1.6"],["GRAPE",">= 4.8"],["design",">= 1.7"],["Digraphs",">= 0.15.2"]],
     SuggestedOtherPackages := [],
     OtherPackagesLoadedInAdvance := [],
 
