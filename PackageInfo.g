@@ -8,13 +8,13 @@ SetPackageInfo( rec(
 
   PackageName := "AGT",
   Subtitle := "Algebraic Graph Theory",
-  Version := "0.1",
-  Date := "04/02/2020",
+  Version := "0.2",
+  Date := "02/03/2020",
   License := "GPL-2.0-or-later",
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "0.1">
-##  <!ENTITY RELEASEDATE "4 February 2020">
+##  <!ENTITY VERSION "0.2">
+##  <!ENTITY RELEASEDATE "2 March 2020">
 ##  <!ENTITY PKGWWWHOME "https://gap-packages.github.io/agt/">
 ##  <#/GAPDoc>
 
