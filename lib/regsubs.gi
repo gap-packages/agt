@@ -431,7 +431,7 @@ end );
 ##  
 InstallGlobalFunction( RegularAdjacencyUpperBound, 
 function( parms , d )
-  local v,k,a,b,s,al,bl,cl,disc,x1,x2,out,C,i;
+  local v,k,a,b,s,al,bl,cl,disc,m,mint,C;
 
   if not (IsFeasibleSRGParameters(parms) and IsInt(d) and d>=0 and d<=parms[2]) then
     Error("usage: RegularAdjacencyUpperBound(<parms>,<d>), where \n\
@@ -448,11 +448,7 @@ function( parms , d )
     return v;
   fi;
 
-  out:=false;
-
   for s in Reversed([d+1..v-1]) do
-
-    out:=false;
 
     # The coefficients of the rap
     al := v-s;
@@ -460,29 +456,22 @@ function( parms , d )
     cl := (a-b+1)*s*d+s*(s-1)*b-s*d*d;
     disc := bl*bl-4*al*cl;
 
-    # If it attains no negative value, we have found a feasible s 
+    # If rap is never negative, we have found a feasible s 
     if disc <= 0 then
       return s;
     fi;
  
-    # Integers near the roots of the rap
-    x1:=Int((-bl-RootInt(disc)-1)/(2*al));
-    x2:=Int((-bl+RootInt(disc)+1)/(2*al));
+    # Find a closest integer to the critical point of the rap
+    m:=((2*(k-d)+1)*s-v)/(2*(v-s));
+    mint:=BestQuoInt(NumeratorRat(m),DenominatorRat(m));
 
+    # The rap at (x,s,d)
     C:=UnivariatePolynomial(Rationals,[cl,bl,al],1);
-    
 
-    for i in [x1..x2] do
-      if Value(C,i)<0 then
-        out:=true;
-        break;
-      fi;
-    od;
-    
-    if out then
-      continue;
+    # If the rap at x=mint is not negative, its not negative for all integers    
+    if Value(C,mint)>=0 then
+      return s;
     fi;
-    return s;
   od;
   
   # Finally, we have not found a feasible value for s 
@@ -496,7 +485,7 @@ end );
 ##  
 InstallGlobalFunction( RegularAdjacencyLowerBound, 
 function( parms , d )
-  local v,k,a,b,s,al,bl,cl,disc,x1,x2,out,C,i;
+  local v,k,a,b,s,al,bl,cl,disc,m,mint,C;
 
   if not (IsFeasibleSRGParameters(parms) and IsInt(d) and d>=0 and d<=parms[2]) then
     Error("usage: RegularAdjacencyLowerBound(<parms>,<d>), where \n\
@@ -513,11 +502,7 @@ function( parms , d )
     return v;
   fi;
 
-  out:=false;
-
   for s in [d+1..v-1] do
-
-    out:=false;
 
     # The coefficients of the rap
     al := v-s;
@@ -530,18 +515,17 @@ function( parms , d )
       return s;
     fi;
  
-    # Integers near the roots of the rap
-    x1:=Int((-bl-RootInt(disc)-1)/(2*al));
-    x2:=Int((-bl+RootInt(disc)+1)/(2*al));
+    # Find a closest integer to the critical point of the rap
+    m:=((2*(k-d)+1)*s-v)/(2*(v-s));
+    mint:=BestQuoInt(NumeratorRat(m),DenominatorRat(m));
 
+    # The rap at (x,s,d)
     C:=UnivariatePolynomial(Rationals,[cl,bl,al],1);
-     
-    if ForAny([x1..x2],x->Value(C,x)<0) then
-      continue;
-    fi;
 
-    return s;
- 
+    # If the rap at x=mint is not negative, its not negative for all integers    
+    if Value(C,mint)>=0 then
+      return s;
+    fi;
   od;
 
   # Finally, we have not found a feasible value for s 
