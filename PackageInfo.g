@@ -51,7 +51,7 @@ SetPackageInfo( rec(
     ),
   ],
 
-  Status := "other",
+  Status := "deposited",
 
   README_URL := 
     Concatenation( ~.PackageWWWHome, "/README.md" ),
