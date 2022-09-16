@@ -23,7 +23,7 @@
 To install the &AGT; package, you will need to download the most recent 
 <C>tar.gz</C> file, found at &PKGWWWHOME;. Once downloaded, you can install the 
 package by following the instructions found in the &GAP; reference manual, 
-<URL Text="chapter 76">https://www.gap-system.org/Manuals/doc/ref/chap76.html</URL>.
+<URL Text="chapter 76">https://docs.gap-system.org/doc/ref/chap76.html</URL>.
 <P/>
 The &AGT; package requires the following &GAP; packages:
 <List>
