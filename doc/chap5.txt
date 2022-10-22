@@ -281,7 +281,7 @@
   
   [1X5.2-1 AGT_Brouwer_Parameters_MAX[101X
   
-  [33X[1;0Y[29X[2XAGT_Brouwer_Parameters_MAX[102X[32X global variable[133X
+  [33X[1;0Y[29X[2XAGT_Brouwer_Parameters_MAX[102X [32X global variable[133X
   
   [33X[0;0YThis  variable  stores  the  largest  value  [22Xv[122X for which the current package
   contains  information  about  the  parameters of all strongly regular graphs
@@ -290,7 +290,7 @@
   
   [1X5.2-2 AGT_Brouwer_Parameters[101X
   
-  [33X[1;0Y[29X[2XAGT_Brouwer_Parameters[102X[32X global variable[133X
+  [33X[1;0Y[29X[2XAGT_Brouwer_Parameters[102X [32X global variable[133X
   
   [33X[0;0YThis  variable  stores information about the feasible strongly regular graph
   parameters  found  in  Brouwer  [Bro18a]  and the available strongly regular

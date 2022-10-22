@@ -8,13 +8,13 @@ SetPackageInfo( rec(
 
   PackageName := "AGT",
   Subtitle := "Algebraic Graph Theory",
-  Version := "0.2",
-  Date := "02/03/2020",
+  Version := "0.3",
+  Date := "22/10/2022",
   License := "GPL-2.0-or-later",
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "0.2">
-##  <!ENTITY RELEASEDATE "2 March 2020">
+##  <!ENTITY VERSION "0.3">
+##  <!ENTITY RELEASEDATE "22 October 2022">
 ##  <!ENTITY PKGWWWHOME "https://gap-packages.github.io/agt/">
 ##  <#/GAPDoc>
 
@@ -29,7 +29,7 @@ SetPackageInfo( rec(
 
   IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ), 
 
-  SupportEmail := "r.evans@qmul.ac.uk",
+  SupportEmail := "rhysjevans00@gmail.com",
 
   ArchiveURL := Concatenation( ~.SourceRepository.URL,
                                "/releases/download/v", ~.Version,
@@ -43,15 +43,15 @@ SetPackageInfo( rec(
       IsMaintainer := true,
       FirstNames := "Rhys J.",
       LastName := "Evans",
-      WWWHome := "https://www.qmul.ac.uk/maths/profiles/evansr.html",
-      Email := "r.evans@qmul.ac.uk",
+      WWWHome := "https://rhysje00.github.io/",
+      Email := "rhysjevans00@gmail.com",
       PostalAddress := "Mile End Road, London, E14NS",
       Place := "London",
       Institution := "School of Mathematical Sciences, Queen Mary University of London",
     ),
   ],
 
-  Status := "other",
+  Status := "deposited",
 
   README_URL := 
     Concatenation( ~.PackageWWWHome, "/README.md" ),
@@ -68,7 +68,7 @@ SetPackageInfo( rec(
   PackageDoc := rec(
     BookName  := "agt",
     ArchiveURLSubset := ["doc"],
-    HTMLStart := "doc/chap0.html",
+    HTMLStart := "doc/chap0_mj.html",
     PDFFile   := "doc/manual.pdf",
     # the path to the .six file used by GAP's help system
     SixFile   := "doc/manual.six",

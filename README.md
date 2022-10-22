@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/gap-packages/agt.svg?branch=master)](https://travis-ci.org/gap-packages/agt)
-[![codecov](https://codecov.io/gh/gap-packages/agt/branch/master/graph/badge.svg)](https://codecov.io/gh/gap-packages/agt)
+[![Build Status](https://github.com/gap-packages/agt/workflows/CI/badge.svg?branch=main)](https://github.com/gap-packages/agt/actions?query=workflow%3ACI+branch%3Amain)
+[![Code Coverage](https://codecov.io/github/gap-packages/agt/coverage.svg?branch=main&token=)](https://codecov.io/gh/gap-packages/agt)
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/gap-packages/agt/master)
 
 # The AGT package for GAP

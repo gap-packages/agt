@@ -1,7 +1,7 @@
   
   [1X1 [33X[0;0YThe [5XAGT[105X[101X[1X package[133X[101X
   
-  [33X[0;0YThis  is the manual for the [5XAGT[105X package version 0.2, developed at Queen Mary
+  [33X[0;0YThis  is the manual for the [5XAGT[105X package version 0.3, developed at Queen Mary
   University of London by Rhys J. Evans.[133X
   
   [33X[0;0YThe  [5XAGT[105X  package  contains  a methods used for the determination of various
@@ -21,7 +21,7 @@
   [33X[0;0YTo install the [5XAGT[105X package, you will need to download the most recent [10Xtar.gz[110X
   file, found at https://gap-packages.github.io/agt/. Once downloaded, you can
   install the package by following the instructions found in the [5XGAP[105X reference
-  manual, chapter 76 ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap76.html[107X).[133X
+  manual, chapter 76 ([7Xhttps://docs.gap-system.org/doc/ref/chap76.html[107X).[133X
   
   [33X[0;0YThe [5XAGT[105X package requires the following [5XGAP[105X packages:[133X
   
@@ -60,7 +60,7 @@
     [4X@Manual{agt,[104X
     [4X        author = {Evans, Rhys J.},[104X
     [4X        key = {agt},[104X
-    [4X        title = {{AGT -- Algebraic Graph Theory package for GAP, Version 0.2}},[104X
+    [4X        title = {{AGT -- Algebraic Graph Theory package for GAP, Version 0.3}},[104X
     [4X        url = {\verb+(https://gap-packages.github.io/agt/)+},[104X
     [4X        year = {2020}[104X
   [4X[32X[104X
