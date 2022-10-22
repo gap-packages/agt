@@ -29,7 +29,7 @@ SetPackageInfo( rec(
 
   IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ), 
 
-  SupportEmail := "r.evans@qmul.ac.uk",
+  SupportEmail := "rhysjevans00@gmail.com",
 
   ArchiveURL := Concatenation( ~.SourceRepository.URL,
                                "/releases/download/v", ~.Version,
@@ -43,8 +43,8 @@ SetPackageInfo( rec(
       IsMaintainer := true,
       FirstNames := "Rhys J.",
       LastName := "Evans",
-      WWWHome := "https://www.qmul.ac.uk/maths/profiles/evansr.html",
-      Email := "r.evans@qmul.ac.uk",
+      WWWHome := "https://rhysje00.github.io/",
+      Email := "rhysjevans00@gmail.com",
       PostalAddress := "Mile End Road, London, E14NS",
       Place := "London",
       Institution := "School of Mathematical Sciences, Queen Mary University of London",
