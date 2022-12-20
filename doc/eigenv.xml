@@ -29,7 +29,7 @@ Let <M>\Gamma</M> be a regular graph with parameters <M>(v,k)</M>. Then
 <Q>LargestEigenvalue</Q> function for regular graphs.
 <P/>
 Let <M>\Gamma</M> be a strongly regular graph with parameters <M>(v,k,a,b)</M>.
- The eigenvalues of <M>\Gamma</M> and their corresponding multiplicites
+ The eigenvalues of <M>\Gamma</M> and their corresponding multiplicities
  are uniquely determined by the parameters <M>(v,k,a,b)</M> (see <Cite Key="BH_2011"/>). 
  Using this knowledge, we provide methods which take as input feasible strongly
  regular graph parameters <M>(v,k,a,b)</M>. We also give methods
