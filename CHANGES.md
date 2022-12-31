@@ -4,6 +4,9 @@ Copyright (C) 2020 by Rhys J. Evans.
 
 Licensing information can be found in the LICENSE file.
 
+## Version 0.3.1 (released 31/12/2002)
+Fixed tarball symlink [Issue #15](https://github.com/gap-packages/agt/issues/15)
+
 ## Version 0.3 (released 22/10/2022)
 These changes involved editing old links and contact information. 
 Most changes were made or suggested by [Max Horn](https://www.quendi.de/math). 
