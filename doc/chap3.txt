@@ -26,7 +26,7 @@
   function for regular graphs.[133X
   
   [33X[0;0YLet [22XΓ[122X be a strongly regular graph with parameters [22X(v,k,a,b)[122X. The eigenvalues
-  of  [22XΓ[122X  and  their corresponding multiplicites are uniquely determined by the
+  of  [22XΓ[122X  and their corresponding multiplicities are uniquely determined by the
   parameters  [22X(v,k,a,b)[122X (see [BH11]). Using this knowledge, we provide methods
   which take as input feasible strongly regular graph parameters [22X(v,k,a,b)[122X. We
   also give methods which return an exact representation of the eigenvalues of
