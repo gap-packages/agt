@@ -14,7 +14,7 @@ Most changes were made or suggested by [Max Horn](https://www.quendi.de/math).
 ## Version 0.2 (released 02/03/2020)
 These changes are mostly in preparation for the release of the AGT package as 
 a deposited package in GAP. Most changes were made by or have been suggested by 
-[Max Horn](https://www.quendi.de/math) and [Alexander Konovalov](https://alex-konovalov.github.io/year-archive/).
+[Max Horn](https://www.quendi.de/math) and [Olexandr Konovalov](https://olexandr-konovalov.github.io/).
 
 Changes made:
 
