@@ -74,5 +74,38 @@ false
 gap> IsFeasibleSRGParameters([10,3,0,1]);
 true
 
+# Non-edge-regular and non-strongly-regular graphs
+gap> gamma:=NullGraph(Group(()),0);;
+gap> ERGParameters(gamma);
+fail
+gap> SRGParameters(gamma);
+fail
+gap> gamma:=EdgeOrbitsGraph(Group(()),[[1,1]],2);;
+gap> ERGParameters(gamma);
+fail
+gap> SRGParameters(gamma);
+fail
+gap> gamma:=EdgeOrbitsGraph(Group(()),[[1,2],[2,1]],3);;
+gap> ERGParameters(gamma);
+fail
+gap> SRGParameters(gamma);
+fail
+gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5,6,7)),[[1,2],[2,1],[1,3],[3,1]]);;
+gap> ERGParameters(gamma);
+fail
+gap> SRGParameters(gamma);
+fail
+gap> gamma:=EdgeOrbitsGraph(Group((1,2,3,4,5,6)),[[1,2],[2,1]]);;
+gap> ERGParameters(gamma);
+[ 6, 2, 0 ]
+gap> SRGParameters(gamma);
+fail
+gap> gamma:=JohnsonGraph(5,3);;
+gap> gamma.autGroup:=Group((1,2));;
+gap> ERGParameters(gamma);
+[ 10, 6, 3 ]
+gap> SRGParameters(gamma);
+[ 10, 6, 3, 4 ]
+
 #
 gap> STOP_TEST("AGT package: agt02.tst",0);

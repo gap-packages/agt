@@ -82,16 +82,14 @@ end );
 ##  
 InstallGlobalFunction( ERGParameters,
 function( gamma )
-  local v,edges,orbs,reps,e,x,y,adjx,adjy,k,a;
+  local edges,reps,x,y,adjx,adjy,a;
   
   if not IsGraph(gamma) then 
     Error("usage: ERGParameters( <Graph> )");
   fi;
 
-  v:=gamma.order;
-
   # The empty graph is not edge-regular
-  if v=0 then
+  if gamma.order=0 then
     return fail;
   fi;
 
@@ -103,7 +101,7 @@ function( gamma )
     return fail;
   fi;  
 
-  edges := UndirectedEdges(gamma);
+  edges := Adjacency(gamma,1);
 
   # Null graphs are not edge-regular
   if edges=[] then
@@ -111,33 +109,28 @@ function( gamma )
   fi;  
 
   if IsBound(gamma.autGroup) then
-    orbs:=Orbits(gamma.autGroup,edges,OnSets);
-  else
-    orbs:=Orbits(gamma.group,edges,OnSets);
+    reps:=GRAPE_OrbitNumbers(gamma.autGroup,gamma.order).representatives;
+  else 
+    reps:=gamma.representatives;
   fi;
 
-  reps:=orbs{[1..Length(orbs)]}[1];
-
-  x := reps[1][1];
-  adjx := Adjacency(gamma,x);
-  k:=Length(adjx);
-
-  y := reps[1][2];
-  adjy := Adjacency(gamma,y);
+  adjx := Adjacency(gamma,reps[1]);
+  adjy := Adjacency(gamma,adjx[1]);
   a := Length(Intersection(adjx,adjy));
 
-  for e in reps do
-    x:=e[1];
-    y:=e[2];
-    adjx := Adjacency(gamma,x);
-    adjy := Adjacency(gamma,y);
+  for x in [1..Length(reps)] do
+    adjx := Adjacency(gamma,reps[x]);
 
-    if not Length(Intersection(adjx,adjy)) = a then
+    for y in adjx do
+      adjy := Adjacency(gamma,y);
+
+      if not Length(Intersection(adjx,adjy)) = a then
         return fail;
-    fi;
+      fi;
+    od;
   od;
 
-  return [v,k,a];
+  return [gamma.order, Length(adjx),a];
 end );
 
 #############################################################################
@@ -209,28 +202,64 @@ end );
 ##  
 InstallGlobalFunction( SRGParameters,
 function( gamma )
-  local v,eparms,cparms;
-
-  v:=gamma.order;
+  local edges,reps,x,y,adjx,adjy,nadjy,a,b;
+  
   if not IsGraph(gamma) then 
     Error("usage: SRGParameters( <Graph> )");
   fi;
 
-  eparms := ERGParameters(gamma);
-  
-  if eparms=fail then
+  # The empty graph is not strongly regular
+  if gamma.order=0 then
     return fail;
   fi;
 
-  cparms := ERGParameters(ComplementGraph(gamma));
-
-  if cparms=fail then
+  if not IsSimpleGraph(gamma) then
     return fail;
   fi;
 
-  Add(eparms,v-2*cparms[2]+cparms[3]);
+  if not IsRegularGraph(gamma) then
+    return fail;
+  fi;  
 
-  return eparms;
+  edges := Adjacency(gamma,1);
+
+  # Null and complete graphs are not strongly regular
+  if edges=[] or Length(edges)=gamma.order - 1 then
+    return fail;
+  fi;  
+
+  if IsBound(gamma.autGroup) then
+    reps:=GRAPE_OrbitNumbers(gamma.autGroup,gamma.order).representatives;
+  else 
+    reps:=gamma.representatives;
+  fi;
+
+  adjx := Adjacency(gamma,reps[1]);
+  adjy := Adjacency(gamma,adjx[1]);
+  nadjy:= Adjacency(gamma,Difference([1..gamma.order],Union(adjx,[reps[1]]))[1]);
+  a := Length(Intersection(adjx,adjy));
+  b:= Length(Intersection(adjx,nadjy));
+
+  for x in [1..Length(reps)] do
+    adjx := Adjacency(gamma,reps[x]);
+
+    for y in adjx do
+      adjy := Adjacency(gamma,y);
+
+      if not Length(Intersection(adjx,adjy)) = a then
+        return fail;
+      fi;
+    od;
+    for y in Difference([1..gamma.order],Union(adjx,[reps[x]])) do
+      nadjy:= Adjacency(gamma,y);
+
+      if not Length(Intersection(adjx,nadjy)) = b then
+        return fail;
+      fi;
+    od;
+  od;
+
+  return [gamma.order, Length(adjx),a,b];
 end );
 
 #############################################################################
