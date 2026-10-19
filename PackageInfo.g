@@ -52,8 +52,8 @@ SetPackageInfo( rec(
     rec(
       LastName := "Vidali",
       FirstNames := "Janoš",
-      IsAuthor := true,
-      IsMaintainer := true,
+      IsAuthor := false,
+      IsMaintainer := false,
       Email := "janos.vidali@fmf.uni-lj.si",
       WWWHome := "http://lkrv.fri.uni-lj.si/~janos/",
     ),

@@ -23,14 +23,11 @@
     <Email>rhysjevans00@gmail.com</Email>
     <Homepage>https://rhysje00.github.io/</Homepage>
   </Author>
-  <Author> Janoš Vidali
-    <Email>janos.vidali@fmf.uni-lj.si</Email>
-    <Homepage>http://lkrv.fri.uni-lj.si/~janos/</Homepage>
-  </Author>
-  
     <Copyright> 
     <Index>License</Index>
     &copyright; 2020 by Rhys J. Evans <P/>
+    The graph constructors of Chapter <Ref Chap="grphcons"/> are
+    &copyright; 2020 by Janoš Vidali. <P/>
     The &AGT; package is free software: you can redistribute it and/or modify
     it under the terms of the 
     <URL Text="GNU General Public License">https://www.fsf.org/licenses/gpl.html</URL>
@@ -39,7 +36,9 @@
   </Copyright>
   <Acknowledgements>
     I would like to thank Leonard Soicher for his continued support throughout the development
-    of this package.
+    of this package. The graph constructors were written by Janoš Vidali
+    (<URL>https://github.com/jaanos/gap-graphs</URL>) and incorporated into this package;
+    I am grateful for his contribution.
   </Acknowledgements>
 </TitlePage>
 
