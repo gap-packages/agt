@@ -209,6 +209,26 @@ gap> GlobalParameters(gamma);
 [ [ 0, 0, 4 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 4, 0, 0 ] ]
 
 # Further coverage
+gap> K7:=CompleteGraph(SymmetricGroup(7));;
+gap> P:=PartialLinearSpaces(K7,2,2)[1];;
+gap> CliqueGraph(IsObject,P).order;
+21
+gap> CliqueGraph(P,1).order;
+21
+gap> pg:=GeneralizedQuadrangleQ(4,3);;
+gap> AGT_IncidenceGraph(IsObject,pg).order;
+80
+gap> AGT_IncidenceGraph(pg,1).order;
+80
+gap> HalvedGraph(AGT_IncidenceGraph(pg),2).order;
+40
+gap> HalvedGraph();
+Error, at least one argument expected
+gap> HalvedGraph(NullGraph(Group(()),2));
+Error, not a connected graph
+gap> HalvedGraph(CompleteGraph(Group(()),3));
+Error, not a bipartite graph
+
 gap> IsAntipodalCover(HypercubeGraph2(3));
 true
 gap> IsAntipodalCover(CycleGraph2(5));

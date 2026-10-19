@@ -116,6 +116,22 @@ gap> SRGParameters(gamma);
 [ 81, 24, 9, 6 ]
 
 # Further coverage
+gap> FoldedHalvedCubeGraph(IsVectorGraph and FullAutomorphismGroup,3).order;
+16
+gap> BrouwerGraph(IsVectorGraph and FullAutomorphismGroup,2).order;
+64
+gap> AdditiveSymplecticCoverGraph(IsVectorGraph and FullAutomorphismGroup,2,1,1).order;
+4
+gap> AdditiveSymplecticCoverGraph(IsVectorGraph and FullAutomorphismGroup,4,1,2).order;
+16
+gap> AdditiveSymplecticCoverGraph(IsVectorGraph,4,1,1).order;
+32
+gap> AdditiveSymplecticCoverGraph(IsVectorGraph,4,1,2).order;
+16
+gap> AdditiveSymplecticCoverGraph(AdditiveSymplecticCoverGraph(IsVectorGraph,4,1,0),1).order;
+32
+gap> AdditiveSymplecticCoverGraph(AdditiveSymplecticCoverGraph(IsVectorGraph,3,1,0),1).order;
+9
 gap> AdditiveSymplecticCoverGraph(3).order;
 27
 gap> AdditiveSymplecticCoverGraph(3,2).order;

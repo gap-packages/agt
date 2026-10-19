@@ -78,6 +78,14 @@ rec( adjacencies := [ [ 5, 6, 8 ] ],
   schreierVector := [ -1, 1, 1, 1, 2, 1, 2, 2 ] )
 
 # Further coverage
+gap> LatinSquareGraph(FullAutomorphismGroup,CyclicGroup(IsPermGroup,5)).order;
+25
+gap> LatinSquareGraph(FullAutomorphismGroup,SymmetricGroup(3)).order;
+36
+gap> LatinSquareGraph([[1,2],[3,1]]).order;
+4
+gap> CompleteMultipartiteGraph(FullAutomorphismGroup,[1,2,2]).order;
+5
 gap> LatinSquareGraph([[1,2],[2,1]]).order;
 4
 gap> LatinSquareGraph(CyclicGroup(IsPermGroup,3)).order;

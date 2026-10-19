@@ -70,6 +70,26 @@ gap> GeneralizedQuadrangleT(EllipticQuadricProjectiveSpace(2)).order;
 gap> HughesPlaneIncidenceGraph(3).order;
 182
 
+# Further coverage
+gap> HughesPlaneIncidenceGraph(5,1).order;
+1302
+gap> HughesPlaneIncidenceGraph(3,1);
+Error, the specified exceptional near-field does not exist
+gap> HughesPlaneIncidenceGraph();
+Error, at least one argument expected
+gap> pl:=ClassicalConicProjectivePlane(3);;
+gap> GeneralizedQuadrangleT(2,3,pl.points).order;
+40
+gap> GeneralizedQuadrangleT(2,3,pl.points,pl.group).order;
+40
+gap> GeneralizedQuadrangleT();
+Error, at least one argument expected
+gap> pl:=HyperconicProjectivePlane(2);;
+gap> GeneralizedQuadrangleTstar(2,pl.points,pl.group).order;
+64
+gap> GeneralizedQuadrangleTstar();
+Error, at least one argument expected
+
 # Graphs from files
 gap> inc:=Filename(DirectoryTemporary(),"inc");;
 gap> aut:=Filename(DirectoryTemporary(),"aut");;

@@ -83,6 +83,20 @@ gap> gamma:=UnitaryNonisotropicsGraph(3);;
 gap> GlobalParameters(gamma);
 [ [ 0, 0, 6 ], [ 1, 1, 4 ], [ 1, 1, 4 ], [ 3, 3, 0 ] ]
 
+# Further coverage
+gap> DualPolarGraphB(IsSpacesGraph and FullAutomorphismGroup,1,3).order;
+4
+gap> DualPolarGraphC(IsSpacesGraph and FullAutomorphismGroup,1,3).order;
+4
+gap> DualPolarGraphD(IsSpacesGraph and FullAutomorphismGroup,1,3).order;
+2
+gap> DualPolarGraph2D(IsSpacesGraph and FullAutomorphismGroup,1,3).order;
+10
+gap> GrassmannGraph(IsSpacesGraph and FullAutomorphismGroup,2,3,3).order;
+1
+gap> GrassmannGraph(IsSpacesGraph and FullAutomorphismGroup,2,3,1).order;
+7
+
 # Filter variants
 gap> GrassmannGraph(IsSpacesGraph and FullAutomorphismGroup,2,4,2).order;
 35

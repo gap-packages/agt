@@ -84,6 +84,14 @@ rec(
   schreierVector := [ -1, 5, 6, -2, 2, 5, 6, 1, 5, 3, 1, 1, 1, 1, 5, 2, 1, 4, 
       6, 1, 4, 6, 3, 3, 3, 4, 5, 6 ] )
 
+# Further coverage
+gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,4,1).order;
+4
+gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,4,2,true).order;
+6
+gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,5,1,true).order;
+5
+
 # Filter variants
 gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,6,2).order;
 15
