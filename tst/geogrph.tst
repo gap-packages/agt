@@ -64,5 +64,11 @@ gap> gamma:=GeneralizedQuadrangleAS(5);;
 gap> SRGParameters(gamma);              
 [ 125, 28, 3, 7 ]
 
+# Further coverage
+gap> GeneralizedQuadrangleT(EllipticQuadricProjectiveSpace(2)).order;
+27
+gap> HughesPlaneIncidenceGraph(3).order;
+182
+
 # End test
 gap> STOP_TEST("AGT package: geogrph.tst",0);  

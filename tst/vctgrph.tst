@@ -115,5 +115,55 @@ gap> gamma:=AffinePolarGraphVNO(1,4,3);;
 gap> SRGParameters(gamma);
 [ 81, 24, 9, 6 ]
 
+# Further coverage
+gap> AdditiveSymplecticCoverGraph(3).order;
+27
+gap> AdditiveSymplecticCoverGraph(3,2).order;
+243
+gap> AffinePolarGraphVO(3,3).order;
+27
+gap> AffinePolarGraphVNO(3,3).order;
+27
+
+# Filter variants
+gap> HammingGraph2(IsVectorGraph and FullAutomorphismGroup,2,2).order;
+4
+gap> HammingGraph2(FullAutomorphismGroup,2,2).order;
+4
+gap> HypercubeGraph2(IsVectorGraph and FullAutomorphismGroup,3).order;
+8
+gap> HypercubeGraph2(FullAutomorphismGroup,3).order;
+8
+gap> DoobGraph(IsVectorGraph and FullAutomorphismGroup,1,2).order;
+256
+gap> DoobGraph(FullAutomorphismGroup,1,2).order;
+256
+gap> HalvedCubeGraph2(IsVectorGraph and FullAutomorphismGroup,4).order;
+8
+gap> HalvedCubeGraph2(FullAutomorphismGroup,4).order;
+8
+gap> FoldedCubeGraph(IsVectorGraph and FullAutomorphismGroup,4).order;
+8
+gap> FoldedCubeGraph(FullAutomorphismGroup,4).order;
+8
+gap> FoldedHalvedCubeGraph(IsVectorGraph and FullAutomorphismGroup,4).order;
+64
+gap> FoldedHalvedCubeGraph(FullAutomorphismGroup,4).order;
+64
+gap> BrouwerGraph(IsVectorGraph and FullAutomorphismGroup,3).order;
+729
+gap> BrouwerGraph(FullAutomorphismGroup,3).order;
+729
+gap> PasechnikGraph(IsVectorGraph,3).order;
+1458
+gap> AdditiveSymplecticCoverGraph(IsVectorGraph and FullAutomorphismGroup,3,1).order;
+27
+gap> AdditiveSymplecticCoverGraph(FullAutomorphismGroup,3,1).order;
+27
+gap> MultiplicativeSymplecticCoverGraph(IsVectorGraph and FullAutomorphismGroup,3,2).order;
+4
+gap> MultiplicativeSymplecticCoverGraph(FullAutomorphismGroup,3,2).order;
+4
+
 # End test
 gap> STOP_TEST("AGT package: vctgrph.tst",0);  

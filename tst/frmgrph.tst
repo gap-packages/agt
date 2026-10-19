@@ -23,5 +23,13 @@ gap> gamma:=HermiteanFormsGraph(2,3);;
 gap> GlobalParameters(gamma);
 [ [ 0, 0, 20 ], [ 1, 1, 18 ], [ 6, 14, 0 ] ]
 
+# Filter variants
+gap> BilinearFormsGraph(IsFormsGraph and FullAutomorphismGroup,2,2,2).order;
+16
+gap> BilinearFormsGraph(FullAutomorphismGroup,2,2,2).order;
+16
+gap> HermiteanFormsGraph(IsFormsGraph,2,3).order;
+81
+
 # End test
 gap> STOP_TEST("AGT package: frmgrph.tst",0);  

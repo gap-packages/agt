@@ -208,5 +208,21 @@ gap> gamma:=AGT_IncidenceGraph(pg);;
 gap> GlobalParameters(gamma);
 [ [ 0, 0, 4 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 4, 0, 0 ] ]
 
+# Further coverage
+gap> IsAntipodalCover(HypercubeGraph2(3));
+true
+gap> IsAntipodalCover(CycleGraph2(5));
+false
+gap> AntipodalCoveringIndex(HypercubeGraph2(3));
+2
+gap> GeneralizedPolygonParameters(CycleGraph2(8));
+[ 8, 1, 1 ]
+gap> RegularPoints(AGT_IncidenceGraph(GeneralizedQuadrangleQ(4,3)));
+[ 1, 41 ]
+gap> RegularPoints(CycleGraph2(5));
+fail
+gap> HalvedGraph(CycleGraph2(8),2).order;
+4
+
 # End test
 gap> STOP_TEST("AGT package: gencon.tst",0);  

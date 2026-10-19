@@ -77,5 +77,21 @@ rec( adjacencies := [ [ 5, 6, 8 ] ],
       [ 2, 3 ], [ 2, 4 ] ], order := 8, representatives := [ 1 ], 
   schreierVector := [ -1, 1, 1, 1, 2, 1, 2, 2 ] )
 
+# Further coverage
+gap> LatinSquareGraph([[1,2],[2,1]]).order;
+4
+gap> LatinSquareGraph(CyclicGroup(IsPermGroup,3)).order;
+9
+gap> LatinSquareGraph(Group((1,2),(3,4))).order;
+16
+gap> LatinSquareGraph(CyclicGroup(IsPermGroup,5)).order;
+25
+gap> CompleteMultipartiteGraph(IsObject,[2,3]).order;
+5
+gap> CompleteMultipartiteGraph(IsObject,3,2).order;
+6
+gap> HaarGraph2(5,[1,2]).order;
+10
+
 # End test
 gap> STOP_TEST("AGT package: basic.tst",0);  

@@ -83,5 +83,41 @@ gap> gamma:=UnitaryNonisotropicsGraph(3);;
 gap> GlobalParameters(gamma);
 [ [ 0, 0, 6 ], [ 1, 1, 4 ], [ 1, 1, 4 ], [ 3, 3, 0 ] ]
 
+# Filter variants
+gap> GrassmannGraph(IsSpacesGraph and FullAutomorphismGroup,2,4,2).order;
+35
+gap> GrassmannGraph(FullAutomorphismGroup,2,4,2).order;
+35
+gap> DoubledGrassmannGraph(IsSpacesGraph and FullAutomorphismGroup,2,2).order;
+310
+gap> DoubledGrassmannGraph(FullAutomorphismGroup,2,2).order;
+310
+gap> TwistedGrassmannGraph(IsSpacesGraph,2,2).order;
+155
+gap> DualPolarGraphB(IsSpacesGraph and FullAutomorphismGroup,2,2).order;
+15
+gap> DualPolarGraphB(FullAutomorphismGroup,2,2).order;
+15
+gap> DualPolarGraphC(IsSpacesGraph and FullAutomorphismGroup,2,2).order;
+15
+gap> DualPolarGraphC(FullAutomorphismGroup,2,2).order;
+15
+gap> DualPolarGraphD(IsSpacesGraph and FullAutomorphismGroup,2,2).order;
+6
+gap> DualPolarGraphD(FullAutomorphismGroup,2,2).order;
+6
+gap> DualPolarGraph2D(IsSpacesGraph and FullAutomorphismGroup,2,2).order;
+45
+gap> DualPolarGraph2D(FullAutomorphismGroup,2,2).order;
+45
+gap> DualPolarGraph2A(IsSpacesGraph and FullAutomorphismGroup,4,3).order;
+112
+gap> DualPolarGraph2A(FullAutomorphismGroup,4,3).order;
+112
+gap> DoroGraph(IsSpacesGraph and FullAutomorphismGroup,2).order;
+10
+gap> DoroGraph(FullAutomorphismGroup,2).order;
+10
+
 # End test
 gap> STOP_TEST("AGT package: spcsgrph.tst",0);  

@@ -38,5 +38,15 @@ gap> gamma:=ExtendedQuadraticKasamiGraph(2);;
 gap> GlobalParameters(gamma);                
 [ [ 0, 0, 16 ], [ 1, 0, 15 ], [ 4, 0, 12 ], [ 15, 0, 1 ], [ 16, 0, 0 ] ]
 
+# Further coverage
+gap> PreparataGraph(IsCodeGraph and FullAutomorphismGroup,2,2).order;
+128
+
+# Filter variants
+gap> PreparataGraph(IsCodeGraph and FullAutomorphismGroup,1,2).order;
+8
+gap> PreparataGraph(FullAutomorphismGroup,1,2).order;
+8
+
 # End test
 gap> STOP_TEST("AGT package: codegrph.tst",0);  

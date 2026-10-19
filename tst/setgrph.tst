@@ -84,5 +84,27 @@ rec(
   schreierVector := [ -1, 5, 6, -2, 2, 5, 6, 1, 5, 3, 1, 1, 1, 1, 5, 2, 1, 4, 
       6, 1, 4, 6, 3, 3, 3, 4, 5, 6 ] )
 
+# Filter variants
+gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,6,2).order;
+15
+gap> KneserGraph2(FullAutomorphismGroup,6,2).order;
+15
+gap> OddGraph2(IsSetGraph and FullAutomorphismGroup,3).order;
+35
+gap> OddGraph2(FullAutomorphismGroup,3).order;
+35
+gap> DoubledOddGraph(IsSetGraph and FullAutomorphismGroup,3).order;
+70
+gap> DoubledOddGraph(FullAutomorphismGroup,3).order;
+70
+gap> FoldedJohnsonGraph(IsSetGraph and FullAutomorphismGroup,3).order;
+10
+gap> FoldedJohnsonGraph(FullAutomorphismGroup,3).order;
+10
+gap> ChangGraph(IsSetGraph and FullAutomorphismGroup,1).order;
+28
+gap> ChangGraph(FullAutomorphismGroup,1).order;
+28
+
 # End test
 gap> STOP_TEST("AGT package: setgrph.tst",0);  
