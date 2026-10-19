@@ -66,26 +66,5 @@ Brouwer <Cite Key="B_2018"/>.
 
 <#Include Label="IsAllSRGsStored">
 </Section>
-<Section Label="More strongly regular graphs">
-<Heading>Strongly regular graph constructors</Heading>
-
-In this section, we give functions to construct certain graphs, most of which
-are strongly regular graphs.
-
-<#Include Label="DisjointUnionOfCliques">
-
-<#Include Label="CompleteMultipartiteGraph">
-
-<#Include Label="TriangularGraph">
-
-<#Include Label="SquareLatticeGraph">
-
-<#Include Label="HoffmanSingletonGraph">
-
-<#Include Label="HigmanSimsGraph">
-
-<#Include Label="SimsGerwitzGraph">
-
-</Section>
 
 </Chapter>

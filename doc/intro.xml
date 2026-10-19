@@ -11,7 +11,7 @@
   intended to be a useful resource for computational experiments. 
   <P/>
   All of the functions in this package deal with finite simple graphs in 
-  &Grape; format <Cite Key="GRAPE_2018"/>. Behind the scenes, we also use the 
+  &GRAPE; format <Cite Key="GRAPE_2018"/>. Behind the scenes, we also use the 
   <Package>Digraphs</Package> package <Cite Key="DIGRAPHS_2019"/> to format and efficiently 
   store and access the graphs in the strongly regular graph library. 
   
@@ -60,7 +60,7 @@ true
 
 <Listing Type="bibtex">
 @Manual{agt,
-        author = {Evans, Rhys J.},
+        author = {Evans, Rhys J. and Vidali, Janoš},
         key = {agt},
         title = {{AGT -- Algebraic Graph Theory package for GAP, Version &VERSION;}},
         url = {\verb+(&PKGWWWHOME;)+},

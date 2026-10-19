@@ -2,7 +2,13 @@
 
 <!DOCTYPE Book SYSTEM "gapdoc.dtd"
    [ <!ENTITY AGT "<Package>AGT</Package>">
-     <!ENTITY Grape "<Package>Grape</Package>">
+     <!ENTITY GRAPE "<Package>GRAPE</Package>">
+     <!ENTITY neq 
+      "<Alt Only='Text'>{&lt;&gt;}</Alt><Alt Not='Text'>\not=</Alt>">
+     <!ENTITY Jbar 
+      "<Alt Only='Text'>Jbar</Alt><Alt Not='Text'>\overline{J}</Alt>">
+     <!ENTITY Kbar 
+      "<Alt Only='Text'>Kbar</Alt><Alt Not='Text'>\overline{K}</Alt>">       
      <#Include Label="PKGVERSIONDATA">
    ]>
 
@@ -17,6 +23,11 @@
     <Email>rhysjevans00@gmail.com</Email>
     <Homepage>https://rhysje00.github.io/</Homepage>
   </Author>
+  <Author> Janoš Vidali
+    <Email>janos.vidali@fmf.uni-lj.si</Email>
+    <Homepage>http://lkrv.fri.uni-lj.si/~janos/</Homepage>
+  </Author>
+  
     <Copyright> 
     <Index>License</Index>
     &copyright; 2020 by Rhys J. Evans <P/>
@@ -45,6 +56,9 @@
 <#Include SYSTEM "regsub.xml">
 
 <#Include SYSTEM "srglib.xml">
+
+<#Include SYSTEM "grphcons.xml">
+
 
 </Body>
 

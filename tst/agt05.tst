@@ -166,55 +166,5 @@ false
 gap> IsAllSRGsStored([36,15,6,6]);
 true
 
-# [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 787, 796 ]  
-gap> DisjointUnionOfCliques(3,5,7);            
-rec( adjacencies := [ [ 2, 3 ], [ 5, 6, 7, 8 ], [ 10, 11, 12, 13, 14, 15 ] ], 
-  autGroup := <permutation group with 12 generators>, 
-  group := <permutation group with 12 generators>, isGraph := true, 
-  isSimple := true, order := 15, representatives := [ 1, 4, 9 ], 
-  schreierVector := [ -1, 12, 11, -2, 10, 9, 8, 7, -3, 6, 5, 4, 3, 2, 1 ] )
-
-# [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 822, 830 ]   
-gap> CompleteMultipartiteGraph(4,2,1);
-rec( adjacencies := [ [ 5, 6, 7 ], [ 1, 2, 3, 4, 7 ], [ 1, 2, 3, 4, 5, 6 ] ], 
-  autGroup := Group([ (5,6), (3,4), (2,3), (1,2) ]), group := Group([ (5,6),
-    (3,4), (2,3), (1,2) ]), isGraph := true, isSimple := true, order := 7, 
-  representatives := [ 1, 5, 7 ], 
-  schreierVector := [ -1, 4, 3, 2, -2, 1, -3 ] )
-
-# [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 862, 875 ]    
-gap> TriangularGraph(7); 
-rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ] ], 
-  group := Group([ (1,7,12,16,19,21,6)(2,8,13,17,20,5,11)(3,9,14,18,4,10,15),
-    (2,7)(3,8)(4,9)(5,10)(6,11) ]), isGraph := true, isSimple := true, 
-  names := [ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [ 1, 7 ], 
-      [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 2, 7 ], [ 3, 4 ], [ 3, 5 ], 
-      [ 3, 6 ], [ 3, 7 ], [ 4, 5 ], [ 4, 6 ], [ 4, 7 ], [ 5, 6 ], [ 5, 7 ], 
-      [ 6, 7 ] ], order := 21, representatives := [ 1 ], 
-  schreierVector := [ -1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 
-      1, 1, 1 ] )
-
-# [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 906, 920 ]   
-gap> SquareLatticeGraph(6);
-rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 13, 19, 25, 31 ] ], 
-  group := <permutation group with 5 generators>, isGraph := true, 
-  names := [ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], 
-      [ 2, 1 ], [ 2, 2 ], [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 3, 1 ], 
-      [ 3, 2 ], [ 3, 3 ], [ 3, 4 ], [ 3, 5 ], [ 3, 6 ], [ 4, 1 ], [ 4, 2 ], 
-      [ 4, 3 ], [ 4, 4 ], [ 4, 5 ], [ 4, 6 ], [ 5, 1 ], [ 5, 2 ], [ 5, 3 ], 
-      [ 5, 4 ], [ 5, 5 ], [ 5, 6 ], [ 6, 1 ], [ 6, 2 ], [ 6, 3 ], [ 6, 4 ], 
-      [ 6, 5 ], [ 6, 6 ] ], order := 36, representatives := [ 1 ], 
-  schreierVector := [ -1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 
-      1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3 ] )
-
-# [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 942, 946 ]   
-gap> gamma:=HoffmanSingletonGraph();;
-
-# [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 968, 972 ]    
-gap> gamma:=HigmanSimsGraph();;
-
-# [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/srglib.gd", 994, 998 ]    
-gap> gamma:=SimsGerwitzGraph();;
-
 #
 gap> STOP_TEST("AGT package: agt05.tst",0);
