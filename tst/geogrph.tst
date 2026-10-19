@@ -44,10 +44,14 @@ gap> SRGParameters(gamma);
 [ 85, 20, 3, 5 ]
 
 # GeneralizedQuadrangleT
-# TODO 
+gap> gamma:=GeneralizedQuadrangleT(ClassicalConicProjectivePlane(3));;
+gap> SRGParameters(gamma);
+[ 40, 12, 2, 4 ]
 
 # GeneralizedQuadrangleTstar
-# TODO 
+gap> gamma:=GeneralizedQuadrangleTstar(HyperconicProjectivePlane(2));;
+gap> SRGParameters(gamma);
+[ 64, 18, 2, 6 ]
 
 # GeneralizedQuadrangleP
 gap> gamma:=GeneralizedQuadrangleQ(4,4);;    

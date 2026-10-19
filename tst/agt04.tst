@@ -82,7 +82,10 @@ gap> RegularSetParameters(SquareLatticeGraph(5),[1,6,11,16,21]);
 [ 4, 1 ]
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regsubs.gd", 573, 580 ]    
-#TODO
+gap> IsRegularSet(HoffmanSingletonGraph(),[1..49],false);
+true
+gap> IsRegularSet(HoffmanSingletonGraph(),[1..49],true);
+false
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regsubs.gd", 616, 621 ]
 gap> RegularSetSRGParameters([16,6,2,2],4);

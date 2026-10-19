@@ -45,10 +45,10 @@ SetPackageInfo( rec(
       LastName := "Evans",
       WWWHome := "https://rhysje00.github.io/",
       Email := "rhysjevans00@gmail.com",
-      Place := "Ljubljana, Slovenia",
-      Institution := "Inštitut za matematiko, fiziko in mehaniko",
+      Place := "Sydney",
+      Institution := "School of Mathematics and Statistics, The University of Sydney, Sydney, NSW, Australia",
     ),
-    
+
     rec(
       LastName := "Vidali",
       FirstNames := "Janoš",
