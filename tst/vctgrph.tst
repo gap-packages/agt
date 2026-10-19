@@ -116,6 +116,10 @@ gap> SRGParameters(gamma);
 [ 81, 24, 9, 6 ]
 
 # Further coverage
+gap> AffinePolarGraphVO(1);
+Error, at least two arguments expected
+gap> AffinePolarGraphVNO(1);
+Error, at least two arguments expected
 gap> FoldedHalvedCubeGraph(IsVectorGraph and FullAutomorphismGroup,3).order;
 16
 gap> BrouwerGraph(IsVectorGraph and FullAutomorphismGroup,2).order;

@@ -39,6 +39,8 @@ gap> GlobalParameters(gamma);
 [ [ 0, 0, 16 ], [ 1, 0, 15 ], [ 4, 0, 12 ], [ 15, 0, 1 ], [ 16, 0, 0 ] ]
 
 # Further coverage
+gap> PreparataGraph(PreparataGraph(IsCodeGraph and FullAutomorphismGroup,2,2),1).order;
+64
 gap> PreparataGraph(IsCodeGraph and FullAutomorphismGroup,2,2).order;
 128
 

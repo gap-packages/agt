@@ -209,6 +209,47 @@ gap> GlobalParameters(gamma);
 [ [ 0, 0, 4 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 4, 0, 0 ] ]
 
 # Further coverage
+gap> SubspaceGraph(1,2,3);
+Error, at least four arguments expected
+gap> h:=CycleGraph2(8);;
+gap> C5:=CycleGraph2(5);;
+gap> PowerGraph(IsObject,h,2,function(x,y) return x<>y; end).order;
+64
+gap> ExtendedBipartiteDoubleGraph(IsObject,C5).order;
+10
+gap> AntipodalQuotientGraph(IsObject,h).order;
+4
+gap> BoxPowerGraph(C5,0).order;
+1
+gap> BoxProductGraph([]).order;
+1
+gap> CrossProductGraph([]).order;
+1
+gap> StrongProductGraph([]).order;
+1
+gap> IsAntipodalCover(CompleteGraph(Group(()),3));
+true
+gap> AntipodalCoveringIndex(CompleteGraph(Group(()),3));
+3
+gap> IsAntipodalCover(NullGraph(Group(()),2));
+Error, not a connected graph
+gap> AntipodalCoveringIndex(PetersenGraph2());
+Error, not an antipodal cover
+gap> GeneralizedPolygonParameters(NullGraph(Group(()),2));
+Error, not a connected graph
+gap> C5:=CycleGraph2(5);;
+gap> BoxProductGraph(IsObject,[C5,C5]).order;
+25
+gap> CrossProductGraph(IsObject,[C5,C5]).order;
+25
+gap> StrongProductGraph(IsObject,[C5,C5]).order;
+25
+gap> BoxPowerGraph(IsObject,C5,2).order;
+25
+gap> StrongPowerGraph(IsObject,C5,2).order;
+25
+gap> CrossPowerGraph(IsObject,C5,2).order;
+25
 gap> K7:=CompleteGraph(SymmetricGroup(7));;
 gap> P:=PartialLinearSpaces(K7,2,2)[1];;
 gap> CliqueGraph(IsObject,P).order;

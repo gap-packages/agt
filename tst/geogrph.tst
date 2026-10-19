@@ -65,6 +65,26 @@ gap> SRGParameters(gamma);
 [ 125, 28, 3, 7 ]
 
 # Further coverage
+gap> gr:=GeneralizedQuadrangleT(ClassicalConicProjectivePlane(3));;
+gap> p1:=Filtered(gr.names,x->Dimension(x)=1)[1];;
+gap> v3:=Filtered(gr.names,x->Dimension(x)=3)[1];;
+gap> v4:=Filtered(gr.names,x->Dimension(x)=4)[1];;
+gap> Dimension(gr.duality([p1]));
+1
+gap> Dimension(gr.duality([v4]));
+1
+gap> Dimension(gr.primality([p1]));
+4
+gap> Dimension(gr.primality([p1,v3]));
+3
+gap> Dimension(gr.primality([v3]));
+3
+gap> AGT_IncidenceGraph(gr).order;
+80
+gap> HughesPlaneIncidenceGraph(7,1).order;
+4902
+gap> Length(NonclassicalConicProjectivePlane(5).points);
+6
 gap> GeneralizedQuadrangleT(EllipticQuadricProjectiveSpace(2)).order;
 27
 gap> HughesPlaneIncidenceGraph(3).order;

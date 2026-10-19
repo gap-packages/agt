@@ -85,6 +85,18 @@ rec(
       6, 1, 4, 6, 3, 3, 3, 4, 5, 6 ] )
 
 # Further coverage
+gap> JohnsonGraphCons(FullAutomorphismGroup,4,2).order;
+6
+gap> JohnsonGraphCons(IsSetGraph,4,2).order;
+6
+gap> JohnsonGraphCons(IsSetGraph and FullAutomorphismGroup,6,3).order;
+20
+gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,3,2,true).order;
+3
+gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,2,2,true).order;
+1
+gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,3,2,false).order;
+3
 gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,4,1).order;
 4
 gap> KneserGraph2(IsSetGraph and FullAutomorphismGroup,4,2,true).order;

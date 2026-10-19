@@ -84,6 +84,21 @@ gap> GlobalParameters(gamma);
 [ [ 0, 0, 6 ], [ 1, 1, 4 ], [ 1, 1, 4 ], [ 3, 3, 0 ] ]
 
 # Further coverage
+gap> PolarGraphO(IsObject,5,3).order;
+40
+gap> PolarGraphNOorth(IsObject,1,5,3).order;
+45
+gap> PolarGraphSp(IsObject,4,5).order;
+156
+gap> PolarGraphU(IsObject,4,2).order;
+45
+gap> UnitaryNonisotropicsGraph(IsObject,3).order;
+63
+gap> gam:=GrassmannGraph(2,4,2);;
+gap> Dimension(gam.duality([gam.names[1],gam.names[2]]));
+1
+gap> Dimension(gam.duality([gam.names[1]]));
+2
 gap> DualPolarGraphB(IsSpacesGraph and FullAutomorphismGroup,1,3).order;
 4
 gap> DualPolarGraphC(IsSpacesGraph and FullAutomorphismGroup,1,3).order;

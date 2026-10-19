@@ -78,6 +78,24 @@ rec( adjacencies := [ [ 5, 6, 8 ] ],
   schreierVector := [ -1, 1, 1, 1, 2, 1, 2, 2 ] )
 
 # Further coverage
+gap> MatrixAdjacency([[0,1],[1,0]])(1,2);
+true
+gap> ListAdjacency([[2],[1]])(1,2);
+true
+gap> Size(MatrixColumnPermutationGroup(2,3));
+6
+gap> Size(WreathProductSymmetricGroups(1,3));
+6
+gap> Size(WreathProductSymmetricGroups(3,1));
+6
+gap> DefaultPrimalityFunction([[1,2],[2,3]]);
+2
+gap> WreathProductSymmetricGroups(-1,2);
+Error, m or n not a nonnegative integer
+gap> HaarGraph2(IsObject,5,[1,2]).order;
+10
+gap> SRGParameters(LatinSquareGraph(FullAutomorphismGroup,Group((1,2),(3,4))));
+[ 16, 9, 4, 6 ]
 gap> LatinSquareGraph(FullAutomorphismGroup,CyclicGroup(IsPermGroup,5)).order;
 25
 gap> LatinSquareGraph(FullAutomorphismGroup,SymmetricGroup(3)).order;

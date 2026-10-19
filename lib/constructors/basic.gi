@@ -169,7 +169,7 @@ function(filter, G, invt)
     A := Filtered(AutomorphismGroup(G), g -> Order(g) = 3);
     H := ComplementGraph(HammingGraphCons(IsVectorGraph, 2, 4));
     AssignVertexNames(H, List(List(H.names,
-                                     t -> List(t, x -> F[Int(x)+1])),
+                                     t -> List(t, x -> F[x])),
                                 t -> [t[1]^A[1] * t[2]^A[2],
                                       t[1]^A[2] * t[2]^A[1]]));
     return H;
