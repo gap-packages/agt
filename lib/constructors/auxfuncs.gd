@@ -22,7 +22,7 @@ DeclareGlobalFunction( "FFEToInt" );
 DeclareGlobalFunction( "IntToFFE" );
 
 # The complement of a vector subspace of a finite field.
-DeclareOperation( "OrthogonalSpaceInFullRowSpace", [IsVectorSpace, IsField] ); 
+DeclareOperation( "AGT_OrthogonalSpace", [IsVectorSpace, IsField] ); 
 
 # Transforms a matrix over GF(r) to a Hermitean matrix over GF(r^2).
 DeclareGlobalFunction( "ToHermitean" );

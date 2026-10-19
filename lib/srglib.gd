@@ -769,4 +769,59 @@ DeclareGlobalFunction( "IsAllSRGsStored" );
 
 #############################################################################
 ##
+#F  DisjointUnionOfCliques( <n1> , <n2>, ... )
+##  
+##  <#GAPDoc Label="DisjointUnionOfCliques">
+##  <ManSection>
+##  <Func Name="DisjointUnionOfCliques"
+##   Arg='n1, n2, ... '/>
+##  <Returns>A record.</Returns>
+##
+##  <Description>
+##  Given positive integers <A>n1, n2,...</A>, this function returns the graph consisting of
+##  the disjoint union of cliques with orders <A>n1, n2,...</A>.  
+##    <Example>
+##      <![CDATA[
+##gap> DisjointUnionOfCliques(3,5,7);            
+##rec( adjacencies := [ [ 2, 3 ], [ 5, 6, 7, 8 ], [ 10, 11, 12, 13, 14, 15 ] ], 
+##  autGroup := <permutation group with 12 generators>, 
+##  group := <permutation group with 12 generators>, isGraph := true, 
+##  isSimple := true, order := 15, representatives := [ 1, 4, 9 ], 
+##  schreierVector := [ -1, 12, 11, -2, 10, 9, 8, 7, -3, 6, 5, 4, 3, 2, 1 ] )
+##      ]]>
+##    </Example>
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "DisjointUnionOfCliques" );
+
+#############################################################################
+##
+#F  SimsGerwitzGraph(  )
+##  
+##  <#GAPDoc Label="SimsGerwitzGraph">
+##  <ManSection>
+##  <Func Name="SimsGerwitzGraph"
+##   Arg=''/>
+##  <Returns>A record.</Returns>
+##
+##  <Description>
+##  This function returns the Sims-Gerwitz graph.
+##  <P/>
+##  The <E>Sims-Gerwitz graph</E> is the unique strongly regular graph with
+##  parameters <M>(56,10,0,2)</M>. For more information on this graph, see <Cite Key="B_2018b"/>. 
+##    <Example>
+##      <![CDATA[
+##gap> gamma:=SimsGerwitzGraph();;
+##      ]]>
+##    </Example>
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "SimsGerwitzGraph" );
+
+#############################################################################
+##
 #E

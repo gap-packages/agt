@@ -358,8 +358,8 @@ DeclareGlobalFunction( "GeneralizedQuadrangleW" );
 ##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> SRGParameters(GeneralizedQuadrangleT(ClassicalConicProjectivePlane(3)));
+##[ 40, 12, 2, 4 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -405,8 +405,8 @@ DeclareGlobalFunction( "GeneralizedQuadrangleT" );
 ##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> SRGParameters(GeneralizedQuadrangleTstar(HyperconicProjectivePlane(2)));
+##[ 64, 18, 2, 6 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -530,8 +530,10 @@ DeclareGlobalFunction( "GeneralizedQuadrangleAS" );
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> f:=Filename(DirectoryTemporary(),"fano.txt");;
+##gap> FileString(f,"0 1 3\n1 2 4\n2 3 5\n3 4 6\n4 5 0\n5 6 1\n6 0 2\n");;
+##gap> IncidenceGraphFromFile(f).order;
+##14
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -566,8 +568,10 @@ DeclareGlobalFunction( "IncidenceGraphFromFile" );
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> f:=Filename(DirectoryTemporary(),"fano.txt");;
+##gap> FileString(f,"0 1 3\n1 2 4\n2 3 5\n3 4 6\n4 5 0\n5 6 1\n6 0 2\n");;
+##gap> CollinearityGraphFromFile(f).order;
+##7
 ##      ]]>
 ##    </Example>
 ##  </Description>

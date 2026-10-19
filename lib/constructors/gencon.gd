@@ -671,7 +671,7 @@ DeclareGlobalFunction( "HalvedGraph" );
 ##  <Cite Key="BCN_1989" Where="Section 4.2"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap> h:=CycleGraph(8);;
+##gap> h:=CycleGraph2(8);;
 ##gap> AntipodalQuotientGraph(h);
 ##rec( adjacencies := [ [ 2, 4 ] ], group := Group([ (1,2,3,4), (2,4) ]), 
 ##     isGraph := true, names := [ [ 1, 5 ], [ 2, 6 ], [ 3, 7 ], [ 4, 8 ] ], 

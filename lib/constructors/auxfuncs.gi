@@ -40,7 +40,7 @@ function(x, q)
 end );
 
 # The complement of a vector subspace of a finite field.
-InstallOtherMethod(OrthogonalSpaceInFullRowSpace, "for finite fields",
+InstallOtherMethod(AGT_OrthogonalSpace, "for finite fields",
                                           [IsVectorSpace, IsField], 0,
 function(V, F)
   local B;

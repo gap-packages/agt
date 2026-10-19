@@ -116,7 +116,7 @@ function(filter, G, h)
   else
     A := AdditivelyActingDomain(G.names[1][1]);
     K := A + Subspace(F,
-                         Elements(Basis(OrthogonalSpaceInFullRowSpace(A,
+                         Elements(Basis(AGT_OrthogonalSpace(A,
                                                           F))){[1..h]},
                           "basis");
     V := List(G.names, x -> [x[1], x[2], Representative(x[3])+K]);

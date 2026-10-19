@@ -460,4 +460,50 @@ end );
 
 #############################################################################
 ##
+#F  DisjointUnionOfCliques( <n1> , <n2>, ... )
+##  
+InstallGlobalFunction( DisjointUnionOfCliques, 
+function( arg... )
+  local   sum, Grs, Grp,  i, fedg, gamma;
+
+  if not ForAll(arg,IsPosInt) then
+    Error("usage: DisjointUnionOfCliques(<n1>,<n2>,...), where \n\
+          <n1>,<n2>,... are positive integers.");
+  fi;
+
+  sum := 0;
+  Grs := [];
+  fedg := [];
+
+  for i in arg do
+    sum := sum + i;
+    if i>1 then
+      Add(fedg,[sum-i+1,sum-i+2]);
+      Add(Grs,SymmetricGroup([sum-i+1..sum]));
+    fi;
+  od;      
+
+  Grp:=DirectProduct(Grs);
+  gamma:=EdgeOrbitsGraph(Grp,fedg,sum);
+  gamma:=UnderlyingGraph(gamma);
+
+
+  return NewGroupGraph(AutomorphismGroup(gamma),gamma);
+end );
+
+#############################################################################
+##
+#F  SimsGerwitzGraph(  )
+##  
+InstallGlobalFunction( SimsGerwitzGraph, 
+function(  )
+  local gamma;
+  gamma := HigmanSimsGraph();
+  gamma := DistanceSetInduced(gamma,[2],[1,2]);
+
+  return NewGroupGraph(AutomorphismGroup(gamma),gamma);
+end );
+
+#############################################################################
+##
 #E

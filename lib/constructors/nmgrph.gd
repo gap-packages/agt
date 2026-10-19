@@ -500,8 +500,8 @@ DeclareGlobalFunction( "CubeGraph" );
 ##  <M>\{3, 2, 2; 1, 1, 3\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> HeawoodGraph().order;
+##14
 ##      ]]>
 ##    </Example>
 ##  </Description>
