@@ -165,5 +165,28 @@ gap> MultiplicativeSymplecticCoverGraph(IsVectorGraph and FullAutomorphismGroup,
 gap> MultiplicativeSymplecticCoverGraph(FullAutomorphismGroup,3,2).order;
 4
 
+# Usage errors
+gap> AdditiveSymplecticCoverGraph(1,1,1,1,1,1,1);
+Error, usage: AdditiveSymplecticCoverGraph( [<filter>, ]{<int>, <int>[, <int>]\
+ |<graph>, <int> })
+gap> BrouwerGraph(1,1,1,1,1,1,1);
+Error, usage: BrouwerGraph( [<filter>, ]<int> )
+gap> DoobGraph(1,1,1,1,1,1,1);
+Error, usage: DoobGraph( [<filter>, ]<int>, <int> )
+gap> FoldedCubeGraph(1,1,1,1,1,1,1);
+Error, usage: FoldedCubeGraph( [<filter>, ]<int> )
+gap> FoldedHalvedCubeGraph(1,1,1,1,1,1,1);
+Error, usage: FoldedHalvedCubeGraph( [<filter>, ]<int> )
+gap> HalvedCubeGraph2(1,1,1,1,1,1,1);
+Error, usage: HalvedCubeGraph2( [<filter>, ]<int> )
+gap> HammingGraph2(1,1,1,1,1,1,1);
+Error, usage: HammingGraph( [<filter>, ]<int>, <int> )
+gap> HypercubeGraph2(1,1,1,1,1,1,1);
+Error, usage: HypercubeGraph2( [<filter>, ]<int> )
+gap> MultiplicativeSymplecticCoverGraph(1,1,1,1,1,1,1);
+Error, usage: MultiplicativeSymplecticCoverGraph( [<filter>, ]<int>, <int> )
+gap> PasechnikGraph(1,1,1,1,1,1,1);
+Error, usage: PasechnikGraph( [<filter>, ]<int> )
+
 # End test
 gap> STOP_TEST("AGT package: vctgrph.tst",0);  

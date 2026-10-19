@@ -224,5 +224,21 @@ fail
 gap> HalvedGraph(CycleGraph2(8),2).order;
 4
 
+# Usage errors
+gap> AntipodalQuotientGraph(1,1,1,1,1,1,1);
+Error, usage: AntipodalQuotientGraph( [<filter>, ]<graph> )
+gap> BoxPowerGraph(1,1,1,1,1,1,1);
+Error, usage: BoxPowerGraph( [<filter>, ]<graph>, <int> )
+gap> CrossPowerGraph(1,1,1,1,1,1,1);
+Error, usage: CrossPowerGraph( [<filter>, ]<graph>, <int> )
+gap> ExtendedBipartiteDoubleGraph(1,1,1,1,1,1,1);
+Error, usage: ExtendedBipartiteDoubleGraph( [<filter>, ]<graph> )
+gap> PowerGraph(1,1,1,1,1,1,1);
+Error, usage: PowerGraph( [<filter>, ]<graph>, <int>, <func> )
+gap> ProductGraph(1,1,1,1,1,1,1);
+Error, usage: ProductGraph( [<filter>, ]<graphs>, <func> )
+gap> StrongPowerGraph(1,1,1,1,1,1,1);
+Error, usage: StrongPowerGraph( [<filter>, ]<graph>, <int> )
+
 # End test
 gap> STOP_TEST("AGT package: gencon.tst",0);  

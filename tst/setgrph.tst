@@ -106,5 +106,17 @@ gap> ChangGraph(IsSetGraph and FullAutomorphismGroup,1).order;
 gap> ChangGraph(FullAutomorphismGroup,1).order;
 28
 
+# Usage errors
+gap> ChangGraph(1,1,1,1,1,1,1);
+Error, usage: ChangGraph( [<filter>, ]<int> )
+gap> DoubledOddGraph(1,1,1,1,1,1,1);
+Error, usage: DoubledOddGraph( [<filter>, ]<int> )
+gap> FoldedJohnsonGraph(1,1,1,1,1,1,1);
+Error, usage: FoldedJohnsonGraph( [<filter>, ]<int> )
+gap> KneserGraph2(1,1,1,1,1,1,1);
+Error, usage: KneserGraph( [<filter>, ]<int>, <int>[, <bool>] )
+gap> OddGraph2(1,1,1,1,1,1,1);
+Error, usage: OddGraph2( [<filter>, ]<int> )
+
 # End test
 gap> STOP_TEST("AGT package: setgrph.tst",0);  

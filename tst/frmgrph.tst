@@ -31,5 +31,11 @@ gap> BilinearFormsGraph(FullAutomorphismGroup,2,2,2).order;
 gap> HermiteanFormsGraph(IsFormsGraph,2,3).order;
 81
 
+# Usage errors
+gap> BilinearFormsGraph(1,1,1,1,1,1,1);
+Error, usage: BilinearFormsGraph( [<filter>, ]<int>, <int>, <int> )
+gap> HermiteanFormsGraph(1,1,1,1,1,1,1);
+Error, usage: HermiteanFormsGraph( [<filter>, ]<int>, <int> )
+
 # End test
 gap> STOP_TEST("AGT package: frmgrph.tst",0);  

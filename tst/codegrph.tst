@@ -48,5 +48,17 @@ gap> PreparataGraph(IsCodeGraph and FullAutomorphismGroup,1,2).order;
 gap> PreparataGraph(FullAutomorphismGroup,1,2).order;
 8
 
+# Quotients
+gap> PreparataGraph(2,2,1).order;
+64
+gap> PreparataGraph(2,2,2).order;
+32
+gap> PreparataGraph(PreparataGraph(2,2),1).order;
+64
+
+# Usage errors
+gap> PreparataGraph(1,1,1,1,1,1,1);
+Error, usage: PreparataGraph( [<filter>, ]{<int>, <int>|<graph>}[, <int>] )
+
 # End test
 gap> STOP_TEST("AGT package: codegrph.tst",0);  

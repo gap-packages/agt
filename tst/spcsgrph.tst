@@ -119,5 +119,35 @@ gap> DoroGraph(IsSpacesGraph and FullAutomorphismGroup,2).order;
 gap> DoroGraph(FullAutomorphismGroup,2).order;
 10
 
+# Usage errors
+gap> DoroGraph(1,1,1,1,1,1,1);
+Error, usage: DoroGraph( [<filter>, ]<int> )
+gap> DoubledGrassmannGraph(1,1,1,1,1,1,1);
+Error, usage: DoubledGrassmannGraph( [<filter>, ]<int>, <int> )
+gap> DualPolarGraph2A(1,1,1,1,1,1,1);
+Error, usage: DualPolarGraph2A( [<filter>, ]<int>, <int> )
+gap> DualPolarGraph2D(1,1,1,1,1,1,1);
+Error, usage: DualPolarGraph2D( [<filter>, ]<int>, <int> )
+gap> DualPolarGraphB(1,1,1,1,1,1,1);
+Error, usage: DualPolarGraphB( [<filter>, ]<int>, <int> )
+gap> DualPolarGraphC(1,1,1,1,1,1,1);
+Error, usage: DualPolarGraphC( [<filter>, ]<int>, <int> )
+gap> DualPolarGraphD(1,1,1,1,1,1,1);
+Error, usage: DualPolarGraphD( [<filter>, ]<int>, <int> )
+gap> GrassmannGraph(1,1,1,1,1,1,1);
+Error, usage: GrassmannGraph( [<filter>, ]<int>, <int>, <int> )
+gap> PolarGraphNOorth(1,1,1,1,1,1,1);
+Error, usage: PolarGraphNOorth( [<filter>, ]<int>, <int>, <int> )
+gap> PolarGraphO(1,1,1,1,1,1,1);
+Error, usage: PolarGraphO( [<filter>, ][<int>, ]<int>, <int> )
+gap> PolarGraphSp(1,1,1,1,1,1,1);
+Error, usage: PolarGraphSp( [<filter>, ]<int>, <int> )
+gap> PolarGraphU(1,1,1,1,1,1,1);
+Error, usage: PolarGraphU( [<filter>, ]<int>, <int> )
+gap> TwistedGrassmannGraph(1,1,1,1,1,1,1);
+Error, usage: TwistedGrassmannGraph( [<filter>, ]<int>, <int> )
+gap> UnitaryNonisotropicsGraph(1,1,1,1,1,1,1);
+Error, usage: UnitaryNonisotropicsGraph( [<filter>, ]<int> )
+
 # End test
 gap> STOP_TEST("AGT package: spcsgrph.tst",0);  

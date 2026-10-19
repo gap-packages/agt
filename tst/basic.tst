@@ -93,5 +93,13 @@ gap> CompleteMultipartiteGraph(IsObject,3,2).order;
 gap> HaarGraph2(5,[1,2]).order;
 10
 
+# Usage errors
+gap> CompleteMultipartiteGraph(1,1,1,1,1,1,1);
+Error, usage: CompleteMultipartiteGraph( [<filter>, ]{<list> |<int>, <int> })
+gap> HaarGraph2(1,1,1,1,1,1,1);
+Error, usage: HaarGraph( <integer>[, <list> ])
+gap> LatinSquareGraph(1,1,1,1,1,1,1);
+Error, usage: LatinSquareGraph( [<filter>, ]{<mat>|<grp>}[, <bool>] )
+
 # End test
 gap> STOP_TEST("AGT package: basic.tst",0);  
