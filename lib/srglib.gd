@@ -8,7 +8,6 @@
 ##  Declaration file for functions involving strongly regular graphs.
 ##
 
-
 #############################################################################
 ##
 #F  ComplementSRGParameters( <parms> )
@@ -768,7 +767,6 @@ DeclareGlobalFunction( "IsKnownSRGParameterTuple" );
 ##
 DeclareGlobalFunction( "IsAllSRGsStored" );
 
-
 #############################################################################
 ##
 #F  DisjointUnionOfCliques( <n1> , <n2>, ... )
@@ -797,183 +795,6 @@ DeclareGlobalFunction( "IsAllSRGsStored" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "DisjointUnionOfCliques" );
-
-#############################################################################
-##
-#F  CompleteMultipartiteGraph( <n1> , <n2>, ... )
-##  
-##  <#GAPDoc Label="CompleteMultipartiteGraph">
-##  <ManSection>
-##  <Func Name="CompleteMultipartiteGraph"
-##   Arg='n1, n2, ... '/>
-##  <Returns>A record.</Returns>
-##
-##  <Description>
-##  Given positive integers <A>n1, n2,...</A>, this function returns the complete multipartite
-##  graph with parts of orders <A>n1, n2,...</A>. 
-##  <P/>
-##  Let <M>n_{1},n_{2},\dots,n_{t}</M> be positive integers. Then the <E>complete
-##  multipartite graph</E>, <M>K_{n_{1},n_{2},\dots,n_{t}}</M>, has vertex set that
-##  can be partitioned into <M>t</M> disjoint sets <M>X_{1},X_{2},\dots,X_{t}</M> of sizes <M>n_{1},n_{2},\dots,n_{t}</M>
-##  such that distinct vertices are adjacent if and only if they belong to different
-##  <M>X_{i}</M>.
-##    <Example>
-##      <![CDATA[
-##gap> CompleteMultipartiteGraph(4,2,1);
-##rec( adjacencies := [ [ 5, 6, 7 ], [ 1, 2, 3, 4, 7 ], [ 1, 2, 3, 4, 5, 6 ] ], 
-##  autGroup := Group([ (5,6), (3,4), (2,3), (1,2) ]), group := Group([ (5,6),
-##    (3,4), (2,3), (1,2) ]), isGraph := true, isSimple := true, order := 7, 
-##  representatives := [ 1, 5, 7 ], 
-##  schreierVector := [ -1, 4, 3, 2, -2, 1, -3 ] )
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "CompleteMultipartiteGraph" );
-
-#############################################################################
-##
-#F  TriangularGraph( <n> )
-##  
-##  <#GAPDoc Label="TriangularGraph">
-##  <ManSection>
-##  <Func Name="TriangularGraph"
-##   Arg='n'/>
-##  <Returns>A record.</Returns>
-##
-##  <Description>
-##  Given an integer <A>n</A>, where <M><A>n</A>\geq 3</M>, this function 
-##  returns the triangular graph on <A>n</A> points.
-##  <P/>
-##  Let <M>n</M> be an integer, where <M>n\geq 3</M>. The <E>triangular graph</E>
-##  , <M>T(n)</M>, has vertex set consisting of the subsets of <M>\{1,2,...,n\}</M> 
-##  of size <M>2</M>, and two distinct vertices <M>A,B</M> are joined by an edge
-##  precisely when <M>|A\cap B|=1</M>. 
-##  <P/>
-##  The graph <M>T(n)</M> is strongly regular with parameters <M>({n \choose 2},2(n-2),n-2,4)</M>.
-##  For <M>n\not= 8</M>, <M>T(n)</M> is the unique strongly regular graph with its
-##  parameters. There are four pairwise non-isomomorphic strongly regular graphs that have the same
-##  parameters as <M>T(8)</M>, which are the triangular graph <M>T(8)</M> and the
-##  <E>Chang graphs</E> (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>).
-##  
-##    <Example>
-##      <![CDATA[
-##gap> TriangularGraph(7); 
-##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ] ], 
-##  group := Group([ (1,7,12,16,19,21,6)(2,8,13,17,20,5,11)(3,9,14,18,4,10,15),
-##    (2,7)(3,8)(4,9)(5,10)(6,11) ]), isGraph := true, isSimple := true, 
-##  names := [ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [ 1, 7 ], 
-##      [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 2, 7 ], [ 3, 4 ], [ 3, 5 ], 
-##      [ 3, 6 ], [ 3, 7 ], [ 4, 5 ], [ 4, 6 ], [ 4, 7 ], [ 5, 6 ], [ 5, 7 ], 
-##      [ 6, 7 ] ], order := 21, representatives := [ 1 ], 
-##  schreierVector := [ -1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 
-##      1, 1, 1 ] )
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "TriangularGraph" );
-
-#############################################################################
-##
-#F  SquareLatticeGraph( <n> )
-##  
-##  <#GAPDoc Label="SquareLatticeGraph">
-##  <ManSection>
-##  <Func Name="SquareLatticeGraph"
-##   Arg='n'/>
-##  <Returns>A record.</Returns>
-##
-##  <Description>
-##  Given an integer <A>n</A>, where <M><A>n</A>\geq 2</M>, this function 
-##  returns the square lattice graph on <M>n^{2}</M> points.
-##  <P/>
-##  Let <M>n</M> be an integer, where <M>n\geq 2</M>. The <E>square lattice
-##  graph</E>, <M>L_{2}(n)</M>, has vertex set <M>\{1,2,...,n\}\times\{1,2,...,n\}</M>, and two 
-##  distinct vertices are joined by an edge precisely when they have the same 
-##  value at one coordinate. 
-##  <P/>
-##  The graph <M>L_{2}(n)</M> is strongly regular with parameters <M>(n^{2},2(n-1),n-2,2)</M>.
-##  For <M>n\not= 4</M>, <M>L_{2}(n)</M> is the unique strongly regular graph with its
-##  parameters. There are two pairwise non-isomomorphic strongly regular graphs that have the same
-##  parameters as <M>L_{2}(4)</M>, which are the square lattice graph graph <M>L_{2}(4)</M> and the
-##  <E>Shrikhande graph</E> (see <Cite Key="S_1959b"/>).
-##   <Example>
-##      <![CDATA[
-##gap> SquareLatticeGraph(6);
-##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 13, 19, 25, 31 ] ], 
-##  group := <permutation group with 5 generators>, isGraph := true, 
-##  names := [ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], 
-##      [ 2, 1 ], [ 2, 2 ], [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 3, 1 ], 
-##      [ 3, 2 ], [ 3, 3 ], [ 3, 4 ], [ 3, 5 ], [ 3, 6 ], [ 4, 1 ], [ 4, 2 ], 
-##      [ 4, 3 ], [ 4, 4 ], [ 4, 5 ], [ 4, 6 ], [ 5, 1 ], [ 5, 2 ], [ 5, 3 ], 
-##      [ 5, 4 ], [ 5, 5 ], [ 5, 6 ], [ 6, 1 ], [ 6, 2 ], [ 6, 3 ], [ 6, 4 ], 
-##      [ 6, 5 ], [ 6, 6 ] ], order := 36, representatives := [ 1 ], 
-##  schreierVector := [ -1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 
-##      1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3 ] )
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "SquareLatticeGraph" );
-
-#############################################################################
-##
-#F  HoffmanSingletonGraph(  )
-##  
-##  <#GAPDoc Label="HoffmanSingletonGraph">
-##  <ManSection>
-##  <Func Name="HoffmanSingletonGraph"
-##   Arg=''/>
-##  <Returns>A record.</Returns>
-##
-##  <Description>
-##  This function returns the Hoffman-Singleton graph.
-##  <P/>
-##  The <E>Hoffman-Singleton graph</E> is the unique strongly regular graph with
-##  parameters <M>(50,7,0,1)</M>. For more information on this graph, see <Cite Key="B_2018b"/>. 
-##    <Example>
-##      <![CDATA[
-##gap> gamma:=HoffmanSingletonGraph();;
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "HoffmanSingletonGraph" );
-
-#############################################################################
-##
-#F  HigmanSimsGraph(  )
-##  
-##  <#GAPDoc Label="HigmanSimsGraph">
-##  <ManSection>
-##  <Func Name="HigmanSimsGraph"
-##   Arg=''/>
-##  <Returns>A record.</Returns>
-##
-##  <Description>
-##  This function returns the Higman-Sims graph.
-##  <P/>
-##  The <E>Higman-Sims graph</E> is the unique strongly regular graph with
-##  parameters <M>(100,22,0,6)</M>. For more information on this graph, see <Cite Key="B_2018b"/>. 
-##    <Example>
-##      <![CDATA[
-##gap> gamma:=HigmanSimsGraph();;
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "HigmanSimsGraph" );
 
 #############################################################################
 ##

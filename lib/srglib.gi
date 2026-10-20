@@ -458,7 +458,6 @@ function( parms )
 
 end );
 
-
 #############################################################################
 ##
 #F  DisjointUnionOfCliques( <n1> , <n2>, ... )
@@ -488,131 +487,6 @@ function( arg... )
   gamma:=EdgeOrbitsGraph(Grp,fedg,sum);
   gamma:=UnderlyingGraph(gamma);
 
-
-  return NewGroupGraph(AutomorphismGroup(gamma),gamma);
-end );
-
-#############################################################################
-##
-#F  CompleteMultipartiteGraph( <n1> , <n2> , ... )
-##  
-InstallGlobalFunction( CompleteMultipartiteGraph, 
-function( arg... )
-  local   sum, Grs, Grp,  i, fvtx, comb, gamma;
-
-  if not ForAll(arg,IsPosInt) then
-    Error("usage: CompleteMultipartiteGraph(<n1>,<n2>,...), where \n\
-          <n1>,<n2>,... are positive integers.");
-  fi;
-
-  sum := 0;
-  Grs := [];
-  fvtx := [];
-
-  for i in arg do
-    sum := sum + i;
-    Add(fvtx,sum-i+1);
-    Add(Grs,SymmetricGroup([sum-i+1..sum]));
-  od;      
-
-  comb:=Combinations(fvtx,2);
-  Grp:=DirectProduct(Grs);
-  gamma:=EdgeOrbitsGraph(Grp,comb,sum);
-  gamma:=UnderlyingGraph(gamma);
-
-  return NewGroupGraph(AutomorphismGroup(gamma),gamma);
-end );
-
-#############################################################################
-##
-#F  TriangularGraph( <n> )
-##  
-InstallGlobalFunction( TriangularGraph, 
-function( n )
-  if not (IsPosInt(n) and n>2) then
-    Error("usage: TriangularGraph(<n>), where \n\
-          <n> is a positive integer of size at least 2.");
-  fi;
-
-  return JohnsonGraph(n,2);
-end );
-
-#############################################################################
-##
-#F  SquareLatticeGraph( <n> )
-##  
-InstallGlobalFunction( SquareLatticeGraph, 
-function( n )   
-  if not (IsPosInt(n) and n>1) then
-    Error("usage: SquareLatticeGraph(<n>), where \n\
-                  <n> is a positive integer of size at least 1.");
-  fi;
-
-  return HammingGraph(2,n);
-end );
-
-#############################################################################
-##
-#F  HoffmanSingletonGraph(  )
-##  
-InstallGlobalFunction( HoffmanSingletonGraph, 
-function(  )
-  local G, cyrng, cyflip, permlist, edgelist, gamma, i,j,h,hi,hij;
-
-  permlist := [];
-  edgelist:=[];
-
-  # Create initial groups to add multiple edges as orbit members
-  for i in [0..9] do
-    cyrng := (5*i+1,5*i+2,5*i+3,5*i+4,5*i+5);
-    Add(permlist,cyrng);
-  od;
-
-  # Add edge. We have 5 5-cycles and then 5 pentagrams
-  for i in [0..4] do
-    Append(edgelist,[[5*i+1,5*i+2],[5*i+2,5*i+1]]);
-    Append(edgelist,[25+[5*i+1,5*i+3],25+[5*i+3,5*i+1]]);
-  od;
-
-  G := Group(permlist);
-  gamma := EdgeOrbitsGraph(G,edgelist,50);
-
-  # Get rid of the group as it may not consist of automorphisms of 
-  # the complete graph
-  gamma := NewGroupGraph(Group(()),gamma);
-  
-
-  # Adding edges as described by Brouwer
-  for h in [1..5] do
-    for i in [1..5] do 
-      hi := h*i;
-      for j in [1..5] do
-        hij := ((hi+j) mod 5)+1 ;
-        AddEdgeOrbit(gamma,[5*(h-1)+j,20+5*i+hij]);
-        AddEdgeOrbit(gamma,[20+5*i+hij,5*(h-1)+j]);
-      od;
-    od;
-  od;  
-
-  return NewGroupGraph(AutomorphismGroup(gamma),gamma);
-end );
-
-#############################################################################
-##
-#F  HigmanSimsGraph(  )
-##  
-InstallGlobalFunction( HigmanSimsGraph, 
-function(  )
-  local gamma, cocliqs;
-
-  gamma := HoffmanSingletonGraph();
-  gamma := ComplementGraph(gamma);
-  gamma := NewGroupGraph(Group(()),gamma);
-
-  cocliqs := CompleteSubgraphsOfGivenSize(gamma,15,2,false);
-
-  gamma := Graph(Group(()),cocliqs,OnSets,
-               function(x,y) return Length(Intersection(x,y)) in [0,8]; end);
 
   return NewGroupGraph(AutomorphismGroup(gamma),gamma);
 end );

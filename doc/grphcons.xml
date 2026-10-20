@@ -1,0 +1,373 @@
+<Chapter Label="grphcons">
+<Heading>Graph constructors</Heading>
+
+In this chapter we give functions which return various graphs found in the 
+literature. Many of the graphs made available here are from well-known or 
+general constructions. For the functions which construct strongly regular and 
+distance-regular graphs, the definitions and notation are often based on the 
+books of Brouwer, Cohen and Neumaier <Cite Key="BCN_1989"/> and Brouwer and 
+Van Maldeghem <Cite Key="BV_2022"/>. 
+<P/>
+Before using one of these functions, you may need to consider the size of the 
+graph you are trying to construct. The &AGT; package does not impose
+any restrictions on the size of a graph it will attempt to construct, so the 
+user can try to construct graphs on hundreds or thousands of vertices. However, 
+trying to construct such a graph will take a large amount of time, and will 
+often cause a system error. 
+<P/>
+<Ref BookName="GRAPE" Sect="Grape"/>
+The graph constructors in the &AGT; package are designed to use the known 
+symmetries of a graph to construct and represent the resulting graphs in a 
+compact manner in &GRAPE; format (also, see 
+<Ref Sect="Vertex naming and automorphisms"/>). It is a good idea to remind 
+yourself on how interrupt (usually Ctrl-C) and terminate (usually Ctrl-Z) a
+&GAP; session before using these constructors.
+
+
+<Section Label="Vertex naming and automorphisms">
+<Heading>Vertex naming and automorphisms</Heading>
+
+The &AGT; package is designed to investigate and manipulate graphs in &GRAPE;
+format. When graphs are constructed in this format, useful information on the
+structure and properties of the graph is stored as record entries. Here, we 
+describe how two of these entries are constructed by functions in the &AGT; 
+package: the vertex names and group of automorphisms entries. 
+<P/>
+For many of the constructors found in this chapter, there is an optional 
+argument which affects the information used and stored in the graph it 
+constructs. Here, we list these options and describe how they affect the 
+resulting graph.
+
+<#Include Label="NoVertexNames">
+
+<#Include Label="FullAutomorphismGroup">
+
+<Subsection Label="The invariant vertex-set option of Graph">
+<Heading>The invariant vertex-set option of <C>Graph</C></Heading>
+
+Another option in some of the graph constructors is made available through the 
+optional argument <A>invt</A>. In this case, the function will use the function 
+<C>Graph</C> from the &GRAPE; package to construct the graph. Please see 
+<Ref BookName="GRAPE" Label="Graph"/> for information on the arguments and use 
+of this function.
+<P/>
+When the argument <A>invt</A> exists, it should take value <K>true</K> or 
+<K>false</K>. If it takes the value <K>true</K>, the function will first 
+construct the full vertex-set of the graph, and then construct the graph using 
+the function <C>Graph</C> with the optional argument <C>invt=true</C>. 
+Otherwise, the function will use a subset of the vertex-set and 
+<C>invt=false</C> when using the function <C>Graph</C>. 
+
+</Subsection>
+
+<P/>
+TODO: Describe 
+        - Is:type:Graph (may not affect functions)
+        - Additional info: .primality, .duality, .halfPrimality, .halfDuality
+        
+This will make function entries less convoluted.
+<P/>
+definitions to include:
+  where <M>C(n,k)</M> denotes the binomial coefficient for <M>a \geq b </M>
+  Type of nondegenerate quadratic forms etc
+  gaussian coefficient G(n,k)
+
+
+</Section>
+
+<Section Label="General constructions">
+<Heading>General constructions</Heading>
+
+In this section, we introduce functions which construct graphs that have 
+well-known and general definitions. These include graphs constructed from graph
+operations like taking products, joins, bipartite doubles and antipodal 
+quotients. 
+
+<#Include Label="AdjFunGraph">
+
+<#Include Label="ProductGraph">
+
+<#Include Label="PowerGraph">
+
+<#Include Label="BoxProductGraph">
+
+<#Include Label="BoxPowerGraph">
+
+<#Include Label="CrossProductGraph">
+
+<#Include Label="CrossPowerGraph">
+
+<#Include Label="StrongProductGraph">
+
+<#Include Label="StrongPowerGraph">
+
+<#Include Label="GraphJoin">
+
+<#Include Label="BipartiteDoubleGraph">
+
+<#Include Label="ExtendedBipartiteDoubleGraph">
+
+<#Include Label="HalvedGraph">
+
+<#Include Label="AntipodalQuotientGraph">
+
+<#Include Label="SubspaceGraph">
+
+<#Include Label="CliqueGraph">
+
+<#Include Label="AGT_IncidenceGraph">
+
+
+</Section>
+
+<Section Label="Basic constructions">
+<Heading>Basic constructions</Heading>
+
+In this section, each function constructs a graph for which each vertex is a 
+relatively simple object in &GAP;. These include complete multipartite, Paley 
+and Latin square graphs. 
+
+
+<#Include Label="CompleteMultipartiteGraph">
+
+<#Include Label="CycleGraph">
+
+<#Include Label="CocktailPartyGraph">
+
+<#Include Label="PaleyGraph">
+
+<#Include Label="LatinSquareGraph">
+
+<#Include Label="CompleteTaylorGraph">
+
+<#Include Label="HaarGraph">
+
+</Section>
+
+<Section Label="Subset constructions">
+<Heading>Subset constructions</Heading>
+
+In this section, each function constructs a graph for which each vertex is a 
+subset of a finite set (for example, the Kneser and Odd graphs). 
+
+<#Include Label="KneserGraph">
+
+<#Include Label="OddGraph">
+
+<#Include Label="DoubledOddGraph">
+
+<#Include Label="TriangularGraph">
+
+<#Include Label="FoldedJohnsonGraph">
+
+<#Include Label="ChangGraph">
+
+</Section>
+
+<Section Label="Vector constructions">
+<Heading>Vector constructions</Heading>
+
+In this section, each function constructs a graph for which each vertex is a
+tuple defined over a finite set(s) or a vector lying in a finite vector space 
+(for example, the Hamming and Affine polar graphs). 
+<P/>
+TODO: add definition of e
+
+<#Include Label="HammingGraph2">
+
+<#Include Label="SquareLatticeGraph">
+
+<#Include Label="HypercubeGraph">
+
+<#Include Label="DoobGraph">
+
+<#Include Label="HalvedCubeGraph">
+
+<#Include Label="FoldedCubeGraph">
+
+<#Include Label="FoldedHalvedCubeGraph">
+
+<#Include Label="BrouwerGraph">
+
+<#Include Label="PasechnikGraph">
+
+<#Include Label="AdditiveSymplecticCoverGraph">
+
+<#Include Label="MultiplicativeSymplecticCoverGraph">
+
+<#Include Label="AffinePolarGraphVO">
+
+<#Include Label="AffinePolarGraphVNO">
+
+</Section>
+
+<Section Label="Bilinear form constructions">
+<Heading>Bilinear form constructions</Heading>
+
+In this section, each function constructs a graph for which each vertex is a 
+matrix defined over a finite field, and considered as certain sesquilinear 
+forms. 
+
+<#Include Label="BilinearFormsGraph">
+
+<#Include Label="HermiteanFormsGraph">
+
+</Section>
+
+<Section Label="Subspace constructions">
+<Heading>Subspace constructions</Heading>
+
+In this section, each function constructs a graph for which each vertex is a 
+subspace in a finite vector space (for example, the Grassmann and polar graphs). 
+
+<#Include Label="GrassmannGraph">
+
+<#Include Label="DoubledGrassmannGraph">
+
+<#Include Label="TwistedGrassmannGraph">
+
+<#Include Label="PolarGraphO">
+
+<#Include Label="PolarGraphNOorth">
+
+<#Include Label="PolarGraphSp">
+
+<#Include Label="PolarGraphU">
+
+<#Include Label="DualPolarGraphB">
+
+<#Include Label="DualPolarGraphC">
+
+<#Include Label="DualPolarGraphD">
+
+<#Include Label="DualPolarGraph2D">
+
+<#Include Label="DualPolarGraph2A">
+
+<#Include Label="DoroGraph">
+
+<#Include Label="UnitaryNonisotropicsGraph">
+
+</Section>
+
+<Section Label="Code constructions">
+<Heading>Code constructions</Heading>
+
+In this section, each function constructs a graph related to a certain code (for
+ example, the Preparata and Kasami graphs). 
+
+
+<#Include Label="PreparataGraph">
+
+<#Include Label="KasamiGraph">
+
+<#Include Label="ExtendedKasamiGraph">
+
+<#Include Label="QuadraticKasamiGraph">
+
+<#Include Label="ExtendedQuadraticKasamiGraph">
+
+</Section>
+
+<Section Label="Geometry constructions">
+<Heading>Geometry constructions</Heading>
+
+In this section, each function constructs a graph related to a certain object 
+from finite geometry (for example, incidence graphs of the Desarguesian plane 
+and generalized quadrangles). 
+
+<#Include Label="DesarguesianPlaneIncidenceGraph">
+
+<#Include Label="HallPlaneIncidenceGraph">
+
+<#Include Label="HughesPlaneIncidenceGraph">
+
+<#Include Label="GeneralizedQuadrangleQ">
+
+<#Include Label="GeneralizedQuadrangleH">
+
+<#Include Label="GeneralizedQuadrangleW">
+
+<#Include Label="GeneralizedQuadrangleT">
+
+<#Include Label="GeneralizedQuadrangleTstar">
+
+<#Include Label="GeneralizedQuadrangleP">
+
+<#Include Label="GeneralizedQuadrangleAS">
+
+
+</Section>
+
+<Section Label="Named constructions">
+<Heading>Named constructions</Heading>
+
+In this section, each function constructs a graph which has a specific name. 
+These graphs are often thought of as sporadic because they have some unique 
+mathematical property (for example, the Hoffman-Singleton and Biggs-Smith 
+graphs). 
+
+<#Include Label="TetrahedronGraph">
+
+<#Include Label="OctahedronGraph">
+
+<#Include Label="PetersenGraph2">
+
+<#Include Label="ShrikhandeGraph">
+
+<#Include Label="ClebschGraph">
+
+<#Include Label="SchlaefliGraph">
+
+<#Include Label="HoffmanSingletonGraph">
+
+<#Include Label="GewirtzGraph">
+
+<#Include Label="WittStronglyRegularGraph">
+
+<#Include Label="HigmanSimsGraph">
+
+<#Include Label="KlinGraph">
+
+<#Include Label="McLaughlinGraph">
+
+<#Include Label="CubeGraph">
+
+<#Include Label="HeawoodGraph">
+
+<#Include Label="IcosahedronGraph">
+
+<#Include Label="SylvesterGraph">
+
+<#Include Label="PerkelGraph">
+
+<#Include Label="GossetGraph">
+
+<#Include Label="Witt23Graph">
+
+<#Include Label="Witt24Graph">
+
+<#Include Label="HigmanGraph">
+
+<#Include Label="CoxeterGraph">
+
+<#Include Label="Witt22Graph">
+
+<#Include Label="UnitalGraph">
+
+<#Include Label="DodecahedronGraph">
+
+<#Include Label="DesarguesGraph">
+
+<#Include Label="BiggsSmithGraph">
+
+</Section>
+
+<Section Label="Constructions from other packages">
+<Heading>Constructions from other packages</Heading>
+
+TODO: could list graph constructor functions from other packages
+
+</Section>
+
+</Chapter>

@@ -570,9 +570,9 @@ DeclareGlobalFunction( "RegularSetParameters" );
 ##  </List>
 ##    <Example>
 ##      <![CDATA[
-##gap> IsRegularSet(HoffmanSingletonGraph(),[11..50],false);
+##gap> IsRegularSet(HoffmanSingletonGraph(),[1..49],false);
 ##true
-##gap> IsRegularSet(HoffmanSingletonGraph(),[11..50],true); 
+##gap> IsRegularSet(HoffmanSingletonGraph(),[1..49],true); 
 ##false
 ##      ]]>
 ##    </Example>

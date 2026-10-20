@@ -28,7 +28,7 @@ gap> HoffmanCliqueBound(parms);
 6
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regsubs.gd", 136, 143 ]    
-gap> HaemersRegularUpperBound(SimsGerwitzGraph(),3);
+gap> HaemersRegularUpperBound(GewirtzGraph(),3);
 28
 gap> HaemersRegularUpperBound([56,10,0,2],0);       
 16
@@ -82,9 +82,9 @@ gap> RegularSetParameters(SquareLatticeGraph(5),[1,6,11,16,21]);
 [ 4, 1 ]
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regsubs.gd", 573, 580 ]    
-gap> IsRegularSet(HoffmanSingletonGraph(),[11..50],false);
+gap> IsRegularSet(HoffmanSingletonGraph(),[1..49],false);
 true
-gap> IsRegularSet(HoffmanSingletonGraph(),[11..50],true); 
+gap> IsRegularSet(HoffmanSingletonGraph(),[1..49],true);
 false
 
 # [ "/usr/share/gap-4.10.2/pkg/agt/doc/../lib/regsubs.gd", 616, 621 ]

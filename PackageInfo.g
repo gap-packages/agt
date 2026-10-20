@@ -45,9 +45,17 @@ SetPackageInfo( rec(
       LastName := "Evans",
       WWWHome := "https://rhysje00.github.io/",
       Email := "rhysjevans00@gmail.com",
-      PostalAddress := "Mile End Road, London, E14NS",
-      Place := "London",
-      Institution := "School of Mathematical Sciences, Queen Mary University of London",
+      Place := "Sydney",
+      Institution := "School of Mathematics and Statistics, The University of Sydney, Sydney, NSW, Australia",
+    ),
+
+    rec(
+      LastName := "Vidali",
+      FirstNames := "Janoš",
+      IsAuthor := false,
+      IsMaintainer := false,
+      Email := "janos.vidali@fmf.uni-lj.si",
+      WWWHome := "http://lkrv.fri.uni-lj.si/~janos/",
     ),
   ],
 

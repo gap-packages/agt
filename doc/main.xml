@@ -2,7 +2,13 @@
 
 <!DOCTYPE Book SYSTEM "gapdoc.dtd"
    [ <!ENTITY AGT "<Package>AGT</Package>">
-     <!ENTITY Grape "<Package>Grape</Package>">
+     <!ENTITY GRAPE "<Package>GRAPE</Package>">
+     <!ENTITY neq 
+      "<Alt Only='Text'>{&lt;&gt;}</Alt><Alt Not='Text'>\not=</Alt>">
+     <!ENTITY Jbar 
+      "<Alt Only='Text'>Jbar</Alt><Alt Not='Text'>\overline{J}</Alt>">
+     <!ENTITY Kbar 
+      "<Alt Only='Text'>Kbar</Alt><Alt Not='Text'>\overline{K}</Alt>">       
      <#Include Label="PKGVERSIONDATA">
    ]>
 
@@ -20,6 +26,8 @@
     <Copyright> 
     <Index>License</Index>
     &copyright; 2020 by Rhys J. Evans <P/>
+    The graph constructors of Chapter <Ref Chap="grphcons"/> are
+    &copyright; 2020 by Janoš Vidali. <P/>
     The &AGT; package is free software: you can redistribute it and/or modify
     it under the terms of the 
     <URL Text="GNU General Public License">https://www.fsf.org/licenses/gpl.html</URL>
@@ -28,7 +36,9 @@
   </Copyright>
   <Acknowledgements>
     I would like to thank Leonard Soicher for his continued support throughout the development
-    of this package.
+    of this package. The graph constructors were written by Janoš Vidali
+    (<URL>https://github.com/jaanos/gap-graphs</URL>) and incorporated into this package;
+    I am grateful for his contribution.
   </Acknowledgements>
 </TitlePage>
 
@@ -45,6 +55,9 @@
 <#Include SYSTEM "regsub.xml">
 
 <#Include SYSTEM "srglib.xml">
+
+<#Include SYSTEM "grphcons.xml">
+
 
 </Body>
 

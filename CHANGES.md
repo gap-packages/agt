@@ -4,6 +4,14 @@ Copyright (C) 2020 by Rhys J. Evans.
 
 Licensing information can be found in the LICENSE file.
 
+## Unreleased
+
+Added a library of graph constructors by Janoš Vidali, with documentation and tests.
+The constructors `CompleteMultipartiteGraph`, `TriangularGraph`, `SquareLatticeGraph`, 
+`HoffmanSingletonGraph` and `HigmanSimsGraph` have moved from the SRG library to this library.
+To avoid clashes with GRAPE and Digraphs, some constructors have been renamed, 
+such as `HammingGraph2`.
+
 ## 0.3.1 (2022-12-31)
 
 Fixed tarball symlink [Issue #15](https://github.com/gap-packages/agt/issues/15)
